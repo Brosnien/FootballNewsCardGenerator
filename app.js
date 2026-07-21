@@ -577,7 +577,7 @@ function render(){
 
   const t=+$("tier").value;
   $("vDots").innerHTML=[1,2,3].map(i=>'<i class="'+(i<=t?"on":"")+'"></i>').join("");
-  $("vLab").textContent=L.tiers[t];
+  $("vLab").innerHTML='<span class="t">'+L.tiers[t]+'</span>';
 
   const crest=DB()[activeClub]?.crest;
   $("vCrest").classList.toggle("hide",!crest);
