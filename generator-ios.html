@@ -711,9 +711,9 @@
   </div>
   <div class="zoomrow">
     <button id="zoomOut" aria-label="Zoom out">−</button>
-    <input type="range" id="zoom" min="50" max="200" step="5" value="100" aria-label="Preview size">
+    <input type="range" id="zoom" min="50" max="200" step="5" value="60" aria-label="Preview size">
     <button id="zoomIn" aria-label="Zoom in">+</button>
-    <b id="zoomLab">100%</b>
+    <b id="zoomLab">60%</b>
   </div>
 </div>
 
@@ -1364,7 +1364,7 @@ matchMedia("(min-width:900px)").addEventListener("change",()=>{
   if(layoutMode==="auto") applyLayout();
 });
 
-let zoom=1;
+let zoom=0.6;
 function fit(){
   const H=+$("fmt").value;
   const web=document.body.classList.contains("web");
