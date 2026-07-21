@@ -736,13 +736,6 @@
       </select></label>
   </div>
 
-  <div class="ttrow">
-    <span class="ttlab">Team type</span>
-    <div class="tt" id="tt">
-      <button type="button" data-type="club" class="on">Clubs</button>
-      <button type="button" data-type="nation">Nationals</button>
-    </div>
-  </div>
   <p class="note hide" id="ttNote">Transfers are club-only — national teams don't sign players.</p>
 
   <div class="row teamrow">
@@ -892,7 +885,14 @@
   <details>
     <summary>Team &amp; colors</summary>
     <div class="inner">
-      <p class="note">Pick the team above. Here you can rename it, tweak its colors, add a crest, or save a new one.</p>
+      <div class="ttrow">
+        <span class="ttlab">Team type</span>
+        <div class="tt" id="tt">
+          <button type="button" data-type="club" class="on">Clubs</button>
+          <button type="button" data-type="nation">Nationals</button>
+        </div>
+      </div>
+      <p class="note">Switch clubs / nationals above, then pick the team at the top. Here you can rename it, tweak its colors, add a crest, or save a new one.</p>
       <label class="f"><span>Display name</span><input type="text" id="cname" value="Arsenal"></label>
       <label class="f"><span>Color 1 — background</span>
         <div class="colorrow"><input type="color" id="c1p"><input type="text" id="c1" value="#EF0107"></div></label>
