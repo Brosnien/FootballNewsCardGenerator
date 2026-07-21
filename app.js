@@ -559,6 +559,7 @@ function render(){
 
   $("vCat").textContent=$("cat").value;
   $("vDate").textContent=$("date").value;
+  document.querySelector(".tier").classList.toggle("hide",isResult);
   $("bSlug").classList.toggle("hide",isResult);
   /* on transfer / result the team names appear in the card body */
   $("vClub").classList.toggle("hide",tpl==="move"||isResult);
