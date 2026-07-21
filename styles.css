@@ -73,6 +73,27 @@
     background-position:calc(100% - 18px) 21px,calc(100% - 13px) 21px;
     background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:36px}
   textarea{min-height:88px;line-height:1.5;resize:none}
+  /* searchable combobox (country / team pickers) */
+  .combo{position:relative}
+  .comboInput{background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),
+    linear-gradient(135deg,var(--dim) 50%,transparent 50%);
+    background-position:calc(100% - 18px) 21px,calc(100% - 13px) 21px;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:36px;
+    text-overflow:ellipsis}
+  .comboList{position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:60;
+    max-height:320px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    background:var(--ui2);border:1px solid var(--line);border-radius:8px;
+    box-shadow:0 12px 32px rgba(0,0,0,.45);display:none}
+  .comboList.on{display:block}
+  .comboOpt{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    padding:12px 13px;cursor:pointer;border-bottom:1px solid var(--line)}
+  .comboOpt:last-child{border-bottom:0}
+  .comboOpt.active,.comboOpt:hover{background:var(--ui)}
+  .coName{font-family:"JetBrains Mono",monospace;font-size:16px;color:var(--txt);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .coSub{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);flex:0 0 auto}
+  .comboEmpty{padding:13px;color:var(--dim);font-size:14px}
   /* Source section fields — a bit bigger, filled often */
   #srcSection input[type=text],#srcSection select{font-size:19px;padding:17px 14px;min-height:58px}
   #srcSection select{background-position:calc(100% - 18px) 26px,calc(100% - 13px) 26px;padding-right:38px}

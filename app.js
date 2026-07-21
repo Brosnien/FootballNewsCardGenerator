@@ -222,26 +222,72 @@ function teamsInGroup(g){
   return Object.entries(DB()).filter(([,c])=>groupKey(c)===g)
     .sort((x,y)=>x[1].name.localeCompare(y[1].name,"en"));
 }
-function fillEntity(sel,g){
-  $(sel).innerHTML=teamsInGroup(g)
-    .map(([k,c])=>'<option value="'+k+'">'+c.name+'</option>').join("");
+/* ---------- searchable comboboxes (country + team pickers) ----------
+   Each combobox is a text input + a filtered list + a hidden input that keeps
+   the same id as the old <select>, so everything reading $("club2").value etc.
+   keeps working. Country boxes list the groups; team boxes search every team
+   in the current set (name or country), so you can find a club without first
+   picking its country. */
+function optGroups(){ return groupsOf().map(g=>({value:g,label:g})); }
+function optTeams(){
+  return Object.entries(DB())
+    .sort((a,b)=>a[1].name.localeCompare(b[1].name,"en"))
+    .map(([k,c])=>({value:k,label:c.name,sub:groupKey(c)}));
 }
-/* sync the two pairs of selectors: group (country/continent) + team */
+function makeCombo(id,getOptions,onSelect){
+  const input=$(id+"_in"), list=$(id+"_list"), hidden=$(id);
+  let open=false, active=0, filtered=[];
+  const labelFor=v=>{const o=getOptions().find(x=>x.value===v);return o?o.label:"";};
+  function draw(){
+    const q=input.value.trim().toLowerCase(), all=getOptions();
+    filtered=q?all.filter(o=>o.label.toLowerCase().includes(q)||(o.sub||"").toLowerCase().includes(q)):all;
+    if(active>=filtered.length)active=filtered.length-1;
+    if(active<0)active=0;
+    list.innerHTML=filtered.length?filtered.map((o,i)=>
+      '<div class="comboOpt'+(i===active?' active':'')+'" role="option" data-v="'+esc(o.value)+'">'
+      +'<span class="coName">'+esc(o.label)+'</span>'
+      +(o.sub?'<span class="coSub">'+esc(o.sub)+'</span>':'')+'</div>').join('')
+      :'<div class="comboEmpty">No matches</div>';
+  }
+  function openList(){open=true;list.classList.add("on");input.setAttribute("aria-expanded","true");}
+  function closeList(){open=false;list.classList.remove("on");input.setAttribute("aria-expanded","false");}
+  function scrollActive(){const el=list.children[active];if(el&&el.scrollIntoView)el.scrollIntoView({block:"nearest"});}
+  function commit(v){hidden.value=v;input.value=labelFor(v);closeList();input.blur();onSelect(v);}
+  input.addEventListener("focus",()=>{input.value="";active=0;openList();draw();});
+  input.addEventListener("input",()=>{if(!open)openList();active=0;draw();});
+  input.addEventListener("keydown",e=>{
+    if(e.key==="ArrowDown"){e.preventDefault();if(!open){openList();draw();return;}active=Math.min(active+1,filtered.length-1);draw();scrollActive();}
+    else if(e.key==="ArrowUp"){e.preventDefault();active=Math.max(active-1,0);draw();scrollActive();}
+    else if(e.key==="Enter"){if(open&&filtered[active]){e.preventDefault();commit(filtered[active].value);}}
+    else if(e.key==="Escape"){e.preventDefault();input.value=labelFor(hidden.value);closeList();input.blur();}
+  });
+  input.addEventListener("blur",()=>{setTimeout(()=>{if(!open)return;input.value=labelFor(hidden.value);closeList();},140);});
+  list.addEventListener("mousedown",e=>{const o=e.target.closest(".comboOpt");if(o){e.preventDefault();commit(o.dataset.v);}});
+  return {set(v){hidden.value=v;input.value=labelFor(v);}, get(){return hidden.value;}};
+}
+const combos={};
+combos.groupPick=makeCombo("groupPick",optGroups,g=>{const t=teamsInGroup(g)[0];if(t)loadClub(t[0]);});
+combos.clubPick =makeCombo("clubPick", optTeams, k=>loadClub(k));
+combos.group2   =makeCombo("group2",   optGroups,g=>{
+  const t=teamsInGroup(g).find(([k])=>k!==activeClub)||teamsInGroup(g)[0];
+  if(t)combos.club2.set(t[0]); combos.group2.set(g); render();});
+combos.club2    =makeCombo("club2",    optTeams, k=>{combos.group2.set(groupKey(DB()[k]));render();});
+
+/* set the four pickers to reflect the current team 1 + team 2 */
 function drawPickers(){
-  const gp=$("groupPick"), g2=$("group2"), p1=$("clubPick"), p2=$("club2");
-  const groups=groupsOf();
-  const gopts=groups.map(g=>'<option value="'+g+'">'+g+'</option>').join("");
-  gp.innerHTML=gopts; g2.innerHTML=gopts;
+  const a=DB()[activeClub]||Object.values(DB())[0];
+  const g1=groupKey(a);
+  combos.groupPick.set(g1);
+  combos.clubPick.set(DB()[activeClub]?activeClub:(teamsInGroup(g1)[0]?.[0]||""));
 
-  const g1=groupKey(DB()[activeClub]||Object.values(DB())[0]);
-  gp.value=g1; fillEntity("clubPick",g1);
-  p1.value=DB()[activeClub]?activeClub:(teamsInGroup(g1)[0]?.[0]||"");
-
-  const cur2=DB()[p2.value]?p2.value:null;
-  const g2v=cur2?groupKey(DB()[cur2]):(groups.find(g=>g!==g1)||g1);
-  g2.value=g2v; fillEntity("club2",g2v);
-  p2.value=cur2?cur2:(teamsInGroup(g2v).find(([k])=>k!==activeClub)?.[0]
-                      ||teamsInGroup(g2v)[0]?.[0]||"");
+  let k2=$("club2").value;
+  if(!DB()[k2]||k2===activeClub){
+    const other=Object.entries(DB()).find(([k,c])=>k!==activeClub&&groupKey(c)!==g1)
+              ||Object.entries(DB()).find(([k])=>k!==activeClub);
+    k2=other?other[0]:activeClub;
+  }
+  combos.club2.set(k2);
+  combos.group2.set(groupKey(DB()[k2]||a));
 }
 
 const val=id=>$(id).value;
@@ -452,16 +498,13 @@ FIELDS.forEach(id=>{const el=$(id);if(!el)return;
   $(tx).addEventListener("input",e=>{
     if(/^#[0-9a-f]{6}$/i.test(e.target.value))$(pk).value=e.target.value;});
 });
-/* the right-side team also fills the "To" name */
-$("club2").addEventListener("change",render);
 /* swap the two teams in one tap */
 $("swapClubs").addEventListener("click",()=>{
   const right=$("club2").value, left=activeClub;
   if(!DB()[right]||right===left) return;
   loadClub(right);
-  $("group2").value=groupKey(DB()[left]);
-  fillEntity("club2",$("group2").value);
-  $("club2").value=left;
+  combos.club2.set(left);
+  combos.group2.set(groupKey(DB()[left]));
   render();
 });
 
@@ -473,14 +516,7 @@ $("status").addEventListener("change",()=>{
 });
 
 let DELETED={club:[],nation:[]};
-$("groupPick").addEventListener("change",()=>{
-  fillEntity("clubPick",$("groupPick").value);
-  loadClub($("clubPick").value);
-});
-$("clubPick").addEventListener("change",e=>loadClub(e.target.value));
-$("group2").addEventListener("change",()=>{
-  fillEntity("club2",$("group2").value); render();
-});
+/* the country/team pickers are searchable comboboxes now — see makeCombo above */
 
 function loadClub(k){
   if(!DB()[k])return;
@@ -528,9 +564,8 @@ function restore(o){
   [["c1","c1p"],["c2","c2p"],["c3","c3p"]].forEach(([tx,pk])=>{$(pk).value=$(tx).value;});
   updateTypeUI();drawPickers();
   if(o.club2&&DB()[o.club2]){
-    $("group2").value=groupKey(DB()[o.club2]);
-    fillEntity("club2",$("group2").value);
-    $("club2").value=o.club2;
+    combos.group2.set(groupKey(DB()[o.club2]));
+    combos.club2.set(o.club2);
   }
   ["head","sub","quote","goalsA","goalsB"].forEach(id=>grow($(id)));
   render();

@@ -120,9 +120,17 @@
 
   <div class="row teamrow">
     <label class="f"><span id="groupPickLab">Country</span>
-      <select id="groupPick"></select></label>
+      <div class="combo">
+        <input type="text" class="comboInput" id="groupPick_in" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" placeholder="Any country">
+        <input type="hidden" id="groupPick">
+        <div class="comboList" id="groupPick_list" role="listbox"></div>
+      </div></label>
     <label class="f"><span>Team</span>
-      <select id="clubPick"></select></label>
+      <div class="combo">
+        <input type="text" class="comboInput" id="clubPick_in" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" placeholder="Search team…">
+        <input type="hidden" id="clubPick">
+        <div class="comboList" id="clubPick_list" role="listbox"></div>
+      </div></label>
   </div>
 
   <input type="hidden" id="cname" value="Arsenal">
@@ -139,9 +147,17 @@
   <!-- second team + split (transfer / result templates) -->
   <div class="row teamrow" data-for="move result">
     <label class="f"><span id="group2Lab">Country — right</span>
-      <select id="group2"></select></label>
+      <div class="combo">
+        <input type="text" class="comboInput" id="group2_in" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" placeholder="Any country">
+        <input type="hidden" id="group2">
+        <div class="comboList" id="group2_list" role="listbox"></div>
+      </div></label>
     <label class="f"><span>Right-side team</span>
-      <select id="club2"></select></label>
+      <div class="combo">
+        <input type="text" class="comboInput" id="club2_in" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" placeholder="Search team…">
+        <input type="hidden" id="club2">
+        <div class="comboList" id="club2_list" role="listbox"></div>
+      </div></label>
   </div>
   <div class="row" data-for="move">
     <label class="f"><span>Split</span>
