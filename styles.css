@@ -179,7 +179,8 @@
   .card.tpl-move .cl.a{color:var(--nameA)}
   .card.tpl-move .cl.b{color:var(--nameB)}
   .card.split .arrow{color:var(--inkBoth)}
-  .card.split .player,.card.split .fee,.card.split .src,.card.split .tier{color:var(--inkBoth)}
+  .card.split .player,.card.split .fee,.card.split .src,.card.split .tier,
+  .card.split .srcHead{color:var(--inkBoth)}
   .card.split .rule{background:var(--inkBoth)}
   .card.split .clubtag{background:var(--trim2);color:var(--ontrim2)}
 
@@ -201,15 +202,17 @@
 
   .topline{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex:0 0 auto}
   .toplineLeft{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+  .toplineRight{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
   .slug{font-family:"JetBrains Mono",monospace;font-weight:800;font-size:26px;letter-spacing:.24em;
     text-transform:uppercase;display:flex;align-items:center;gap:16px}
   .slug .sq{width:19px;height:19px;background:currentColor;flex:0 0 19px}
-  .slug .date{opacity:.75;font-weight:600;letter-spacing:.15em}
   .clubbox{display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex:0 0 auto}
   .clubtag{background:var(--trim);color:var(--ontrim);font-family:"JetBrains Mono",monospace;
     font-weight:800;font-size:27px;letter-spacing:.18em;text-transform:uppercase;
     padding:14px 21px 13px;white-space:nowrap}
   .crest{height:80px;width:auto;display:block;object-fit:contain}
+  .srcHead{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:22px;letter-spacing:.08em;
+    text-transform:uppercase;text-align:right;opacity:.85}
 
   .content{flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end;
     min-height:0;padding:28px 0}
@@ -230,11 +233,11 @@
   .credit{margin-top:26px;display:flex;align-items:flex-end;gap:24px}
   .src{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:32px;letter-spacing:.09em;
     text-transform:uppercase;line-height:1.5}
-  .tier{display:flex;align-items:center;gap:10px}
-  .dots{display:flex;gap:6px;opacity:.75}
-  .dots i{width:11px;height:11px;border-radius:50%;border:2px solid currentColor;display:block}
+  .tier{display:flex;align-items:center;gap:14px}
+  .dots{display:flex;gap:8px;opacity:.75}
+  .dots i{width:18px;height:18px;border-radius:50%;border:3px solid currentColor;display:block}
   .dots i.on{background:currentColor}
-  .lab{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:15px;letter-spacing:.16em;
+  .lab{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:34px;letter-spacing:.1em;
     text-transform:uppercase;opacity:.75}
 
   .move{display:flex;align-items:stretch;margin-bottom:40px}

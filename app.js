@@ -559,6 +559,7 @@ function render(){
 
   $("vCat").textContent=$("cat").value;
   $("vDate").textContent=$("date").value;
+  $("bSlug").classList.toggle("hide",isResult);
   /* on transfer / result the team names appear in the card body */
   $("vClub").classList.toggle("hide",tpl==="move"||isResult);
   $("vClub").textContent=split?B.name:$("cname").value;
@@ -573,7 +574,7 @@ function render(){
   $("vCtx").textContent=val("ctx");
   const srcParts=[$("handle").value.trim(),$("outlet").value.trim()].filter(Boolean);
   $("vSrc").textContent=srcParts.length?L.src+" "+srcParts.join(" · "):"";
-  $("vSrc").closest(".src").classList.toggle("hide",!srcParts.length);
+  $("bSrc").classList.toggle("hide",!srcParts.length||isResult);
 
   const t=+$("tier").value;
   $("vDots").innerHTML=[1,2,3].map(i=>'<i class="'+(i<=t?"on":"")+'"></i>').join("");
