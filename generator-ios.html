@@ -493,8 +493,8 @@
 
   /* --- half / half, two clubs (background is built in JS) --- */
   .card.split .slug{color:var(--inkA)}
-  .card.split .cl.a{color:var(--inkA)}
-  .card.split .cl.b{color:var(--inkB)}
+  .card.tpl-move .cl.a{color:var(--nameA)}
+  .card.tpl-move .cl.b{color:var(--nameB)}
   .card.split .arrow{color:var(--inkBoth)}
   .card.split .player,.card.split .fee,.card.split .src,.card.split .tier{color:var(--inkBoth)}
   .card.split .rule{background:var(--inkBoth)}
@@ -503,7 +503,7 @@
   /* horizontal split: clubs sit top/bottom, so the row stacks too */
   .card.split.sp-h .move{flex-direction:column;align-items:stretch;gap:26px}
   .card.split.sp-h .cl.b{align-items:flex-start;text-align:left}
-  .card.split.sp-h .arrow{flex:0 0 auto;height:92px;font-size:76px}
+  .card.split.sp-h .arrow{flex:0 0 auto;height:120px;font-size:116px}
   .card.split.sp-h .player,.card.split.sp-h .fee,
   .card.split.sp-h .src,.card.split.sp-h .tier{color:var(--inkB)}
   .card.split.sp-h .rule{background:var(--inkB)}
@@ -567,7 +567,7 @@
   .role{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:15px;letter-spacing:.2em;
     text-transform:uppercase}
   .nm{font-family:var(--display),Times,serif;font-size:42px;line-height:1.05;font-weight:700}
-  .arrow{flex:0 0 124px;display:flex;align-items:center;justify-content:center;font-size:76px;
+  .arrow{flex:0 0 168px;display:flex;align-items:center;justify-content:center;font-size:124px;
     font-weight:800;font-family:"JetBrains Mono",monospace;color:var(--trim);line-height:1}
   .player{font-family:var(--display),Times,serif;font-weight:900;font-size:96px;line-height:1.01;
     letter-spacing:-.012em;font-variation-settings:"opsz" 120,"WONK" 1}
@@ -1514,6 +1514,13 @@ function render(){
   /* on each half, text sits near the outside → contrast against color 1 */
   r.setProperty("--inkA",onColor(c1));
   r.setProperty("--inkB",onColor(B.c1));
+  /* transfer team names: use each team's own color 2 (then color 3) if it
+     reads on the background the name sits on, else fall back to white/black.
+     On a split each name sits on its own team's color 1; otherwise both sit
+     on the left team's color 1. */
+  const bgNameB = split ? B.c1 : c1;
+  r.setProperty("--nameA",bodyInk(c1,c2,c3));
+  r.setProperty("--nameB",bodyInk(bgNameB,B.c2,B.c3));
   r.setProperty("--plate",plated?plate:"transparent");
   r.setProperty("--onplate",ink);
   r.setProperty("--display",'"'+$("font").value+'"');
