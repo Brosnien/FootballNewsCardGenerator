@@ -385,6 +385,17 @@
   .colorrow{display:flex;gap:8px;align-items:center}
   .colorrow input[type=color]{width:56px;height:48px;padding:0;border:1px solid var(--line);
     background:var(--ui2);border-radius:8px;flex:0 0 56px}
+  /* compact 3-across color row under the team pickers */
+  .colors3{margin-bottom:12px}
+  .colors3 .cc{margin-bottom:0}
+  .colors3 input[type=color]{display:block;width:100%;height:36px;padding:0;
+    border:1px solid var(--line);background:var(--ui2);border-radius:8px;margin-bottom:6px}
+  .colors3 input[type=text]{font-size:13px;padding:9px 6px;min-height:40px;text-align:center}
+  /* crest + save/delete on one compact row */
+  .teamtools{align-items:flex-end;margin-bottom:4px}
+  .teamtools .crestf{margin-bottom:0}
+  .teamtools .crestf input[type=file]{font-size:12px;color:var(--dim);min-height:48px}
+  .teamtools button{margin-top:0}
 
   button{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;
     text-transform:uppercase;background:var(--ui2);color:var(--txt);border:1px solid var(--line);
@@ -736,6 +747,13 @@
       </select></label>
   </div>
 
+  <div class="ttrow">
+    <span class="ttlab">Team type</span>
+    <div class="tt" id="tt">
+      <button type="button" data-type="club" class="on">Clubs</button>
+      <button type="button" data-type="nation">Nationals</button>
+    </div>
+  </div>
   <p class="note hide" id="ttNote">Transfers are club-only — national teams don't sign players.</p>
 
   <div class="row teamrow">
@@ -744,6 +762,23 @@
     <label class="f"><span>Team</span>
       <select id="clubPick"></select></label>
   </div>
+
+  <input type="hidden" id="cname" value="Arsenal">
+  <div class="row colors3">
+    <label class="f cc"><span>Background</span>
+      <input type="color" id="c1p"><input type="text" id="c1" value="#EF0107"></label>
+    <label class="f cc"><span>Text</span>
+      <input type="color" id="c2p"><input type="text" id="c2" value="#FFFFFF"></label>
+    <label class="f cc"><span>Accent</span>
+      <input type="color" id="c3p"><input type="text" id="c3" value="#063672"></label>
+  </div>
+  <div class="row teamtools">
+    <label class="f crestf"><span>Custom crest</span>
+      <input type="file" id="crestFile" accept="image/*"></label>
+    <button type="button" id="saveClub">Save team</button>
+    <button type="button" id="delClub" class="warn">Delete</button>
+  </div>
+  <div class="meta" id="ratioBox"></div>
 
   <details open>
     <summary>Text</summary>
@@ -879,34 +914,6 @@
       <p class="note" data-for="result">Left is the team picked at the top; the right team is the one here.
         The card splits vertically, each team on its own color.</p>
       <div class="meta" id="splitBox" data-for="move"></div>
-    </div>
-  </details>
-
-  <details>
-    <summary>Team &amp; colors</summary>
-    <div class="inner">
-      <div class="ttrow">
-        <span class="ttlab">Team type</span>
-        <div class="tt" id="tt">
-          <button type="button" data-type="club" class="on">Clubs</button>
-          <button type="button" data-type="nation">Nationals</button>
-        </div>
-      </div>
-      <p class="note">Switch clubs / nationals above, then pick the team at the top. Here you can rename it, tweak its colors, add a crest, or save a new one.</p>
-      <label class="f"><span>Display name</span><input type="text" id="cname" value="Arsenal"></label>
-      <label class="f"><span>Color 1 — background</span>
-        <div class="colorrow"><input type="color" id="c1p"><input type="text" id="c1" value="#EF0107"></div></label>
-      <label class="f"><span>Color 2 — text</span>
-        <div class="colorrow"><input type="color" id="c2p"><input type="text" id="c2" value="#FFFFFF"></div></label>
-      <label class="f"><span>Color 3 — accent</span>
-        <div class="colorrow"><input type="color" id="c3p"><input type="text" id="c3" value="#063672"></div></label>
-      <label class="f"><span>Custom crest (optional)</span>
-        <input type="file" id="crestFile" accept="image/*"></label>
-      <div class="btns">
-        <button id="saveClub">Save team</button>
-        <button id="delClub" class="warn">Delete</button>
-      </div>
-      <div class="meta" id="ratioBox"></div>
     </div>
   </details>
 
@@ -1759,7 +1766,7 @@ function restore(o){
 }
 /* ---------- "Paste" button on each text field ---------- */
 const PASTE_FIELDS=["head","sub","player","fee","quote","who","ctx",
-                    "handle","outlet","cat","date","cname","oppo"];
+                    "handle","outlet","cat","date","oppo"];
 function addPasteButtons(){
   PASTE_FIELDS.forEach(id=>{
     const el=$(id); if(!el||el.dataset.pw) return;
