@@ -16,199 +16,14 @@ const store={
 
 /* Predefined clubs. Colors are the usual ones, but double-check the ones
    that matter to you — you can edit and save over them. */
-const DEFAULT_CLUBS={
-  /* ---- England ---- */
-  arsenal:{country:"England",name:"Arsenal",c1:"#EF0107",c2:"#FFFFFF",c3:"#063672",plate:"none",crest:""},
-  "man-city":{country:"England",name:"Man City",c1:"#6CABDD",c2:"#FFFFFF",c3:"#1C2C5B",plate:"#FFFFFF",crest:""},
-  liverpool:{country:"England",name:"Liverpool",c1:"#C8102E",c2:"#FFFFFF",c3:"#00B2A9",plate:"none",crest:""},
-  "man-united":{country:"England",name:"Man United",c1:"#DA291C",c2:"#FFFFFF",c3:"#FBE122",plate:"none",crest:""},
-  chelsea:{country:"England",name:"Chelsea",c1:"#034694",c2:"#FFFFFF",c3:"#DBA111",plate:"none",crest:""},
-  tottenham:{country:"England",name:"Tottenham",c1:"#132257",c2:"#FFFFFF",c3:"#C0C0C0",plate:"none",crest:""},
-  newcastle:{country:"England",name:"Newcastle",c1:"#241F20",c2:"#FFFFFF",c3:"#41B6E6",plate:"none",crest:""},
-  "aston-villa":{country:"England",name:"Aston Villa",c1:"#670E36",c2:"#95BFE5",c3:"#FDB913",plate:"none",crest:""},
-  "west-ham":{country:"England",name:"West Ham",c1:"#7A263A",c2:"#1BB1E7",c3:"#FFFFFF",plate:"none",crest:""},
-  everton:{country:"England",name:"Everton",c1:"#003399",c2:"#FFFFFF",c3:"#FCD400",plate:"none",crest:""},
+/* Team data lives in teams.json (loaded at startup) so it is easy to edit and
+   grow with more clubs and nations. These start empty and are filled by the
+   fetch in the init block at the bottom of this file. */
+let DEFAULT_CLUBS={};
+let DEFAULT_NATIONS={};
 
-  /* ---- Spain ---- */
-  "real-madrid":{country:"Spain",name:"Real Madrid",c1:"#FFFFFF",c2:"#00529F",c3:"#FEBE10",plate:"none",crest:""},
-  barcelona:{country:"Spain",name:"Barcelona",c1:"#A50044",c2:"#004D98",c3:"#EDBB00",plate:"none",crest:""},
-  "atletico":{country:"Spain",name:"Atlético",c1:"#CB3524",c2:"#FFFFFF",c3:"#272E61",plate:"none",crest:""},
-  sevilla:{country:"Spain",name:"Sevilla",c1:"#D81920",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  villarreal:{country:"Spain",name:"Villarreal",c1:"#FFE667",c2:"#005187",c3:"#003DA5",plate:"none",crest:""},
-  "athletic":{country:"Spain",name:"Athletic Club",c1:"#EE2523",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  "real-sociedad":{country:"Spain",name:"Real Sociedad",c1:"#0067B1",c2:"#FFFFFF",c3:"#E30613",plate:"none",crest:""},
-  valencia:{country:"Spain",name:"Valencia",c1:"#FFFFFF",c2:"#EE3524",c3:"#000000",plate:"none",crest:""},
-
-  /* ---- Italy ---- */
-  inter:{country:"Italy",name:"Inter",c1:"#010E80",c2:"#000000",c3:"#C8AA6E",plate:"none",crest:""},
-  milan:{country:"Italy",name:"Milan",c1:"#FB090B",c2:"#000000",c3:"#FFFFFF",plate:"none",crest:""},
-  juventus:{country:"Italy",name:"Juventus",c1:"#000000",c2:"#FFFFFF",c3:"#D4AF37",plate:"none",crest:""},
-  napoli:{country:"Italy",name:"Napoli",c1:"#12A0D7",c2:"#FFFFFF",c3:"#003C82",plate:"none",crest:""},
-  roma:{country:"Italy",name:"Roma",c1:"#8E1F2F",c2:"#F0BC42",c3:"#FFFFFF",plate:"none",crest:""},
-  lazio:{country:"Italy",name:"Lazio",c1:"#87D8F7",c2:"#FFFFFF",c3:"#0B1F3A",plate:"none",crest:""},
-  atalanta:{country:"Italy",name:"Atalanta",c1:"#1D71B8",c2:"#000000",c3:"#FFFFFF",plate:"none",crest:""},
-  fiorentina:{country:"Italy",name:"Fiorentina",c1:"#59209C",c2:"#FFFFFF",c3:"#D4AF37",plate:"none",crest:""},
-
-  /* ---- Germany ---- */
-  bayern:{country:"Germany",name:"Bayern",c1:"#DC052D",c2:"#FFFFFF",c3:"#0066B2",plate:"none",crest:""},
-  dortmund:{country:"Germany",name:"Dortmund",c1:"#FDE100",c2:"#000000",c3:"#FFFFFF",plate:"none",crest:""},
-  leipzig:{country:"Germany",name:"RB Leipzig",c1:"#DD0741",c2:"#FFFFFF",c3:"#001F47",plate:"none",crest:""},
-  leverkusen:{country:"Germany",name:"Leverkusen",c1:"#E32221",c2:"#000000",c3:"#FFFFFF",plate:"none",crest:""},
-  frankfurt:{country:"Germany",name:"Frankfurt",c1:"#000000",c2:"#FFFFFF",c3:"#E1000F",plate:"none",crest:""},
-  gladbach:{country:"Germany",name:"M'gladbach",c1:"#FFFFFF",c2:"#000000",c3:"#00A752",plate:"none",crest:""},
-  stuttgart:{country:"Germany",name:"Stuttgart",c1:"#FFFFFF",c2:"#E32219",c3:"#000000",plate:"none",crest:""},
-
-  /* ---- France ---- */
-  psg:{country:"France",name:"PSG",c1:"#004170",c2:"#DA291C",c3:"#FFFFFF",plate:"none",crest:""},
-  marseille:{country:"France",name:"Marseille",c1:"#2FAEE0",c2:"#FFFFFF",c3:"#D4AF37",plate:"none",crest:""},
-  lyon:{country:"France",name:"Lyon",c1:"#FFFFFF",c2:"#DA291C",c3:"#1B458F",plate:"none",crest:""},
-  monaco:{country:"France",name:"Monaco",c1:"#E63329",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  lille:{country:"France",name:"Lille",c1:"#E01E13",c2:"#FFFFFF",c3:"#082A5E",plate:"none",crest:""},
-  nice:{country:"France",name:"Nice",c1:"#DA291C",c2:"#000000",c3:"#FFFFFF",plate:"none",crest:""},
-
-  /* ---- Portugal ---- */
-  benfica:{country:"Portugal",name:"Benfica",c1:"#E00034",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  porto:{country:"Portugal",name:"Porto",c1:"#003DA5",c2:"#FFFFFF",c3:"#00A0DF",plate:"none",crest:""},
-  sporting:{country:"Portugal",name:"Sporting",c1:"#008057",c2:"#FFFFFF",c3:"#D4AF37",plate:"none",crest:""},
-
-  /* ---- Netherlands ---- */
-  ajax:{country:"Netherlands",name:"Ajax",c1:"#D2122E",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  psv:{country:"Netherlands",name:"PSV",c1:"#EE2124",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  feyenoord:{country:"Netherlands",name:"Feyenoord",c1:"#DA020E",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-
-  /* ---- Scotland ---- */
-  celtic:{country:"Scotland",name:"Celtic",c1:"#018749",c2:"#FFFFFF",c3:"#F5C518",plate:"none",crest:""},
-  rangers:{country:"Scotland",name:"Rangers",c1:"#1B458F",c2:"#FFFFFF",c3:"#DA291C",plate:"none",crest:""},
-
-  /* ---- Turkey ---- */
-  galatasaray:{country:"Turkey",name:"Galatasaray",c1:"#A90432",c2:"#FBB03F",c3:"#FFFFFF",plate:"none",crest:""},
-  fenerbahce:{country:"Turkey",name:"Fenerbahçe",c1:"#073C7A",c2:"#FFED00",c3:"#FFFFFF",plate:"none",crest:""},
-
-  /* ---- Rest of Europe ---- */
-  brugge:{country:"Rest of Europe",name:"Club Brugge",c1:"#005BAC",c2:"#000000",c3:"#FFFFFF",plate:"none",crest:""},
-  salzburg:{country:"Rest of Europe",name:"RB Salzburg",c1:"#C8102E",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  olympiacos:{country:"Rest of Europe",name:"Olympiacos",c1:"#DA291C",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  shakhtar:{country:"Rest of Europe",name:"Shakhtar",c1:"#FF6600",c2:"#000000",c3:"#FFFFFF",plate:"none",crest:""},
-  "dinamo-zagreb":{country:"Rest of Europe",name:"Dinamo Zagreb",c1:"#0F4C9C",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-
-  /* ---- Romania ---- */
-  fcsb:{country:"Romania",name:"FCSB",c1:"#E30613",c2:"#003DA5",c3:"#FFFFFF",plate:"none",crest:""},
-  "cfr-cluj":{country:"Romania",name:"CFR Cluj",c1:"#7B0F1B",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  rapid:{country:"Romania",name:"Rapid",c1:"#7C2231",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  craiova:{country:"Romania",name:"U Craiova",c1:"#0057B8",c2:"#FFFFFF",c3:"#E30613",plate:"none",crest:""},
-  "dinamo":{country:"Romania",name:"Dinamo",c1:"#DA291C",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  "u-cluj":{country:"Romania",name:"U Cluj",c1:"#000000",c2:"#FFFFFF",c3:"#A50044",plate:"none",crest:""}
-};
-/* National teams, grouped by continent. Colors are the usual kit colors —
-   double-check the ones that matter to you; you can edit and save over them. */
-const DEFAULT_NATIONS={
-  /* ---- Europe (30) ---- */
-  romania:{continent:"Europe",name:"Romania",c1:"#FCD116",c2:"#002B7F",c3:"#CE1126",plate:"none",crest:""},
-  france:{continent:"Europe",name:"France",c1:"#002654",c2:"#FFFFFF",c3:"#ED2939",plate:"none",crest:""},
-  germany:{continent:"Europe",name:"Germany",c1:"#FFFFFF",c2:"#000000",c3:"#DD0000",plate:"none",crest:""},
-  spain:{continent:"Europe",name:"Spain",c1:"#C60B1E",c2:"#FFFFFF",c3:"#FFC400",plate:"none",crest:""},
-  italy:{continent:"Europe",name:"Italy",c1:"#0F4C9C",c2:"#FFFFFF",c3:"#009246",plate:"none",crest:""},
-  england:{continent:"Europe",name:"England",c1:"#FFFFFF",c2:"#001489",c3:"#CE1124",plate:"none",crest:""},
-  portugal:{continent:"Europe",name:"Portugal",c1:"#C5281C",c2:"#FFFFFF",c3:"#006600",plate:"none",crest:""},
-  netherlands:{continent:"Europe",name:"Netherlands",c1:"#FF6C00",c2:"#FFFFFF",c3:"#21468B",plate:"none",crest:""},
-  belgium:{continent:"Europe",name:"Belgium",c1:"#E30613",c2:"#FFFFFF",c3:"#FDDA24",plate:"none",crest:""},
-  croatia:{continent:"Europe",name:"Croatia",c1:"#D9241C",c2:"#FFFFFF",c3:"#171796",plate:"none",crest:""},
-  poland:{continent:"Europe",name:"Poland",c1:"#FFFFFF",c2:"#DC143C",c3:"#000000",plate:"none",crest:""},
-  sweden:{continent:"Europe",name:"Sweden",c1:"#005B99",c2:"#FECB00",c3:"#FFFFFF",plate:"none",crest:""},
-  denmark:{continent:"Europe",name:"Denmark",c1:"#C60C30",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  switzerland:{continent:"Europe",name:"Switzerland",c1:"#D52B1E",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  austria:{continent:"Europe",name:"Austria",c1:"#ED2939",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  ukraine:{continent:"Europe",name:"Ukraine",c1:"#FFD500",c2:"#005BBB",c3:"#005BBB",plate:"none",crest:""},
-  serbia:{continent:"Europe",name:"Serbia",c1:"#C6363C",c2:"#FFFFFF",c3:"#0C4076",plate:"none",crest:""},
-  scotland:{continent:"Europe",name:"Scotland",c1:"#1B3A6B",c2:"#FFFFFF",c3:"#C8102E",plate:"none",crest:""},
-  wales:{continent:"Europe",name:"Wales",c1:"#C8102E",c2:"#FFFFFF",c3:"#00AB39",plate:"none",crest:""},
-  turkey:{continent:"Europe",name:"Turkey",c1:"#E30A17",c2:"#FFFFFF",c3:"#A50010",plate:"none",crest:""},
-  norway:{continent:"Europe",name:"Norway",c1:"#BA0C2F",c2:"#FFFFFF",c3:"#00205B",plate:"none",crest:""},
-  czechia:{continent:"Europe",name:"Czechia",c1:"#D7141A",c2:"#FFFFFF",c3:"#11457E",plate:"none",crest:""},
-  greece:{continent:"Europe",name:"Greece",c1:"#0D5EAF",c2:"#FFFFFF",c3:"#041E42",plate:"none",crest:""},
-  hungary:{continent:"Europe",name:"Hungary",c1:"#C8102E",c2:"#FFFFFF",c3:"#436F4D",plate:"none",crest:""},
-  russia:{continent:"Europe",name:"Russia",c1:"#FFFFFF",c2:"#0039A6",c3:"#D52B1E",plate:"none",crest:""},
-  ireland:{continent:"Europe",name:"Ireland",c1:"#009A44",c2:"#FFFFFF",c3:"#FF7900",plate:"none",crest:""},
-  finland:{continent:"Europe",name:"Finland",c1:"#FFFFFF",c2:"#003580",c3:"#003580",plate:"none",crest:""},
-  slovakia:{continent:"Europe",name:"Slovakia",c1:"#0B4EA2",c2:"#FFFFFF",c3:"#EE1C25",plate:"none",crest:""},
-  slovenia:{continent:"Europe",name:"Slovenia",c1:"#FFFFFF",c2:"#005DA4",c3:"#ED1C24",plate:"none",crest:""},
-  iceland:{continent:"Europe",name:"Iceland",c1:"#02529C",c2:"#FFFFFF",c3:"#DC1E35",plate:"none",crest:""},
-
-  /* ---- South America (10) ---- */
-  brazil:{continent:"South America",name:"Brazil",c1:"#FFDF00",c2:"#009739",c3:"#002776",plate:"none",crest:""},
-  argentina:{continent:"South America",name:"Argentina",c1:"#75AADB",c2:"#FFFFFF",c3:"#F6B40E",plate:"none",crest:""},
-  uruguay:{continent:"South America",name:"Uruguay",c1:"#5B9BD5",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""},
-  colombia:{continent:"South America",name:"Colombia",c1:"#FCD116",c2:"#003893",c3:"#CE1126",plate:"none",crest:""},
-  chile:{continent:"South America",name:"Chile",c1:"#D52B1E",c2:"#FFFFFF",c3:"#0039A6",plate:"none",crest:""},
-  peru:{continent:"South America",name:"Peru",c1:"#FFFFFF",c2:"#D91023",c3:"#D91023",plate:"none",crest:""},
-  ecuador:{continent:"South America",name:"Ecuador",c1:"#FFDD00",c2:"#003893",c3:"#ED1C24",plate:"none",crest:""},
-  paraguay:{continent:"South America",name:"Paraguay",c1:"#D52B1E",c2:"#FFFFFF",c3:"#0038A8",plate:"none",crest:""},
-  bolivia:{continent:"South America",name:"Bolivia",c1:"#007A33",c2:"#FFFFFF",c3:"#FFD100",plate:"none",crest:""},
-  venezuela:{continent:"South America",name:"Venezuela",c1:"#7B1F3A",c2:"#FFFFFF",c3:"#FFCD00",plate:"none",crest:""},
-
-  /* ---- North America (12) ---- */
-  mexico:{continent:"North America",name:"Mexico",c1:"#006847",c2:"#FFFFFF",c3:"#CE1126",plate:"none",crest:""},
-  usa:{continent:"North America",name:"USA",c1:"#0A3161",c2:"#FFFFFF",c3:"#B31942",plate:"none",crest:""},
-  canada:{continent:"North America",name:"Canada",c1:"#D52B1E",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  "costa-rica":{continent:"North America",name:"Costa Rica",c1:"#D80027",c2:"#FFFFFF",c3:"#002B7F",plate:"none",crest:""},
-  panama:{continent:"North America",name:"Panama",c1:"#DA121A",c2:"#FFFFFF",c3:"#072357",plate:"none",crest:""},
-  jamaica:{continent:"North America",name:"Jamaica",c1:"#009B3A",c2:"#FED100",c3:"#000000",plate:"none",crest:""},
-  honduras:{continent:"North America",name:"Honduras",c1:"#0073CF",c2:"#FFFFFF",c3:"#18397A",plate:"none",crest:""},
-  "el-salvador":{continent:"North America",name:"El Salvador",c1:"#0F47AF",c2:"#FFFFFF",c3:"#DA291C",plate:"none",crest:""},
-  guatemala:{continent:"North America",name:"Guatemala",c1:"#4997D0",c2:"#FFFFFF",c3:"#164FA1",plate:"none",crest:""},
-  trinidad:{continent:"North America",name:"Trinidad & Tobago",c1:"#DA1A35",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  haiti:{continent:"North America",name:"Haiti",c1:"#00209F",c2:"#FFFFFF",c3:"#D21034",plate:"none",crest:""},
-  curacao:{continent:"North America",name:"Curaçao",c1:"#002B7F",c2:"#FFFFFF",c3:"#F9D616",plate:"none",crest:""},
-
-  /* ---- Africa (15) ---- */
-  morocco:{continent:"Africa",name:"Morocco",c1:"#C1272D",c2:"#FFFFFF",c3:"#006233",plate:"none",crest:""},
-  senegal:{continent:"Africa",name:"Senegal",c1:"#00853F",c2:"#FFFFFF",c3:"#FDEF42",plate:"none",crest:""},
-  egypt:{continent:"Africa",name:"Egypt",c1:"#CE1126",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  nigeria:{continent:"Africa",name:"Nigeria",c1:"#008751",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  cameroon:{continent:"Africa",name:"Cameroon",c1:"#007A5E",c2:"#FFFFFF",c3:"#CE1126",plate:"none",crest:""},
-  ghana:{continent:"Africa",name:"Ghana",c1:"#CE1126",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""},
-  "ivory-coast":{continent:"Africa",name:"Ivory Coast",c1:"#F77F00",c2:"#FFFFFF",c3:"#009E60",plate:"none",crest:""},
-  algeria:{continent:"Africa",name:"Algeria",c1:"#007A3D",c2:"#FFFFFF",c3:"#D21034",plate:"none",crest:""},
-  tunisia:{continent:"Africa",name:"Tunisia",c1:"#E70013",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  "south-africa":{continent:"Africa",name:"South Africa",c1:"#007A4D",c2:"#FFFFFF",c3:"#FFB915",plate:"none",crest:""},
-  mali:{continent:"Africa",name:"Mali",c1:"#14B53A",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""},
-  "dr-congo":{continent:"Africa",name:"DR Congo",c1:"#2D8FDF",c2:"#FFFFFF",c3:"#F7D618",plate:"none",crest:""},
-  "burkina-faso":{continent:"Africa",name:"Burkina Faso",c1:"#EF2B2D",c2:"#FFFFFF",c3:"#009E49",plate:"none",crest:""},
-  "cape-verde":{continent:"Africa",name:"Cape Verde",c1:"#003893",c2:"#FFFFFF",c3:"#CF2027",plate:"none",crest:""},
-  guinea:{continent:"Africa",name:"Guinea",c1:"#CE1126",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""},
-
-  /* ---- Asia (15) ---- */
-  japan:{continent:"Asia",name:"Japan",c1:"#0A3D91",c2:"#FFFFFF",c3:"#BC002D",plate:"none",crest:""},
-  "south-korea":{continent:"Asia",name:"South Korea",c1:"#C8102E",c2:"#FFFFFF",c3:"#003478",plate:"none",crest:""},
-  iran:{continent:"Asia",name:"Iran",c1:"#FFFFFF",c2:"#239F40",c3:"#DA0000",plate:"none",crest:""},
-  "saudi-arabia":{continent:"Asia",name:"Saudi Arabia",c1:"#006C35",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  australia:{continent:"Asia",name:"Australia",c1:"#FFCD00",c2:"#00843D",c3:"#000000",plate:"none",crest:""},
-  qatar:{continent:"Asia",name:"Qatar",c1:"#8A1538",c2:"#FFFFFF",c3:"#B0B0B0",plate:"none",crest:""},
-  iraq:{continent:"Asia",name:"Iraq",c1:"#007A3D",c2:"#FFFFFF",c3:"#CE1126",plate:"none",crest:""},
-  uae:{continent:"Asia",name:"UAE",c1:"#00732F",c2:"#FFFFFF",c3:"#FF0000",plate:"none",crest:""},
-  china:{continent:"Asia",name:"China",c1:"#DE2910",c2:"#FFFFFF",c3:"#FFDE00",plate:"none",crest:""},
-  uzbekistan:{continent:"Asia",name:"Uzbekistan",c1:"#FFFFFF",c2:"#0099B5",c3:"#1EB53A",plate:"none",crest:""},
-  jordan:{continent:"Asia",name:"Jordan",c1:"#FFFFFF",c2:"#007A3D",c3:"#CE1126",plate:"none",crest:""},
-  oman:{continent:"Asia",name:"Oman",c1:"#DB161B",c2:"#FFFFFF",c3:"#008000",plate:"none",crest:""},
-  bahrain:{continent:"Asia",name:"Bahrain",c1:"#CE1126",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  vietnam:{continent:"Asia",name:"Vietnam",c1:"#DA251D",c2:"#FFFFFF",c3:"#FFFF00",plate:"none",crest:""},
-  thailand:{continent:"Asia",name:"Thailand",c1:"#241D4F",c2:"#FFFFFF",c3:"#A51931",plate:"none",crest:""},
-
-  /* ---- Oceania (10) ---- */
-  "new-zealand":{continent:"Oceania",name:"New Zealand",c1:"#FFFFFF",c2:"#000000",c3:"#000000",plate:"none",crest:""},
-  fiji:{continent:"Oceania",name:"Fiji",c1:"#62B5E5",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  png:{continent:"Oceania",name:"Papua New Guinea",c1:"#CE1126",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""},
-  "new-caledonia":{continent:"Oceania",name:"New Caledonia",c1:"#002654",c2:"#FFFFFF",c3:"#ED2939",plate:"none",crest:""},
-  "solomon-islands":{continent:"Oceania",name:"Solomon Islands",c1:"#0051BA",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""},
-  vanuatu:{continent:"Oceania",name:"Vanuatu",c1:"#009543",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""},
-  tahiti:{continent:"Oceania",name:"Tahiti",c1:"#CE1126",c2:"#FFFFFF",c3:"#002B7F",plate:"none",crest:""},
-  samoa:{continent:"Oceania",name:"Samoa",c1:"#002B7F",c2:"#FFFFFF",c3:"#CE1126",plate:"none",crest:""},
-  tonga:{continent:"Oceania",name:"Tonga",c1:"#C10000",c2:"#FFFFFF",c3:"#000000",plate:"none",crest:""},
-  "cook-islands":{continent:"Oceania",name:"Cook Islands",c1:"#007A3D",c2:"#FFFFFF",c3:"#FCD116",plate:"none",crest:""}
-};
-
-let CLUBS=structuredClone(DEFAULT_CLUBS), PRESETS={};
-let NATIONS=structuredClone(DEFAULT_NATIONS);
+let CLUBS={}, PRESETS={};
+let NATIONS={};
 let teamType="club";                 /* "club" sau "nation" */
 let activeClub="arsenal";            /* key of the active team in the current set */
 let lastKey={club:"arsenal",nation:"romania"};
@@ -1015,6 +830,17 @@ function noteStore(){
 }
 
 (async()=>{
+  /* team lists come from teams.json — load them before anything reads DB() */
+  try{
+    const td=await fetch("teams.json",{cache:"no-cache"}).then(r=>r.json());
+    DEFAULT_CLUBS=td.clubs||{};
+    DEFAULT_NATIONS=td.nations||{};
+  }catch(e){
+    alert("Couldn't load teams.json — the team lists will be empty.\n"+(e&&e.message||e));
+  }
+  CLUBS=structuredClone(DEFAULT_CLUBS);
+  NATIONS=structuredClone(DEFAULT_NATIONS);
+
   if(!$("date").value){
     const d=new Date(), z=n=>String(n).padStart(2,"0");
     $("date").value=z(d.getDate())+"."+z(d.getMonth()+1)+"."+d.getFullYear();
