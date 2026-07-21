@@ -500,13 +500,6 @@
   .card.split .rule{background:var(--inkBoth)}
   .card.split .clubtag{background:var(--trim2);color:var(--ontrim2)}
 
-  /* horizontal split: clubs sit top/bottom, so the row stacks too */
-  .card.split.sp-h .move{flex-direction:column;align-items:stretch;gap:26px}
-  .card.split.sp-h .cl.b{align-items:flex-start;text-align:left}
-  .card.split.sp-h .arrow{flex:0 0 auto;height:120px;font-size:116px}
-  .card.split.sp-h .player,.card.split.sp-h .fee,
-  .card.split.sp-h .src,.card.split.sp-h .tier{color:var(--inkB)}
-  .card.split.sp-h .rule{background:var(--inkB)}
 
   .t{display:inline}
   .card.plated .t{background:var(--plate);color:var(--onplate);padding:.06em .2em;
@@ -551,13 +544,13 @@
   .foot{flex:0 0 auto}
   .rule{height:7px;background:var(--trim)}
   .credit{margin-top:26px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
-  .src{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:24px;letter-spacing:.09em;
+  .src{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:32px;letter-spacing:.09em;
     text-transform:uppercase;line-height:1.5}
   .tier{display:flex;flex-direction:column;align-items:flex-end;gap:9px}
   .dots{display:flex;gap:8px}
   .dots i{width:15px;height:15px;border-radius:50%;border:3px solid currentColor;display:block}
   .dots i.on{background:currentColor}
-  .lab{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:18px;letter-spacing:.18em;
+  .lab{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:24px;letter-spacing:.18em;
     text-transform:uppercase;opacity:.7}
 
   .move{display:flex;align-items:stretch;margin-bottom:40px}
@@ -691,14 +684,18 @@
             <div class="stmatch" id="vSMatch"></div>
             <div class="stgrid" id="vStatGrid"></div>
           </div>
-          <div class="move hide" id="bMove">
-            <div class="cl a"><span class="role"><span class="t" id="vRoleA">From</span></span>
-              <span class="nm"><span class="t" id="vFrom"></span></span></div>
-            <div class="arrow">→</div>
-            <div class="cl b"><span class="role"><span class="t" id="vRoleB">To</span></span>
-              <span class="nm"><span class="t" id="vTo"></span></span></div>
+          <div class=”move hide” id=”bMove”>
+            <div class=”cl a”><span class=”role”><span class=”t” id=”vRoleA”>From</span></span>
+              <span class=”nm”><span class=”t” id=”vFrom”></span></span></div>
+            <div class=”arrow”>→</div>
+            <div class=”cl b”><span class=”role”><span class=”t” id=”vRoleB”>To</span></span>
+              <span class=”nm”><span class=”t” id=”vTo”></span></span></div>
           </div>
-          <span class="qm hide" id="bQm">“</span>
+          <div class=”credit” id=”bCredit” style=”margin-bottom:20px;margin-top:20px”>
+            <div class=”src”><span class=”t” id=”vSrc”></span></div>
+            <div class=”tier”><div class=”dots” id=”vDots”></div><div class=”lab” id=”vLab”></div></div>
+          </div>
+          <span class=”qm hide” id=”bQm”>”</span>
           <h2 class="head" id="bHead"><span class="t" id="vHead"></span></h2>
           <p class="qtxt hide" id="bQuote"><span class="t" id="vQuote"></span></p>
           <div class="player hide" id="bPlayer"><span class="t" id="vPlayer"></span></div>
@@ -712,10 +709,6 @@
         </div>
         <div class="foot">
           <div class="rule"></div>
-          <div class="credit">
-            <div class="src"><span class="t" id="vSrc"></span></div>
-            <div class="tier"><div class="dots" id="vDots"></div><div class="lab" id="vLab"></div></div>
-          </div>
         </div>
       </div>
     </div>
@@ -894,7 +887,6 @@
           <option value="diag">Diagonal (soft)</option>
           <option value="diag2">Diagonal (strong)</option>
           <option value="diagr">Diagonal (reverse)</option>
-          <option value="horiz">Horizontal</option>
         </select></label>
       <div class="row">
         <label class="f"><span id="group2Lab">Country — right</span>
@@ -1298,7 +1290,7 @@ function inkBoth(list){
   return w>=k?"#FFFFFF":"#000000";
 }
 
-const ANGLES={vert:"90deg",diag:"100deg",diag2:"125deg",diagr:"62deg",horiz:"180deg"};
+const ANGLES={vert:"90deg",diag:"100deg",diag2:"125deg",diagr:"62deg"};
 
 /* builds the split background; also returns the bands so we know the contrast */
 function buildSplit(mode,A,B,dual){
@@ -1530,7 +1522,7 @@ function render(){
   /* how much room is left in the left half, next to the bottom text.
      On diagonals the seam moves toward the left edge near the card's base,
      so the ceiling is smaller the larger the angle. */
-  const SAFE={vert:"420px",diag:"330px",diag2:"290px",diagr:"700px",horiz:"34ch"};
+  const SAFE={vert:"420px",diag:"330px",diag2:"290px",diagr:"700px"};
   r.setProperty("--subMax", split ? (SAFE[splitModeEff]||"330px") : "34ch");
 
   let sp=null;
@@ -1547,7 +1539,6 @@ function render(){
   card.classList.toggle("tpl-stats",isStats);
   card.classList.toggle("plated",plated);
   card.classList.toggle("split",split);
-  card.classList.toggle("sp-h",split&&splitModeEff==="horiz");
   const stKey=$("status").value;
   const st=STATUS[stKey]||null;
   const bs=$("bStatus");
@@ -1559,10 +1550,8 @@ function render(){
   $("vRoleA").textContent=L.from;
   $("vRoleB").textContent=L.to;
 
-  const horiz = split&&splitModeEff==="horiz";
   const baseArrow = st? st.arrow : "→";
-  document.querySelector(".arrow").textContent =
-    horiz ? (baseArrow==="⇢"?"⇣":"↓") : baseArrow;
+  document.querySelector(".arrow").textContent = baseArrow;
 
   document.querySelectorAll("[data-for]").forEach(el=>
     el.classList.toggle("hide",!el.dataset.for.split(" ").includes(tpl)));
