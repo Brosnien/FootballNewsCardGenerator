@@ -131,6 +131,31 @@
   </div>
   <div class="meta" id="ratioBox"></div>
 
+  <!-- second team + split (transfer / result templates) -->
+  <div class="row teamrow" data-for="move result">
+    <label class="f"><span id="group2Lab">Country — right</span>
+      <select id="group2"></select></label>
+    <label class="f"><span>Right-side team</span>
+      <select id="club2"></select></label>
+  </div>
+  <div class="row" data-for="move">
+    <label class="f"><span>Split</span>
+      <select id="split">
+        <option value="none">None — single team</option>
+        <option value="vert">Vertical</option>
+        <option value="diag">Diagonal (soft)</option>
+        <option value="diag2">Diagonal (strong)</option>
+        <option value="diagr">Diagonal (reverse)</option>
+      </select></label>
+    <label class="f"><span>Colors per half</span>
+      <select id="dual">
+        <option value="1">Club color 1 only</option>
+        <option value="2">Both colors, 50/50</option>
+      </select></label>
+  </div>
+  <div class="btns" data-for="move result"><button type="button" id="swapClubs">↔ Swap teams</button></div>
+  <div class="meta" id="splitBox" data-for="move"></div>
+
   <details open>
     <summary>Text</summary>
     <div class="inner">
@@ -140,8 +165,6 @@
         <textarea id="sub" placeholder="One line of context"></textarea></label>
       <label class="f" data-for="move stats"><span>Player</span>
         <input type="text" id="player" placeholder="Player name"></label>
-      <p class="note" data-for="move">Left team is the one picked at the top; the right team
-        comes from <b>Two-team card</b> below.</p>
       <label class="f" data-for="move"><span>Details</span>
         <input type="text" id="fee" placeholder="€45m · five-year deal"></label>
       <label class="f" data-for="move"><span>Transfer stage</span>
@@ -235,38 +258,6 @@
     </div>
   </details>
 
-  <details data-for="move result" open>
-    <summary>Two-team card</summary>
-    <div class="inner">
-      <label class="f" data-for="move"><span>Split</span>
-        <select id="split">
-          <option value="none">None — single team</option>
-          <option value="vert">Vertical</option>
-          <option value="diag">Diagonal (soft)</option>
-          <option value="diag2">Diagonal (strong)</option>
-          <option value="diagr">Diagonal (reverse)</option>
-        </select></label>
-      <div class="row">
-        <label class="f"><span id="group2Lab">Country — right</span>
-          <select id="group2"></select></label>
-        <label class="f"><span>Right-side team</span>
-          <select id="club2"></select></label>
-      </div>
-      <div class="btns"><button type="button" id="swapClubs">↔ Swap teams</button></div>
-      <label class="f" data-for="move"><span>Colors per half</span>
-        <select id="dual">
-          <option value="1">Club color 1 only</option>
-          <option value="2">Both colors, 50/50</option>
-        </select></label>
-      <p class="note" data-for="move">Left takes the colors of the team selected above, right takes this one's.
-        On 50/50, each side brightens toward the seam using whichever of its own colors 2/3
-        is lighter, so dark second colors don't muddy the middle. Text crossing the seam gets
-        whichever of white or black reads on all the bands.</p>
-      <p class="note" data-for="result">Left is the team picked at the top; the right team is the one here.
-        The card splits vertically, each team on its own color.</p>
-      <div class="meta" id="splitBox" data-for="move"></div>
-    </div>
-  </details>
 
   <details id="srcSection">
     <summary>Source</summary>
