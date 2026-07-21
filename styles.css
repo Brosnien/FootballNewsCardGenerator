@@ -277,8 +277,8 @@
     font-variation-settings:"opsz" 90,"WONK" 1}
   .rteam.a{text-align:left}
   .rteam.b{text-align:right}
-  .card.tpl-result .rteam.a{color:var(--inkA)}
-  .card.tpl-result .rteam.b{color:var(--inkB)}
+  .card.tpl-result .rteam.a{color:var(--figA)}
+  .card.tpl-result .rteam.b{color:var(--figB)}
 
   .rscore{display:flex;align-items:center;justify-content:center;gap:.02em;
     margin:-8px 0 4px;line-height:.82;position:relative;z-index:1;
@@ -289,10 +289,10 @@
   .rs .echo{position:absolute;left:0;top:0;padding:0 .04em;transform:translate(.05em,.055em)}
   .rs .fig{position:relative}
   .rsep{font-size:.46em;opacity:.75;font-weight:700}
-  .card.tpl-result .rs.a .fig{color:var(--inkA)}
-  .card.tpl-result .rs.b .fig{color:var(--inkB)}
-  .card.tpl-result .rs.a .echo{color:var(--trim)}
-  .card.tpl-result .rs.b .echo{color:var(--trim2)}
+  .card.tpl-result .rs.a .fig{color:var(--figA)}
+  .card.tpl-result .rs.b .fig{color:var(--figB)}
+  .card.tpl-result .rs.a .echo{color:var(--echoA)}
+  .card.tpl-result .rs.b .echo{color:var(--echoB)}
   .card.tpl-result .rsep{color:var(--inkBoth)}
 
   .rscorers{display:flex;justify-content:space-between;gap:44px;margin-top:22px;
@@ -301,8 +301,8 @@
     font-family:"JetBrains Mono",monospace;font-weight:600;font-size:29px;line-height:1.25}
   .rcol.a{align-items:flex-start;text-align:left}
   .rcol.b{align-items:flex-end;text-align:right}
-  .card.tpl-result .rcol.a{color:var(--inkA)}
-  .card.tpl-result .rcol.b{color:var(--inkB)}
+  .card.tpl-result .rcol.a{color:var(--figA)}
+  .card.tpl-result .rcol.b{color:var(--figB)}
   .ev{display:flex;align-items:center;gap:14px;max-width:100%}
   .rcol.b .ev{flex-direction:row-reverse}
   .evt{min-width:0;overflow-wrap:anywhere}

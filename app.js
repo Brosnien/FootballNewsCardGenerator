@@ -266,6 +266,17 @@ function inkBoth(list){
   const k=Math.min(...list.map(c=>ratio(c,"#000000")));
   return w>=k?"#FFFFFF":"#000000";
 }
+/* result score: the figure/name take the team's identity color (readable on
+   color 1); the offset "echo" behind takes a second team color that is both
+   visible on color 1 and clearly distinct from the figure — so the layered
+   look never collapses to white-on-white when a team's color 3 is white. */
+function scoreInk(c1,c2,c3){
+  const fig=bodyInk(c1,c2,c3);
+  const oc=onColor(c1);
+  const echo=[c3,c2].find(x=>ratio(c1,x)>=2.2 && ratio(x,fig)>=1.7)
+    || (oc!==fig ? oc : (lum(fig)>=0.5?"#000000":"#FFFFFF"));
+  return {fig,echo};
+}
 
 const ANGLES={vert:"90deg",diag:"100deg",diag2:"125deg",diagr:"62deg"};
 
@@ -469,6 +480,10 @@ function render(){
   /* on each half, text sits near the outside → contrast against color 1 */
   r.setProperty("--inkA",onColor(c1));
   r.setProperty("--inkB",onColor(B.c1));
+  /* result score: identity-colored figure + distinct visible echo per team */
+  const siA=scoreInk(c1,c2,c3), siB=scoreInk(B.c1,B.c2,B.c3);
+  r.setProperty("--figA",siA.fig);r.setProperty("--echoA",siA.echo);
+  r.setProperty("--figB",siB.fig);r.setProperty("--echoB",siB.echo);
   /* transfer team names: use each team's own color 2 (then color 3) if it
      reads on the background the name sits on, else fall back to white/black.
      On a split each name sits on its own team's color 1; otherwise both sit
