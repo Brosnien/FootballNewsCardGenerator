@@ -909,8 +909,9 @@
           <option value="2">Both colors, 50/50</option>
         </select></label>
       <p class="note" data-for="move">Left takes the colors of the team selected above, right takes this one's.
-        The seam is the left team's third color. Text crossing the seam gets whichever of
-        white or black reads on all the bands.</p>
+        On 50/50, each side brightens toward the seam using whichever of its own colors 2/3
+        is lighter, so dark second colors don't muddy the middle. Text crossing the seam gets
+        whichever of white or black reads on all the bands.</p>
       <p class="note" data-for="result">Left is the team picked at the top; the right team is the one here.
         The card splits vertically, each team on its own color.</p>
       <div class="meta" id="splitBox" data-for="move"></div>
@@ -1302,17 +1303,24 @@ const ANGLES={vert:"90deg",diag:"100deg",diag2:"125deg",diagr:"62deg",horiz:"180
 /* builds the split background; also returns the bands so we know the contrast */
 function buildSplit(mode,A,B,dual){
   const ang=ANGLES[mode]||"100deg";
-  const seam=A.c3, W=0.5; /* seam width in percent */
-  let bands,stops;
+  const W=0.5; /* seam width in percent */
+  let bands,stops,seam;
   if(dual){
-    /* color 1 toward the outside, color 2 toward the seam — symmetric */
-    bands=[A.c1,A.c2,B.c2,B.c1];
+    /* color 1 toward the outside; toward the seam, each team shows whichever of
+       its color 2 / color 3 is brighter — keeps the "brighten toward the middle"
+       look even when a team's true color 2 is dark (e.g. Inter, Barcelona).
+       The seam takes the other, darker one from the left-hand team. */
+    const innerA=lum(A.c2)>=lum(A.c3)?A.c2:A.c3;
+    const innerB=lum(B.c2)>=lum(B.c3)?B.c2:B.c3;
+    seam=innerA===A.c2?A.c3:A.c2;
+    bands=[A.c1,innerA,innerB,B.c1];
     stops=[
-      A.c1+" 0 25%", A.c2+" 25% "+(50-W)+"%",
+      A.c1+" 0 25%", innerA+" 25% "+(50-W)+"%",
       seam+" "+(50-W)+"% "+(50+W)+"%",
-      B.c2+" "+(50+W)+"% 75%", B.c1+" 75% 100%"
+      innerB+" "+(50+W)+"% 75%", B.c1+" 75% 100%"
     ];
   }else{
+    seam=A.c3;
     bands=[A.c1,B.c1];
     stops=[
       A.c1+" 0 "+(50-W)+"%",
@@ -1498,7 +1506,8 @@ function render(){
   const A = {c1:c1,c2:c2,c3:c3};
 
   const r=document.documentElement.style;
-  r.setProperty("--bg",c1);r.setProperty("--fg",bodyInk(c1,c2,c3));
+  const fg=bodyInk(c1,c2,c3);
+  r.setProperty("--bg",c1);r.setProperty("--fg",fg);
   r.setProperty("--trim",c3);r.setProperty("--ontrim",onColor(c3));
   r.setProperty("--bg2",B.c1);
   r.setProperty("--trim2",B.c3);r.setProperty("--ontrim2",onColor(B.c3));
@@ -1618,12 +1627,12 @@ function render(){
   fit();
   const f=autofit();
 
-  const eff=plated?ratio(plate,ink):ratio(c1,c2);
+  const eff=plated?ratio(plate,ink):ratio(c1,fg);
   const box=$("ratioBox");
   box.classList.toggle("bad",eff<3);
   box.innerHTML="Contrast <b class='r'>"+eff.toFixed(2)+":1</b> — "+
     (eff>=4.5?"good everywhere":eff>=3?"large text only":"too weak")+
-    (plated?"<br>Without a plate it would be "+ratio(c1,c2).toFixed(2)+":1":"")+
+    (plated?"<br>Without a plate it would be "+ratio(c1,fg).toFixed(2)+":1":"")+
     "<br>Body <b>"+f.size+"px</b> · fill <b>"+Math.round(f.fill*100)+"%</b> · "+
     ($("content").classList.contains("center")?"centered":"bottom");
 
