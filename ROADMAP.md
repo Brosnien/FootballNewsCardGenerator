@@ -4,9 +4,9 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — Crest prompts 1 and 2 done: the fetcher exists and **all 152
-crests are now real artwork** (92 nations + 60 clubs, 0 misses, `crests/` 3.1 MB → 16 MB).
-Only prompt 3 — eyeball the cards and tick the item — is left on Next up._
+_Last updated: 2026-07-22 — **"Next up" is finished.** All three crest prompts are done: 152/152
+real crests (92 nations + 60 clubs, 0 misses), verified on the live site and through PNG export.
+B8 closes with it. The Backlog is now the whole plan — next by the stated order is **B3**._
 
 ---
 
@@ -54,11 +54,13 @@ Only prompt 3 — eyeball the cards and tick the item — is left on Next up._
 
 ## Next up
 
-- [ ] Now that we use GitHub, maybe we can use Crests (Team Logo) automatically but would need all pngs of the teams. Really depends on how hard is to get all the teams logos in png form (would love to be automatic).
+- [x] Now that we use GitHub, maybe we can use Crests (Team Logo) automatically but would need all pngs of the teams. Really depends on how hard is to get all the teams logos in png form (would love to be automatic).
 
-  **Where it stands:** `crests/` holds 152 **real** PNGs — one per team key, exact coverage,
-  zero missing and zero orphans, all fetched from TheSportsDB on 2026-07-22. Prompts 1 and 2
-  are done; only prompt 3 (eyeball the cards in the browser, then tick this item) is left.
+  **Done 2026-07-22.** `crests/` holds 152 **real** PNGs — one per team key, exact coverage,
+  zero missing and zero orphans — fetched automatically from TheSportsDB by
+  [tools/fetch_crests.py](tools/fetch_crests.py) and checked in the browser. The answer to
+  "how hard is it": **one scripted run**, ~5 minutes, no manual downloads. Re-runnable for
+  new teams — add to `teams.json`, run the fetcher, only the new keys are fetched.
 
 ### Findings — already tested, don't re-derive
 
@@ -135,12 +137,28 @@ into invalid JSON. The PNGs were never at risk, but 22 provenance records were l
 to be re-fetched. The script now writes the manifest atomically after each crest and takes a
 lockfile, so a second run refuses to start. **Run one batch at a time.**_
 
-**Prompt 3 — eyeball and ship.**
+**Prompt 3 — eyeball and ship.** ✅ **done 2026-07-22**
 > Roadmap Next up, prompt 3: open the app and check the crest backdrop on a few cards, then commit.
 
 Spot-check in the browser: one single-team card, one transfer with a curve split, one
 result. Confirm the crest sits inside its own colour block and survives PNG export. Then
 tick this item and commit.
+
+_Checked on the live site: News/Arsenal (single), Transfer/Milan→PSG on Curve (deep) **and**
+Diagonal (strong), Result/Inter–Athletic. Every crest sat inside its own colour region._
+
+_Export verified without downloading anything: exporting the same card with the crest on and
+off and diffing the two PNGs, the crest changes **18,576 sampled pixels** and every changed
+pixel falls in one of two clusters — one per team's own region, zero crossover, zero change
+in the middle band. PNG 59 KB → 159 KB at 1080×1350._
+
+_Both flagged teams are right: `craiova` is the light-blue CS Universitatea Craiova (lion +
+"CRAIOVA"), not FC U Craiova 1948; `monaco` is AS Monaco. Also eyeballed `rapid`, `u-cluj`,
+`jordan`, `uae`, `czechia` — all correct._
+
+_Not a bug, worth recording: **Result cards ignore the Split control and are always
+vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) hard-codes
+`WALLPOS.vert` for result. Diagonal/curve coverage therefore comes from transfer cards._
 
 ### Token discipline for this task
 
@@ -269,6 +287,6 @@ B4 and B8 aren't work items. One prompt per row; paste the quoted line as the wh
       publishing route itself is B1 + a public URL._
 
 - [ ] Maybe add overlaying crests/logos as background with a dimmer opacity? Big crests, occupying all of the team's card - Ex: Cannon for Arsenal occupies 50%, Spurs chicken 50%. (Transfers and Matches are the affected templates) **(B8)**
-      — _**Code is done**: `updateWall()` + `WALLPOS` place each team's crest deep inside its own
-      colour region for all 8 seam shapes, with a Subtle/Medium/Bold opacity control. Looks right
-      but reads as placeholder art — this ships properly the moment "Next up" lands._
+      — _**Done 2026-07-22.** `updateWall()` + `WALLPOS` place each team's crest deep inside its own
+      colour region for all 8 seam shapes, with a Subtle/Medium/Bold opacity control. Now running on
+      real artwork since "Next up" landed, and verified to survive PNG export._

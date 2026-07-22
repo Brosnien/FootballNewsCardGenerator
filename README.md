@@ -40,19 +40,32 @@ team in the pickers — reuse an existing group name to slot it in, or invent a
 new one. Add as many as you like; the team pickers in the app are search boxes,
 so a long list stays easy to browse (type a team **or** country name).
 
-## Team crest backdrop (prototype)
-The **Style → Crest backdrop** control drops a faint team crest behind the text
-on single-team cards (News, Quote, Player stats). It's **off by default**.
+## Team crest backdrop
+The **Style → Crest backdrop** control drops a faint team crest behind the text.
+It's **off by default**; Subtle / Medium / Bold set the opacity. On transfer and
+result cards both teams show, each crest placed inside its own colour region.
 
 - Crests load on demand from `crests/<team-key>.png` (e.g. `crests/arsenal.png`,
-  matching the key in `teams.json`). A team with no file simply shows nothing —
-  so you can add crests gradually.
-- Use square-ish PNGs with a transparent background. They're shown large in the
-  bottom-right at low opacity, so internal light/dark detail reads best.
-- The files currently in `crests/` are **generic placeholders** (a shield with
-  initials), only there so the effect is visible. Replace them with real crests
-  **you have the rights to use** — club/national crests are trademarked, so
-  sourcing and licensing them is on you.
+  matching the key in `teams.json`). A team with no file simply shows nothing.
+- All 152 teams have a real crest, fetched from [TheSportsDB](https://www.thesportsdb.com/).
+  Club and national crests are trademarks — they're used here as editorial
+  artwork, and how you publish them is your call.
+
+### Adding a crest for a new team
+Add the team to `teams.json`, then run:
+
+```bash
+python3 tools/fetch_crests.py --dry-run --only <your-new-key>
+```
+
+Drop `--dry-run` to actually download. The script only fetches keys that don't
+already have a real crest, so it's safe to re-run; `--force` re-fetches anyway.
+If the team's short name resolves to the wrong club — short names happily match
+clubs on other continents — add an entry to `tools/crest-overrides.json`. Which
+crest each key came from is recorded in `tools/crest-sources.json`.
+
+Run one fetch at a time: two concurrent runs double the request rate and trip
+the API's limit.
 
 On iPhone: open the live link in Safari → Share → **Add to Home Screen** to run
 it full-screen like an app.
