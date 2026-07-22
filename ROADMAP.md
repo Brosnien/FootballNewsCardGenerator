@@ -4,7 +4,8 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — roadmap file created from the original notes._
+_Last updated: 2026-07-22 — Next up (crests) turned into three costed prompts after a live
+API dry run: 142/152 teams resolve automatically, 10 need an override._
 
 ---
 
@@ -58,17 +59,76 @@ _Last updated: 2026-07-22 — roadmap file created from the original notes._
   missing and zero orphans — but they are all **generic placeholders** (shield + initials).
   The display side is finished, so the only thing missing is real artwork.
 
-  **Approach when we do it:**
-  - `tools/fetch-crests.mjs` — reads `teams.json`, resolves each key against a badge source
-    (TheSportsDB `searchteams.php` is free and covers clubs *and* nations; football-data.org
-    as fallback), downloads, trims, normalises to a square transparent PNG ≤512 px, writes
-    `crests/<key>.png`.
-  - `tools/crest-overrides.json` — hand-written map for keys that don't match by name
-    (`cfr-cluj`, `athletic`, `brugge`, …) to an explicit ID or URL.
-  - The script prints an OK / MISS table so leftovers can be dropped in by hand. A partial
-    run is safe to ship: a team with no file simply shows nothing.
-  - Size budget: 152 × ~30 KB ≈ 4.5 MB in-repo, loaded one file at a time. Fine for Pages.
-  - Club crests are trademarks — sourcing and use are the author's call.
+### Findings — already tested, don't re-derive
+
+Measured on 2026-07-22 against the real API and this Mac. Trust these; re-testing them is
+the main way this task wastes tokens.
+
+| Question | Answer |
+|---|---|
+| Source | TheSportsDB v1, `searchteams.php?t=<name>`. Free key `3` works, no signup. |
+| Badge field | `strBadge` → **already a 512×512 PNG with transparency**, ~127 KB. |
+| Image tooling needed | **None.** No resize, no trim, no alpha work. Download and write the bytes. |
+| What's installed here | Python 3 + curl only — **no node, no PIL, no ImageMagick**. Script must be Python stdlib. |
+| Rate limit | Real. 152 back-to-back requests → 38 failures; the *same* teams pass 10/10 at **2 s spacing**. Throttle 2 s + retry with backoff ⇒ ~5 min run. |
+| Naming trap | A hyphen kills the search: `Paris Saint-Germain` → 0 hits, `Paris Saint Germain` → id 133714. Always retry with punctuation stripped. |
+| Silent-wrong trap | Short names match foreign clubs: `Athletic Club`→Brazil, `Atlético`→Portugal, `Inter`→El Salvador, `Man United`→Manly United (Australia). **Filter candidates by the `country` already in teams.json** — this is what turns a wrong crest into an honest MISS. |
+| Dead end | `lookup_all_teams.php?id=<league>` returns junk on the free key (asked for Ligue 1, got English League One). Don't build the "one call per league" shortcut. |
+| Nations | Easy — 92/92 style matches resolve on the plain name. No country filter needed. |
+| Size budget | 152 × ~127 KB ≈ **19 MB** in-repo, one file loaded per card. Acceptable; `strBadge + "/preview"` gives 200×200 / 46 KB (≈7 MB) if that ever matters. |
+
+**Dry run result: 142 of 152 resolve automatically.** Only these need a human decision:
+
+| Key | teams.json name | Fix |
+|---|---|---|
+| `athletic` | Athletic Club | search `Athletic Bilbao` — id **133727** ✎verified |
+| `atletico` | Atlético | search `Atletico Madrid` — id **133729** ✎verified |
+| `inter` | Inter | search `Inter Milan` — id **133681** ✎verified |
+| `psg` | PSG | search `Paris Saint Germain` — id **133714** ✎verified |
+| `man-united` | Man United | search `Manchester United` |
+| `newcastle` | Newcastle | search `Newcastle United` |
+| `dinamo` | Dinamo | search `Dinamo Bucuresti` |
+| `rapid` | Rapid | search `Rapid Bucuresti` |
+| `uae` | UAE | search `United Arab Emirates` |
+| `jordan` | Jordan | no soccer hit on the plain name — check by hand |
+| `monaco` | Monaco | not an override: the API says country **Monaco**, teams.json says France. Let the country alias map accept it. |
+
+### Implementation — three prompts, in order
+
+Each is self-contained and sized to stay small. **Paste the quoted line as the whole prompt**;
+don't re-explain the task, this file is the brief.
+
+**Prompt 1 — build the fetcher (no downloads yet).**
+> Roadmap Next up, prompt 1: write `tools/fetch_crests.py` per ROADMAP.md, then run it with `--dry-run` and show me only the summary table.
+
+Scope: create `tools/fetch_crests.py` + `tools/crest-overrides.json` (seeded from the table
+above). Flags: `--dry-run` (resolve only, no writes), `--only <key,key>`, `--force`
+(re-fetch keys that already have a real crest). Reads only `teams.json`. Writes nothing
+into `crests/` on a dry run. Output is a **counts line plus the problem rows only** — never
+a per-team log of 152 lines.
+
+**Prompt 2 — fetch for real, in two batches.**
+> Roadmap Next up, prompt 2: run the fetcher for nations, then for clubs, and report the counts.
+
+Nations first (92, the clean set) so a rate-limit surprise costs one batch, not the run.
+The script writes straight into `crests/<key>.png`. Report = counts + any new MISS.
+Commit each batch separately so a bad batch is one `git revert`.
+
+**Prompt 3 — eyeball and ship.**
+> Roadmap Next up, prompt 3: open the app and check the crest backdrop on a few cards, then commit.
+
+Spot-check in the browser: one single-team card, one transfer with a curve split, one
+result. Confirm the crest sits inside its own colour block and survives PNG export. Then
+tick this item and commit.
+
+### Token discipline for this task
+
+- The script does the work; the model reads a **summary**, never per-team output.
+- **Never open a crest PNG** to check it — that's an image into context for zero benefit.
+  Verify with `sips -g pixelWidth -g hasAlpha` or by looking at the card in the browser.
+- Don't paste `teams.json` or API JSON into chat; the script reads them from disk.
+- If a run half-fails, re-run with `--only <the failed keys>` instead of starting over.
+- Club crests are trademarks — sourcing and use are the author's call.
 
 ---
 
@@ -89,7 +149,8 @@ _Last updated: 2026-07-22 — roadmap file created from the original notes._
       optional fields off the first screen._
 - [ ] DON'T BE IDIOTIC WITH PROMPTING AND LIMITS (VERY VERY HARD).
       — _Working agreement, not a feature. Batch related tweaks into one prompt; avoid
-      re-uploading the big files._
+      re-uploading the big files. The "Token discipline" rules under Next up are the general
+      pattern: let a script do bulk work and read back a summary, never per-item output._
 - [ ] A page/another column to open directly the most commons reporters socials? Maybe something that does that and at a press of a button feeds info into the main page? Would prefer in the same page.
       — _Same page: a small `reporters.json` (handle, outlet, reliability, profile URL) behind
       a picker that fills the Source fields in one tap, with a link out to the profile._
