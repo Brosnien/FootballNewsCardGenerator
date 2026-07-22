@@ -4,8 +4,9 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — Next up (crests) turned into three costed prompts after a live
-API dry run: 142/152 teams resolve automatically, 10 need an override._
+_Last updated: 2026-07-22 — Next up and the whole Backlog turned into costed, paste-ready
+prompts. Crest dry run: 142/152 resolve automatically. X auto-pull priced (~$6–30/mo, not
+free); Instagram publishing confirmed free; found a stale-date bug while measuring B3._
 
 ---
 
@@ -134,34 +135,120 @@ tick this item and commit.
 
 ## Backlog
 
-- [ ] Brainstorm ideas based on the fact that we have an online repository now and can expand to multiple files as we use GitHub Sites (syncs?).
-      — _Candidates: `teams.json` as a shared, PR-able dataset; card presets versioned in the
-      repo instead of only `localStorage`; a `crests/` manifest so the app stops probing for
-      files that don't exist; a `reporters.json` shared with the item below._
-- [ ] Can we really pull the info from one text automatically, free of charge? (Get a Twitter/Instagram/Threads post as soon as it's posted and automatically post it to socials.) THIS CHANGES THE WHOLE DYNAMIC
-      — _The blocker is API access, not code: X/Twitter read access is paid at any useful
-      volume, and Instagram/Threads have no public read for other people's posts. Needs a
-      feasibility + cost spike before a line is written. Everything below assumes manual._
-- [ ] If kept manual, even more simplification? (brainstorm how we can use as few fields as possible, as fast as possible. Process should be very quick to keep relevancy). IF KEPT THIS IS NO1 PRIORITY
-      — _Target: a finished card in under 30 seconds. Levers already in the code: auto-collapse
-      the `<details>` sections the current template doesn't use, remember last-used team and
-      source between sessions, extend the one-tap paste buttons (`addPasteButtons`), and cut
-      optional fields off the first screen._
-- [ ] DON'T BE IDIOTIC WITH PROMPTING AND LIMITS (VERY VERY HARD).
-      — _Working agreement, not a feature. Batch related tweaks into one prompt; avoid
-      re-uploading the big files. The "Token discipline" rules under Next up are the general
-      pattern: let a script do bulk work and read back a summary, never per-item output._
-- [ ] A page/another column to open directly the most commons reporters socials? Maybe something that does that and at a press of a button feeds info into the main page? Would prefer in the same page.
-      — _Same page: a small `reporters.json` (handle, outlet, reliability, profile URL) behind
-      a picker that fills the Source fields in one tap, with a link out to the profile._
-- [ ] Can we automate the translation in anyway? (1st priority Romanian, 2nd Italian/German/Spanish for relevant teams). Should we keep it all in one instagram profile or do multiple based on language? Can maybe bypass this if we use carousels (easy but don't know if it will go well) in Instagram (Add a flag in a corner for the corresponding language used.). NO2 PRIORITY, this would be relevant as the page would be only a copy-paste with a nice design in English.
-      — _Decide carousel-vs-per-language-account first; it changes the build. The cheap version
-      is a language switch on the card labels plus a flag badge in the corner — the card's own
-      strings (`L`) are already centralised, so only the user-typed text needs translating._
-- [ ] Should post on instagram in form of: posts or reels of posts? (are these both?)
-      — _Publishing strategy, no code. Both exist; reels reach further, static posts suit a
-      text card better._
-- [ ] Maybe add overlaying crests/logos as background with a dimmer opacity? Big crests, occupying all of the team's card - Ex: Cannon for Arsenal occupies 50%, Spurs chicken 50%. (Transfers and Matches are the affected templates)
+Items stay in the author's original order. **Execution order is B3 → B5 → B6 → B2 → B7 →
+B1**, because B3 is the stated NO1 priority and B5 is the biggest single piece of it.
+B4 and B8 aren't work items. One prompt per row; paste the quoted line as the whole prompt.
+
+| # | Item | Prompts | Blocked on |
+|---|---|---|---|
+| B3 | Fewer fields / faster (NO1) | 2 | — |
+| B5 | Reporters picker | 1 | — |
+| B6 | Translation (NO2) | 2 | a decision (below) |
+| B2 | Auto-pull from X | 1 spike | a decision (below) |
+| B7 | Posts vs reels | 0 | — |
+| B1 | Use of the online repo | 1 | — |
+| B8 | Crest overlay | 0 | Next up |
+
+### Shared findings — tested 2026-07-22, don't re-derive
+
+| Question | Answer |
+|---|---|
+| Can we read other people's X posts free? | **No.** X killed the free tier in Feb 2026; new developers are pay-per-use only. |
+| What does it actually cost? | **$0.005 per post read**, $0.015 per post created ($0.20 with a link), capped at 2M reads/month. |
+| Does polling multiply the cost? | **No** — the same post re-requested inside a 24 h UTC window is charged **once**. Poll as often as you like; only unique posts cost. |
+| Instagram / Threads as a *source*? | Dead end — no public read of other people's posts at any price. X is the only viable source. |
+| Instagram as a *destination*? | **Free.** The publishing API does single images, carousels and reels; 100 posts/24 h; needs a professional account linked to a Page. |
+| Carousel cost | A carousel counts as **one** post — so a multi-language carousel is as cheap as a single post. |
+| Instagram media hosting | Media **must sit at a public URL** when publishing. GitHub Pages already gives us one — that's the link between B1 and B7. |
+| Free translation | DeepL API Free = **500 k chars/month**, Microsoft = 2 M/month. A card is ~200 chars, so ~2,500 cards/month free. LibreTranslate is free but self-hosted and visibly weaker. |
+
+---
+
+- [ ] Brainstorm ideas based on the fact that we have an online repository now and can expand to multiple files as we use GitHub Sites (syncs?). **(B1)**
+
+  The one that actually pays: Instagram's publishing API refuses anything that isn't at a
+  public URL, and GitHub Pages is one. Committing an exported card to the repo turns it into
+  a publishable asset — that's the unlock for B7, not a filing tweak.
+  Cheap wins in the same area: a `crests/` manifest so the app stops probing for files that
+  don't exist, presets versioned in the repo instead of only `localStorage` (export/import
+  JSON already exists), `teams.json` as a dataset others can PR.
+  > Roadmap B1: add a crests manifest so the app stops probing for missing files, per ROADMAP.md.
+
+- [ ] Can we really pull the info from one text automatically, free of charge? (Get a Twitter/Instagram/Threads post as soon as it's posted and automatically post it to socials.) THIS CHANGES THE WHOLE DYNAMIC **(B2)**
+
+  **Answer: not free — but far cheaper than the old $200/month tier.** With the 24 h
+  dedup, cost scales with how many *unique* posts you watch, not how often you poll:
+
+  | Watching | Unique posts/month | Cost |
+  |---|---|---|
+  | 5 reporters | ~1,200 | **~$6/mo** |
+  | 20 reporters | ~6,000 | **~$30/mo** |
+
+  So the real question isn't feasibility, it's whether it's worth ~$6–30/month to you.
+  **Decide that before any code is written** — everything else in this file assumes manual.
+  Also note the honest limit: pulling a post is easy, but turning free-form text into
+  headline / player / fee / reliability is a judgement call, so a human check stays in
+  the loop either way.
+  > Roadmap B2: spike only, no app code — prove we can pull one named reporter's latest posts and map one to card fields. Report cost per run.
+
+- [ ] If kept manual, even more simplification? (brainstorm how we can use as few fields as possible, as fast as possible. Process should be very quick to keep relevancy). IF KEPT THIS IS NO1 PRIORITY **(B3)**
+
+  Target: a finished card in **under 30 seconds**. What the code already gives us — a draft
+  auto-saves every 600 ms and restores on open (`snapshot`/`restore`), open sections are
+  remembered, `data-for` already hides fields the current template doesn't use, and paste
+  buttons exist (`addPasteButtons`). So persistence isn't the problem; **field count and
+  scroll distance are.** 47 fields exist; a news card needs about 7.
+
+  **Bug found while measuring this — fix it first, it's a one-liner.** The date auto-fills
+  with today only when the field is empty ([app.js:963](app.js:963)), but the draft restore
+  runs *after* it ([app.js:992](app.js:992)) and `date` is a saved field — so every returning
+  session silently stamps the **last session's date** on the card. On a news app that's a
+  correctness problem, not a nicety.
+
+  Then: auto-collapse sections the current template doesn't use, lift Source out of a
+  closed `<details>` (B5 makes it one tap), and push rarely-touched fields below the fold.
+  > Roadmap B3 prompt 1: fix the stale-date bug per ROADMAP.md, then auto-collapse the sections the current template doesn't use.
+
+  > Roadmap B3 prompt 2: cut the news and transfer cards down to the fewest fields on first screen, per ROADMAP.md. Don't remove fields, just reorder and collapse.
+
+- [ ] DON'T BE IDIOTIC WITH PROMPTING AND LIMITS (VERY VERY HARD). **(B4)**
+      — _Not a work item. The rules: one roadmap item per prompt; let a script do bulk work
+      and read back a summary, never per-item output; never paste big files into chat, they're
+      on disk; re-run the failed subset, not the whole job. Same "Token discipline" list as
+      under Next up._
+
+- [ ] A page/another column to open directly the most commons reporters socials? Maybe something that does that and at a press of a button feeds info into the main page? Would prefer in the same page. **(B5)**
+
+  Same page, no new tab. `reporters.json` — handle, outlet, reliability tier, profile URL —
+  behind a picker sitting directly above the Source fields: one tap fills handle + outlet +
+  tier, with a small link out to the profile. This is the biggest single win for B3, because
+  Source is currently a closed section you must open on every card.
+  > Roadmap B5: add reporters.json and a one-tap reporter picker above the Source fields, per ROADMAP.md.
+
+- [ ] Can we automate the translation in anyway? (1st priority Romanian, 2nd Italian/German/Spanish for relevant teams). Should we keep it all in one instagram profile or do multiple based on language? Can maybe bypass this if we use carousels (easy but don't know if it will go well) in Instagram (Add a flag in a corner for the corresponding language used.). NO2 PRIORITY, this would be relevant as the page would be only a copy-paste with a nice design in English. **(B6)**
+
+  **One profile with carousels** — a carousel is one post no matter how many language slides
+  it holds, so it costs nothing extra in reach or rate limit, and it avoids running four
+  accounts. That answers the profile question.
+
+  Split the work by what's actually hard. The card's fixed labels (`L`, [app.js:49](app.js:49))
+  are already centralised and few — **hand-translate those once, free, no API**. Only the
+  text you type (headline, sub, quote) would need machine translation, and that's where the
+  caveat is: calling DeepL from a static GitHub Pages app would expose the key in the page
+  and hit CORS, so it needs a proxy. Given a card is ~200 characters, pasting a translation
+  by hand is not obviously worse than building that proxy.
+  > Roadmap B6 prompt 1: add a language switch for the card's fixed labels plus a corner flag badge, per ROADMAP.md. No translation API.
+
+  > Roadmap B6 prompt 2 (only if wanted): add machine translation for the typed text, per ROADMAP.md — discuss the key/CORS options first.
+
+- [ ] Should post on instagram in form of: posts or reels of posts? (are these both?) **(B7)**
+      — _They're different things: a feed post is the static image, a reel is video. The API
+      does both, free. A text card is a still image, so **feed post — and carousel when you
+      add languages (B6)**. Reels reach further but need a video template that doesn't exist
+      yet; not worth building until the manual flow is fast. Nothing to code here; the
+      publishing route itself is B1 + a public URL._
+
+- [ ] Maybe add overlaying crests/logos as background with a dimmer opacity? Big crests, occupying all of the team's card - Ex: Cannon for Arsenal occupies 50%, Spurs chicken 50%. (Transfers and Matches are the affected templates) **(B8)**
       — _**Code is done**: `updateWall()` + `WALLPOS` place each team's crest deep inside its own
       colour region for all 8 seam shapes, with a Subtle/Medium/Bold opacity control. Looks right
       but reads as placeholder art — this ships properly the moment "Next up" lands._
