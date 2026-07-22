@@ -4,9 +4,9 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — Next up and the whole Backlog turned into costed, paste-ready
-prompts. Crest dry run: 142/152 resolve automatically. X auto-pull priced (~$6–30/mo, not
-free); Instagram publishing confirmed free; found a stale-date bug while measuring B3._
+_Last updated: 2026-07-22 — Crest prompt 1 done: `tools/fetch_crests.py` +
+`tools/crest-overrides.json` exist and the dry run now resolves **152/152**, no misses. Fixed
+the API path in the findings table and found real names for `rapid` and `jordan`. Next: prompt 2._
 
 ---
 
@@ -67,7 +67,7 @@ the main way this task wastes tokens.
 
 | Question | Answer |
 |---|---|
-| Source | TheSportsDB v1, `searchteams.php?t=<name>`. Free key `3` works, no signup. |
+| Source | TheSportsDB v1, `searchteams.php?t=<name>`. Free key `3` works, no signup. The path is `/api/v1/json/3/…` — the order `/api/json/v1/3/…` 404s. |
 | Badge field | `strBadge` → **already a 512×512 PNG with transparency**, ~127 KB. |
 | Image tooling needed | **None.** No resize, no trim, no alpha work. Download and write the bytes. |
 | What's installed here | Python 3 + curl only — **no node, no PIL, no ImageMagick**. Script must be Python stdlib. |
@@ -78,28 +78,31 @@ the main way this task wastes tokens.
 | Nations | Easy — 92/92 style matches resolve on the plain name. No country filter needed. |
 | Size budget | 152 × ~127 KB ≈ **19 MB** in-repo, one file loaded per card. Acceptable; `strBadge + "/preview"` gives 200×200 / 46 KB (≈7 MB) if that ever matters. |
 
-**Dry run result: 142 of 152 resolve automatically.** Only these need a human decision:
+**Dry run result (2026-07-22, after prompt 1): 152 of 152 resolve, 0 misses.** Every case
+below is now encoded in [tools/crest-overrides.json](tools/crest-overrides.json), so no
+human decision is left. Two that the first dry run couldn't answer:
 
-| Key | teams.json name | Fix |
+| Key | teams.json name | Answer |
 |---|---|---|
-| `athletic` | Athletic Club | search `Athletic Bilbao` — id **133727** ✎verified |
-| `atletico` | Atlético | search `Atletico Madrid` — id **133729** ✎verified |
-| `inter` | Inter | search `Inter Milan` — id **133681** ✎verified |
-| `psg` | PSG | search `Paris Saint Germain` — id **133714** ✎verified |
-| `man-united` | Man United | search `Manchester United` |
-| `newcastle` | Newcastle | search `Newcastle United` |
-| `dinamo` | Dinamo | search `Dinamo Bucuresti` |
-| `rapid` | Rapid | search `Rapid Bucuresti` |
-| `uae` | UAE | search `United Arab Emirates` |
-| `jordan` | Jordan | no soccer hit on the plain name — check by hand |
-| `monaco` | Monaco | not an override: the API says country **Monaco**, teams.json says France. Let the country alias map accept it. |
+| `rapid` | Rapid | neither `Rapid` nor `Rapid Bucuresti` hit — the club is listed as **Rapid 1923**, id **134017** |
+| `jordan` | Jordan | `Jordan` only finds a defunct motorsport team; the national side is id **140145**, found via its alternate name `Jordanien` |
+
+Ten more that the first dry run hadn't spotted, all just shorthand names in `teams.json`:
+`czechia`→Czech Republic, `tottenham`→Tottenham Hotspur, `west-ham`→West Ham United,
+`milan`→AC Milan, `gladbach`→Borussia Monchengladbach, `lille`→Lille OSC, `psv`→PSV
+Eindhoven, `salzburg`→Red Bull Salzburg, `craiova`→Universitatea Craiova, `u-cluj`→
+Universitatea Cluj. Plus `ajax`/`feyenoord`, which needed nothing but **"The Netherlands"**
+added to the country alias map (the API spells it with the article).
+
+One to eyeball in prompt 3: `craiova` resolves to id 138188, but Romania has two Craiova
+clubs (CS U Craiova and FC U Craiova 1948).
 
 ### Implementation — three prompts, in order
 
 Each is self-contained and sized to stay small. **Paste the quoted line as the whole prompt**;
 don't re-explain the task, this file is the brief.
 
-**Prompt 1 — build the fetcher (no downloads yet).**
+**Prompt 1 — build the fetcher (no downloads yet).** ✅ **done 2026-07-22**
 > Roadmap Next up, prompt 1: write `tools/fetch_crests.py` per ROADMAP.md, then run it with `--dry-run` and show me only the summary table.
 
 Scope: create `tools/fetch_crests.py` + `tools/crest-overrides.json` (seeded from the table
@@ -107,6 +110,13 @@ above). Flags: `--dry-run` (resolve only, no writes), `--only <key,key>`, `--for
 (re-fetch keys that already have a real crest). Reads only `teams.json`. Writes nothing
 into `crests/` on a dry run. Output is a **counts line plus the problem rows only** — never
 a per-team log of 152 lines.
+
+_Landed: [tools/fetch_crests.py](tools/fetch_crests.py) and
+[tools/crest-overrides.json](tools/crest-overrides.json). Two extra flags beyond the spec:
+`--group nations|clubs|all` (prompt 2 needs it to split the batches) and `--preview`
+(200×200 badges if the 19 MB ever bites). A fetch also writes `tools/crest-sources.json`
+recording id/name/country/URL per key — that doubles as the "this one is real, skip it"
+check, so re-runs cost nothing and `--force` overrides it._
 
 **Prompt 2 — fetch for real, in two batches.**
 > Roadmap Next up, prompt 2: run the fetcher for nations, then for clubs, and report the counts.

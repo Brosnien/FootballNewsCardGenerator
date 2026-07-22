@@ -1,0 +1,46 @@
+{
+  "_comment": [
+    "Manual fixes for teams whose teams.json name does not resolve on TheSportsDB.",
+    "Keys match teams.json keys. Fields:",
+    "  search  - query (string, or list tried in order) instead of the teams.json name",
+    "  id      - TheSportsDB idTeam; skips search entirely, use for verified matches",
+    "  country - expected API strCountry, overrides the teams.json country filter",
+    "  note    - free text for humans, ignored by the script",
+    "Source: ROADMAP.md 'Next up' dry-run table."
+  ],
+
+  "athletic":   { "search": "Athletic Bilbao",       "id": "133727" },
+  "atletico":   { "search": "Atletico Madrid",       "id": "133729" },
+  "inter":      { "search": "Inter Milan",           "id": "133681" },
+  "psg":        { "search": "Paris Saint Germain",   "id": "133714" },
+
+  "man-united": { "search": "Manchester United" },
+  "newcastle":  { "search": "Newcastle United" },
+  "dinamo":     { "search": ["Dinamo Bucuresti", "Dinamo Bucharest"] },
+  "rapid":      { "search": "Rapid 1923", "id": "134017",
+                  "note": "no hit on 'Rapid' or 'Rapid Bucuresti'; the club is listed as Rapid 1923" },
+
+  "uae":        { "search": "United Arab Emirates" },
+  "jordan":     { "id": "140145",
+                  "note": "'Jordan' only finds a defunct motorsport team; found via the alternate 'Jordanien'" },
+
+  "monaco":     { "country": "Monaco", "note": "API says country Monaco, teams.json says France" },
+
+  "tottenham":  { "search": "Tottenham Hotspur" },
+  "west-ham":   { "search": "West Ham United" },
+  "milan":      { "search": "AC Milan" },
+  "gladbach":   { "search": "Borussia Monchengladbach" },
+  "lille":      { "search": "Lille OSC" },
+  "psv":        { "search": "PSV Eindhoven" },
+  "craiova":    { "search": "Universitatea Craiova",
+                  "note": "id 138188; Romania also has FC U Craiova 1948 - check the crest if it looks wrong" },
+  "u-cluj":     { "search": "Universitatea Cluj" },
+
+  "czechia":    { "search": "Czech Republic" },
+
+  "brugge":        { "country": "Belgium" },
+  "salzburg":      { "country": "Austria", "search": "Red Bull Salzburg" },
+  "olympiacos":    { "country": "Greece" },
+  "shakhtar":      { "country": "Ukraine", "search": ["Shakhtar Donetsk", "Shakhtar"] },
+  "dinamo-zagreb": { "country": "Croatia" }
+}
