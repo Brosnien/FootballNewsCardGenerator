@@ -197,6 +197,11 @@
   .card{position:absolute;top:0;left:0;width:1080px;height:var(--H);transform-origin:top left;
     background:var(--bg);color:var(--fg);display:flex;flex-direction:column;
     padding:76px 88px;overflow:hidden;font-family:"Newsreader",Georgia,serif}
+  /* faint team-crest backdrop; sits above the colour, below all the text */
+  .wall{position:absolute;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;
+    background-repeat:no-repeat;background-position:118% 112%;background-size:82% auto;
+    opacity:var(--wallOp,0)}
+  .card > .topline,.card > .content,.card > .foot{position:relative;z-index:1}
 
   /* --- half / half, two clubs (background is built in JS) --- */
   .card.split .slug{color:var(--inkA)}

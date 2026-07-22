@@ -20,6 +20,7 @@
   <div class="stagewrap">
     <div class="stage" id="stage">
       <div class="card" id="card">
+        <div class="wall hide" id="vWall"></div>
         <div class="topline">
           <div class="toplineLeft">
             <div class="slug" id="bSlug"><span class="sq"></span><span id="vCat"></span></div>
@@ -306,6 +307,15 @@
           <option value="#FFFFFF">White</option>
           <option value="#000000">Black</option>
         </select></label>
+      <label class="f" data-for="news quote stats"><span>Crest backdrop</span>
+        <select id="crestBg">
+          <option value="0">Off</option>
+          <option value="0.09">Subtle</option>
+          <option value="0.15">Medium</option>
+          <option value="0.24">Bold</option>
+        </select>
+        <p class="note">Faint team crest behind the text (single-team cards). Needs a
+          <b>crests/&lt;team&gt;.png</b> file — teams without one show nothing.</p></label>
       <label class="f"><span>Font</span>
         <select id="font">
           <option value="Fraunces">Fraunces</option>

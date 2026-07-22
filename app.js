@@ -31,7 +31,7 @@ const DB=()=>teamType==="nation"?NATIONS:CLUBS;
 
 const $=id=>document.getElementById(id);
 const FIELDS=["cat","date","cname","c1","c2","c3","head","sub","player",
-  "fee","quote","who","ctx","handle","outlet","tier","plate","font","tpl","fmt","align",
+  "fee","quote","who","ctx","handle","outlet","tier","plate","crestBg","font","tpl","fmt","align",
   "split","club2","dual","status","scoreA","scoreB","goalsA","goalsB",
   "oppo","statPos","sRating","sMin","sGoals","sAssists","sShots","sPass","sKey",
   "sDribbles","sTackles","sDuels","gSaves","gConceded","gSavePct","gClean","gClaims","gSweep"];
@@ -330,6 +330,27 @@ function setFig(id,txt){
   el.querySelector(".echo").textContent=txt;
   el.querySelector(".fig").textContent=txt;
 }
+/* faint crest backdrop — single-team cards only, loaded on demand from
+   crests/<team key>.png. Teams without a file simply show nothing. */
+const crestSeen={};   /* key -> "ok" | "no", so we probe each file once */
+function updateWall(tpl){
+  const wall=$("vWall");
+  const op=parseFloat($("crestBg").value)||0;
+  const single=tpl==="news"||tpl==="quote"||tpl==="stats";
+  const eligible=cur=>cur===activeClub && parseFloat($("crestBg").value)>0 &&
+    ["news","quote","stats"].includes($("tpl").value);
+  if(!op||!single){ wall.classList.add("hide"); return; }
+  const key=activeClub, url="crests/"+key+".png";
+  const show=()=>{ wall.style.backgroundImage="url('"+url+"')";
+    wall.style.setProperty("--wallOp",op); wall.classList.remove("hide"); };
+  if(crestSeen[key]==="ok"){ show(); return; }
+  if(crestSeen[key]==="no"){ wall.classList.add("hide"); return; }
+  wall.classList.add("hide");                    /* hidden until the file is confirmed */
+  const img=new Image();
+  img.onload =()=>{ crestSeen[key]="ok"; if(eligible(key)) show(); };
+  img.onerror=()=>{ crestSeen[key]="no"; };
+  img.src=url;
+}
 /* one line = one event; "(R)" marks it as a red card */
 function renderGoals(id,raw){
   const lines=(raw||"").split("\n").map(s=>s.trim()).filter(Boolean);
@@ -494,6 +515,8 @@ function render(){
   const crest=DB()[activeClub]?.crest;
   $("vCrest").classList.toggle("hide",!crest);
   if(crest)$("vCrest").src=crest;
+
+  updateWall(tpl);
 
   fit();
   const f=autofit();
