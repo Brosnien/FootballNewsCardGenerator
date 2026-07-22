@@ -1,0 +1,830 @@
+{
+  "algeria": {
+    "id": "134516",
+    "team": "Algeria",
+    "country": "Algeria",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rrwpry1455460218.png",
+    "matched_by": "search 'Algeria'",
+    "bytes": 72447,
+    "fetched": "2026-07-22"
+  },
+  "argentina": {
+    "id": "134509",
+    "team": "Argentina",
+    "country": "Argentina",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/3zplhu1726167477.png",
+    "matched_by": "search 'Argentina'",
+    "bytes": 75583,
+    "fetched": "2026-07-22"
+  },
+  "australia": {
+    "id": "134500",
+    "team": "Australia",
+    "country": "Australia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/eylq8x1781926138.png",
+    "matched_by": "search 'Australia'",
+    "bytes": 82203,
+    "fetched": "2026-07-22"
+  },
+  "austria": {
+    "id": "135986",
+    "team": "Austria",
+    "country": "Austria",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/874p631628721400.png",
+    "matched_by": "search 'Austria'",
+    "bytes": 57660,
+    "fetched": "2026-07-22"
+  },
+  "bahrain": {
+    "id": "140149",
+    "team": "Bahrain",
+    "country": "Bahrain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/gk0x9c1597850499.png",
+    "matched_by": "search 'Bahrain'",
+    "bytes": 82609,
+    "fetched": "2026-07-22"
+  },
+  "belgium": {
+    "id": "134515",
+    "team": "Belgium",
+    "country": "Belgium",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/8xlvxv1592062265.png",
+    "matched_by": "search 'Belgium'",
+    "bytes": 73228,
+    "fetched": "2026-07-22"
+  },
+  "bolivia": {
+    "id": "136470",
+    "team": "Bolivia",
+    "country": "Bolivia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/4q6qfm1736571383.png",
+    "matched_by": "search 'Bolivia'",
+    "bytes": 86039,
+    "fetched": "2026-07-22"
+  },
+  "brazil": {
+    "id": "134496",
+    "team": "Brazil",
+    "country": "Brazil",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/jl6dip1726167280.png",
+    "matched_by": "search 'Brazil'",
+    "bytes": 56559,
+    "fetched": "2026-07-22"
+  },
+  "burkina-faso": {
+    "id": "136474",
+    "team": "Burkina Faso",
+    "country": "Burkina Faso",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/y38bkz1742102697.png",
+    "matched_by": "search 'Burkina Faso'",
+    "bytes": 86177,
+    "fetched": "2026-07-22"
+  },
+  "cameroon": {
+    "id": "134498",
+    "team": "Cameroon",
+    "country": "Cameroon",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/txqspw1455463989.png",
+    "matched_by": "search 'Cameroon'",
+    "bytes": 89844,
+    "fetched": "2026-07-22"
+  },
+  "canada": {
+    "id": "140073",
+    "team": "Canada",
+    "country": "Canada",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/2t631f1595154867.png",
+    "matched_by": "search 'Canada'",
+    "bytes": 70972,
+    "fetched": "2026-07-22"
+  },
+  "cape-verde": {
+    "id": "136477",
+    "team": "Cape Verde",
+    "country": "Cape Verde",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/5jn0o71593280376.png",
+    "matched_by": "search 'Cape Verde'",
+    "bytes": 60138,
+    "fetched": "2026-07-22"
+  },
+  "chile": {
+    "id": "134499",
+    "team": "Chile",
+    "country": "Chile",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/5xjsy41591988732.png",
+    "matched_by": "search 'Chile'",
+    "bytes": 128315,
+    "fetched": "2026-07-22"
+  },
+  "china": {
+    "id": "134579",
+    "team": "China",
+    "country": "China",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/pycrnz1710606856.png",
+    "matched_by": "search 'China'",
+    "bytes": 66242,
+    "fetched": "2026-07-22"
+  },
+  "colombia": {
+    "id": "134501",
+    "team": "Colombia",
+    "country": "Colombia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/4ymyku1691180081.png",
+    "matched_by": "search 'Colombia'",
+    "bytes": 102906,
+    "fetched": "2026-07-22"
+  },
+  "cook-islands": {
+    "id": "140250",
+    "team": "Cook Islands",
+    "country": "Cook Islands",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/r3nsoz1737953407.png",
+    "matched_by": "search 'Cook Islands'",
+    "bytes": 197261,
+    "fetched": "2026-07-22"
+  },
+  "costa-rica": {
+    "id": "134505",
+    "team": "Costa Rica",
+    "country": "Costa Rica",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/bss90a1637840151.png",
+    "matched_by": "search 'Costa Rica'",
+    "bytes": 70697,
+    "fetched": "2026-07-22"
+  },
+  "croatia": {
+    "id": "133912",
+    "team": "Croatia",
+    "country": "Croatia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/vvtsyu1455465317.png",
+    "matched_by": "search 'Croatia'",
+    "bytes": 91793,
+    "fetched": "2026-07-22"
+  },
+  "curacao": {
+    "id": "140271",
+    "team": "Curaçao",
+    "country": "Curacao",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/itygvb1600955363.png",
+    "matched_by": "search 'Curaçao'",
+    "bytes": 129579,
+    "fetched": "2026-07-22"
+  },
+  "czechia": {
+    "id": "133904",
+    "team": "Czech Republic",
+    "country": "Czechia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/1o0cx31654205806.png",
+    "matched_by": "search 'Czech Republic'",
+    "bytes": 119693,
+    "fetched": "2026-07-22"
+  },
+  "denmark": {
+    "id": "133906",
+    "team": "Denmark",
+    "country": "Denmark",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/e13arj1717365623.png",
+    "matched_by": "search 'Denmark'",
+    "bytes": 168332,
+    "fetched": "2026-07-22"
+  },
+  "dr-congo": {
+    "id": "136475",
+    "team": "DR Congo",
+    "country": "DR Congo",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/s85jjw1728749022.png",
+    "matched_by": "search 'DR Congo'",
+    "bytes": 230547,
+    "fetched": "2026-07-22"
+  },
+  "ecuador": {
+    "id": "134507",
+    "team": "Ecuador",
+    "country": "Ecuador",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/47wv2y1591989301.png",
+    "matched_by": "search 'Ecuador'",
+    "bytes": 74899,
+    "fetched": "2026-07-22"
+  },
+  "egypt": {
+    "id": "136138",
+    "team": "Egypt",
+    "country": "Egypt",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/uheyzo1742102234.png",
+    "matched_by": "search 'Egypt'",
+    "bytes": 74025,
+    "fetched": "2026-07-22"
+  },
+  "el-salvador": {
+    "id": "140174",
+    "team": "El Salvador",
+    "country": "El Salvador",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/gjc22e1598134820.png",
+    "matched_by": "search 'El Salvador'",
+    "bytes": 171667,
+    "fetched": "2026-07-22"
+  },
+  "england": {
+    "id": "133914",
+    "team": "England",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/vf5ttc1726166739.png",
+    "matched_by": "search 'England'",
+    "bytes": 145559,
+    "fetched": "2026-07-22"
+  },
+  "fiji": {
+    "id": "140257",
+    "team": "Fiji",
+    "country": "Fiji",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/vsrxul1600867989.png",
+    "matched_by": "search 'Fiji'",
+    "bytes": 96479,
+    "fetched": "2026-07-22"
+  },
+  "finland": {
+    "id": "136468",
+    "team": "Finland",
+    "country": "Finland",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wgvfd21730303889.png",
+    "matched_by": "search 'Finland'",
+    "bytes": 40955,
+    "fetched": "2026-07-22"
+  },
+  "france": {
+    "id": "133913",
+    "team": "France",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/p3n0z51726166851.png",
+    "matched_by": "search 'France'",
+    "bytes": 126337,
+    "fetched": "2026-07-22"
+  },
+  "germany": {
+    "id": "133907",
+    "team": "Germany",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/1xysi51726167152.png",
+    "matched_by": "search 'Germany'",
+    "bytes": 230956,
+    "fetched": "2026-07-22"
+  },
+  "ghana": {
+    "id": "134513",
+    "team": "Ghana",
+    "country": "Ghana",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/j589xw1751526124.png",
+    "matched_by": "search 'Ghana'",
+    "bytes": 84011,
+    "fetched": "2026-07-22"
+  },
+  "greece": {
+    "id": "133902",
+    "team": "Greece",
+    "country": "Greece",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xtxtts1455465601.png",
+    "matched_by": "search 'Greece'",
+    "bytes": 100280,
+    "fetched": "2026-07-22"
+  },
+  "guatemala": {
+    "id": "140260",
+    "team": "Guatemala",
+    "country": "Guatemala",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/fvq74e1749157510.png",
+    "matched_by": "search 'Guatemala'",
+    "bytes": 29888,
+    "fetched": "2026-07-22"
+  },
+  "guinea": {
+    "id": "136479",
+    "team": "Guinea",
+    "country": "Guinea",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tzuwnp1742102469.png",
+    "matched_by": "search 'Guinea'",
+    "bytes": 145334,
+    "fetched": "2026-07-22"
+  },
+  "haiti": {
+    "id": "140175",
+    "team": "Haiti",
+    "country": "Haiti",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/gml8wx1598135302.png",
+    "matched_by": "search 'Haiti'",
+    "bytes": 213457,
+    "fetched": "2026-07-22"
+  },
+  "honduras": {
+    "id": "134508",
+    "team": "Honduras",
+    "country": "Honduras",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wuu4fp1718413719.png",
+    "matched_by": "search 'Honduras'",
+    "bytes": 37047,
+    "fetched": "2026-07-22"
+  },
+  "hungary": {
+    "id": "135987",
+    "team": "Hungary",
+    "country": "Hungary",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ihaoit1717365719.png",
+    "matched_by": "search 'Hungary'",
+    "bytes": 106091,
+    "fetched": "2026-07-22"
+  },
+  "iceland": {
+    "id": "135988",
+    "team": "Iceland",
+    "country": "Iceland",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xc6kuy1742982312.png",
+    "matched_by": "search 'Iceland'",
+    "bytes": 71033,
+    "fetched": "2026-07-22"
+  },
+  "iran": {
+    "id": "134511",
+    "team": "Iran",
+    "country": "Iran",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/uttpvw1455465617.png",
+    "matched_by": "search 'Iran'",
+    "bytes": 80104,
+    "fetched": "2026-07-22"
+  },
+  "iraq": {
+    "id": "140148",
+    "team": "Iraq",
+    "country": "Iraq",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/aqidfn1742100110.png",
+    "matched_by": "search 'Iraq'",
+    "bytes": 40928,
+    "fetched": "2026-07-22"
+  },
+  "ireland": {
+    "id": "133911",
+    "team": "Ireland",
+    "country": "Ireland",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/3vq2cl1679073105.png",
+    "matched_by": "search 'Ireland'",
+    "bytes": 251842,
+    "fetched": "2026-07-22"
+  },
+  "italy": {
+    "id": "133910",
+    "team": "Italy",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/fxijcp1726167035.png",
+    "matched_by": "search 'Italy'",
+    "bytes": 33038,
+    "fetched": "2026-07-22"
+  },
+  "ivory-coast": {
+    "id": "134502",
+    "team": "Ivory Coast",
+    "country": "Ivory Coast",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rwxuuu1455465643.png",
+    "matched_by": "search 'Ivory Coast'",
+    "bytes": 80082,
+    "fetched": "2026-07-22"
+  },
+  "jamaica": {
+    "id": "140037",
+    "team": "Jamaica",
+    "country": "Jamaica",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/v6mk4r1594321722.png",
+    "matched_by": "search 'Jamaica'",
+    "bytes": 89331,
+    "fetched": "2026-07-22"
+  },
+  "japan": {
+    "id": "134503",
+    "team": "Japan",
+    "country": "Japan",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ffsyxz1591989843.png",
+    "matched_by": "search 'Japan'",
+    "bytes": 57471,
+    "fetched": "2026-07-22"
+  },
+  "jordan": {
+    "id": "140145",
+    "team": "Jordan",
+    "country": "Jordan",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/59fo2s1742100034.png",
+    "matched_by": "override id",
+    "bytes": 35367,
+    "fetched": "2026-07-22"
+  },
+  "mali": {
+    "id": "134580",
+    "team": "Mali",
+    "country": "Mali",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/urrruy1455465656.png",
+    "matched_by": "search 'Mali'",
+    "bytes": 80432,
+    "fetched": "2026-07-22"
+  },
+  "mexico": {
+    "id": "134497",
+    "team": "Mexico",
+    "country": "Mexico",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/3rmosi1748525208.png",
+    "matched_by": "search 'Mexico'",
+    "bytes": 123085,
+    "fetched": "2026-07-22"
+  },
+  "morocco": {
+    "id": "136139",
+    "team": "Morocco",
+    "country": "Morocco",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/hbmwkj1731791275.png",
+    "matched_by": "search 'Morocco'",
+    "bytes": 133792,
+    "fetched": "2026-07-22"
+  },
+  "netherlands": {
+    "id": "133905",
+    "team": "Netherlands",
+    "country": "The Netherlands",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/1p0hr41593787110.png",
+    "matched_by": "search 'Netherlands'",
+    "bytes": 92978,
+    "fetched": "2026-07-22"
+  },
+  "new-caledonia": {
+    "id": "140248",
+    "team": "New Caledonia",
+    "country": "New Caledonia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/a3zw7d1600863994.png",
+    "matched_by": "search 'New Caledonia'",
+    "bytes": 209071,
+    "fetched": "2026-07-22"
+  },
+  "new-zealand": {
+    "id": "137449",
+    "team": "New Zealand",
+    "country": "New Zealand",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/91xpk81742982935.png",
+    "matched_by": "search 'New Zealand'",
+    "bytes": 24604,
+    "fetched": "2026-07-22"
+  },
+  "nigeria": {
+    "id": "134512",
+    "team": "Nigeria",
+    "country": "Nigeria",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/qruyxr1455466056.png",
+    "matched_by": "search 'Nigeria'",
+    "bytes": 162035,
+    "fetched": "2026-07-22"
+  },
+  "norway": {
+    "id": "136516",
+    "team": "Norway",
+    "country": "Norway",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/gyfn811591973155.png",
+    "matched_by": "search 'Norway'",
+    "bytes": 86145,
+    "fetched": "2026-07-22"
+  },
+  "oman": {
+    "id": "140155",
+    "team": "Oman",
+    "country": "Oman",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/93swiy1597934984.png",
+    "matched_by": "search 'Oman'",
+    "bytes": 137570,
+    "fetched": "2026-07-22"
+  },
+  "panama": {
+    "id": "136141",
+    "team": "Panama",
+    "country": "Panama",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/asp2ck1715849700.png",
+    "matched_by": "search 'Panama'",
+    "bytes": 108990,
+    "fetched": "2026-07-22"
+  },
+  "paraguay": {
+    "id": "136471",
+    "team": "Paraguay",
+    "country": "Paraguay",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/khgav41553419195.png",
+    "matched_by": "search 'Paraguay'",
+    "bytes": 83296,
+    "fetched": "2026-07-22"
+  },
+  "peru": {
+    "id": "136162",
+    "team": "Peru",
+    "country": "Peru",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/unszat1529144812.png",
+    "matched_by": "search 'Peru'",
+    "bytes": 29851,
+    "fetched": "2026-07-22"
+  },
+  "png": {
+    "id": "140256",
+    "team": "Papua New Guinea",
+    "country": "Papua New Guinea",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/344x1y1600867638.png",
+    "matched_by": "search 'Papua New Guinea'",
+    "bytes": 136618,
+    "fetched": "2026-07-22"
+  },
+  "poland": {
+    "id": "133901",
+    "team": "Poland",
+    "country": "Poland",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ttvrxy1455466076.png",
+    "matched_by": "search 'Poland'",
+    "bytes": 59000,
+    "fetched": "2026-07-22"
+  },
+  "portugal": {
+    "id": "133908",
+    "team": "Portugal",
+    "country": "Portugal",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/swqvpy1455466083.png",
+    "matched_by": "search 'Portugal'",
+    "bytes": 112732,
+    "fetched": "2026-07-22"
+  },
+  "qatar": {
+    "id": "136472",
+    "team": "Qatar",
+    "country": "Qatar",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rs3ir31642708685.png",
+    "matched_by": "search 'Qatar'",
+    "bytes": 253586,
+    "fetched": "2026-07-22"
+  },
+  "romania": {
+    "id": "135980",
+    "team": "Romania",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/w903wb1689198300.png",
+    "matched_by": "search 'Romania'",
+    "bytes": 84248,
+    "fetched": "2026-07-22"
+  },
+  "russia": {
+    "id": "133903",
+    "team": "Russia",
+    "country": "Russia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/nz50i51689197440.png",
+    "matched_by": "search 'Russia'",
+    "bytes": 230290,
+    "fetched": "2026-07-22"
+  },
+  "samoa": {
+    "id": "140255",
+    "team": "Samoa",
+    "country": "Samoa",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/97ornl1744823672.png",
+    "matched_by": "search 'Samoa'",
+    "bytes": 112283,
+    "fetched": "2026-07-22"
+  },
+  "saudi-arabia": {
+    "id": "136137",
+    "team": "Saudi Arabia",
+    "country": "Saudi Arabia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/24xwpq1594125742.png",
+    "matched_by": "search 'Saudi Arabia'",
+    "bytes": 127255,
+    "fetched": "2026-07-22"
+  },
+  "scotland": {
+    "id": "136450",
+    "team": "Scotland",
+    "country": "Scotland",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/3691i11552945146.png",
+    "matched_by": "search 'Scotland'",
+    "bytes": 168792,
+    "fetched": "2026-07-22"
+  },
+  "senegal": {
+    "id": "136143",
+    "team": "Senegal",
+    "country": "Senegal",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/slayb01780546342.png",
+    "matched_by": "search 'Senegal'",
+    "bytes": 189606,
+    "fetched": "2026-07-22"
+  },
+  "serbia": {
+    "id": "136140",
+    "team": "Serbia",
+    "country": "Serbia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/oxvynb1689195538.png",
+    "matched_by": "search 'Serbia'",
+    "bytes": 120317,
+    "fetched": "2026-07-22"
+  },
+  "slovakia": {
+    "id": "135983",
+    "team": "Slovakia",
+    "country": "Slovakia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/njbw8n1717365638.png",
+    "matched_by": "search 'Slovakia'",
+    "bytes": 143674,
+    "fetched": "2026-07-22"
+  },
+  "slovenia": {
+    "id": "136456",
+    "team": "Slovenia",
+    "country": "Slovenia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/s7k1x51552909864.png",
+    "matched_by": "search 'Slovenia'",
+    "bytes": 69097,
+    "fetched": "2026-07-22"
+  },
+  "solomon-islands": {
+    "id": "140253",
+    "team": "Solomon Islands",
+    "country": "Solomon Islands",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/7x08r51600866606.png",
+    "matched_by": "search 'Solomon Islands'",
+    "bytes": 63770,
+    "fetched": "2026-07-22"
+  },
+  "south-africa": {
+    "id": "136482",
+    "team": "South Africa",
+    "country": "South Africa",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xjz9j91553368824.png",
+    "matched_by": "search 'South Africa'",
+    "bytes": 81548,
+    "fetched": "2026-07-22"
+  },
+  "south-korea": {
+    "id": "134517",
+    "team": "South Korea",
+    "country": "South Korea",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/a8nqfs1589564916.png",
+    "matched_by": "search 'South Korea'",
+    "bytes": 101768,
+    "fetched": "2026-07-22"
+  },
+  "spain": {
+    "id": "133909",
+    "team": "Spain",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ncgqyr1726166942.png",
+    "matched_by": "search 'Spain'",
+    "bytes": 81103,
+    "fetched": "2026-07-22"
+  },
+  "sweden": {
+    "id": "133916",
+    "team": "Sweden",
+    "country": "Sweden",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/h5adzg1591981772.png",
+    "matched_by": "search 'Sweden'",
+    "bytes": 99221,
+    "fetched": "2026-07-22"
+  },
+  "switzerland": {
+    "id": "134506",
+    "team": "Switzerland",
+    "country": "Switzerland",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mb7yqe1717365808.png",
+    "matched_by": "search 'Switzerland'",
+    "bytes": 39077,
+    "fetched": "2026-07-22"
+  },
+  "tahiti": {
+    "id": "140252",
+    "team": "Tahiti",
+    "country": "French Polynesia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/nfmoqp1600866065.png",
+    "matched_by": "search 'Tahiti'",
+    "bytes": 119363,
+    "fetched": "2026-07-22"
+  },
+  "thailand": {
+    "id": "140162",
+    "team": "Thailand",
+    "country": "Thailand",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mx57ux1597937566.png",
+    "matched_by": "search 'Thailand'",
+    "bytes": 55978,
+    "fetched": "2026-07-22"
+  },
+  "tonga": {
+    "id": "140251",
+    "team": "Tonga",
+    "country": "Tonga",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/5h8uoy1737953979.png",
+    "matched_by": "search 'Tonga'",
+    "bytes": 220840,
+    "fetched": "2026-07-22"
+  },
+  "trinidad": {
+    "id": "140176",
+    "team": "Trinidad and Tobago",
+    "country": "Trinidad and Tobago",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/x0uq8u1598135774.png",
+    "matched_by": "search 'Trinidad & Tobago'",
+    "bytes": 137103,
+    "fetched": "2026-07-22"
+  },
+  "tunisia": {
+    "id": "136142",
+    "team": "Tunisia",
+    "country": "Tunisia",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/7r89rg1526727277.png",
+    "matched_by": "search 'Tunisia'",
+    "bytes": 125387,
+    "fetched": "2026-07-22"
+  },
+  "turkey": {
+    "id": "135985",
+    "team": "Turkey",
+    "country": "Turkey",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/70c4oo1591982459.png",
+    "matched_by": "search 'Turkey'",
+    "bytes": 52292,
+    "fetched": "2026-07-22"
+  },
+  "uae": {
+    "id": "140163",
+    "team": "United Arab Emirates",
+    "country": "United Arab Emirates",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tua6w31713725676.png",
+    "matched_by": "search 'United Arab Emirates'",
+    "bytes": 23483,
+    "fetched": "2026-07-22"
+  },
+  "ukraine": {
+    "id": "133915",
+    "team": "Ukraine",
+    "country": "Ukraine",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/k36g2e1591982718.png",
+    "matched_by": "search 'Ukraine'",
+    "bytes": 116698,
+    "fetched": "2026-07-22"
+  },
+  "uruguay": {
+    "id": "134504",
+    "team": "Uruguay",
+    "country": "Uruguay",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/6vjbr11726167756.png",
+    "matched_by": "search 'Uruguay'",
+    "bytes": 39497,
+    "fetched": "2026-07-22"
+  },
+  "usa": {
+    "id": "134514",
+    "team": "USA",
+    "country": "United States",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/21f0oi1597948195.png",
+    "matched_by": "search 'USA'",
+    "bytes": 29431,
+    "fetched": "2026-07-22"
+  },
+  "uzbekistan": {
+    "id": "140151",
+    "team": "Uzbekistan",
+    "country": "Uzbekistan",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/u5bgze1597943605.png",
+    "matched_by": "search 'Uzbekistan'",
+    "bytes": 202771,
+    "fetched": "2026-07-22"
+  },
+  "vanuatu": {
+    "id": "140254",
+    "team": "Vanuatu",
+    "country": "Vanuatu",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/akn7zj1600867049.png",
+    "matched_by": "search 'Vanuatu'",
+    "bytes": 154418,
+    "fetched": "2026-07-22"
+  },
+  "venezuela": {
+    "id": "136473",
+    "team": "Venezuela",
+    "country": "Venezuela",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/x167yg1690791367.png",
+    "matched_by": "search 'Venezuela'",
+    "bytes": 76213,
+    "fetched": "2026-07-22"
+  },
+  "vietnam": {
+    "id": "140161",
+    "team": "Vietnam",
+    "country": "Vietnam",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/i18iu41597944056.png",
+    "matched_by": "search 'Vietnam'",
+    "bytes": 68700,
+    "fetched": "2026-07-22"
+  },
+  "wales": {
+    "id": "135982",
+    "team": "Wales",
+    "country": "Wales",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/pdayn21591983222.png",
+    "matched_by": "search 'Wales'",
+    "bytes": 115629,
+    "fetched": "2026-07-22"
+  }
+}

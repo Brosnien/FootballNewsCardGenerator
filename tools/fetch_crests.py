@@ -128,6 +128,41 @@ def load_json(path, default=None):
         return json.load(fh)
 
 
+def save_manifest(manifest):
+    """Atomic write - a half-written manifest is worse than none."""
+    tmp = MANIFEST + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as fh:
+        json.dump(dict(sorted(manifest.items())), fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+    os.replace(tmp, MANIFEST)
+
+
+class SingleRun(object):
+    """Refuse to start while another fetch is running.
+
+    Two concurrent runs doubled the request rate (rate-limit failures) and
+    interleaved their manifest writes into invalid JSON. Once was enough.
+    """
+
+    path = os.path.join(ROOT, "tools", ".fetch_crests.lock")
+
+    def __enter__(self):
+        try:
+            fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except OSError:
+            sys.exit("another fetch is already running (%s)\n"
+                     "if that is stale, delete it and retry." % self.path)
+        os.write(fd, str(os.getpid()).encode())
+        os.close(fd)
+        return self
+
+    def __exit__(self, *exc):
+        try:
+            os.unlink(self.path)
+        except OSError:
+            pass
+
+
 # ---------------------------------------------------------------- http
 
 _last_call = [0.0]
@@ -338,12 +373,8 @@ def main():
         record["bytes"] = len(blob)
         record["fetched"] = time.strftime("%Y-%m-%d")
         manifest[key] = record
+        save_manifest(manifest)   # after each crest, so a killed run keeps its work
         ok.append((key, record))
-
-    if not args.dry_run and ok:
-        with open(MANIFEST, "w", encoding="utf-8") as fh:
-            json.dump(dict(sorted(manifest.items())), fh, indent=2, ensure_ascii=False)
-            fh.write("\n")
 
     mode = "DRY RUN" if args.dry_run else "FETCH"
     print("\n%s  group=%s  considered=%d  resolved=%d  MISS=%d  skipped(already real)=%d"
@@ -360,4 +391,5 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    with SingleRun():
+        sys.exit(main())
