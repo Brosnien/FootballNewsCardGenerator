@@ -94,12 +94,22 @@ function scoreInk(c1,c2,c3){
 }
 
 const ANGLES={vert:"90deg",diag:"100deg",diag2:"125deg",diagr:"62deg"};
+/* curved seams: a big off-canvas circle whose arc crosses the card. cx is the
+   circle centre's x on the 1080-wide card; the seam always meets the vertical
+   middle at x=540 and bows toward (convex) or away from (concave) that centre. */
+const CURVES={
+  curve: {cx:-1400},   /* soft bow to the right  */
+  curved:{cx:-620},    /* deep bow to the right  */
+  curver:{cx:2480},    /* bow the other way (reverse) */
+};
 
-/* builds the split background; also returns the bands so we know the contrast */
-function buildSplit(mode,A,B,dual){
-  const ang=ANGLES[mode]||"100deg";
-  const W=0.5; /* seam width in percent */
-  let bands,stops,seam;
+/* builds the split background; also returns the bands so we know the contrast.
+   Bands + their edge positions on a 0..1 axis (0 = left team's outer edge,
+   1 = right team's outer edge) are the same whatever the seam shape — only the
+   geometry (a straight linear-gradient vs. a curved radial-gradient) changes. */
+function buildSplit(mode,A,B,dual,H){
+  const w=0.005; /* half seam width, as a fraction of the axis */
+  let cols,pos,seam;
   if(dual){
     /* color 1 toward the outside; toward the seam, each team shows whichever of
        its color 2 / color 3 is brighter — keeps the "brighten toward the middle"
@@ -108,22 +118,29 @@ function buildSplit(mode,A,B,dual){
     const innerA=lum(A.c2)>=lum(A.c3)?A.c2:A.c3;
     const innerB=lum(B.c2)>=lum(B.c3)?B.c2:B.c3;
     seam=innerA===A.c2?A.c3:A.c2;
-    bands=[A.c1,innerA,innerB,B.c1];
-    stops=[
-      A.c1+" 0 25%", innerA+" 25% "+(50-W)+"%",
-      seam+" "+(50-W)+"% "+(50+W)+"%",
-      innerB+" "+(50+W)+"% 75%", B.c1+" 75% 100%"
-    ];
+    cols=[A.c1,innerA,seam,innerB,B.c1];
+    pos =[0, 0.25, 0.5-w, 0.5+w, 0.75, 1];
   }else{
     seam=A.c3;
-    bands=[A.c1,B.c1];
-    stops=[
-      A.c1+" 0 "+(50-W)+"%",
-      seam+" "+(50-W)+"% "+(50+W)+"%",
-      B.c1+" "+(50+W)+"% 100%"
-    ];
+    cols=[A.c1,seam,B.c1];
+    pos =[0, 0.5-w, 0.5+w, 1];
   }
-  return {css:"linear-gradient("+ang+","+stops.join(",")+")", bands:bands.concat([seam])};
+  let css;
+  if(CURVES[mode]){
+    const cx=CURVES[mode].cx, cy=(H||1350)/2, mid=540, span=1080;
+    const R=Math.abs(mid-cx), rightCentre=cx>mid;
+    const rad=f=>Math.max(0,R+(rightCentre?-1:1)*(f-0.5)*span);
+    let segs=cols.map((c,i)=>({c,a:rad(pos[i]),b:rad(pos[i+1])}));
+    /* radial-gradient stops must increase; a right-hand centre reverses them */
+    if(segs.length && segs[0].a>segs[0].b) segs=segs.reverse().map(s=>({c:s.c,a:s.b,b:s.a}));
+    const stops=segs.map(s=>s.c+" "+s.a.toFixed(1)+"px "+s.b.toFixed(1)+"px");
+    css="radial-gradient(circle at "+cx+"px "+cy.toFixed(1)+"px,"+stops.join(",")+")";
+  }else{
+    const ang=ANGLES[mode]||"100deg";
+    const stops=cols.map((c,i)=>c+" "+(pos[i]*100)+"% "+(pos[i+1]*100)+"%");
+    css="linear-gradient("+ang+","+stops.join(",")+")";
+  }
+  return {css:css, bands:cols.slice()};
 }
 
 const RANGE={
@@ -370,18 +387,20 @@ function render(){
   r.setProperty("--plate",plated?plate:"transparent");
   r.setProperty("--onplate",ink);
   r.setProperty("--display",'"'+$("font").value+'"');
-  r.setProperty("--H",$("fmt").value+"px");
+  const H=+$("fmt").value;
+  r.setProperty("--H",H+"px");
 
   const card=$("card");
-  /* how much room is left in the left half, next to the bottom text.
-     On diagonals the seam moves toward the left edge near the card's base,
-     so the ceiling is smaller the larger the angle. */
-  const SAFE={vert:"420px",diag:"330px",diag2:"290px",diagr:"700px"};
+  /* how much room is left in the left half, next to the bottom text. On
+     diagonals/curves the seam moves toward the left edge near the card's base,
+     so the ceiling is smaller the further it bows in. */
+  const SAFE={vert:"420px",diag:"330px",diag2:"290px",diagr:"700px",
+              curve:"390px",curved:"300px",curver:"620px"};
   r.setProperty("--subMax", split ? (SAFE[splitModeEff]||"330px") : "34ch");
 
   let sp=null;
   if(split){
-    sp=buildSplit(splitModeEff,A,B,dual);
+    sp=buildSplit(splitModeEff,A,B,dual,H);
     card.style.background=sp.css;
     r.setProperty("--inkBoth",inkBoth(sp.bands));
   }else{
