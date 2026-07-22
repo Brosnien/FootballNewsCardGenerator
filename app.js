@@ -330,26 +330,34 @@ function setFig(id,txt){
   el.querySelector(".echo").textContent=txt;
   el.querySelector(".fig").textContent=txt;
 }
-/* faint crest backdrop — single-team cards only, loaded on demand from
-   crests/<team key>.png. Teams without a file simply show nothing. */
+/* faint crest backdrop, loaded on demand from crests/<team key>.png. One crest
+   on single-team cards (News/Quote/Stats); on transfer & result both teams show,
+   one per side. Teams without a file simply show nothing. */
 const crestSeen={};   /* key -> "ok" | "no", so we probe each file once */
 function updateWall(tpl){
-  const wall=$("vWall");
+  const wall=$("vWall"), wa=$("vWallA"), wb=$("vWallB");
   const op=parseFloat($("crestBg").value)||0;
   const single=tpl==="news"||tpl==="quote"||tpl==="stats";
-  const eligible=cur=>cur===activeClub && parseFloat($("crestBg").value)>0 &&
-    ["news","quote","stats"].includes($("tpl").value);
-  if(!op||!single){ wall.classList.add("hide"); return; }
-  const key=activeClub, url="crests/"+key+".png";
-  const show=()=>{ wall.style.backgroundImage="url('"+url+"')";
-    wall.style.setProperty("--wallOp",op); wall.classList.remove("hide"); };
-  if(crestSeen[key]==="ok"){ show(); return; }
-  if(crestSeen[key]==="no"){ wall.classList.add("hide"); return; }
-  wall.classList.add("hide");                    /* hidden until the file is confirmed */
-  const img=new Image();
-  img.onload =()=>{ crestSeen[key]="ok"; if(eligible(key)) show(); };
-  img.onerror=()=>{ crestSeen[key]="no"; };
-  img.src=url;
+  const two=tpl==="move"||tpl==="result";
+  const hide=e=>e.classList.add("hide");
+  /* show team `key`'s crest on layer `el`; a first-seen file is probed once and,
+     when it loads, updateWall re-runs so the show goes through this same
+     synchronous path (no fragile async closures) */
+  const put=(el,key)=>{
+    if(!op||!key||crestSeen[key]==="no"){ hide(el); return; }
+    if(crestSeen[key]==="ok"){
+      el.style.backgroundImage="url('crests/"+key+".png')";
+      el.style.setProperty("--wallOp",op); el.classList.remove("hide"); return;
+    }
+    hide(el);                                    /* until the file is confirmed */
+    const img=new Image();
+    img.onload =()=>{ crestSeen[key]="ok"; updateWall($("tpl").value); };
+    img.onerror=()=>{ crestSeen[key]="no"; };
+    img.src="crests/"+key+".png";
+  };
+  if(single){ hide(wa); hide(wb); put(wall,activeClub); }
+  else if(two){ hide(wall); put(wa,activeClub); put(wb,$("club2").value); }
+  else{ [wall,wa,wb].forEach(hide); }
 }
 /* one line = one event; "(R)" marks it as a red card */
 function renderGoals(id,raw){
