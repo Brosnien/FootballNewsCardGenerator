@@ -4,12 +4,17 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — **"Next up" is finished** (152/152 real crests, verified on the live
+_Last updated: 2026-07-22 — **B3 prompt 1 done**: the stale-date bug is fixed (a returning
+session now stamps today unless you typed a date yourself), and sections the current template
+can't use collapse themselves — a Result card opens with only the Result section, no empty Text
+box to scroll past. Next is **B3 prompt 2**._
+
+_Previously: **"Next up" is finished** (152/152 real crests, verified on the live
 site and through PNG export; B8 closes with it), and the crest placement on the five awkward
 split shapes is fixed — bigger crests, better placed, measured to not cross the seam. Also fixed
 the reason old placeholder crests kept showing on a device that had already loaded them
 (`CREST_V` cache-buster), and the bug that made a single dropped request kill a crest for the
-whole session. Next by the stated order is **B3**._
+whole session._
 
 ---
 
@@ -303,6 +308,33 @@ B4 and B8 aren't work items. One prompt per row; paste the quoted line as the wh
   Then: auto-collapse sections the current template doesn't use, lift Source out of a
   closed `<details>` (B5 makes it one tap), and push rarely-touched fields below the fold.
   > Roadmap B3 prompt 1: fix the stale-date bug per ROADMAP.md, then auto-collapse the sections the current template doesn't use.
+
+  _Prompt 1 done 2026-07-22 ([app.js](app.js))._
+
+  _**Stale date.** The date is now stamped after the draft restore, not before, and a
+  `dateAuto` flag (saved with the draft) records whether you ever typed in the field. So a
+  returning session gets today's date, while a date you set by hand survives a reload.
+  Both paths tested in the browser: a draft carrying `01.01.2020` restored its headline but
+  came up **22.07.2026**; a hand-typed `09.09.2025` came back unchanged._
+
+  _**Auto-collapse.** `autoSections()` runs with the existing `data-for` pass in `render()`.
+  A section counts as unused when it is hidden, or when every `data-for` field inside it is
+  hidden — sections with no `data-for` fields at all (Style, Saved cards, Source) are always
+  used, so nothing you rely on ever disappears. Measured result per template:_
+
+  | Template | Text | Result | Player stats |
+  |---|---|---|---|
+  | news / transfer / quote | open | hidden | hidden |
+  | result | **closed** (it has no fields for result cards) | **open** | hidden |
+  | stats | open (Player) | hidden | **open** |
+
+  _Your own open/closed choice still wins and is remembered per section, restored the moment
+  that section is relevant again — verified by closing Text, reloading, and switching
+  templates: it stayed closed. The pref moved to a new store key `sections2`, because the old
+  array recorded the state of hidden sections too and now reads as "you closed it"._
+
+  _Still open from this prompt's list: lifting Source out of its closed `<details>` (waiting
+  on B5) and pushing rare fields below the fold — that's prompt 2._
 
   > Roadmap B3 prompt 2: cut the news and transfer cards down to the fewest fields on first screen, per ROADMAP.md. Don't remove fields, just reorder and collapse.
 

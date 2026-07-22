@@ -511,6 +511,7 @@ function render(){
 
   document.querySelectorAll("[data-for]").forEach(el=>
     el.classList.toggle("hide",!el.dataset.for.split(" ").includes(tpl)));
+  autoSections(tpl);
 
   const show=(id,on)=>$(id).classList.toggle("hide",!on);
   const has=id=>!!(val(id)||"").trim();
@@ -671,10 +672,20 @@ $("tt").addEventListener("click",e=>{
   setTeamType(b.dataset.type);
 });
 
+/* The card should carry today's date unless you typed one yourself. The
+   draft restore runs after the initial fill and `date` is a saved field,
+   so without this flag a returning session stamps the *last* session's
+   date on a news card. */
+let dateAuto=true;
+function stampToday(){
+  const d=new Date(), z=n=>String(n).padStart(2,"0");
+  $("date").value=z(d.getDate())+"."+z(d.getMonth()+1)+"."+d.getFullYear();
+}
 function snapshot(){const o={};FIELDS.forEach(id=>{const el=$(id);if(el)o[id]=el.value;});
-  o._club=activeClub;o._type=teamType;return o;}
+  o._club=activeClub;o._type=teamType;o._dateAuto=dateAuto;return o;}
 function restore(o){
   if(o._type==="club"||o._type==="nation")teamType=o._type;
+  if(o._dateAuto===false) dateAuto=false;
   /* club2 is derived from the group+team pair, so we set it after drawPickers */
   FIELDS.forEach(id=>{const el=$(id);if(!el||id==="club2")return;if(o[id]!==undefined)el.value=o[id];});
   activeClub=(o._club&&DB()[o._club])?o._club:
@@ -967,13 +978,42 @@ function saveDraft(){
 }
 FIELDS.forEach(id=>{const el=$(id);if(!el)return;
   el.addEventListener("input",saveDraft);el.addEventListener("change",saveDraft);});
+["input","change"].forEach(ev=>
+  $("date").addEventListener(ev,()=>{dateAuto=false;}));
+
+/* A section the current template can't use collapses itself. Your own
+   open/closed choice is kept per section and restored the moment that
+   section becomes relevant again, so collapsing is never destructive. */
+let secPref=[], secLock=false, secTpl=null;
+function secInit(){
+  if(!secPref.length)
+    secPref=[...document.querySelectorAll("main details")].map(d=>d.open?1:0);
+}
+/* used = the section is visible and still has at least one visible field.
+   Sections with no data-for fields at all (Style, Saved cards…) always are. */
+function secUsed(d){
+  if(d.classList.contains("hide")) return false;
+  const fs=[...d.querySelectorAll("[data-for]")];
+  return !fs.length || fs.some(f=>!f.classList.contains("hide"));
+}
+function autoSections(tpl){
+  secInit();
+  if(tpl===secTpl) return;
+  secTpl=tpl; secLock=true;
+  document.querySelectorAll("main details").forEach((d,i)=>{
+    d.open = secUsed(d) && secPref[i]!==0;
+  });
+  secLock=false;
+}
 
 /* which sections are open is remembered too */
 function bindSections(){
   document.querySelectorAll("main details").forEach((d,i)=>{
     d.addEventListener("toggle",()=>{
-      const open=[...document.querySelectorAll("main details")].map(x=>x.open?1:0);
-      store.set("sections",open);
+      if(secLock) return;               /* auto-collapse must not overwrite your choice */
+      if(!secUsed(d)) return;           /* a section you can't see isn't a preference */
+      secPref[i]=d.open?1:0;
+      store.set("sections2",secPref.slice());
     });
   });
 }
@@ -995,10 +1035,7 @@ function noteStore(){
   CLUBS=structuredClone(DEFAULT_CLUBS);
   NATIONS=structuredClone(DEFAULT_NATIONS);
 
-  if(!$("date").value){
-    const d=new Date(), z=n=>String(n).padStart(2,"0");
-    $("date").value=z(d.getDate())+"."+z(d.getMonth()+1)+"."+d.getFullYear();
-  }
+  if(!$("date").value) stampToday();
   const c=await store.get("clubs");
   if(c && c.clubs){                       /* new format: defaults + yours */
     CLUBS={...DEFAULT_CLUBS,...c.clubs};
@@ -1015,9 +1052,12 @@ function noteStore(){
   }
   const tp=await store.get("teamType"); if(tp==="club"||tp==="nation") teamType=tp;
   const p=await store.get("cards");if(p)PRESETS=p;
-  const secs=await store.get("sections");
-  if(Array.isArray(secs)) document.querySelectorAll("main details")
-    .forEach((d,i)=>{ if(secs[i]!==undefined) d.open=!!secs[i]; });
+  /* "sections2", not "sections": the old array recorded the state of every
+     section including the hidden ones, which now reads as "you closed it" */
+  const secs=await store.get("sections2");
+  secInit();
+  if(Array.isArray(secs)) secs.forEach((v,i)=>{ if(v!==undefined) secPref[i]=v?1:0; });
+  secTpl=null;                          /* re-apply once the prefs are known */
   bindSections();
   applyLayout();
   activeClub=DB()[lastKey[teamType]]?lastKey[teamType]:
@@ -1026,6 +1066,7 @@ function noteStore(){
   loadClub(activeClub);drawPresets();noteStore();
   const draft=await store.get("draft");
   if(draft && Object.keys(draft).length) restore(draft);
+  if(dateAuto) stampToday();            /* the draft must not carry yesterday over */
   ["head","sub","quote","goalsA","goalsB"].forEach(id=>grow($(id)));
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{fit();autofit();});
 })();
