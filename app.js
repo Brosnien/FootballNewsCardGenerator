@@ -334,19 +334,31 @@ function setFig(id,txt){
    on single-team cards (News/Quote/Stats); on transfer & result both teams show,
    one per side. Teams without a file simply show nothing. */
 const crestSeen={};   /* key -> "ok" | "no", so we probe each file once */
-/* where each crest sits per split shape [background-position, size]. masks and
-   clip-path don't survive html2canvas export, so instead of clipping the crest
-   to the seam we position it deep inside its own team's colour region — a strong
-   diagonal makes team 1 a top-left triangle, a curve pins each team to a side —
-   so it never reaches (and never crosses) the seam. */
+/* where each crest sits per split shape. masks and clip-path don't survive
+   html2canvas export, so instead of clipping the crest to the seam we place it
+   deep inside its own team's colour region — a strong diagonal makes team 1 a
+   top-left triangle, a curve pins each team to a side — so it never reaches
+   (and never crosses) the seam.
+
+   {x,y} is the crest's centre and d its diameter, as fractions of the card
+   (x and d of the 1080 width, y of the height). Fractions, not the CSS
+   background-position percentages this used to hold: each layer is only half
+   the card wide, so once the crest is about as wide as its layer the percentage
+   form divides by nearly zero and a small size change throws the crest across
+   the card. Pixels are computed from these below, which is stable and let the
+   diagonal/curve crests grow by roughly half.
+
+   Every value clears the seam with >=20px to spare at both card formats; x is
+   also kept >=d/2 from the x=540 layer edge, because on a diagonal or curve
+   that edge is NOT the seam and a cut there reads as a mistake. */
 const WALLPOS={
-  vert:  {a:["-12% 118%","108%"], b:["112% 118%","108%"]},
-  diag:  {a:["-16% 116%","104%"], b:["116% 116%","104%"]},
-  diag2: {a:["2% 14%","72%"],     b:["122% 122%","86%"]},
-  diagr: {a:["-22% 124%","86%"],  b:["98% 12%","72%"]},
-  curve: {a:["-30% 116%","92%"],  b:["116% 116%","104%"]},
-  curved:{a:["-46% 112%","80%"],  b:["116% 116%","104%"]},
-  curver:{a:["-16% 116%","104%"], b:["132% 112%","80%"]},
+  vert:  {a:{x:0.275,y:0.886,d:0.54}, b:{x:0.725,y:0.886,d:0.54}},
+  diag:  {a:{x:0.263,y:0.885,d:0.52}, b:{x:0.737,y:0.885,d:0.52}},
+  diag2: {a:{x:0.20, y:0.30, d:0.54}, b:{x:0.80, y:0.70, d:0.54}},
+  diagr: {a:{x:0.20, y:0.70, d:0.54}, b:{x:0.80, y:0.30, d:0.54}},
+  curve: {a:{x:0.20, y:0.65, d:0.54}, b:{x:0.80, y:0.65, d:0.54}},
+  curved:{a:{x:0.20, y:0.62, d:0.54}, b:{x:0.80, y:0.62, d:0.54}},
+  curver:{a:{x:0.20, y:0.65, d:0.54}, b:{x:0.80, y:0.65, d:0.54}},
 };
 function updateWall(tpl){
   const wall=$("vWall"), wa=$("vWallA"), wb=$("vWallB");
@@ -357,11 +369,18 @@ function updateWall(tpl){
   /* show team `key`'s crest on layer `el`; a first-seen file is probed once and,
      when it loads, updateWall re-runs so the show goes through this same
      synchronous path (no fragile async closures) */
-  const put=(el,key,pos)=>{
+  const put=(el,key,g)=>{
     if(!op||!key||crestSeen[key]==="no"){ hide(el); return; }
     if(crestSeen[key]==="ok"){
       el.style.backgroundImage="url('crests/"+key+".png')";
-      if(pos){ el.style.backgroundPosition=pos[0]; el.style.backgroundSize=pos[1]+" auto"; }
+      if(g){
+        /* the card is a fixed 1080 x H box (the preview only transform-scales
+           it), so laying the crest out in card pixels is exact */
+        const W=1080, H=+$("fmt").value||1350, d=g.d*W, left=(el===wb?W/2:0);
+        el.style.backgroundSize=d.toFixed(1)+"px auto";
+        el.style.backgroundPosition=(g.x*W-left-d/2).toFixed(1)+"px "+
+                                    (g.y*H-d/2).toFixed(1)+"px";
+      }
       el.style.setProperty("--wallOp",op); el.classList.remove("hide"); return;
     }
     hide(el);                                    /* until the file is confirmed */

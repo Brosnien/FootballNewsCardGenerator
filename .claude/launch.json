@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cards",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["tools/serve.py"],
+      "port": 8765,
+      "url": "http://localhost:8765"
+    }
+  ]
+}

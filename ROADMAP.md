@@ -4,9 +4,10 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — **"Next up" is finished.** All three crest prompts are done: 152/152
-real crests (92 nations + 60 clubs, 0 misses), verified on the live site and through PNG export.
-B8 closes with it. The Backlog is now the whole plan — next by the stated order is **B3**._
+_Last updated: 2026-07-22 — **"Next up" is finished** (152/152 real crests, verified on the live
+site and through PNG export; B8 closes with it), and the crest placement on the five awkward
+split shapes is fixed — bigger crests, better placed, measured to not cross the seam. Next by the
+stated order is **B3**._
 
 ---
 
@@ -168,6 +169,27 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 - Don't paste `teams.json` or API JSON into chat; the script reads them from disk.
 - If a run half-fails, re-run with `--only <the failed keys>` instead of starting over.
 - Club crests are trademarks — sourcing and use are the author's call.
+
+- [x] In the split dropdown some templates make crests look off, so they would need to be placed
+      better and to be increased in size. The templates are: Diagonal strong and reverse, Curve
+      soft, deep and reverse.
+
+  **Done 2026-07-22.** All five now carry a crest of the same size as the vertical split
+  (583px, 0.54 of the card width) instead of the 0.36–0.52 they had, and each sits at the
+  visual centre of its own colour block. Placement is verified, not eyeballed: exporting each
+  card with the crest on and off and testing which side of the seam every changed pixel falls
+  on gives **0 spilled pixels** on all five, in both Portrait 4:5 and Square 1:1.
+
+  What actually made these hard to tune: `WALLPOS` held CSS `background-position`
+  percentages, but each crest layer is only half the card wide, so once the crest is about as
+  wide as its layer the percentage divides by nearly zero and a small size change throws the
+  crest across the card. It now holds fractions of the card and computes pixels
+  ([app.js](app.js), `WALLPOS` + `put`). Vertical and Diagonal-soft were left alone and still
+  render within 0.4px of before.
+
+  _Open, not fixed — say the word and it becomes its own item:_ **Diagonal (soft) spills** about
+  2% of its crest pixels across the seam onto the other team's colour. It predates this change
+  and isn't on your list, so I left it rather than alter a shape you're happy with.
 
 ---
 
