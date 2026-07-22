@@ -334,6 +334,8 @@ function setFig(id,txt){
    on single-team cards (News/Quote/Stats); on transfer & result both teams show,
    one per side. Teams without a file simply show nothing. */
 const crestSeen={};   /* key -> "ok" | "no", so we probe each file once */
+const crestFails={};  /* key -> failed probes, so a dropped request isn't fatal */
+const CREST_TRIES=3;  /* attempts before a crest is treated as genuinely absent */
 /* Bump whenever the artwork in crests/ changes. The filenames stay the same when
    a crest is replaced, so a browser that already has one keeps serving the old
    picture — which is how the placeholder shields survived the switch to real
@@ -392,7 +394,15 @@ function updateWall(tpl){
     hide(el);                                    /* until the file is confirmed */
     const img=new Image();
     img.onload =()=>{ crestSeen[key]="ok"; updateWall($("tpl").value); };
-    img.onerror=()=>{ crestSeen[key]="no"; };
+    /* a failed probe used to mark the team "no" for the rest of the session, so
+       one dropped request — a burst of them is normal on a phone, and replacing
+       all 152 crests at once guarantees a burst — meant that crest never came
+       back until reload. Only give up once it has really failed. */
+    img.onerror=()=>{
+      const n=crestFails[key]=(crestFails[key]||0)+1;
+      if(n>=CREST_TRIES){ crestSeen[key]="no"; return; }   /* actually missing */
+      setTimeout(()=>updateWall($("tpl").value),300*n);    /* likely transient */
+    };
     img.src=crestURL(key);
   };
   if(single){ hide(wa); hide(wb); put(wall,activeClub); }

@@ -8,7 +8,8 @@ _Last updated: 2026-07-22 — **"Next up" is finished** (152/152 real crests, ve
 site and through PNG export; B8 closes with it), and the crest placement on the five awkward
 split shapes is fixed — bigger crests, better placed, measured to not cross the seam. Also fixed
 the reason old placeholder crests kept showing on a device that had already loaded them
-(`CREST_V` cache-buster). Next by the stated order is **B3**._
+(`CREST_V` cache-buster), and the bug that made a single dropped request kill a crest for the
+whole session. Next by the stated order is **B3**._
 
 ---
 
@@ -203,6 +204,23 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
   _If a device still shows old crests after this deploys, it is holding a stale `app.js`;
   closing and reopening the home-screen app clears it._
+
+- [x] Some logos didn't load when testing — Club Brugge for example.
+
+  **A real bug, and one the cache-buster above provoked.** A failed crest probe marked that
+  team `"no"` for the rest of the session ([app.js](app.js), `put`), so a *single* dropped
+  request meant that crest never appeared again until a reload. Normally rare — but giving all
+  152 crests new URLs at once forces 16 MB of re-downloads in a burst, which is exactly when a
+  phone drops requests. Hence "some logos", no pattern, only after the last deploy.
+
+  The probe now retries with backoff and only gives up after `CREST_TRIES` (3) real failures.
+  Both paths were tested by injecting failures, not by hoping: a crest whose first two probes
+  are dropped **recovers on the third and displays**; a crest that always fails stops at
+  **exactly 3 attempts** and never retries again. Clean-session sweep after the fix: 152/152
+  show their own crest.
+
+  _Nothing was wrong with the artwork — `crests/brugge.png` is a valid 512×512, 84 KB PNG,
+  byte-identical in the repo and on the live site, and all 152 decode with real content._
 
   _Open, not fixed — say the word and it becomes its own item:_ **Diagonal (soft) spills** about
   2% of its crest pixels across the seam onto the other team's colour. It predates this change
