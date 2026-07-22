@@ -225,14 +225,12 @@ function teamsInGroup(g){
 /* ---------- searchable comboboxes (country + team pickers) ----------
    Each combobox is a text input + a filtered list + a hidden input that keeps
    the same id as the old <select>, so everything reading $("club2").value etc.
-   keeps working. Country boxes list the groups; team boxes search every team
-   in the current set (name or country), so you can find a club without first
-   picking its country. */
+   keeps working. A country box lists the groups; the team box next to it only
+   offers clubs/nations from the country picked in that country box. */
 function optGroups(){ return groupsOf().map(g=>({value:g,label:g})); }
-function optTeams(){
-  return Object.entries(DB())
-    .sort((a,b)=>a[1].name.localeCompare(b[1].name,"en"))
-    .map(([k,c])=>({value:k,label:c.name,sub:groupKey(c)}));
+/* teams limited to the country/continent chosen in the paired country box */
+function optTeamsIn(groupId){
+  return ()=>teamsInGroup($(groupId).value).map(([k,c])=>({value:k,label:c.name}));
 }
 function makeCombo(id,getOptions,onSelect){
   const input=$(id+"_in"), list=$(id+"_list"), hidden=$(id);
@@ -249,12 +247,23 @@ function makeCombo(id,getOptions,onSelect){
       +(o.sub?'<span class="coSub">'+esc(o.sub)+'</span>':'')+'</div>').join('')
       :'<div class="comboEmpty">No matches</div>';
   }
-  function openList(){open=true;list.classList.add("on");input.setAttribute("aria-expanded","true");}
-  function closeList(){open=false;list.classList.remove("on");input.setAttribute("aria-expanded","false");}
+  /* keep the open list within the space the on-screen keyboard leaves (iOS):
+     size it to the room below the field, or flip it above when that is tight */
+  function positionList(){
+    const vv=window.visualViewport, r=input.getBoundingClientRect();
+    const vTop=vv?vv.offsetTop:0, vBot=vv?vv.offsetTop+vv.height:window.innerHeight;
+    const below=vBot-r.bottom-12, above=r.top-vTop-12;
+    const up=below<230 && above>below;
+    list.classList.toggle("up",up);
+    list.style.maxHeight=Math.max(132,Math.min(360,up?above:below))+"px";
+  }
+  function openList(){open=true;list.classList.add("on");input.setAttribute("aria-expanded","true");
+    positionList();requestAnimationFrame(positionList);setTimeout(positionList,300);}
+  function closeList(){open=false;list.classList.remove("on","up");input.setAttribute("aria-expanded","false");}
   function scrollActive(){const el=list.children[active];if(el&&el.scrollIntoView)el.scrollIntoView({block:"nearest"});}
   function commit(v){hidden.value=v;input.value=labelFor(v);closeList();input.blur();onSelect(v);}
   input.addEventListener("focus",()=>{input.value="";active=0;openList();draw();});
-  input.addEventListener("input",()=>{if(!open)openList();active=0;draw();});
+  input.addEventListener("input",()=>{if(!open)openList();active=0;draw();positionList();});
   input.addEventListener("keydown",e=>{
     if(e.key==="ArrowDown"){e.preventDefault();if(!open){openList();draw();return;}active=Math.min(active+1,filtered.length-1);draw();scrollActive();}
     else if(e.key==="ArrowUp"){e.preventDefault();active=Math.max(active-1,0);draw();scrollActive();}
@@ -262,18 +271,24 @@ function makeCombo(id,getOptions,onSelect){
     else if(e.key==="Escape"){e.preventDefault();input.value=labelFor(hidden.value);closeList();input.blur();}
   });
   input.addEventListener("blur",()=>{setTimeout(()=>{if(!open)return;input.value=labelFor(hidden.value);closeList();},140);});
-  list.addEventListener("mousedown",e=>{const o=e.target.closest(".comboOpt");if(o){e.preventDefault();commit(o.dataset.v);}});
+  /* pointerdown (fires before blur) so a tap selects on touch and desktop alike */
+  list.addEventListener("pointerdown",e=>{const o=e.target.closest(".comboOpt");if(o){e.preventDefault();commit(o.dataset.v);}});
+  if(window.visualViewport){const rz=()=>{if(open)positionList();};
+    window.visualViewport.addEventListener("resize",rz);
+    window.visualViewport.addEventListener("scroll",rz);}
   return {set(v){hidden.value=v;input.value=labelFor(v);}, get(){return hidden.value;}};
 }
 const combos={};
 combos.groupPick=makeCombo("groupPick",optGroups,g=>{const t=teamsInGroup(g)[0];if(t)loadClub(t[0]);});
-combos.clubPick =makeCombo("clubPick", optTeams, k=>loadClub(k));
+combos.clubPick =makeCombo("clubPick", optTeamsIn("groupPick"), k=>loadClub(k));
 combos.group2   =makeCombo("group2",   optGroups,g=>{
   const t=teamsInGroup(g).find(([k])=>k!==activeClub)||teamsInGroup(g)[0];
-  if(t)combos.club2.set(t[0]); combos.group2.set(g); render();});
-combos.club2    =makeCombo("club2",    optTeams, k=>{combos.group2.set(groupKey(DB()[k]));render();});
+  if(t)combos.club2.set(t[0]); render();});
+combos.club2    =makeCombo("club2",    optTeamsIn("group2"), k=>render());
 
-/* set the four pickers to reflect the current team 1 + team 2 */
+/* set the four pickers to reflect the current team 1 + team 2.
+   a country box is always set before the team box beside it, because the team
+   box's options are scoped to whatever its country box currently holds. */
 function drawPickers(){
   const a=DB()[activeClub]||Object.values(DB())[0];
   const g1=groupKey(a);
@@ -286,8 +301,8 @@ function drawPickers(){
               ||Object.entries(DB()).find(([k])=>k!==activeClub);
     k2=other?other[0]:activeClub;
   }
-  combos.club2.set(k2);
   combos.group2.set(groupKey(DB()[k2]||a));
+  combos.club2.set(k2);
 }
 
 const val=id=>$(id).value;
@@ -503,8 +518,8 @@ $("swapClubs").addEventListener("click",()=>{
   const right=$("club2").value, left=activeClub;
   if(!DB()[right]||right===left) return;
   loadClub(right);
-  combos.club2.set(left);
   combos.group2.set(groupKey(DB()[left]));
+  combos.club2.set(left);
   render();
 });
 
