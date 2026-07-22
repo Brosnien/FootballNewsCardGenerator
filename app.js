@@ -334,6 +334,20 @@ function setFig(id,txt){
    on single-team cards (News/Quote/Stats); on transfer & result both teams show,
    one per side. Teams without a file simply show nothing. */
 const crestSeen={};   /* key -> "ok" | "no", so we probe each file once */
+/* where each crest sits per split shape [background-position, size]. masks and
+   clip-path don't survive html2canvas export, so instead of clipping the crest
+   to the seam we position it deep inside its own team's colour region — a strong
+   diagonal makes team 1 a top-left triangle, a curve pins each team to a side —
+   so it never reaches (and never crosses) the seam. */
+const WALLPOS={
+  vert:  {a:["-12% 118%","108%"], b:["112% 118%","108%"]},
+  diag:  {a:["-16% 116%","104%"], b:["116% 116%","104%"]},
+  diag2: {a:["2% 14%","72%"],     b:["122% 122%","86%"]},
+  diagr: {a:["-22% 124%","86%"],  b:["98% 12%","72%"]},
+  curve: {a:["-30% 116%","92%"],  b:["116% 116%","104%"]},
+  curved:{a:["-46% 112%","80%"],  b:["116% 116%","104%"]},
+  curver:{a:["-16% 116%","104%"], b:["132% 112%","80%"]},
+};
 function updateWall(tpl){
   const wall=$("vWall"), wa=$("vWallA"), wb=$("vWallB");
   const op=parseFloat($("crestBg").value)||0;
@@ -343,10 +357,11 @@ function updateWall(tpl){
   /* show team `key`'s crest on layer `el`; a first-seen file is probed once and,
      when it loads, updateWall re-runs so the show goes through this same
      synchronous path (no fragile async closures) */
-  const put=(el,key)=>{
+  const put=(el,key,pos)=>{
     if(!op||!key||crestSeen[key]==="no"){ hide(el); return; }
     if(crestSeen[key]==="ok"){
       el.style.backgroundImage="url('crests/"+key+".png')";
+      if(pos){ el.style.backgroundPosition=pos[0]; el.style.backgroundSize=pos[1]+" auto"; }
       el.style.setProperty("--wallOp",op); el.classList.remove("hide"); return;
     }
     hide(el);                                    /* until the file is confirmed */
@@ -356,7 +371,11 @@ function updateWall(tpl){
     img.src="crests/"+key+".png";
   };
   if(single){ hide(wa); hide(wb); put(wall,activeClub); }
-  else if(two){ hide(wall); put(wa,activeClub); put(wb,$("club2").value); }
+  else if(two){
+    hide(wall);
+    const pp=WALLPOS[tpl==="result"?"vert":$("split").value]||WALLPOS.vert;
+    put(wa,activeClub,pp.a); put(wb,$("club2").value,pp.b);
+  }
   else{ [wall,wa,wb].forEach(hide); }
 }
 /* one line = one event; "(R)" marks it as a red card */
