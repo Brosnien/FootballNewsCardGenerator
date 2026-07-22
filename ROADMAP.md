@@ -4,9 +4,9 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — Crest prompt 1 done: `tools/fetch_crests.py` +
-`tools/crest-overrides.json` exist and the dry run now resolves **152/152**, no misses. Fixed
-the API path in the findings table and found real names for `rapid` and `jordan`. Next: prompt 2._
+_Last updated: 2026-07-22 — Crest prompts 1 and 2 done: the fetcher exists and **all 152
+crests are now real artwork** (92 nations + 60 clubs, 0 misses, `crests/` 3.1 MB → 16 MB).
+Only prompt 3 — eyeball the cards and tick the item — is left on Next up._
 
 ---
 
@@ -56,9 +56,9 @@ the API path in the findings table and found real names for `rapid` and `jordan`
 
 - [ ] Now that we use GitHub, maybe we can use Crests (Team Logo) automatically but would need all pngs of the teams. Really depends on how hard is to get all the teams logos in png form (would love to be automatic).
 
-  **Where it stands:** `crests/` holds 152 PNGs — one per team key, exact coverage, zero
-  missing and zero orphans — but they are all **generic placeholders** (shield + initials).
-  The display side is finished, so the only thing missing is real artwork.
+  **Where it stands:** `crests/` holds 152 **real** PNGs — one per team key, exact coverage,
+  zero missing and zero orphans, all fetched from TheSportsDB on 2026-07-22. Prompts 1 and 2
+  are done; only prompt 3 (eyeball the cards in the browser, then tick this item) is left.
 
 ### Findings — already tested, don't re-derive
 
@@ -118,12 +118,22 @@ _Landed: [tools/fetch_crests.py](tools/fetch_crests.py) and
 recording id/name/country/URL per key — that doubles as the "this one is real, skip it"
 check, so re-runs cost nothing and `--force` overrides it._
 
-**Prompt 2 — fetch for real, in two batches.**
+**Prompt 2 — fetch for real, in two batches.** ✅ **done 2026-07-22**
 > Roadmap Next up, prompt 2: run the fetcher for nations, then for clubs, and report the counts.
 
 Nations first (92, the clean set) so a rate-limit surprise costs one batch, not the run.
 The script writes straight into `crests/<key>.png`. Report = counts + any new MISS.
 Commit each batch separately so a bad batch is one `git revert`.
+
+_Result: **152/152 real crests, 0 misses** — 92 nations, 60 clubs, all distinct images,
+512×512 bar two (256 and 500). `crests/` grew 3.1 MB → 16 MB. Provenance for every key is in
+`tools/crest-sources.json`._
+
+_One lesson worth keeping: the nations run was started twice at once, which doubled the
+request rate (three false "rate-limit" misses) and interleaved both runs' manifest writes
+into invalid JSON. The PNGs were never at risk, but 22 provenance records were lost and had
+to be re-fetched. The script now writes the manifest atomically after each crest and takes a
+lockfile, so a second run refuses to start. **Run one batch at a time.**_
 
 **Prompt 3 — eyeball and ship.**
 > Roadmap Next up, prompt 3: open the app and check the crest backdrop on a few cards, then commit.
