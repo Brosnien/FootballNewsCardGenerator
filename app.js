@@ -334,6 +334,12 @@ function setFig(id,txt){
    on single-team cards (News/Quote/Stats); on transfer & result both teams show,
    one per side. Teams without a file simply show nothing. */
 const crestSeen={};   /* key -> "ok" | "no", so we probe each file once */
+/* Bump whenever the artwork in crests/ changes. The filenames stay the same when
+   a crest is replaced, so a browser that already has one keeps serving the old
+   picture — which is how the placeholder shields survived the switch to real
+   crests. The query string gives the new artwork a new URL. */
+const CREST_V="2026-07-22";
+const crestURL=key=>"crests/"+key+".png?v="+CREST_V;
 /* where each crest sits per split shape. masks and clip-path don't survive
    html2canvas export, so instead of clipping the crest to the seam we place it
    deep inside its own team's colour region — a strong diagonal makes team 1 a
@@ -372,7 +378,7 @@ function updateWall(tpl){
   const put=(el,key,g)=>{
     if(!op||!key||crestSeen[key]==="no"){ hide(el); return; }
     if(crestSeen[key]==="ok"){
-      el.style.backgroundImage="url('crests/"+key+".png')";
+      el.style.backgroundImage="url('"+crestURL(key)+"')";
       if(g){
         /* the card is a fixed 1080 x H box (the preview only transform-scales
            it), so laying the crest out in card pixels is exact */
@@ -387,7 +393,7 @@ function updateWall(tpl){
     const img=new Image();
     img.onload =()=>{ crestSeen[key]="ok"; updateWall($("tpl").value); };
     img.onerror=()=>{ crestSeen[key]="no"; };
-    img.src="crests/"+key+".png";
+    img.src=crestURL(key);
   };
   if(single){ hide(wa); hide(wb); put(wall,activeClub); }
   else if(two){

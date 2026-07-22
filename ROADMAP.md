@@ -6,8 +6,9 @@ the author's own — notes in _italics_ are added by Claude.
 
 _Last updated: 2026-07-22 — **"Next up" is finished** (152/152 real crests, verified on the live
 site and through PNG export; B8 closes with it), and the crest placement on the five awkward
-split shapes is fixed — bigger crests, better placed, measured to not cross the seam. Next by the
-stated order is **B3**._
+split shapes is fixed — bigger crests, better placed, measured to not cross the seam. Also fixed
+the reason old placeholder crests kept showing on a device that had already loaded them
+(`CREST_V` cache-buster). Next by the stated order is **B3**._
 
 ---
 
@@ -186,6 +187,22 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
   crest across the card. It now holds fractions of the card and computes pixels
   ([app.js](app.js), `WALLPOS` + `put`). Vertical and Diagonal-soft were left alone and still
   render within 0.4px of before.
+
+- [x] In the nation tab I can only see Romania's crest. Check for the other nations.
+
+  **Not a missing-crest bug — a caching one.** Checked all 92 nations against the live site:
+  every one returns HTTP 200 and every one renders its own crest, none hidden, none falling
+  back to another team's. Same for all 60 clubs. The artwork replaced the placeholders under
+  the *same filenames*, so any browser holding an old `crests/<key>.png` keeps serving the
+  placeholder shield — nothing in the URL told it the picture had changed.
+
+  Fixed at the source: `CREST_V` in [app.js](app.js) is appended to every crest URL, so new
+  artwork gets a new URL. Bump it whenever a crest is replaced (noted in [README.md](README.md)).
+  Verified after the change: 92/92 nations and 60/60 clubs load, and export still renders the
+  crest with the query string in place.
+
+  _If a device still shows old crests after this deploys, it is holding a stale `app.js`;
+  closing and reopening the home-screen app clears it._
 
   _Open, not fixed — say the word and it becomes its own item:_ **Diagonal (soft) spills** about
   2% of its crest pixels across the seam onto the other team's colour. It predates this change

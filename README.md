@@ -47,6 +47,10 @@ result cards both teams show, each crest placed inside its own colour region.
 
 - Crests load on demand from `crests/<team-key>.png` (e.g. `crests/arsenal.png`,
   matching the key in `teams.json`). A team with no file simply shows nothing.
+- **If you replace a crest's artwork, bump `CREST_V` in [app.js](app.js).** The
+  filename doesn't change when the picture does, so browsers that already have
+  the old one keep showing it; `CREST_V` is appended to the URL and forces the
+  new artwork through.
 - All 152 teams have a real crest, fetched from [TheSportsDB](https://www.thesportsdb.com/).
   Club and national crests are trademarks — they're used here as editorial
   artwork, and how you publish them is your call.
