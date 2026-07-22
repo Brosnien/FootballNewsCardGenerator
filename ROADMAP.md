@@ -7,7 +7,9 @@ the author's own — notes in _italics_ are added by Claude.
 _Last updated: 2026-07-22 — **B3 prompt 1 done**: the stale-date bug is fixed (a returning
 session now stamps today unless you typed a date yourself), and sections the current template
 can't use collapse themselves — a Result card opens with only the Result section, no empty Text
-box to scroll past. Next is **B3 prompt 2**._
+box to scroll past. Then the source moved twice on request: **Handle/Outlet now sit under
+Category/Date in the pane, and the source prints bottom-left under the card's rule** instead of
+crowding the header. Next is **B3 prompt 2**._
 
 _Previously: **"Next up" is finished** (152/152 real crests, verified on the live
 site and through PNG export; B8 closes with it), and the crest placement on the five awkward
@@ -57,6 +59,14 @@ whole session._
       — _answered: stays centralised. Speed came from splitting into cached static files instead (commit `d363388`), so only the small files re-download._
 - [x] Remove web/phone selector, keep it on auto
       — _layout toggle removed; `isWeb()` decides automatically._
+- [x] Handle and outlet: the fields go under the category and date fields; in the picture they
+      go on the left, under the graphical line.
+      — _Done 2026-07-22. In the pane they are a row directly beneath Category/Date inside Text,
+      so the whole byline is filled in one place (they were in the closed Source section, which
+      now holds only Reliability). On the card, `#bSrc` moved out of the top-right header into
+      `.foot` under `.rule`, left-aligned — class `srcHead` → `srcFoot`, 22px → 26px
+      ([styles.css](styles.css), [generator-ios.html](generator-ios.html)). On a split card it
+      still takes `--inkBoth`: forcing a light band pair flips it to black, checked live._
 
 ---
 

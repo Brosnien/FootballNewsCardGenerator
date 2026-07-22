@@ -215,7 +215,7 @@
   .card.tpl-move .cl.b{color:var(--nameB)}
   .card.split .arrow{color:var(--inkBoth)}
   .card.split .player,.card.split .fee,.card.split .src,.card.split .tier,
-  .card.split .srcHead{color:var(--inkBoth)}
+  .card.split .srcFoot{color:var(--inkBoth)}
   .card.split .rule{background:var(--inkBoth)}
   .card.split .clubtag{background:var(--trim2);color:var(--ontrim2)}
 
@@ -246,8 +246,9 @@
     font-weight:800;font-size:27px;letter-spacing:.18em;text-transform:uppercase;
     padding:14px 21px 13px;white-space:nowrap}
   .crest{height:80px;width:auto;display:block;object-fit:contain}
-  .srcHead{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:22px;letter-spacing:.08em;
-    text-transform:uppercase;text-align:right;opacity:.85}
+  /* the source sits under the foot rule, bottom-left */
+  .srcFoot{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:26px;letter-spacing:.08em;
+    text-transform:uppercase;opacity:.85;margin-top:16px}
 
   .content{flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end;
     min-height:0;padding:28px 0}
