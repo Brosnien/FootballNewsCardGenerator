@@ -71,5 +71,21 @@ crest each key came from is recorded in `tools/crest-sources.json`.
 Run one fetch at a time: two concurrent runs double the request rate and trip
 the API's limit.
 
+### Pulling in whole divisions
+`tools/leagues.json` lists the clubs of the first two divisions of the top 5
+leagues plus Romania — it has to be hand-listed because TheSportsDB's league
+endpoints are capped on the free key (see the comment at the top of the file).
+
+```bash
+python3 tools/fetch_crests.py --leagues            # the whole roster
+python3 tools/fetch_crests.py --leagues --only rodez,laval
+```
+
+This resolves each club and writes `tools/teams-proposed.json` — name, country,
+`c1/c2/c3` taken from the API's own `strColour1/2/3`, plus the badge URL. It
+touches nothing else: merging into `teams.json` and downloading the crests is a
+separate, deliberate step. `--only` re-resolves a few clubs and merges them back
+into the proposal, which is how you clear a MISS without repeating the run.
+
 On iPhone: open the live link in Safari → Share → **Add to Home Screen** to run
 it full-screen like an app.

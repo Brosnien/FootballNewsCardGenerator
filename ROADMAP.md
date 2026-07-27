@@ -4,7 +4,16 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-27 — **B10 done: the card now exports at 2×** (2160 × 2700 instead of
+_Last updated: 2026-07-28 — **B13 prompt 1 done**: the fetcher now scans whole divisions
+(`--leagues`) and has proposed **182 new clubs** — teams.json would go 60 → 242 — with colours
+and badge URLs, written to `tools/teams-proposed.json` and nothing else touched. One correction
+to an earlier finding: **colours are not free below the top flights** (51 of 182 complete, 85
+with none), so prompt 2 needs a call from you: ship all 182, or only the six top flights.
+Also **dropped B1, B2 and B6 (the automation items)** at the author's request, and fixed two
+crests that were the wrong clubs entirely (`bayern` was Bayern Hof, `frankfurt` was a club
+called Frankfurt)._
+
+_Previously: **B10 done: the card now exports at 2×** (2160 × 2700 instead of
 1080 × 1350) on all three capture paths, driven by one `EXPORT_SCALE` constant so a fallback
 can't quietly undo it. Costs ~0.3 s. If 2× fails or comes back blank the export retries at 1×,
 so the worst case is today's image. **Still to check: one export on your iPhone** — there's no
@@ -14,8 +23,8 @@ _Previously: **B9 done: captions now emit exactly 5 hashtags**, the Instagram
 limit, and the build order was turned into a priority order so both teams survive on transfer
 and result cards (the second team sits in slot 2; the generic `#football` `#soccer` pair is what
 gets cut). Verified in the browser on all five templates and on nations. Also **moved the three
-automation items (B2, B6, B1) into their own section at the end of the file** — the manual flow
-comes first._
+automation items (B2, B6, B1) to the end of the file** — the manual flow comes first. (They were
+dropped outright the next prompt; see the Backlog table.)_
 
 _Previously: **five new items added (B9–B13)** from the author's notes, each
 costed with a prompt to paste. Two are outright defects: Instagram cut the hashtag cap to 5 in
@@ -272,27 +281,31 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
 ## Backlog
 
-Items stay in the author's original order, except that the three automation items (**B2, B6,
-B1**) were moved to their own section at the end of the file on 2026-07-27, at the author's
-request — see **Automation — last**. B9–B13 were added 2026-07-27. **Proposed order is now
-B13 → B5 → B11 → B12**, then the automation three. B13 comes first because the crest fetcher
-built for "Next up" already does most of it. B4, B7 and B8 aren't work items. One prompt per
-row; paste the quoted line as the whole prompt.
+Items stay in the author's original order, minus the three automation items (**B1, B2, B6**),
+dropped on 2026-07-27 at the author's request — see the note under the table. B9–B13 were added
+2026-07-27. **Proposed order is now B13 → B5 → B11 → B12.** B13 comes first because the crest
+fetcher built for "Next up" already does most of it. B4, B7 and B8 aren't work items. One prompt
+per row; paste the quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B13 | Many more teams (top 5 ×2 + Romania) | 2 | — |
+| B13 | Many more teams (top 5 ×2 + Romania) | 1 left | prompt 2 needs a call on 85 colourless clubs |
 | B5 | Reporters picker | 1 | — |
 | B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
 | B12 | Colour picker for the second team | 1 | — |
-| B6 | Translation (NO2) — _automation_ | 2 | a decision (below) |
-| B2 | Auto-pull from X — _automation_ | 1 spike | a decision (below) |
-| B1 | Use of the online repo — _automation_ | 1 | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
 | B9 | Cap hashtags at 5 + both teams | done | — |
 | B10 | Sharper exported image | done | a check on your phone |
 | B7 | Posts vs reels | 0 | — |
 | B8 | Crest overlay | 0 | done with Next up |
+| B1, B2, B6 | Automation — **dropped** 2026-07-27 | — | — |
+
+**Dropped on 2026-07-27, at the author's request:** B1 (use of the online repo), B2 (auto-pull
+from X) and B6 (translation). They were the three items that automate the flow rather than speed
+up making a card by hand, and none of them was going to be started. The item text is gone from
+this file but not from history — `git show 4006a4f:ROADMAP.md` still has all three in full,
+research included. Say the word and any of them comes back. The findings below are kept because
+they cost real testing and stay true whatever we build next.
 
 ### Shared findings — tested 2026-07-22, don't re-derive
 
@@ -414,10 +427,10 @@ row; paste the quoted line as the whole prompt.
 
 - [ ] Should post on instagram in form of: posts or reels of posts? (are these both?) **(B7)**
       — _They're different things: a feed post is the static image, a reel is video. The API
-      does both, free. A text card is a still image, so **feed post — and carousel when you
-      add languages (B6)**. Reels reach further but need a video template that doesn't exist
-      yet; not worth building until the manual flow is fast. Nothing to code here; the
-      publishing route itself is B1 + a public URL._
+      does both, free. A text card is a still image, so **feed post**. Reels reach further but
+      need a video template that doesn't exist yet; not worth building until the manual flow is
+      fast. Nothing to code here — and publishing through the API was part of the automation
+      work dropped on 2026-07-27, so today the answer is simply: post the exported PNG by hand._
 
 - [ ] Maybe add overlaying crests/logos as background with a dimmer opacity? Big crests, occupying all of the team's card - Ex: Cannon for Arsenal occupies 50%, Spurs chicken 50%. (Transfers and Matches are the affected templates) **(B8)**
       — _**Done 2026-07-22.** `updateWall()` + `WALLPOS` place each team's crest deep inside its own
@@ -559,56 +572,56 @@ _Added 2026-07-27._
   review the data first, commit the crests second — because ~230 new crests is ~29 MB.
   > Roadmap B13 prompt 1: extend the fetcher to emit team name + colours + crest for the first two divisions of the top 5 leagues and Romania, per ROADMAP.md. Dry run, summary table only.
 
+  **Prompt 1 done 2026-07-28.** `--leagues` reads a new [tools/leagues.json](tools/leagues.json)
+  (228 clubs), resolves each one and writes [tools/teams-proposed.json](tools/teams-proposed.json)
+  — name, country, c1/c2/c3, badge URL — touching neither `teams.json` nor `crests/`.
+  **182 new clubs resolved, 45 were already ours, 1 miss.** teams.json goes 60 → **242**.
+
+  | Division | listed | new | already have | MISS | all 3 colours | some | none |
+  |---|---|---|---|---|---|---|---|
+  | England Premier League | 20 | 10 | 10 | 0 | 5 | 5 | 0 |
+  | England Championship | 24 | 24 | 0 | 0 | 9 | 10 | 5 |
+  | Spain La Liga | 20 | 12 | 8 | 0 | 5 | 6 | 1 |
+  | Spain Segunda | 21 | 20 | 0 | 1 | 3 | 5 | 12 |
+  | Italy Serie A | 20 | 12 | 8 | 0 | 6 | 5 | 1 |
+  | Italy Serie B | 20 | 20 | 0 | 0 | 4 | 2 | 14 |
+  | Germany Bundesliga | 18 | 11 | 7 | 0 | 7 | 4 | 0 |
+  | Germany 2. Bundesliga | 18 | 18 | 0 | 0 | 2 | 3 | 13 |
+  | France Ligue 1 | 18 | 12 | 6 | 0 | 7 | 4 | 1 |
+  | France Ligue 2 | 18 | 18 | 0 | 0 | 3 | 2 | 13 |
+  | Romania SuperLiga | 16 | 10 | 6 | 0 | 0 | 0 | 10 |
+  | Romania Liga II | 15 | 15 | 0 | 0 | 0 | 0 | 15 |
+  | **TOTAL** | **228** | **182** | **45** | **1** | **51** | **46** | **85** |
+
+  **The one thing that did not hold: "colours are free".** It's true for the top flights and
+  false below them — **51 of 182** come back with all three, 46 with one or two, and **85 with
+  none at all**, Romania being 0 for 25 in both divisions. Every proposed club still carries a
+  usable `c1/c2/c3` (missing values fall back to a neutral pair, and the app's ink logic keeps
+  text readable), but ~85 clubs will look generic until someone types their real colours. That
+  is the actual cost of B13 now, and it is yours to decide before prompt 2: **ship all 182 and
+  fix colours as you use them**, or **cut the roster to the divisions where the data is good**
+  (the six top flights alone are 67 new clubs, 30 of them fully coloured).
+
+  _The remaining MISS is **Deportivo La Coruña** — only its B team (Deportivo Fabril) and a
+  women's side are searchable, under any spelling. It needs an id someone digs up by hand, or
+  it gets dropped._
+
+  _Also fixed while checking what B13 would collide with: **`bayern` and `frankfurt` were the
+  wrong clubs' crests** — "Bayern" had matched **Bayern Hof** and "Frankfurt" a club simply
+  called **Frankfurt**, exactly the short-name trap this file already warns about. Both are now
+  pinned by id and re-fetched (`CREST_V` bumped to 2026-07-28). `dortmund` had the same wrong
+  match (ASC 09 Dortmund) — that's what your "Adjusted Dortmund Logo" commit was fixing by hand;
+  your PNG is untouched, only its provenance record now names the right club._
+
+  ### What prompt 1 taught us — don't re-derive
+
+  | Question | Answer |
+  |---|---|
+  | Can the API list a league's clubs? | **No, not on the free key.** `lookup_all_teams.php?id=` returns English League 1 for every league id; `search_all_teams.php?l=` caps at 10; `?c=<country>` caps at 10 and returns junk; `lookuptable.php` caps at 5 rows. Hence a hand-listed `tools/leagues.json`. |
+  | Are `strColour1/2/3` really there? | Only above the second tier — see the table. Big clubs yes, Serie B / Ligue 2 / Romania mostly empty. |
+  | Club not findable by name? | Try `searchevents.php?e=<Team>_vs_<Opponent>` and read `idHomeTeam`. That is how Nottingham Forest was found (133720). |
+  | Silent-wrong trap, again | "Nottingham Forest FC" resolves to id 148600 — a **netball** side formed in 2025. The sport filter caught it; without it we'd have shipped a netball badge. |
+  | Other data quirks | Saint-Étienne is filed `strGender: Mixed`; Swansea/Wrexham are `Wales`, FC Andorra is `Andorra`; `ß` does not decompose under NFKD, so Preußen Münster only matches after mapping it to `ss` (fixed in `norm()`). |
+  | Cost of a full run | ~229 requests at 2 s = **~15 minutes**. `--only <keys>` re-resolves a handful and merges them back into the proposal — use it, don't re-run the lot. |
+
   > Roadmap B13 prompt 2: merge the reviewed teams into teams.json and fetch their crests, per ROADMAP.md.
-
----
-
-## Automation — last
-
-_Moved here 2026-07-27 at the author's request: everything that automates the flow itself
-(pulling posts in, translating, publishing out) now sits after the manual-flow work. The item
-text is unchanged, only the position. Each of these is blocked on a decision, and none of them
-pays off until making a card by hand is fast — which is what B5, B10, B11, B12 and B13 are for._
-
-- [ ] Can we really pull the info from one text automatically, free of charge? (Get a Twitter/Instagram/Threads post as soon as it's posted and automatically post it to socials.) THIS CHANGES THE WHOLE DYNAMIC **(B2)**
-
-  **Answer: not free — but far cheaper than the old $200/month tier.** With the 24 h
-  dedup, cost scales with how many *unique* posts you watch, not how often you poll:
-
-  | Watching | Unique posts/month | Cost |
-  |---|---|---|
-  | 5 reporters | ~1,200 | **~$6/mo** |
-  | 20 reporters | ~6,000 | **~$30/mo** |
-
-  So the real question isn't feasibility, it's whether it's worth ~$6–30/month to you.
-  **Decide that before any code is written** — everything else in this file assumes manual.
-  Also note the honest limit: pulling a post is easy, but turning free-form text into
-  headline / player / fee / reliability is a judgement call, so a human check stays in
-  the loop either way.
-  > Roadmap B2: spike only, no app code — prove we can pull one named reporter's latest posts and map one to card fields. Report cost per run.
-
-- [ ] Can we automate the translation in anyway? (1st priority Romanian, 2nd Italian/German/Spanish for relevant teams). Should we keep it all in one instagram profile or do multiple based on language? Can maybe bypass this if we use carousels (easy but don't know if it will go well) in Instagram (Add a flag in a corner for the corresponding language used.). NO2 PRIORITY, this would be relevant as the page would be only a copy-paste with a nice design in English. **(B6)**
-
-  **One profile with carousels** — a carousel is one post no matter how many language slides
-  it holds, so it costs nothing extra in reach or rate limit, and it avoids running four
-  accounts. That answers the profile question.
-
-  Split the work by what's actually hard. The card's fixed labels (`L`, [app.js:49](app.js:49))
-  are already centralised and few — **hand-translate those once, free, no API**. Only the
-  text you type (headline, sub, quote) would need machine translation, and that's where the
-  caveat is: calling DeepL from a static GitHub Pages app would expose the key in the page
-  and hit CORS, so it needs a proxy. Given a card is ~200 characters, pasting a translation
-  by hand is not obviously worse than building that proxy.
-  > Roadmap B6 prompt 1: add a language switch for the card's fixed labels plus a corner flag badge, per ROADMAP.md. No translation API.
-
-  > Roadmap B6 prompt 2 (only if wanted): add machine translation for the typed text, per ROADMAP.md — discuss the key/CORS options first.
-
-- [ ] Brainstorm ideas based on the fact that we have an online repository now and can expand to multiple files as we use GitHub Sites (syncs?). **(B1)**
-
-  The one that actually pays: Instagram's publishing API refuses anything that isn't at a
-  public URL, and GitHub Pages is one. Committing an exported card to the repo turns it into
-  a publishable asset — that's the unlock for B7, not a filing tweak.
-  Cheap wins in the same area: a `crests/` manifest so the app stops probing for files that
-  don't exist, presets versioned in the repo instead of only `localStorage` (export/import
-  JSON already exists), `teams.json` as a dataset others can PR.
-  > Roadmap B1: add a crests manifest so the app stops probing for missing files, per ROADMAP.md.

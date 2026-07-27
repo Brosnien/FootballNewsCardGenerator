@@ -340,7 +340,7 @@ const CREST_TRIES=3;  /* attempts before a crest is treated as genuinely absent 
    a crest is replaced, so a browser that already has one keeps serving the old
    picture — which is how the placeholder shields survived the switch to real
    crests. The query string gives the new artwork a new URL. */
-const CREST_V="2026-07-22";
+const CREST_V="2026-07-28";
 const crestURL=key=>"crests/"+key+".png?v="+CREST_V;
 /* where each crest sits per split shape. masks and clip-path don't survive
    html2canvas export, so instead of clipping the crest to the seam we place it

@@ -108,13 +108,13 @@
     "fetched": "2026-07-22"
   },
   "bayern": {
-    "id": "155704",
-    "team": "Bayern Hof",
+    "id": "133664",
+    "team": "Bayern Munich",
     "country": "Germany",
-    "url": "https://r2.thesportsdb.com/images/media/team/badge/musgh91779580451.png",
-    "matched_by": "search 'Bayern'",
-    "bytes": 35902,
-    "fetched": "2026-07-22"
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/01ogkh1716960412.png",
+    "matched_by": "override id",
+    "bytes": 126065,
+    "fetched": "2026-07-28"
   },
   "belgium": {
     "id": "134515",
@@ -333,13 +333,14 @@
     "fetched": "2026-07-22"
   },
   "dortmund": {
-    "id": "155917",
-    "team": "ASC 09 Dortmund",
+    "id": "133650",
+    "team": "Borussia Dortmund",
     "country": "Germany",
-    "url": "https://r2.thesportsdb.com/images/media/team/badge/hkrkzc1781070994.png",
-    "matched_by": "search 'Dortmund'",
-    "bytes": 138087,
-    "fetched": "2026-07-22"
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tqo8ge1716960353.png",
+    "matched_by": "override id (crest-overrides.json)",
+    "note": "local PNG is the author's own (commit f959985), not this badge; the earlier automatic fetch had grabbed ASC 09 Dortmund (id 155917)",
+    "bytes": 81031,
+    "fetched": "2026-07-23"
   },
   "dr-congo": {
     "id": "136475",
@@ -459,13 +460,13 @@
     "fetched": "2026-07-22"
   },
   "frankfurt": {
-    "id": "156109",
-    "team": "Frankfurt",
+    "id": "133814",
+    "team": "Eintracht Frankfurt",
     "country": "Germany",
-    "url": "https://www.thesportsdb.com/images/media/team/badge/kvj7vi1783230646.png",
-    "matched_by": "search 'Frankfurt'",
-    "bytes": 25786,
-    "fetched": "2026-07-22"
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rurwpy1473453269.png",
+    "matched_by": "override id",
+    "bytes": 111533,
+    "fetched": "2026-07-28"
   },
   "galatasaray": {
     "id": "133804",

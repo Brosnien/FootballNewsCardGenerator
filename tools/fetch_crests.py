@@ -15,6 +15,14 @@ Output is a counts line plus the problem rows only - never 152 lines of log.
   python3 tools/fetch_crests.py --group nations        # fetch the clean 92 first
   python3 tools/fetch_crests.py --group clubs
   python3 tools/fetch_crests.py --only psg,inter --force
+
+--leagues is the B13 mode: it reads tools/leagues.json instead of teams.json,
+resolves every club in those divisions, and writes a *proposal* to
+tools/teams-proposed.json - name, country, c1/c2/c3 taken from the API's
+strColour1/2/3, plus the badge URL. It never touches teams.json or crests/.
+
+  python3 tools/fetch_crests.py --leagues
+  python3 tools/fetch_crests.py --leagues --country Romania
 """
 
 import argparse
@@ -37,6 +45,8 @@ TEAMS = os.path.join(ROOT, "teams.json")
 CRESTS = os.path.join(ROOT, "crests")
 OVERRIDES = os.path.join(ROOT, "tools", "crest-overrides.json")
 MANIFEST = os.path.join(ROOT, "tools", "crest-sources.json")
+LEAGUES = os.path.join(ROOT, "tools", "leagues.json")
+PROPOSED = os.path.join(ROOT, "tools", "teams-proposed.json")
 
 # The API is rate limited for real: 152 back-to-back searches fail ~38 times,
 # the same teams pass 10/10 at 2 s spacing.
@@ -76,10 +86,17 @@ STRIP_AFFIX = re.compile(
 
 # ---------------------------------------------------------------- utilities
 
+# Letters NFKD does not decompose, so stripping non-ascii would silently delete them:
+# "Preußen Münster" became "preuen munster" and stopped matching "Preussen Munster".
+LETTER_MAP = str.maketrans({"ß": "ss", "ø": "o", "Ø": "o", "đ": "d", "Đ": "d",
+                            "ł": "l", "Ł": "l", "æ": "ae", "Æ": "ae", "œ": "oe"})
+
+
 def norm(s):
     """Casefold, drop accents and punctuation, collapse whitespace."""
     if not s:
         return ""
+    s = s.translate(LETTER_MAP)
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
     s = s.lower().replace("&", " and ")
@@ -308,6 +325,163 @@ def resolve(key, team, override, is_nation):
     return None, "no soccer hit"
 
 
+# ---------------------------------------------------------------- leagues (B13)
+
+def slug(name):
+    """'Sheff Wed' -> 'sheff-wed'. Accents and punctuation are already gone."""
+    return re.sub(r"-+", "-", norm(name).replace(" ", "-")).strip("-")
+
+
+def hexnorm(c):
+    """'#fbffff' -> '#FBFFFF'; anything that is not a 6-digit hex -> ''."""
+    c = (c or "").strip()
+    if c and not c.startswith("#"):
+        c = "#" + c
+    return c.upper() if re.match(r"^#[0-9a-fA-F]{6}$", c) else ""
+
+
+def colours(cand):
+    """strColour1/2/3 map straight onto our c1/c2/c3. -> (c1, c2, c3, missing)."""
+    got = [hexnorm(cand.get("strColour%d" % i)) for i in (1, 2, 3)]
+    missing = [i + 1 for i, v in enumerate(got) if not v]
+    c1 = got[0] or "#111111"
+    c2 = got[1] or "#FFFFFF"
+    c3 = got[2] or (got[1] or "#FFFFFF")
+    return c1, c2, c3, missing
+
+
+def run_leagues(args):
+    """Resolve every club in tools/leagues.json and write a reviewable proposal.
+
+    Writes nothing but tools/teams-proposed.json: teams.json and crests/ are
+    prompt 2's job, after a human has read the proposal.
+    """
+    spec = load_json(LEAGUES)
+    if not spec:
+        sys.exit("missing %s" % LEAGUES)
+    existing = load_json(TEAMS)["clubs"]
+    manifest = load_json(MANIFEST, {}) or {}
+    known_ids = {str(v.get("id")): k for k, v in manifest.items() if v.get("id")}
+    # the same overrides the teams.json sweep uses, matched on the proposed key:
+    # a club we already had to pin by id ("Rapid" -> Rapid 1923) stays pinned here.
+    overrides = {k: v for k, v in (load_json(OVERRIDES, {}) or {}).items()
+                 if not k.startswith("_")}
+
+    proposed, rows = {}, []
+    misses, collisions, dups, nocolour = [], [], [], []
+    seen_ids = {}
+
+    # --only re-resolves a few clubs and merges them back, so fixing three MISS rows
+    # costs three requests instead of the whole 229-club run.
+    only = {slug(k) for k in args.only.split(",") if k.strip()}
+    if only:
+        proposed = (load_json(PROPOSED, {}) or {}).get("clubs", {})
+        for key in list(proposed):
+            if key in only:
+                del proposed[key]
+        seen_ids = {str(v.get("_source", {}).get("id")): v.get("name")
+                    for v in proposed.values()}
+
+    for lg in spec["leagues"]:
+        if args.country and norm(args.country) != norm(lg["country"]):
+            continue
+        label = "%s %s" % (lg["country"], lg["division"])
+        n_listed = n_new = n_have = n_miss = n_col = 0
+        for i, entry in enumerate(lg["teams"], 1):
+            search = entry["name"] if isinstance(entry, dict) else entry
+            display = entry.get("as", search) if isinstance(entry, dict) else entry
+            key = slug(display)
+            if only and key not in only:
+                continue
+            n_listed += 1
+            print("  ... %s %d/%d %s" % (label, i, len(lg["teams"]), display),
+                  file=sys.stderr, flush=True)
+
+            # a roster line may name the country the API files the club under:
+            # Swansea and Wrexham play in England but are Welsh clubs.
+            override = dict(overrides.get(key, {}))
+            if isinstance(entry, dict) and entry.get("country"):
+                override["country"] = entry["country"]
+            cand, reason = resolve(key, {"country": lg["country"],
+                                         "name": search}, override, False)
+            if not cand:
+                misses.append((label, display, reason))
+                n_miss += 1
+                continue
+
+            tid = str(cand.get("idTeam"))
+            if tid in known_ids:
+                n_have += 1                       # already a team in teams.json
+                continue
+            if tid in seen_ids:
+                dups.append((label, display, seen_ids[tid]))
+                continue
+            seen_ids[tid] = display
+
+            if key in existing or key in proposed:
+                # same key, different club: teams.json holds someone else under it
+                collisions.append((key, display, cand.get("strTeam"),
+                                   existing.get(key, {}).get("name", "another new club")))
+                key = key + "-" + slug(lg["country"])
+            c1, c2, c3, missing = colours(cand)
+            if missing:
+                nocolour.append((label, display, missing))
+            else:
+                n_col += 1
+            proposed[key] = {
+                "country": lg["country"], "name": display,
+                "c1": c1, "c2": c2, "c3": c3, "plate": "none", "crest": "",
+                "_source": {"id": tid, "team": cand.get("strTeam"),
+                            "api_country": cand.get("strCountry"),
+                            "league": label, "url": cand.get("strBadge"),
+                            "matched_by": reason, "colours_missing": missing},
+            }
+            n_new += 1
+        if n_listed:
+            rows.append((label, n_listed, n_new, n_have, n_miss, n_col))
+
+    with open(PROPOSED, "w", encoding="utf-8") as fh:
+        json.dump({"clubs": dict(sorted(proposed.items()))}, fh,
+                  indent=2, ensure_ascii=False)
+        fh.write("\n")
+
+    print("\nLEAGUE SCAN  (proposal written to tools/teams-proposed.json, "
+          "nothing else touched)")
+    print("\n%-26s %6s %6s %6s %6s %8s" % ("DIVISION", "listed", "new", "have", "MISS",
+                                           "colours"))
+    for label, listed, n_new, n_have, n_miss, n_col in rows:
+        print("%-26s %6d %6d %6d %6d %5d/%-3d" % (label, listed, n_new, n_have, n_miss,
+                                                  n_col, n_new))
+    tot = [sum(c) for c in zip(*[r[1:] for r in rows])] if rows else [0, 0, 0, 0, 0]
+    print("%-26s %6d %6d %6d %6d %5d/%-3d" % ("TOTAL", tot[0], tot[1], tot[2], tot[3],
+                                              tot[4], tot[1]))
+    print("\nteams.json today: %d clubs  ->  %d after merging the proposal"
+          % (len(existing), len(existing) + len(proposed)))
+
+    if misses:
+        print("\nMISS - not resolved, decide per row (override id, or drop):")
+        print("%-26s %-24s %s" % ("DIVISION", "club", "why"))
+        for label, name, reason in misses:
+            print("%-26s %-24s %s" % (label, name, reason))
+    if collisions:
+        print("\nKEY COLLISION - the key was taken, so the new club got a suffixed key.")
+        print("%-20s %-18s %-26s %s" % ("KEY", "new club", "resolved to", "teams.json holds"))
+        for key, name, api, held in collisions:
+            print("%-20s %-18s %-26s %s" % (key, name, api, held))
+    if dups:
+        print("\nDUPLICATE - two roster lines resolved to the same club:")
+        for label, name, first in dups:
+            print("  %-24s %-20s already taken by %s" % (label, name, first))
+    if nocolour:
+        print("\nNO COLOURS from the API for %d of the %d new clubs - they carry a neutral "
+              "default and need a hand-picked pair. Full list in the proposal file; "
+              "first 15:" % (len(nocolour), sum(r[2] for r in rows)))
+        for label, name, missing in nocolour[:15]:
+            print("  %-24s %-20s missing c%s" % (label, name,
+                                                 ",c".join(str(m) for m in missing)))
+    return 1 if misses else 0
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -320,7 +494,15 @@ def main():
                     help="re-fetch keys that already have a real crest")
     ap.add_argument("--preview", action="store_true",
                     help="download the 200x200 /preview badge (~46 KB) instead of 512x512")
+    ap.add_argument("--leagues", action="store_true",
+                    help="B13: scan tools/leagues.json and propose new teams (writes "
+                         "tools/teams-proposed.json only)")
+    ap.add_argument("--country", default="",
+                    help="with --leagues: only this country's divisions")
     args = ap.parse_args()
+
+    if args.leagues:
+        return run_leagues(args)
 
     data = load_json(TEAMS)
     overrides = {k: v for k, v in (load_json(OVERRIDES, {}) or {}).items()

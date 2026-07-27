@@ -36,7 +36,19 @@
                   "note": "id 138188; Romania also has FC U Craiova 1948 - check the crest if it looks wrong" },
   "u-cluj":     { "search": "Universitatea Cluj" },
 
+  "bayern":     { "search": "Bayern Munich",      "id": "133664",
+                  "note": "'Bayern' matched Bayern Hof (id 155704) - a wrong crest shipped 2026-07-22" },
+  "dortmund":   { "search": "Borussia Dortmund",  "id": "133650",
+                  "note": "'Dortmund' matched ASC 09 Dortmund (id 155917); the PNG was replaced by hand in f959985" },
+  "frankfurt":  { "search": "Eintracht Frankfurt", "id": "133814",
+                  "note": "'Frankfurt' matched a club simply called Frankfurt (id 156109)" },
+
   "czechia":    { "search": "Czech Republic" },
+
+  "nottm-forest":  { "id": "133720",
+                     "note": "the football club is unsearchable by name; 'Nottingham Forest FC' returns id 148600, which is a NETBALL side formed 2025. Found via searchevents.php?e=Nottingham_Forest_vs_Arsenal -> idHomeTeam" },
+  "saint-etienne": { "id": "133717",
+                     "note": "listed as Saint-Étienne with strGender 'Mixed', which the gender filter rejects" },
 
   "brugge":        { "country": "Belgium" },
   "salzburg":      { "country": "Austria", "search": "Red Bull Salzburg" },
