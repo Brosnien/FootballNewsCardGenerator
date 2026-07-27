@@ -105,11 +105,6 @@
         <option value="result">04 — Result</option>
         <option value="stats">05 — Player stats</option>
       </select></label>
-    <label class="f"><span>Format</span>
-      <select id="fmt">
-        <option value="1350">Portrait 4:5</option>
-        <option value="1080">Square 1:1</option>
-      </select></label>
   </div>
 
   <div class="ttrow">
@@ -137,15 +132,6 @@
   </div>
 
   <input type="hidden" id="cname" value="Arsenal">
-  <div class="row colors3">
-    <label class="f cc"><span>Background</span>
-      <input type="color" id="c1p"><input type="text" id="c1" value="#EF0107"></label>
-    <label class="f cc"><span>Text</span>
-      <input type="color" id="c2p"><input type="text" id="c2" value="#FFFFFF"></label>
-    <label class="f cc"><span>Accent</span>
-      <input type="color" id="c3p"><input type="text" id="c3" value="#063672"></label>
-  </div>
-  <div class="meta" id="ratioBox"></div>
 
   <!-- second team + split (transfer / result templates) -->
   <div class="row teamrow" data-for="move result">
@@ -296,9 +282,23 @@
   </details>
 
 
-  <details>
-    <summary>Style</summary>
+  <details id="styleSection">
+    <summary>Style &amp; colours</summary>
     <div class="inner">
+      <div class="row colors3">
+        <label class="f cc"><span>Background</span>
+          <input type="color" id="c1p"><input type="text" id="c1" value="#EF0107"></label>
+        <label class="f cc"><span>Text</span>
+          <input type="color" id="c2p"><input type="text" id="c2" value="#FFFFFF"></label>
+        <label class="f cc"><span>Accent</span>
+          <input type="color" id="c3p"><input type="text" id="c3" value="#063672"></label>
+      </div>
+      <div class="meta" id="ratioBox"></div>
+      <label class="f"><span>Format</span>
+        <select id="fmt">
+          <option value="1350">Portrait 4:5</option>
+          <option value="1080">Square 1:1</option>
+        </select></label>
       <label class="f"><span>Text plate</span>
         <select id="plate">
           <option value="none">None</option>

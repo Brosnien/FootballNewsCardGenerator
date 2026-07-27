@@ -4,14 +4,21 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-22 — **B3 prompt 1 done**: the stale-date bug is fixed (a returning
+_Last updated: 2026-07-27 — **B3 prompt 2 done, so B3 is closed.** The colour inputs, contrast
+readout and Format moved into the (closed) **Style & colours** section: nothing was removed, but
+a news card now shows **10 controls instead of 17** and the headline sits 231 px closer to the
+top. Also measured and dropped a contrast-warning dot — the app's ink fallback makes a bad
+contrast unreachable, so it would have guarded nothing. Next is **B5** (the reporters picker),
+the last repetitive typing on every card._
+
+_Previously: **B3 prompt 1 done**: the stale-date bug is fixed (a returning
 session now stamps today unless you typed a date yourself), and sections the current template
 can't use collapse themselves — a Result card opens with only the Result section, no empty Text
 box to scroll past. Then the source moved twice on request: **Handle/Outlet now sit under
 Category/Date in the pane, and the source prints bottom-left under the card's rule** instead of
-crowding the header. Next is **B3 prompt 2**._
+crowding the header._
 
-_Previously: **"Next up" is finished** (152/152 real crests, verified on the live
+_Before that: **"Next up" is finished** (152/152 real crests, verified on the live
 site and through PNG export; B8 closes with it), and the crest placement on the five awkward
 split shapes is fixed — bigger crests, better placed, measured to not cross the seam. Also fixed
 the reason old placeholder crests kept showing on a device that had already loaded them
@@ -301,7 +308,11 @@ B4 and B8 aren't work items. One prompt per row; paste the quoted line as the wh
   the loop either way.
   > Roadmap B2: spike only, no app code — prove we can pull one named reporter's latest posts and map one to card fields. Report cost per run.
 
-- [ ] If kept manual, even more simplification? (brainstorm how we can use as few fields as possible, as fast as possible. Process should be very quick to keep relevancy). IF KEPT THIS IS NO1 PRIORITY **(B3)**
+- [x] If kept manual, even more simplification? (brainstorm how we can use as few fields as possible, as fast as possible. Process should be very quick to keep relevancy). IF KEPT THIS IS NO1 PRIORITY **(B3)**
+      — _Both planned prompts are done. Ticked for the structural work, not for the stopwatch:
+      whether a card really takes under 30 s is yours to judge in real use. If it still drags,
+      say so and un-tick it — the next lever is **B5**, which turns handle + outlet + reliability
+      into one tap and is the last repetitive typing left on every card._
 
   Target: a finished card in **under 30 seconds**. What the code already gives us — a draft
   auto-saves every 600 ms and restores on open (`snapshot`/`restore`), open sections are
@@ -347,6 +358,42 @@ B4 and B8 aren't work items. One prompt per row; paste the quoted line as the wh
   on B5) and pushing rare fields below the fold — that's prompt 2._
 
   > Roadmap B3 prompt 2: cut the news and transfer cards down to the fewest fields on first screen, per ROADMAP.md. Don't remove fields, just reorder and collapse.
+
+  _Prompt 2 done 2026-07-22 ([generator-ios.html](generator-ios.html))._
+
+  _**What moved.** Nothing was deleted. The three colour inputs, the contrast readout and
+  Format left the top of the pane and now live in the section renamed **Style & colours**,
+  which stays closed by default. They sat between the team picker and the headline — the
+  fields you always type — on every single card. Colours are per-team data that `teams.json`
+  already fills in, and Format is a per-platform choice, so neither belongs above the text._
+
+  | Template | Controls on first screen (before → after) |
+  |---|---|
+  | news | 17 → **10** |
+  | transfer | 23 → **16** |
+  | quote | 18 → **11** |
+  | result | 16 → **9** |
+  | stats | 28 → **21** |
+
+  _Every template drops the same 7 controls, and the headline sits **231 px** closer to the
+  top — measured in the browser, form top to `#head`: 557 px → 326 px. Verified across all
+  five templates with no console errors, and prompt 1's collapse behaviour still holds: a
+  Result card opens Result and closes Text, and a section you open by hand stays open across
+  template switches._
+
+  _**Tried and dropped.** Moving the contrast readout behind a closed section looked like it
+  would hide a bad colour pair, so it got a warning dot on the summary — then measurement
+  showed that state is unreachable. `bodyInk`/`pickInk` fall back to `onColor()` (whichever
+  of black/white reads better), so across 18 deliberately awful combinations, including
+  mid-grey on mid-grey and every plate setting, the worst contrast was **3.95:1** and the
+  `.bad` class never fired. The readout is information, not a warning, so the dot was removed
+  rather than shipped as a guard against something that cannot happen. `#splitBox` keeps its
+  own `.bad` check — `inkBoth` has no such fallback, so split cards can genuinely go bad._
+
+  _**Don't put `data-for` fields inside Style & colours.** `secUsed()` counts a section as
+  unused when every `data-for` field in it is hidden, so a template-only field in there would
+  auto-collapse the whole section for other templates and fight the user's open choice. That
+  is why Split / Colors per half stayed where they are._
 
 - [ ] DON'T BE IDIOTIC WITH PROMPTING AND LIMITS (VERY VERY HARD). **(B4)**
       — _Not a work item. The rules: one roadmap item per prompt; let a script do bulk work
