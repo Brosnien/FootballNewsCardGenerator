@@ -4,12 +4,19 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-27 — **five new items added (B9–B13)** from the author's notes, each
+_Last updated: 2026-07-27 — **B9 done: captions now emit exactly 5 hashtags**, the Instagram
+limit, and the build order was turned into a priority order so both teams survive on transfer
+and result cards (the second team sits in slot 2; the generic `#football` `#soccer` pair is what
+gets cut). Verified in the browser on all five templates and on nations. Also **moved the three
+automation items (B2, B6, B1) into their own section at the end of the file** — the manual flow
+comes first. Next is **B10 → B13 → B5 → B11 → B12**._
+
+_Previously: **five new items added (B9–B13)** from the author's notes, each
 costed with a prompt to paste. Two are outright defects: Instagram cut the hashtag cap to 5 in
 Dec 2025 and our captions still emit 8 (B9), and the card exports at 1:1 with no pixel headroom,
 which is why text goes soft after Instagram re-compresses it (B10). Also found that team colours
 can be fetched from the same API as the crests, which makes "add many more teams" (B13) a script
-run rather than days of typing. Proposed order now starts **B9 → B10 → B13**._
+run rather than days of typing._
 
 _Previously: **B3 prompt 2 done, so B3 is closed.** The colour inputs, contrast
 readout and Format moved into the (closed) **Style & colours** section: nothing was removed, but
@@ -259,25 +266,26 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
 ## Backlog
 
-Items stay in the author's original order; B9–B13 were added 2026-07-27. **Proposed order is
-B9 → B10 → B13 → B5 → B11 → B12 → B6 → B2 → B1**. B9 and B10 come first because they are
-wrong on *every* post already published — one breaks an Instagram rule, the other costs image
-quality — and both are small. B13 moves up because the crest fetcher built for "Next up"
-already does most of it. B4, B7 and B8 aren't work items. One prompt per row; paste the
-quoted line as the whole prompt.
+Items stay in the author's original order, except that the three automation items (**B2, B6,
+B1**) were moved to their own section at the end of the file on 2026-07-27, at the author's
+request — see **Automation — last**. B9–B13 were added 2026-07-27. **Proposed order is now
+B10 → B13 → B5 → B11 → B12**, then the automation three. B10 comes first because it is wrong on
+*every* post already published — the export costs image quality — and it is small. B13 is next
+because the crest fetcher built for "Next up" already does most of it. B4, B7 and B8 aren't
+work items. One prompt per row; paste the quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B9 | Cap hashtags at 5 + both teams | 1 | — |
 | B10 | Sharper exported image | 1 | — |
 | B13 | Many more teams (top 5 ×2 + Romania) | 2 | — |
 | B5 | Reporters picker | 1 | — |
 | B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
 | B12 | Colour picker for the second team | 1 | — |
-| B6 | Translation (NO2) | 2 | a decision (below) |
-| B2 | Auto-pull from X | 1 spike | a decision (below) |
-| B1 | Use of the online repo | 1 | — |
+| B6 | Translation (NO2) — _automation_ | 2 | a decision (below) |
+| B2 | Auto-pull from X — _automation_ | 1 spike | a decision (below) |
+| B1 | Use of the online repo — _automation_ | 1 | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
+| B9 | Cap hashtags at 5 + both teams | done | — |
 | B7 | Posts vs reels | 0 | — |
 | B8 | Crest overlay | 0 | done with Next up |
 
@@ -292,38 +300,11 @@ quoted line as the whole prompt.
 | Instagram as a *destination*? | **Free.** The publishing API does single images, carousels and reels; 100 posts/24 h; needs a professional account linked to a Page. |
 | Carousel cost | A carousel counts as **one** post — so a multi-language carousel is as cheap as a single post. |
 | Instagram media hosting | Media **must sit at a public URL** when publishing. GitHub Pages already gives us one — that's the link between B1 and B7. |
-| Instagram hashtag cap | **5 per post and Reel**, a hard limit since Dec 2025 (was 30). Our captions still emit 8 — see B9. |
+| Instagram hashtag cap | **5 per post and Reel**, a hard limit since Dec 2025 (was 30). Our captions emit exactly 5 since B9. |
 | Can team colours be fetched? | **Yes** — TheSportsDB returns `strColour1/2/3` on the same record as the crest, matching our c1/c2/c3 model. Makes B13 scriptable. |
 | Free translation | DeepL API Free = **500 k chars/month**, Microsoft = 2 M/month. A card is ~200 chars, so ~2,500 cards/month free. LibreTranslate is free but self-hosted and visibly weaker. |
 
 ---
-
-- [ ] Brainstorm ideas based on the fact that we have an online repository now and can expand to multiple files as we use GitHub Sites (syncs?). **(B1)**
-
-  The one that actually pays: Instagram's publishing API refuses anything that isn't at a
-  public URL, and GitHub Pages is one. Committing an exported card to the repo turns it into
-  a publishable asset — that's the unlock for B7, not a filing tweak.
-  Cheap wins in the same area: a `crests/` manifest so the app stops probing for files that
-  don't exist, presets versioned in the repo instead of only `localStorage` (export/import
-  JSON already exists), `teams.json` as a dataset others can PR.
-  > Roadmap B1: add a crests manifest so the app stops probing for missing files, per ROADMAP.md.
-
-- [ ] Can we really pull the info from one text automatically, free of charge? (Get a Twitter/Instagram/Threads post as soon as it's posted and automatically post it to socials.) THIS CHANGES THE WHOLE DYNAMIC **(B2)**
-
-  **Answer: not free — but far cheaper than the old $200/month tier.** With the 24 h
-  dedup, cost scales with how many *unique* posts you watch, not how often you poll:
-
-  | Watching | Unique posts/month | Cost |
-  |---|---|---|
-  | 5 reporters | ~1,200 | **~$6/mo** |
-  | 20 reporters | ~6,000 | **~$30/mo** |
-
-  So the real question isn't feasibility, it's whether it's worth ~$6–30/month to you.
-  **Decide that before any code is written** — everything else in this file assumes manual.
-  Also note the honest limit: pulling a post is easy, but turning free-form text into
-  headline / player / fee / reliability is a judgement call, so a human check stays in
-  the loop either way.
-  > Roadmap B2: spike only, no app code — prove we can pull one named reporter's latest posts and map one to card fields. Report cost per run.
 
 - [x] If kept manual, even more simplification? (brainstorm how we can use as few fields as possible, as fast as possible. Process should be very quick to keep relevancy). IF KEPT THIS IS NO1 PRIORITY **(B3)**
       — _Both planned prompts are done. Ticked for the structural work, not for the stopwatch:
@@ -426,22 +407,6 @@ quoted line as the whole prompt.
   Source is currently a closed section you must open on every card.
   > Roadmap B5: add reporters.json and a one-tap reporter picker above the Source fields, per ROADMAP.md.
 
-- [ ] Can we automate the translation in anyway? (1st priority Romanian, 2nd Italian/German/Spanish for relevant teams). Should we keep it all in one instagram profile or do multiple based on language? Can maybe bypass this if we use carousels (easy but don't know if it will go well) in Instagram (Add a flag in a corner for the corresponding language used.). NO2 PRIORITY, this would be relevant as the page would be only a copy-paste with a nice design in English. **(B6)**
-
-  **One profile with carousels** — a carousel is one post no matter how many language slides
-  it holds, so it costs nothing extra in reach or rate limit, and it avoids running four
-  accounts. That answers the profile question.
-
-  Split the work by what's actually hard. The card's fixed labels (`L`, [app.js:49](app.js:49))
-  are already centralised and few — **hand-translate those once, free, no API**. Only the
-  text you type (headline, sub, quote) would need machine translation, and that's where the
-  caveat is: calling DeepL from a static GitHub Pages app would expose the key in the page
-  and hit CORS, so it needs a proxy. Given a card is ~200 characters, pasting a translation
-  by hand is not obviously worse than building that proxy.
-  > Roadmap B6 prompt 1: add a language switch for the card's fixed labels plus a corner flag badge, per ROADMAP.md. No translation API.
-
-  > Roadmap B6 prompt 2 (only if wanted): add machine translation for the typed text, per ROADMAP.md — discuss the key/CORS options first.
-
 - [ ] Should post on instagram in form of: posts or reels of posts? (are these both?) **(B7)**
       — _They're different things: a feed post is the static image, a reel is video. The API
       does both, free. A text card is a still image, so **feed post — and carousel when you
@@ -458,7 +423,29 @@ quoted line as the whole prompt.
 
 _Added 2026-07-27._
 
-- [ ] Max 5 hashtags for generation as instagram does not allow more. Also need the 2nd team to get the hashtag not the first only in the case of transfers. In the case of the result template we can add them both. **(B9)**
+- [x] Max 5 hashtags for generation as instagram does not allow more. Also need the 2nd team to get the hashtag not the first only in the case of transfers. In the case of the result template we can add them both. **(B9)**
+
+  **Done 2026-07-27** ([app.js](app.js), `buildTags`). The cap is now `MAX_TAGS = 5` instead of
+  `slice(0,8)`, and the build order was rewritten as a priority order — teams first (both of
+  them on transfer and result), then the player, then the category, then the league, the
+  template flavour and finally `#football` `#soccer`, which are the ones the knife now takes.
+  Measured in the browser, one caption per template — every one lands on exactly 5:
+
+  | Template | Hashtags |
+  |---|---|
+  | news | `#arsenal #injury #premierleague #footballnews #football` |
+  | transfer | `#arsenal #realmadrid #bukayosaka #premierleague #transfers` |
+  | quote | `#arsenal #premierleague #footballquotes #football #soccer` |
+  | result | `#arsenal #realmadrid #premierleague #matchday #fulltime` |
+  | stats | `#arsenal #bukayosaka #premierleague #playerratings #matchstats` |
+
+  Nations work the same way (`#romania #brazil #internationalfootball #matchday #fulltime`),
+  and the fallbacks still fill all 5 slots when a field is blank.
+
+  _On "only one team showing": the logic was right and still is, so the cause was the empty
+  second-team picker, not truncation — a transfer card with `club2` blank gives
+  `#arsenal #premierleague #transfers #transfernews #football`. **Pick the second team and it
+  is always in the tag list now**, because it sits in slot 2 where nothing can push it out._
 
   **You're right, and it's a rule break, not a preference.** Instagram cut the cap from 30 to
   **5 hashtags per post and Reel** in December 2025. `buildTags()` still ends in
@@ -542,3 +529,55 @@ _Added 2026-07-27._
   > Roadmap B13 prompt 1: extend the fetcher to emit team name + colours + crest for the first two divisions of the top 5 leagues and Romania, per ROADMAP.md. Dry run, summary table only.
 
   > Roadmap B13 prompt 2: merge the reviewed teams into teams.json and fetch their crests, per ROADMAP.md.
+
+---
+
+## Automation — last
+
+_Moved here 2026-07-27 at the author's request: everything that automates the flow itself
+(pulling posts in, translating, publishing out) now sits after the manual-flow work. The item
+text is unchanged, only the position. Each of these is blocked on a decision, and none of them
+pays off until making a card by hand is fast — which is what B5, B10, B11, B12 and B13 are for._
+
+- [ ] Can we really pull the info from one text automatically, free of charge? (Get a Twitter/Instagram/Threads post as soon as it's posted and automatically post it to socials.) THIS CHANGES THE WHOLE DYNAMIC **(B2)**
+
+  **Answer: not free — but far cheaper than the old $200/month tier.** With the 24 h
+  dedup, cost scales with how many *unique* posts you watch, not how often you poll:
+
+  | Watching | Unique posts/month | Cost |
+  |---|---|---|
+  | 5 reporters | ~1,200 | **~$6/mo** |
+  | 20 reporters | ~6,000 | **~$30/mo** |
+
+  So the real question isn't feasibility, it's whether it's worth ~$6–30/month to you.
+  **Decide that before any code is written** — everything else in this file assumes manual.
+  Also note the honest limit: pulling a post is easy, but turning free-form text into
+  headline / player / fee / reliability is a judgement call, so a human check stays in
+  the loop either way.
+  > Roadmap B2: spike only, no app code — prove we can pull one named reporter's latest posts and map one to card fields. Report cost per run.
+
+- [ ] Can we automate the translation in anyway? (1st priority Romanian, 2nd Italian/German/Spanish for relevant teams). Should we keep it all in one instagram profile or do multiple based on language? Can maybe bypass this if we use carousels (easy but don't know if it will go well) in Instagram (Add a flag in a corner for the corresponding language used.). NO2 PRIORITY, this would be relevant as the page would be only a copy-paste with a nice design in English. **(B6)**
+
+  **One profile with carousels** — a carousel is one post no matter how many language slides
+  it holds, so it costs nothing extra in reach or rate limit, and it avoids running four
+  accounts. That answers the profile question.
+
+  Split the work by what's actually hard. The card's fixed labels (`L`, [app.js:49](app.js:49))
+  are already centralised and few — **hand-translate those once, free, no API**. Only the
+  text you type (headline, sub, quote) would need machine translation, and that's where the
+  caveat is: calling DeepL from a static GitHub Pages app would expose the key in the page
+  and hit CORS, so it needs a proxy. Given a card is ~200 characters, pasting a translation
+  by hand is not obviously worse than building that proxy.
+  > Roadmap B6 prompt 1: add a language switch for the card's fixed labels plus a corner flag badge, per ROADMAP.md. No translation API.
+
+  > Roadmap B6 prompt 2 (only if wanted): add machine translation for the typed text, per ROADMAP.md — discuss the key/CORS options first.
+
+- [ ] Brainstorm ideas based on the fact that we have an online repository now and can expand to multiple files as we use GitHub Sites (syncs?). **(B1)**
+
+  The one that actually pays: Instagram's publishing API refuses anything that isn't at a
+  public URL, and GitHub Pages is one. Committing an exported card to the repo turns it into
+  a publishable asset — that's the unlock for B7, not a filing tweak.
+  Cheap wins in the same area: a `crests/` manifest so the app stops probing for files that
+  don't exist, presets versioned in the repo instead of only `localStorage` (export/import
+  JSON already exists), `teams.json` as a dataset others can PR.
+  > Roadmap B1: add a crests manifest so the app stops probing for missing files, per ROADMAP.md.

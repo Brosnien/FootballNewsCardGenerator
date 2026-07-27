@@ -861,18 +861,23 @@ const LEAGUES={England:"premierleague",Spain:"laliga",Italy:"seriea",Germany:"bu
 /* per-template flavour hashtags */
 const TPL_TAGS={news:["footballnews"],move:["transfers","transfernews"],
   quote:["footballquotes"],result:["matchday","fulltime"],stats:["playerratings","matchstats"]};
-/* build a tidy, de-duplicated set of ~5-8 hashtags from the card's info */
+/* Instagram allows 5 hashtags per post/reel (hard cap since Dec 2025) */
+const MAX_TAGS=5;
+/* Build a tidy, de-duplicated set of at most MAX_TAGS hashtags from the card's info.
+   Order is priority order: whatever is pushed last is what gets cut, so both teams and
+   the player come before the league, the flavour tag and the evergreen pair. */
 function buildTags(tpl,team,other){
   const out=[];
   const push=(...xs)=>xs.forEach(x=>{const t=tag(x);if(t&&!out.includes(t))out.push(t);});
+  push(team);                                                /* teams — both on move/result */
+  if(tpl==="move"||tpl==="result") push(other);
   if(tpl==="stats"||tpl==="move") push($("player").value);   /* player name */
-  push(team); if(tpl==="move"||tpl==="result") push(other);  /* teams */
+  if(tpl==="news") push($("cat").value);                     /* category */
   if(teamType==="nation") push("internationalfootball");     /* league / int'l */
   else push(LEAGUES[groupKey(DB()[activeClub])]);
-  if(tpl==="news") push($("cat").value);                     /* category */
   (TPL_TAGS[tpl]||[]).forEach(x=>push(x));                   /* template flavour */
-  push("football","soccer");                                 /* evergreen */
-  return out.slice(0,8).join(" ");
+  push("football","soccer");                                 /* evergreen, cut first */
+  return out.slice(0,MAX_TAGS).join(" ");
 }
 /* a suggested Instagram caption built from the current fields */
 function buildCaption(){
