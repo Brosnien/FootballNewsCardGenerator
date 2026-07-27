@@ -90,6 +90,312 @@
       "plate": "none",
       "crest": ""
     },
+    "birmingham": {
+      "country": "England",
+      "name": "Birmingham",
+      "c1": "#0000FF",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "blackburn": {
+      "country": "England",
+      "name": "Blackburn",
+      "c1": "#009EE0",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "bournemouth": {
+      "country": "England",
+      "name": "Bournemouth",
+      "c1": "#B50E12",
+      "c2": "#000000",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "brentford": {
+      "country": "England",
+      "name": "Brentford",
+      "c1": "#E30613",
+      "c2": "#FFFFFF",
+      "c3": "#FBB800",
+      "plate": "none",
+      "crest": ""
+    },
+    "brighton": {
+      "country": "England",
+      "name": "Brighton",
+      "c1": "#0057B8",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "bristol-city": {
+      "country": "England",
+      "name": "Bristol City",
+      "c1": "#E21A23",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "burnley": {
+      "country": "England",
+      "name": "Burnley",
+      "c1": "#6C1D45",
+      "c2": "#99D6EA",
+      "c3": "#99D6EA",
+      "plate": "none",
+      "crest": ""
+    },
+    "charlton": {
+      "country": "England",
+      "name": "Charlton",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "coventry": {
+      "country": "England",
+      "name": "Coventry",
+      "c1": "#77BBFF",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "crystal-palace": {
+      "country": "England",
+      "name": "Crystal Palace",
+      "c1": "#1B458F",
+      "c2": "#C4122E",
+      "c3": "#C4122E",
+      "plate": "none",
+      "crest": ""
+    },
+    "derby": {
+      "country": "England",
+      "name": "Derby",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "fulham": {
+      "country": "England",
+      "name": "Fulham",
+      "c1": "#FFFFFF",
+      "c2": "#000000",
+      "c3": "#CC0000",
+      "plate": "none",
+      "crest": ""
+    },
+    "hull": {
+      "country": "England",
+      "name": "Hull",
+      "c1": "#F5971D",
+      "c2": "#000000",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "ipswich": {
+      "country": "England",
+      "name": "Ipswich",
+      "c1": "#3A64A3",
+      "c2": "#DE2C37",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "leeds": {
+      "country": "England",
+      "name": "Leeds",
+      "c1": "#FFFFFF",
+      "c2": "#1D428A",
+      "c3": "#FFCD00",
+      "plate": "none",
+      "crest": ""
+    },
+    "leicester": {
+      "country": "England",
+      "name": "Leicester",
+      "c1": "#003090",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "middlesbrough": {
+      "country": "England",
+      "name": "Middlesbrough",
+      "c1": "#FF0000",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "millwall": {
+      "country": "England",
+      "name": "Millwall",
+      "c1": "#00194A",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "norwich": {
+      "country": "England",
+      "name": "Norwich",
+      "c1": "#FFF200",
+      "c2": "#00A650",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "nottm-forest": {
+      "country": "England",
+      "name": "Nottm Forest",
+      "c1": "#E53233",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "oxford": {
+      "country": "England",
+      "name": "Oxford",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "portsmouth": {
+      "country": "England",
+      "name": "Portsmouth",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "preston": {
+      "country": "England",
+      "name": "Preston",
+      "c1": "#002156",
+      "c2": "#FFFFFF",
+      "c3": "#0072BA",
+      "plate": "none",
+      "crest": ""
+    },
+    "qpr": {
+      "country": "England",
+      "name": "QPR",
+      "c1": "#1D5BA4",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "sheff-united": {
+      "country": "England",
+      "name": "Sheff United",
+      "c1": "#EE2737",
+      "c2": "#FFFFFF",
+      "c3": "#0D171A",
+      "plate": "none",
+      "crest": ""
+    },
+    "sheff-wed": {
+      "country": "England",
+      "name": "Sheff Wed",
+      "c1": "#4681CF",
+      "c2": "#FFFFFF",
+      "c3": "#E9B008",
+      "plate": "none",
+      "crest": ""
+    },
+    "southampton": {
+      "country": "England",
+      "name": "Southampton",
+      "c1": "#D71920",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "stoke": {
+      "country": "England",
+      "name": "Stoke",
+      "c1": "#E03A3E",
+      "c2": "#FFFFFF",
+      "c3": "#1B449C",
+      "plate": "none",
+      "crest": ""
+    },
+    "sunderland": {
+      "country": "England",
+      "name": "Sunderland",
+      "c1": "#FF0000",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "swansea": {
+      "country": "England",
+      "name": "Swansea",
+      "c1": "#FFFFFF",
+      "c2": "#000000",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "watford": {
+      "country": "England",
+      "name": "Watford",
+      "c1": "#FBEE23",
+      "c2": "#11210C",
+      "c3": "#ED2127",
+      "plate": "none",
+      "crest": ""
+    },
+    "west-brom": {
+      "country": "England",
+      "name": "West Brom",
+      "c1": "#122F67",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "wolves": {
+      "country": "England",
+      "name": "Wolves",
+      "c1": "#FDB913",
+      "c2": "#231F20",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "wrexham": {
+      "country": "England",
+      "name": "Wrexham",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
     "real-madrid": {
       "country": "Spain",
       "name": "Real Madrid",
@@ -159,6 +465,294 @@
       "c1": "#FFFFFF",
       "c2": "#EE3524",
       "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "alaves": {
+      "country": "Spain",
+      "name": "Alavés",
+      "c1": "#0761AF",
+      "c2": "#FFFFFF",
+      "c3": "#009AD7",
+      "plate": "none",
+      "crest": ""
+    },
+    "albacete": {
+      "country": "Spain",
+      "name": "Albacete",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "almeria": {
+      "country": "Spain",
+      "name": "Almeria",
+      "c1": "#EE1119",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "andorra": {
+      "country": "Spain",
+      "name": "Andorra",
+      "c1": "#000589",
+      "c2": "#FEB400",
+      "c3": "#FF0207",
+      "plate": "none",
+      "crest": ""
+    },
+    "betis": {
+      "country": "Spain",
+      "name": "Betis",
+      "c1": "#0BB363",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "burgos": {
+      "country": "Spain",
+      "name": "Burgos",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "cadiz": {
+      "country": "Spain",
+      "name": "Cadiz",
+      "c1": "#FDE607",
+      "c2": "#0045A7",
+      "c3": "#0045A7",
+      "plate": "none",
+      "crest": ""
+    },
+    "castellon": {
+      "country": "Spain",
+      "name": "Castellón",
+      "c1": "#000005",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "celta-vigo": {
+      "country": "Spain",
+      "name": "Celta Vigo",
+      "c1": "#8AC3EE",
+      "c2": "#E5254E",
+      "c3": "#E5254E",
+      "plate": "none",
+      "crest": ""
+    },
+    "ceuta": {
+      "country": "Spain",
+      "name": "Ceuta",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "cordoba": {
+      "country": "Spain",
+      "name": "Cordoba",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "cultural": {
+      "country": "Spain",
+      "name": "Cultural",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "eibar": {
+      "country": "Spain",
+      "name": "Eibar",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "elche": {
+      "country": "Spain",
+      "name": "Elche",
+      "c1": "#05642C",
+      "c2": "#FFFFFF",
+      "c3": "#E6C777",
+      "plate": "none",
+      "crest": ""
+    },
+    "espanyol": {
+      "country": "Spain",
+      "name": "Espanyol",
+      "c1": "#007FC8",
+      "c2": "#FFFFFF",
+      "c3": "#DF1116",
+      "plate": "none",
+      "crest": ""
+    },
+    "getafe": {
+      "country": "Spain",
+      "name": "Getafe",
+      "c1": "#005999",
+      "c2": "#C43A2F",
+      "c3": "#FCED0B",
+      "plate": "none",
+      "crest": ""
+    },
+    "girona": {
+      "country": "Spain",
+      "name": "Girona",
+      "c1": "#CD2534",
+      "c2": "#FFFFFF",
+      "c3": "#EDDA35",
+      "plate": "none",
+      "crest": ""
+    },
+    "granada": {
+      "country": "Spain",
+      "name": "Granada",
+      "c1": "#FFFFFF",
+      "c2": "#A61B2B",
+      "c3": "#A61B2B",
+      "plate": "none",
+      "crest": ""
+    },
+    "huesca": {
+      "country": "Spain",
+      "name": "Huesca",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "las-palmas": {
+      "country": "Spain",
+      "name": "Las Palmas",
+      "c1": "#004B9D",
+      "c2": "#FFE400",
+      "c3": "#C51A1B",
+      "plate": "none",
+      "crest": ""
+    },
+    "leganes": {
+      "country": "Spain",
+      "name": "Leganes",
+      "c1": "#F0F0F0",
+      "c2": "#0B1F6F",
+      "c3": "#F0F0F0",
+      "plate": "none",
+      "crest": ""
+    },
+    "levante": {
+      "country": "Spain",
+      "name": "Levante",
+      "c1": "#C60B46",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "malaga": {
+      "country": "Spain",
+      "name": "Malaga",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "mallorca": {
+      "country": "Spain",
+      "name": "Mallorca",
+      "c1": "#E20613",
+      "c2": "#000000",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "mirandes": {
+      "country": "Spain",
+      "name": "Mirandes",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "osasuna": {
+      "country": "Spain",
+      "name": "Osasuna",
+      "c1": "#0A346F",
+      "c2": "#D91A21",
+      "c3": "#D91A21",
+      "plate": "none",
+      "crest": ""
+    },
+    "oviedo": {
+      "country": "Spain",
+      "name": "Oviedo",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "racing": {
+      "country": "Spain",
+      "name": "Racing",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "rayo-vallecano": {
+      "country": "Spain",
+      "name": "Rayo Vallecano",
+      "c1": "#E53027",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "sporting-gijon": {
+      "country": "Spain",
+      "name": "Sporting Gijón",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "valladolid": {
+      "country": "Spain",
+      "name": "Valladolid",
+      "c1": "#931B89",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "zaragoza": {
+      "country": "Spain",
+      "name": "Zaragoza",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     },
@@ -234,6 +828,294 @@
       "plate": "none",
       "crest": ""
     },
+    "avellino": {
+      "country": "Italy",
+      "name": "Avellino",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "bari": {
+      "country": "Italy",
+      "name": "Bari",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "bologna": {
+      "country": "Italy",
+      "name": "Bologna",
+      "c1": "#A21C26",
+      "c2": "#1A2F48",
+      "c3": "#1A2F48",
+      "plate": "none",
+      "crest": ""
+    },
+    "cagliari": {
+      "country": "Italy",
+      "name": "Cagliari",
+      "c1": "#002350",
+      "c2": "#AD002A",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "carrarese": {
+      "country": "Italy",
+      "name": "Carrarese",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "catanzaro": {
+      "country": "Italy",
+      "name": "Catanzaro",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "cesena": {
+      "country": "Italy",
+      "name": "Cesena",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "como": {
+      "country": "Italy",
+      "name": "Como",
+      "c1": "#114169",
+      "c2": "#114169",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "cremonese": {
+      "country": "Italy",
+      "name": "Cremonese",
+      "c1": "#808285",
+      "c2": "#ED1C24",
+      "c3": "#ED1C24",
+      "plate": "none",
+      "crest": ""
+    },
+    "empoli": {
+      "country": "Italy",
+      "name": "Empoli",
+      "c1": "#00579C",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "entella": {
+      "country": "Italy",
+      "name": "Entella",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "frosinone": {
+      "country": "Italy",
+      "name": "Frosinone",
+      "c1": "#FFDD00",
+      "c2": "#004393",
+      "c3": "#006AB3",
+      "plate": "none",
+      "crest": ""
+    },
+    "genoa": {
+      "country": "Italy",
+      "name": "Genoa",
+      "c1": "#AD1919",
+      "c2": "#05232F",
+      "c3": "#FFD400",
+      "plate": "none",
+      "crest": ""
+    },
+    "juve-stabia": {
+      "country": "Italy",
+      "name": "Juve Stabia",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "lecce": {
+      "country": "Italy",
+      "name": "Lecce",
+      "c1": "#FFF200",
+      "c2": "#ED1B23",
+      "c3": "#ED1B23",
+      "plate": "none",
+      "crest": ""
+    },
+    "mantova": {
+      "country": "Italy",
+      "name": "Mantova",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "modena": {
+      "country": "Italy",
+      "name": "Modena",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "monza": {
+      "country": "Italy",
+      "name": "Monza",
+      "c1": "#EC173A",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "padova": {
+      "country": "Italy",
+      "name": "Padova",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "palermo": {
+      "country": "Italy",
+      "name": "Palermo",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "parma": {
+      "country": "Italy",
+      "name": "Parma",
+      "c1": "#FFFFFF",
+      "c2": "#1B4094",
+      "c3": "#FFD200",
+      "plate": "none",
+      "crest": ""
+    },
+    "pescara": {
+      "country": "Italy",
+      "name": "Pescara",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "pisa": {
+      "country": "Italy",
+      "name": "Pisa",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "reggiana": {
+      "country": "Italy",
+      "name": "Reggiana",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "sampdoria": {
+      "country": "Italy",
+      "name": "Sampdoria",
+      "c1": "#1B5497",
+      "c2": "#C21718",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "sassuolo": {
+      "country": "Italy",
+      "name": "Sassuolo",
+      "c1": "#00A752",
+      "c2": "#000000",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "spezia": {
+      "country": "Italy",
+      "name": "Spezia",
+      "c1": "#FFFFFF",
+      "c2": "#99834A",
+      "c3": "#1F1A17",
+      "plate": "none",
+      "crest": ""
+    },
+    "sudtirol": {
+      "country": "Italy",
+      "name": "Südtirol",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "torino": {
+      "country": "Italy",
+      "name": "Torino",
+      "c1": "#8A1E03",
+      "c2": "#FFFFFF",
+      "c3": "#EEB111",
+      "plate": "none",
+      "crest": ""
+    },
+    "udinese": {
+      "country": "Italy",
+      "name": "Udinese",
+      "c1": "#FFFFFF",
+      "c2": "#000000",
+      "c3": "#8B7D37",
+      "plate": "none",
+      "crest": ""
+    },
+    "venezia": {
+      "country": "Italy",
+      "name": "Venezia",
+      "c1": "#101010",
+      "c2": "#FF6B00",
+      "c3": "#006937",
+      "plate": "none",
+      "crest": ""
+    },
+    "verona": {
+      "country": "Italy",
+      "name": "Verona",
+      "c1": "#FFE74A",
+      "c2": "#005395",
+      "c3": "#005395",
+      "plate": "none",
+      "crest": ""
+    },
     "bayern": {
       "country": "Germany",
       "name": "Bayern",
@@ -297,6 +1179,267 @@
       "plate": "none",
       "crest": ""
     },
+    "augsburg": {
+      "country": "Germany",
+      "name": "Augsburg",
+      "c1": "#BA3733",
+      "c2": "#FFFFFF",
+      "c3": "#46714D",
+      "plate": "none",
+      "crest": ""
+    },
+    "bielefeld": {
+      "country": "Germany",
+      "name": "Bielefeld",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "bochum": {
+      "country": "Germany",
+      "name": "Bochum",
+      "c1": "#005CA9",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "braunschweig": {
+      "country": "Germany",
+      "name": "Braunschweig",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "darmstadt": {
+      "country": "Germany",
+      "name": "Darmstadt",
+      "c1": "#004F9F",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "dresden": {
+      "country": "Germany",
+      "name": "Dresden",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "dusseldorf": {
+      "country": "Germany",
+      "name": "Düsseldorf",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "elversberg": {
+      "country": "Germany",
+      "name": "Elversberg",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "freiburg": {
+      "country": "Germany",
+      "name": "Freiburg",
+      "c1": "#000000",
+      "c2": "#FFFFFF",
+      "c3": "#FD1220",
+      "plate": "none",
+      "crest": ""
+    },
+    "furth": {
+      "country": "Germany",
+      "name": "Fürth",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "hamburg": {
+      "country": "Germany",
+      "name": "Hamburg",
+      "c1": "#0A3F86",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "hannover": {
+      "country": "Germany",
+      "name": "Hannover",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "heidenheim": {
+      "country": "Germany",
+      "name": "Heidenheim",
+      "c1": "#E2001A",
+      "c2": "#003B79",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "hertha": {
+      "country": "Germany",
+      "name": "Hertha",
+      "c1": "#004D9E",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "hoffenheim": {
+      "country": "Germany",
+      "name": "Hoffenheim",
+      "c1": "#1961B5",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "kaiserslautern": {
+      "country": "Germany",
+      "name": "Kaiserslautern",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "karlsruhe": {
+      "country": "Germany",
+      "name": "Karlsruhe",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "kiel": {
+      "country": "Germany",
+      "name": "Kiel",
+      "c1": "#0F5787",
+      "c2": "#FFFFFF",
+      "c3": "#CC3043",
+      "plate": "none",
+      "crest": ""
+    },
+    "koln": {
+      "country": "Germany",
+      "name": "Köln",
+      "c1": "#ED1C24",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "magdeburg": {
+      "country": "Germany",
+      "name": "Magdeburg",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "mainz": {
+      "country": "Germany",
+      "name": "Mainz",
+      "c1": "#C3141E",
+      "c2": "#FFFFFF",
+      "c3": "#918F90",
+      "plate": "none",
+      "crest": ""
+    },
+    "munster": {
+      "country": "Germany",
+      "name": "Münster",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "nurnberg": {
+      "country": "Germany",
+      "name": "Nürnberg",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "paderborn": {
+      "country": "Germany",
+      "name": "Paderborn",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "schalke": {
+      "country": "Germany",
+      "name": "Schalke",
+      "c1": "#004D9D",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "st-pauli": {
+      "country": "Germany",
+      "name": "St. Pauli",
+      "c1": "#624839",
+      "c2": "#E30613",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "union-berlin": {
+      "country": "Germany",
+      "name": "Union Berlin",
+      "c1": "#EB1923",
+      "c2": "#FFFFFF",
+      "c3": "#FDDC02",
+      "plate": "none",
+      "crest": ""
+    },
+    "werder-bremen": {
+      "country": "Germany",
+      "name": "Werder Bremen",
+      "c1": "#1D9053",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "wolfsburg": {
+      "country": "Germany",
+      "name": "Wolfsburg",
+      "c1": "#09633D",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
     "psg": {
       "country": "France",
       "name": "PSG",
@@ -348,6 +1491,276 @@
       "c1": "#DA291C",
       "c2": "#000000",
       "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "amiens": {
+      "country": "France",
+      "name": "Amiens",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "angers": {
+      "country": "France",
+      "name": "Angers",
+      "c1": "#000000",
+      "c2": "#FFFFFF",
+      "c3": "#D9C395",
+      "plate": "none",
+      "crest": ""
+    },
+    "annecy": {
+      "country": "France",
+      "name": "Annecy",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "auxerre": {
+      "country": "France",
+      "name": "Auxerre",
+      "c1": "#4087BF",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "bastia": {
+      "country": "France",
+      "name": "Bastia",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "boulogne": {
+      "country": "France",
+      "name": "Boulogne",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "brest": {
+      "country": "France",
+      "name": "Brest",
+      "c1": "#ED1C24",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "plate": "none",
+      "crest": ""
+    },
+    "clermont": {
+      "country": "France",
+      "name": "Clermont",
+      "c1": "#C50C46",
+      "c2": "#002D6A",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "dunkerque": {
+      "country": "France",
+      "name": "Dunkerque",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "grenoble": {
+      "country": "France",
+      "name": "Grenoble",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "guingamp": {
+      "country": "France",
+      "name": "Guingamp",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "laval": {
+      "country": "France",
+      "name": "Laval",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "le-havre": {
+      "country": "France",
+      "name": "Le Havre",
+      "c1": "#79BCE7",
+      "c2": "#193260",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "le-mans": {
+      "country": "France",
+      "name": "Le Mans",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "lens": {
+      "country": "France",
+      "name": "Lens",
+      "c1": "#FFF200",
+      "c2": "#EC1C24",
+      "c3": "#EC1C24",
+      "plate": "none",
+      "crest": ""
+    },
+    "lorient": {
+      "country": "France",
+      "name": "Lorient",
+      "c1": "#F58113",
+      "c2": "#000000",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "metz": {
+      "country": "France",
+      "name": "Metz",
+      "c1": "#6E0F12",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "montpellier": {
+      "country": "France",
+      "name": "Montpellier",
+      "c1": "#20234C",
+      "c2": "#E66107",
+      "c3": "#7F7D7C",
+      "plate": "none",
+      "crest": ""
+    },
+    "nancy": {
+      "country": "France",
+      "name": "Nancy",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "nantes": {
+      "country": "France",
+      "name": "Nantes",
+      "c1": "#FCD405",
+      "c2": "#1B8F3A",
+      "c3": "#1B8F3A",
+      "plate": "none",
+      "crest": ""
+    },
+    "paris-fc": {
+      "country": "France",
+      "name": "Paris FC",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "pau": {
+      "country": "France",
+      "name": "Pau",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "red-star": {
+      "country": "France",
+      "name": "Red Star",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "reims": {
+      "country": "France",
+      "name": "Reims",
+      "c1": "#EE2223",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "rennes": {
+      "country": "France",
+      "name": "Rennes",
+      "c1": "#E13327",
+      "c2": "#000000",
+      "c3": "#FCBC17",
+      "plate": "none",
+      "crest": ""
+    },
+    "rodez": {
+      "country": "France",
+      "name": "Rodez",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "saint-etienne": {
+      "country": "France",
+      "name": "Saint-Étienne",
+      "c1": "#1D995B",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "strasbourg": {
+      "country": "France",
+      "name": "Strasbourg",
+      "c1": "#009FE3",
+      "c2": "#DC2F34",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "toulouse": {
+      "country": "France",
+      "name": "Toulouse",
+      "c1": "#492359",
+      "c2": "#FFFFFF",
+      "c3": "#F0194E",
+      "plate": "none",
+      "crest": ""
+    },
+    "troyes": {
+      "country": "France",
+      "name": "Troyes",
+      "c1": "#006EB2",
+      "c2": "#FFFFFF",
+      "c3": "#DC9D0F",
       "plate": "none",
       "crest": ""
     },
@@ -537,6 +1950,231 @@
       "c1": "#000000",
       "c2": "#FFFFFF",
       "c3": "#A50044",
+      "plate": "none",
+      "crest": ""
+    },
+    "afumati": {
+      "country": "Romania",
+      "name": "Afumați",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "arges": {
+      "country": "Romania",
+      "name": "Argeș",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "bihor": {
+      "country": "Romania",
+      "name": "Bihor",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "botosani": {
+      "country": "Romania",
+      "name": "Botoșani",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "ceahlaul": {
+      "country": "Romania",
+      "name": "Ceahlăul",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "chiajna": {
+      "country": "Romania",
+      "name": "Chiajna",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "chindia": {
+      "country": "Romania",
+      "name": "Chindia",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "corvinul": {
+      "country": "Romania",
+      "name": "Corvinul",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "csikszereda": {
+      "country": "Romania",
+      "name": "Csíkszereda",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "dej": {
+      "country": "Romania",
+      "name": "Dej",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "farul": {
+      "country": "Romania",
+      "name": "Farul",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "gloria-buzau": {
+      "country": "Romania",
+      "name": "Gloria Buzău",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "hermannstadt": {
+      "country": "Romania",
+      "name": "Hermannstadt",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "metaloglobus": {
+      "country": "Romania",
+      "name": "Metaloglobus",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "metalul": {
+      "country": "Romania",
+      "name": "Metalul",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "otelul": {
+      "country": "Romania",
+      "name": "Oțelul",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "petrolul": {
+      "country": "Romania",
+      "name": "Petrolul",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "poli-iasi": {
+      "country": "Romania",
+      "name": "Poli Iași",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "resita": {
+      "country": "Romania",
+      "name": "Reșița",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "sepsi": {
+      "country": "Romania",
+      "name": "Sepsi",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "slobozia": {
+      "country": "Romania",
+      "name": "Slobozia",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "steaua": {
+      "country": "Romania",
+      "name": "Steaua",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "tunari": {
+      "country": "Romania",
+      "name": "Tunari",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "uta": {
+      "country": "Romania",
+      "name": "UTA",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "plate": "none",
+      "crest": ""
+    },
+    "voluntari": {
+      "country": "Romania",
+      "name": "Voluntari",
+      "c1": "#111111",
+      "c2": "#FFFFFF",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     }

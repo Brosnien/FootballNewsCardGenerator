@@ -23,6 +23,12 @@ strColour1/2/3, plus the badge URL. It never touches teams.json or crests/.
 
   python3 tools/fetch_crests.py --leagues
   python3 tools/fetch_crests.py --leagues --country Romania
+
+Once that proposal has been read by a human, prompt 2 adopts it in two steps -
+the merge is reversible on its own, the 23 MB of crests is a separate commit:
+
+  python3 tools/fetch_crests.py --merge-proposal    # writes teams.json
+  python3 tools/fetch_crests.py --fetch-proposal    # writes crests/*.png
 """
 
 import argparse
@@ -482,6 +488,104 @@ def run_leagues(args):
     return 1 if misses else 0
 
 
+def load_proposal():
+    prop = (load_json(PROPOSED, {}) or {}).get("clubs")
+    if not prop:
+        sys.exit("no proposal in %s - run --leagues first" % PROPOSED)
+    return prop
+
+
+def merge_proposal(args):
+    """Fold tools/teams-proposed.json into teams.json. Writes teams.json."""
+    prop = load_proposal()
+    data = load_json(TEAMS)
+    clubs = data["clubs"]
+    already = [k for k in prop if k in clubs]
+    if already and not args.force:
+        sys.exit("these keys are already in teams.json: %s\n"
+                 "re-run --leagues (it skips clubs we have) or pass --force."
+                 % ", ".join(sorted(already)[:10]))
+
+    # Keep the picker readable: each country's existing clubs stay in the
+    # author's order, the new ones follow alphabetically behind them.
+    order, seen = [], set()
+    for key, team in clubs.items():
+        if team.get("country") not in seen:
+            seen.add(team.get("country"))
+            order.append(team.get("country"))
+    for key in sorted(prop, key=lambda k: norm(prop[k]["name"])):
+        if prop[key]["country"] not in seen:
+            seen.add(prop[key]["country"])
+            order.append(prop[key]["country"])
+
+    merged = {}
+    for country in order:
+        for key, team in clubs.items():
+            if team.get("country") == country:
+                merged[key] = team
+        for key in sorted(prop, key=lambda k: norm(prop[k]["name"])):
+            if prop[key]["country"] == country:
+                merged[key] = {k: v for k, v in prop[key].items()
+                               if not k.startswith("_")}
+
+    assert len(merged) == len(clubs) + len(prop) - len(already), "lost a club in the merge"
+    data["clubs"] = merged
+    tmp = TEAMS + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as fh:
+        json.dump(data, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+    os.replace(tmp, TEAMS)
+
+    print("MERGE  teams.json  clubs %d -> %d  (+%d)  nations %d unchanged"
+          % (len(clubs), len(merged), len(prop), len(data["nations"])))
+    print("crests still missing for the new keys - run --fetch-proposal next.")
+    return 0
+
+
+def fetch_proposal(args):
+    """Download the badge each proposed club resolved to. Writes crests/*.png."""
+    prop = load_proposal()
+    manifest = load_json(MANIFEST, {}) or {}
+    todo = [(k, v) for k, v in sorted(prop.items())
+            if args.force or not has_real_crest(k, manifest)]
+    skipped = len(prop) - len(todo)
+
+    ok, failed = 0, []
+    for i, (key, team) in enumerate(todo, 1):
+        if i % 20 == 0 or i == len(todo):
+            print("  ... %d/%d" % (i, len(todo)), file=sys.stderr, flush=True)
+        src = team.get("_source", {})
+        url = (src.get("url") or "") + ("/preview" if args.preview else "")
+        # the URL comes from the reviewed proposal, so no search is needed: one
+        # request per crest instead of a lookup plus a download.
+        blob = get(url, throttle=0.3, binary=True) if url else None
+        if not blob or blob[:8] != b"\x89PNG\r\n\x1a\n" or len(blob) < 2000:
+            failed.append((key, team.get("name"), "badge download failed"))
+            continue
+        with open(os.path.join(CRESTS, key + ".png"), "wb") as fh:
+            fh.write(blob)
+        manifest[key] = {"id": src.get("id"), "team": src.get("team"),
+                         "country": src.get("api_country"), "url": src.get("url"),
+                         "matched_by": "proposal (%s)" % src.get("league", "?"),
+                         "bytes": len(blob), "fetched": time.strftime("%Y-%m-%d")}
+        save_manifest(manifest)
+        ok += 1
+
+    total = sum(os.path.getsize(os.path.join(CRESTS, f))
+                for f in os.listdir(CRESTS) if f.endswith(".png"))
+    print("\nFETCH proposal  considered=%d  written=%d  failed=%d  skipped(already real)=%d"
+          % (len(todo), ok, len(failed), skipped))
+    print("crests/ now holds %d files, %.1f MB"
+          % (len([f for f in os.listdir(CRESTS) if f.endswith('.png')]),
+             total / 1e6))
+    if failed:
+        print("\n%-20s %-24s %s" % ("KEY", "name", "why"))
+        for key, name, why in failed:
+            print("%-20s %-24s %s" % (key, name, why))
+        print("\nre-run with --fetch-proposal --force after fixing the URLs.")
+    return 1 if failed else 0
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -499,10 +603,18 @@ def main():
                          "tools/teams-proposed.json only)")
     ap.add_argument("--country", default="",
                     help="with --leagues: only this country's divisions")
+    ap.add_argument("--merge-proposal", action="store_true",
+                    help="fold tools/teams-proposed.json into teams.json")
+    ap.add_argument("--fetch-proposal", action="store_true",
+                    help="download the badge recorded for every proposed club")
     args = ap.parse_args()
 
     if args.leagues:
         return run_leagues(args)
+    if args.merge_proposal:
+        return merge_proposal(args)
+    if args.fetch_proposal:
+        return fetch_proposal(args)
 
     data = load_json(TEAMS)
     overrides = {k: v for k, v in (load_json(OVERRIDES, {}) or {}).items()
