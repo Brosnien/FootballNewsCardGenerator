@@ -4,14 +4,20 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-28 — **B13 prompt 1 done**: the fetcher now scans whole divisions
-(`--leagues`) and has proposed **182 new clubs** — teams.json would go 60 → 242 — with colours
-and badge URLs, written to `tools/teams-proposed.json` and nothing else touched. One correction
+_Last updated: 2026-07-28 — **B13 is closed: the app now carries 242 clubs and 92 nations**,
+every one with its own real crest (`crests/` 152 → 334 files, 34.6 MB; 0 missing, 0 orphans, no
+two teams sharing an image). You said ship all, so all 182 proposed clubs landed — England 10 →
+44, Spain and Italy 8 → 40, Germany 7 → 36, France 6 → 36, Romania 6 → 31. **The one thing left
+behind: 131 of the new clubs carry at least one fallback colour** (85 carry three), listed in
+`tools/teams-proposed.json`; fix them a few at a time for the clubs you actually post about.
+Next is **B5 → B11 → B12**._
+
+_Previously: **B13 prompt 1**: the fetcher learned to scan whole divisions
+(`--leagues`) and proposed **182 new clubs** with colours and badge URLs. One correction
 to an earlier finding: **colours are not free below the top flights** (51 of 182 complete, 85
-with none), so prompt 2 needs a call from you: ship all 182, or only the six top flights.
-Also **dropped B1, B2 and B6 (the automation items)** at the author's request, and fixed two
-crests that were the wrong clubs entirely (`bayern` was Bayern Hof, `frankfurt` was a club
-called Frankfurt)._
+with none). Also **dropped B1, B2 and B6 (the automation items)** at the author's request, and
+fixed two crests that were the wrong clubs entirely (`bayern` was Bayern Hof, `frankfurt` was a
+club called Frankfurt)._
 
 _Previously: **B10 done: the card now exports at 2×** (2160 × 2700 instead of
 1080 × 1350) on all three capture paths, driven by one `EXPORT_SCALE` constant so a fallback
@@ -283,19 +289,20 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
 Items stay in the author's original order, minus the three automation items (**B1, B2, B6**),
 dropped on 2026-07-27 at the author's request — see the note under the table. B9–B13 were added
-2026-07-27. **Proposed order is now B13 → B5 → B11 → B12.** B13 comes first because the crest
-fetcher built for "Next up" already does most of it. B4, B7 and B8 aren't work items. One prompt
-per row; paste the quoted line as the whole prompt.
+2026-07-27. **Proposed order is now B5 → B11 → B12.** B5 is next because it removes the last
+repetitive typing on every card; B11 matters more now that 182 new badges are in, many of them
+odd shapes. B4, B7 and B8 aren't work items. One prompt per row; paste the quoted line as the
+whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B13 | Many more teams (top 5 ×2 + Romania) | 1 left | prompt 2 needs a call on 85 colourless clubs |
 | B5 | Reporters picker | 1 | — |
 | B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
 | B12 | Colour picker for the second team | 1 | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
 | B9 | Cap hashtags at 5 + both teams | done | — |
 | B10 | Sharper exported image | done | a check on your phone |
+| B13 | Many more teams (top 5 ×2 + Romania) | done | — |
 | B7 | Posts vs reels | 0 | — |
 | B8 | Crest overlay | 0 | done with Next up |
 | B1, B2, B6 | Automation — **dropped** 2026-07-27 | — | — |
@@ -555,7 +562,7 @@ _Added 2026-07-27._
   the whole section on templates that don't use them.
   > Roadmap B12: add second-team colour inputs in Style & colours, saved with the draft, per ROADMAP.md.
 
-- [ ] Add much more teams (cover first two leagues from top 5 + Romania) **(B13)**
+- [x] Add much more teams (cover first two leagues from top 5 + Romania) **(B13)**
 
   Scope is roughly **230 clubs** (two divisions each from England, Spain, Italy, Germany,
   France and Romania) against the 60 in `teams.json` today — about 4×.
@@ -625,3 +632,39 @@ _Added 2026-07-27._
   | Cost of a full run | ~229 requests at 2 s = **~15 minutes**. `--only <keys>` re-resolves a handful and merges them back into the proposal — use it, don't re-run the lot. |
 
   > Roadmap B13 prompt 2: merge the reviewed teams into teams.json and fetch their crests, per ROADMAP.md.
+
+  **Prompt 2 done 2026-07-28 — you chose "ship all", so all 182 landed.** Two steps, two
+  commits, because the teams.json change is worth being able to revert on its own:
+  `--merge-proposal` writes teams.json, `--fetch-proposal` downloads the badge each club
+  already resolved to (no second search — the reviewed proposal holds the URL, so it is one
+  request per crest and the run takes ~2 minutes instead of ~15).
+
+  **Result: teams.json 60 → 242 clubs, `crests/` 152 → 334 files, 16 MB → 34.6 MB.**
+  182 of 182 crests written, 0 failures. Integrity checked, not assumed: every team key has a
+  file and every file has a team key (0 missing, 0 orphans), all 334 decode as PNGs, 331 are
+  512×512 (one each at 2000, 500, 256), and **no two teams share an image** — that last one is
+  what would expose a silent-wrong match.
+
+  | | before | after |
+  |---|---|---|
+  | England | 10 | **44** |
+  | Spain | 8 | **40** |
+  | Italy | 8 | **40** |
+  | Germany | 7 | **36** |
+  | France | 6 | **36** |
+  | Romania | 6 | **31** |
+  | Portugal / Netherlands / Scotland / Turkey / Rest of Europe | 15 | 15 |
+
+  _Checked in the browser on the merged data: all 242 club crests return 200, the pickers show
+  44 English / 31 Romanian clubs and stay searchable, and a Sunderland → Pisa transfer on a
+  diagonal split renders both new crests inside their own colour blocks. Twelve crests spread
+  across the new leagues were eyeballed as a grid — Wrexham, Sunderland, Leeds, Nottm Forest,
+  Oviedo, Sporting Gijón, Pisa, Palermo, Schalke, Saint-Étienne, Steaua, Sepsi — all the right
+  clubs, including the Forest badge that had to be pinned by id._
+
+  _**The colour debt, in one place.** 131 of the 182 new clubs carry at least one fallback
+  colour and 85 carry three, so they render in a neutral pair until someone types the real
+  ones. The exact list is in `tools/teams-proposed.json` (`colours_missing`), and the README has
+  the one-liner that prints it. Worth doing a few at a time, for the clubs you actually post
+  about — Palermo's badge is also a wide wordmark rather than a round crest, which is the
+  artwork issue **B11** is about._

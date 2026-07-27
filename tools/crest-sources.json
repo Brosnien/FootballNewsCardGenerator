@@ -1,4 +1,13 @@
 {
+  "afumati": {
+    "id": "149580",
+    "team": "Afumați",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/w0y9hr1730929514.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 103747,
+    "fetched": "2026-07-28"
+  },
   "ajax": {
     "id": "133772",
     "team": "Ajax",
@@ -7,6 +16,24 @@
     "matched_by": "search 'Ajax'",
     "bytes": 268342,
     "fetched": "2026-07-22"
+  },
+  "alaves": {
+    "id": "134221",
+    "team": "Deportivo Alavés",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mfn99h1734673842.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 130013,
+    "fetched": "2026-07-28"
+  },
+  "albacete": {
+    "id": "134232",
+    "team": "Albacete",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/17oqja1616436316.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 53443,
+    "fetched": "2026-07-28"
   },
   "algeria": {
     "id": "134516",
@@ -17,6 +44,51 @@
     "bytes": 72447,
     "fetched": "2026-07-22"
   },
+  "almeria": {
+    "id": "133817",
+    "team": "Almería",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/yswsww1473503818.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 64628,
+    "fetched": "2026-07-28"
+  },
+  "amiens": {
+    "id": "135658",
+    "team": "Amiens",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/nwgget1656423507.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 100844,
+    "fetched": "2026-07-28"
+  },
+  "andorra": {
+    "id": "138280",
+    "team": "FC Andorra",
+    "country": "Andorra",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/eyaka21639481902.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 78848,
+    "fetched": "2026-07-28"
+  },
+  "angers": {
+    "id": "134709",
+    "team": "Angers",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ix6q4w1678808069.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 89075,
+    "fetched": "2026-07-28"
+  },
+  "annecy": {
+    "id": "139928",
+    "team": "Annecy",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/h6981f1655120883.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 46574,
+    "fetched": "2026-07-28"
+  },
   "argentina": {
     "id": "134509",
     "team": "Argentina",
@@ -25,6 +97,15 @@
     "matched_by": "search 'Argentina'",
     "bytes": 75583,
     "fetched": "2026-07-22"
+  },
+  "arges": {
+    "id": "138932",
+    "team": "Argeș Pitești",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/vjy06i1580765128.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 85029,
+    "fetched": "2026-07-28"
   },
   "arsenal": {
     "id": "133604",
@@ -71,6 +152,15 @@
     "bytes": 41875,
     "fetched": "2026-07-22"
   },
+  "augsburg": {
+    "id": "133652",
+    "team": "Augsburg",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xqyyvq1473453233.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 91708,
+    "fetched": "2026-07-28"
+  },
   "australia": {
     "id": "134500",
     "team": "Australia",
@@ -89,6 +179,24 @@
     "bytes": 57660,
     "fetched": "2026-07-22"
   },
+  "auxerre": {
+    "id": "134788",
+    "team": "Auxerre",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/lzdtbf1658753355.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 44913,
+    "fetched": "2026-07-28"
+  },
+  "avellino": {
+    "id": "133858",
+    "team": "Avellino",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/swsu5p1579724964.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 140752,
+    "fetched": "2026-07-28"
+  },
   "bahrain": {
     "id": "140149",
     "team": "Bahrain",
@@ -106,6 +214,24 @@
     "matched_by": "search 'Barcelona'",
     "bytes": 80725,
     "fetched": "2026-07-22"
+  },
+  "bari": {
+    "id": "133688",
+    "team": "Bari",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/isfrtg1579724972.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 134330,
+    "fetched": "2026-07-28"
+  },
+  "bastia": {
+    "id": "133933",
+    "team": "Bastia",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mv09b91754278549.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 93018,
+    "fetched": "2026-07-28"
   },
   "bayern": {
     "id": "133664",
@@ -134,6 +260,60 @@
     "bytes": 170573,
     "fetched": "2026-07-22"
   },
+  "betis": {
+    "id": "133722",
+    "team": "Real Betis",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/2oqulv1663245386.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 64841,
+    "fetched": "2026-07-28"
+  },
+  "bielefeld": {
+    "id": "133852",
+    "team": "Arminia Bielefeld",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xrrwpx1447591964.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 105330,
+    "fetched": "2026-07-28"
+  },
+  "bihor": {
+    "id": "149582",
+    "team": "Bihor Oradea",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/lparuf1730930479.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 143646,
+    "fetched": "2026-07-28"
+  },
+  "birmingham": {
+    "id": "133597",
+    "team": "Birmingham City",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wufs551672950865.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 109971,
+    "fetched": "2026-07-28"
+  },
+  "blackburn": {
+    "id": "133598",
+    "team": "Blackburn Rovers",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rvryut1448810814.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 188681,
+    "fetched": "2026-07-28"
+  },
+  "bochum": {
+    "id": "133839",
+    "team": "Bochum",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/kag3jy1599821108.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 74575,
+    "fetched": "2026-07-28"
+  },
   "bolivia": {
     "id": "136470",
     "team": "Bolivia",
@@ -142,6 +322,51 @@
     "matched_by": "search 'Bolivia'",
     "bytes": 86039,
     "fetched": "2026-07-22"
+  },
+  "bologna": {
+    "id": "134781",
+    "team": "Bologna",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/2qi1u31655592366.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 46162,
+    "fetched": "2026-07-28"
+  },
+  "botosani": {
+    "id": "138191",
+    "team": "Botoșani",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/1volx41719994247.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 131693,
+    "fetched": "2026-07-28"
+  },
+  "boulogne": {
+    "id": "133849",
+    "team": "Boulogne",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/c7p39l1754278109.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 100583,
+    "fetched": "2026-07-28"
+  },
+  "bournemouth": {
+    "id": "134301",
+    "team": "Bournemouth",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/y08nak1534071116.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 122548,
+    "fetched": "2026-07-28"
+  },
+  "braunschweig": {
+    "id": "134302",
+    "team": "Eintracht Braunschweig",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/lrrq0z1599820707.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 173565,
+    "fetched": "2026-07-28"
   },
   "brazil": {
     "id": "134496",
@@ -152,6 +377,42 @@
     "bytes": 56559,
     "fetched": "2026-07-22"
   },
+  "brentford": {
+    "id": "134355",
+    "team": "Brentford",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/grv1aw1546453779.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 138317,
+    "fetched": "2026-07-28"
+  },
+  "brest": {
+    "id": "133704",
+    "team": "Brest",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/z69be41598797026.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 107018,
+    "fetched": "2026-07-28"
+  },
+  "brighton": {
+    "id": "133619",
+    "team": "Brighton and Hove Albion",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ywypts1448810904.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 102855,
+    "fetched": "2026-07-28"
+  },
+  "bristol-city": {
+    "id": "133621",
+    "team": "Bristol City",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/0ejxwz1601721013.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 94421,
+    "fetched": "2026-07-28"
+  },
   "brugge": {
     "id": "133789",
     "team": "Club Brugge",
@@ -161,6 +422,15 @@
     "bytes": 84804,
     "fetched": "2026-07-22"
   },
+  "burgos": {
+    "id": "138161",
+    "team": "Burgos",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/79h3ul1708150894.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 93451,
+    "fetched": "2026-07-28"
+  },
   "burkina-faso": {
     "id": "136474",
     "team": "Burkina Faso",
@@ -169,6 +439,33 @@
     "matched_by": "search 'Burkina Faso'",
     "bytes": 86177,
     "fetched": "2026-07-22"
+  },
+  "burnley": {
+    "id": "133623",
+    "team": "Burnley",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ql7nl31686893820.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 101347,
+    "fetched": "2026-07-28"
+  },
+  "cadiz": {
+    "id": "134222",
+    "team": "Cádiz",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/e2phzp1639408503.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 108175,
+    "fetched": "2026-07-28"
+  },
+  "cagliari": {
+    "id": "134783",
+    "team": "Cagliari",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wvsvxt1447534471.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 11476,
+    "fetched": "2026-07-28"
   },
   "cameroon": {
     "id": "134498",
@@ -197,6 +494,51 @@
     "bytes": 60138,
     "fetched": "2026-07-22"
   },
+  "carrarese": {
+    "id": "134666",
+    "team": "Carrarese",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/njh6tl1651779724.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 133450,
+    "fetched": "2026-07-28"
+  },
+  "castellon": {
+    "id": "138286",
+    "team": "Castellón",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ywibjw1733456820.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 67483,
+    "fetched": "2026-07-28"
+  },
+  "catanzaro": {
+    "id": "134223",
+    "team": "Catanzaro",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/byrc5e1691995858.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 231343,
+    "fetched": "2026-07-28"
+  },
+  "ceahlaul": {
+    "id": "147628",
+    "team": "Ceahlăul Piatra Neamţ",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/748seg1690278554.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 76557,
+    "fetched": "2026-07-28"
+  },
+  "celta-vigo": {
+    "id": "133937",
+    "team": "Celta Vigo",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xfjtku1690436219.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 52517,
+    "fetched": "2026-07-28"
+  },
   "celtic": {
     "id": "133647",
     "team": "Celtic",
@@ -205,6 +547,24 @@
     "matched_by": "search 'Celtic'",
     "bytes": 155872,
     "fetched": "2026-07-22"
+  },
+  "cesena": {
+    "id": "133669",
+    "team": "Cesena",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/9l00zr1677256723.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 73137,
+    "fetched": "2026-07-28"
+  },
+  "ceuta": {
+    "id": "137762",
+    "team": "AD Ceuta",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/zagd4a1578746893.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 158840,
+    "fetched": "2026-07-28"
   },
   "cfr-cluj": {
     "id": "133955",
@@ -215,6 +575,15 @@
     "bytes": 98264,
     "fetched": "2026-07-22"
   },
+  "charlton": {
+    "id": "133851",
+    "team": "Charlton Athletic",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/o08wvi1635872307.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 157015,
+    "fetched": "2026-07-28"
+  },
   "chelsea": {
     "id": "133610",
     "team": "Chelsea",
@@ -223,6 +592,15 @@
     "matched_by": "search 'Chelsea'",
     "bytes": 207368,
     "fetched": "2026-07-22"
+  },
+  "chiajna": {
+    "id": "138921",
+    "team": "Concordia Chiajna",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/6qo9x41580764301.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 166225,
+    "fetched": "2026-07-28"
   },
   "chile": {
     "id": "134499",
@@ -242,6 +620,24 @@
     "bytes": 66242,
     "fetched": "2026-07-22"
   },
+  "chindia": {
+    "id": "138195",
+    "team": "Chindia Târgoviște",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/zfym7d1638479420.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 78728,
+    "fetched": "2026-07-28"
+  },
+  "clermont": {
+    "id": "134713",
+    "team": "Clermont Foot",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wrytst1426871249.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 82878,
+    "fetched": "2026-07-28"
+  },
   "colombia": {
     "id": "134501",
     "team": "Colombia",
@@ -250,6 +646,15 @@
     "matched_by": "search 'Colombia'",
     "bytes": 102906,
     "fetched": "2026-07-22"
+  },
+  "como": {
+    "id": "134243",
+    "team": "Como",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/02x81t1627405841.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 60874,
+    "fetched": "2026-07-28"
   },
   "cook-islands": {
     "id": "140250",
@@ -260,6 +665,24 @@
     "bytes": 197261,
     "fetched": "2026-07-22"
   },
+  "cordoba": {
+    "id": "134627",
+    "team": "Córdoba",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ttyyvy1473503827.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 83444,
+    "fetched": "2026-07-28"
+  },
+  "corvinul": {
+    "id": "147629",
+    "team": "Corvinul Hunedoara",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/4xsvhl1690278556.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 143738,
+    "fetched": "2026-07-28"
+  },
   "costa-rica": {
     "id": "134505",
     "team": "Costa Rica",
@@ -268,6 +691,15 @@
     "matched_by": "search 'Costa Rica'",
     "bytes": 70697,
     "fetched": "2026-07-22"
+  },
+  "coventry": {
+    "id": "133625",
+    "team": "Coventry City",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/uxyqys1424033798.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 179521,
+    "fetched": "2026-07-28"
   },
   "craiova": {
     "id": "138188",
@@ -278,6 +710,15 @@
     "bytes": 230733,
     "fetched": "2026-07-22"
   },
+  "cremonese": {
+    "id": "134224",
+    "team": "Cremonese",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/6ng2vy1579708291.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 86209,
+    "fetched": "2026-07-28"
+  },
   "croatia": {
     "id": "133912",
     "team": "Croatia",
@@ -286,6 +727,33 @@
     "matched_by": "search 'Croatia'",
     "bytes": 91793,
     "fetched": "2026-07-22"
+  },
+  "crystal-palace": {
+    "id": "133632",
+    "team": "Crystal Palace",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ia6i3m1656014992.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 129692,
+    "fetched": "2026-07-28"
+  },
+  "csikszereda": {
+    "id": "138930",
+    "team": "Csíkszereda Miercurea Ciuc",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/cbjteh1730928843.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 161120,
+    "fetched": "2026-07-28"
+  },
+  "cultural": {
+    "id": "135888",
+    "team": "Cultural Leonesa",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/yk28a51677472494.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 105131,
+    "fetched": "2026-07-28"
   },
   "curacao": {
     "id": "140271",
@@ -305,6 +773,24 @@
     "bytes": 119693,
     "fetched": "2026-07-22"
   },
+  "darmstadt": {
+    "id": "134693",
+    "team": "Darmstadt",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/5f3dyd1608236981.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 102749,
+    "fetched": "2026-07-28"
+  },
+  "dej": {
+    "id": "143178",
+    "team": "Unirea Dej",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/qi06ep1656016427.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 139783,
+    "fetched": "2026-07-28"
+  },
   "denmark": {
     "id": "133906",
     "team": "Denmark",
@@ -313,6 +799,15 @@
     "matched_by": "search 'Denmark'",
     "bytes": 168332,
     "fetched": "2026-07-22"
+  },
+  "derby": {
+    "id": "133627",
+    "team": "Derby County",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/jioo4z1557155744.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 41530,
+    "fetched": "2026-07-28"
   },
   "dinamo": {
     "id": "134121",
@@ -351,6 +846,33 @@
     "bytes": 230547,
     "fetched": "2026-07-22"
   },
+  "dresden": {
+    "id": "135655",
+    "team": "Dynamo Dresden",
+    "country": "Germany",
+    "url": "https://www.thesportsdb.com/images/media/team/badge/0vfmdu1783231141.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 80404,
+    "fetched": "2026-07-28"
+  },
+  "dunkerque": {
+    "id": "138821",
+    "team": "Dunkerque",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/3s4ne51750879372.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 272313,
+    "fetched": "2026-07-28"
+  },
+  "dusseldorf": {
+    "id": "133935",
+    "team": "Fortuna Düsseldorf",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rsruww1473454140.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 90494,
+    "fetched": "2026-07-28"
+  },
   "ecuador": {
     "id": "134507",
     "team": "Ecuador",
@@ -369,6 +891,15 @@
     "bytes": 74025,
     "fetched": "2026-07-22"
   },
+  "eibar": {
+    "id": "134626",
+    "team": "Eibar",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/hccive1680933599.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 66461,
+    "fetched": "2026-07-28"
+  },
   "el-salvador": {
     "id": "140174",
     "team": "El Salvador",
@@ -377,6 +908,33 @@
     "matched_by": "search 'El Salvador'",
     "bytes": 171667,
     "fetched": "2026-07-22"
+  },
+  "elche": {
+    "id": "134384",
+    "team": "Elche",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/e4vaw51655594332.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 73158,
+    "fetched": "2026-07-28"
+  },
+  "elversberg": {
+    "id": "138411",
+    "team": "Elversberg",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/z079go1677573926.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 81383,
+    "fetched": "2026-07-28"
+  },
+  "empoli": {
+    "id": "133695",
+    "team": "Empoli",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/c1ie6b1622561483.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 181706,
+    "fetched": "2026-07-28"
   },
   "england": {
     "id": "133914",
@@ -387,6 +945,24 @@
     "bytes": 145559,
     "fetched": "2026-07-22"
   },
+  "entella": {
+    "id": "134633",
+    "team": "Virtus Entella",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/c7yb5u1693457662.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 97457,
+    "fetched": "2026-07-28"
+  },
+  "espanyol": {
+    "id": "133734",
+    "team": "Espanyol",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/867nzz1681703222.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 92703,
+    "fetched": "2026-07-28"
+  },
   "everton": {
     "id": "133615",
     "team": "Everton",
@@ -395,6 +971,15 @@
     "matched_by": "search 'Everton'",
     "bytes": 175069,
     "fetched": "2026-07-22"
+  },
+  "farul": {
+    "id": "138926",
+    "team": "Farul Constanța",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/37r50u1638479392.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 71160,
+    "fetched": "2026-07-28"
   },
   "fcsb": {
     "id": "134005",
@@ -468,6 +1053,42 @@
     "bytes": 111533,
     "fetched": "2026-07-28"
   },
+  "freiburg": {
+    "id": "133653",
+    "team": "Freiburg",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/urwtup1473453288.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 63892,
+    "fetched": "2026-07-28"
+  },
+  "frosinone": {
+    "id": "133818",
+    "team": "Frosinone",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/a7xa151603170120.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 114789,
+    "fetched": "2026-07-28"
+  },
+  "fulham": {
+    "id": "133600",
+    "team": "Fulham",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xwwvyt1448811086.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 33221,
+    "fetched": "2026-07-28"
+  },
+  "furth": {
+    "id": "134099",
+    "team": "Greuther Fürth",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/87n1901608237004.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 68889,
+    "fetched": "2026-07-28"
+  },
   "galatasaray": {
     "id": "133804",
     "team": "Galatasaray",
@@ -476,6 +1097,15 @@
     "matched_by": "search 'Galatasaray'",
     "bytes": 62190,
     "fetched": "2026-07-22"
+  },
+  "genoa": {
+    "id": "133675",
+    "team": "Genoa",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/52s8dn1655553600.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 40608,
+    "fetched": "2026-07-28"
   },
   "germany": {
     "id": "133907",
@@ -486,6 +1116,15 @@
     "bytes": 230956,
     "fetched": "2026-07-22"
   },
+  "getafe": {
+    "id": "133731",
+    "team": "Getafe",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/eyh2891655594452.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 154323,
+    "fetched": "2026-07-28"
+  },
   "ghana": {
     "id": "134513",
     "team": "Ghana",
@@ -494,6 +1133,15 @@
     "matched_by": "search 'Ghana'",
     "bytes": 84011,
     "fetched": "2026-07-22"
+  },
+  "girona": {
+    "id": "134700",
+    "team": "Girona",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/kfu7zu1659897499.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 332240,
+    "fetched": "2026-07-28"
   },
   "gladbach": {
     "id": "134779",
@@ -504,6 +1152,24 @@
     "bytes": 49420,
     "fetched": "2026-07-22"
   },
+  "gloria-buzau": {
+    "id": "138929",
+    "team": "Gloria Buzău",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/321fnj1656016575.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 119707,
+    "fetched": "2026-07-28"
+  },
+  "granada": {
+    "id": "133721",
+    "team": "Granada",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/f9iss11677472689.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 48031,
+    "fetched": "2026-07-28"
+  },
   "greece": {
     "id": "133902",
     "team": "Greece",
@@ -512,6 +1178,15 @@
     "matched_by": "search 'Greece'",
     "bytes": 100280,
     "fetched": "2026-07-22"
+  },
+  "grenoble": {
+    "id": "133847",
+    "team": "Grenoble",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/x2hcpg1488227785.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 87096,
+    "fetched": "2026-07-28"
   },
   "guatemala": {
     "id": "140260",
@@ -531,6 +1206,15 @@
     "bytes": 145334,
     "fetched": "2026-07-22"
   },
+  "guingamp": {
+    "id": "134244",
+    "team": "Guingamp",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/5iihrp1590259631.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 71021,
+    "fetched": "2026-07-28"
+  },
   "haiti": {
     "id": "140175",
     "team": "Haiti",
@@ -540,6 +1224,60 @@
     "bytes": 213457,
     "fetched": "2026-07-22"
   },
+  "hamburg": {
+    "id": "133651",
+    "team": "Hamburg",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tvtppt1473453296.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 9818,
+    "fetched": "2026-07-28"
+  },
+  "hannover": {
+    "id": "133656",
+    "team": "Hannover 96",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tqpqqv1473454148.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 65165,
+    "fetched": "2026-07-28"
+  },
+  "heidenheim": {
+    "id": "134696",
+    "team": "Heidenheim",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/lbj7g01608236988.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 86359,
+    "fetched": "2026-07-28"
+  },
+  "hermannstadt": {
+    "id": "138193",
+    "team": "Hermannstadt",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/d3xtjz1579793605.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 238374,
+    "fetched": "2026-07-28"
+  },
+  "hertha": {
+    "id": "133658",
+    "team": "Hertha",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/8okmtm1621593943.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 58247,
+    "fetched": "2026-07-28"
+  },
+  "hoffenheim": {
+    "id": "133657",
+    "team": "Hoffenheim",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/9hwvb21621593919.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 74809,
+    "fetched": "2026-07-28"
+  },
   "honduras": {
     "id": "134508",
     "team": "Honduras",
@@ -548,6 +1286,24 @@
     "matched_by": "search 'Honduras'",
     "bytes": 37047,
     "fetched": "2026-07-22"
+  },
+  "huesca": {
+    "id": "135454",
+    "team": "Huesca",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tuxusx1447590509.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 84980,
+    "fetched": "2026-07-28"
+  },
+  "hull": {
+    "id": "133617",
+    "team": "Hull City",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/fbqqda1601726113.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 141023,
+    "fetched": "2026-07-28"
   },
   "hungary": {
     "id": "135987",
@@ -575,6 +1331,15 @@
     "matched_by": "override id",
     "bytes": 43438,
     "fetched": "2026-07-22"
+  },
+  "ipswich": {
+    "id": "133622",
+    "team": "Ipswich Town",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mdj1ey1634670785.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 85434,
+    "fetched": "2026-07-28"
   },
   "iran": {
     "id": "134511",
@@ -648,6 +1413,15 @@
     "bytes": 35367,
     "fetched": "2026-07-22"
   },
+  "juve-stabia": {
+    "id": "133696",
+    "team": "Juve Stabia",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/aojsvb1677257282.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 128264,
+    "fetched": "2026-07-28"
+  },
   "juventus": {
     "id": "133676",
     "team": "Juventus",
@@ -656,6 +1430,60 @@
     "matched_by": "search 'Juventus'",
     "bytes": 20669,
     "fetched": "2026-07-22"
+  },
+  "kaiserslautern": {
+    "id": "133663",
+    "team": "Kaiserslautern",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/jghax31740165513.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 27285,
+    "fetched": "2026-07-28"
+  },
+  "karlsruhe": {
+    "id": "135293",
+    "team": "Karlsruhe",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/l784ls1696006504.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 65246,
+    "fetched": "2026-07-28"
+  },
+  "kiel": {
+    "id": "136027",
+    "team": "Holstein Kiel",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/1fpmgs1514394524.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 139918,
+    "fetched": "2026-07-28"
+  },
+  "koln": {
+    "id": "133654",
+    "team": "Köln",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/2j1sc91566049407.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 112996,
+    "fetched": "2026-07-28"
+  },
+  "las-palmas": {
+    "id": "134259",
+    "team": "Las Palmas",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mmhyb11616443601.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 185967,
+    "fetched": "2026-07-28"
+  },
+  "laval": {
+    "id": "134708",
+    "team": "Laval",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/s6g8y81580152463.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 50782,
+    "fetched": "2026-07-28"
   },
   "lazio": {
     "id": "133668",
@@ -666,6 +1494,60 @@
     "bytes": 65139,
     "fetched": "2026-07-22"
   },
+  "le-havre": {
+    "id": "133862",
+    "team": "Le Havre",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/aikowk1546475003.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 108518,
+    "fetched": "2026-07-28"
+  },
+  "le-mans": {
+    "id": "133848",
+    "team": "Le Mans",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wjhziv1700145026.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 116281,
+    "fetched": "2026-07-28"
+  },
+  "lecce": {
+    "id": "133678",
+    "team": "Lecce",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/j4vznr1567365249.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 116138,
+    "fetched": "2026-07-28"
+  },
+  "leeds": {
+    "id": "133635",
+    "team": "Leeds United",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/jcgrml1756649030.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 93587,
+    "fetched": "2026-07-28"
+  },
+  "leganes": {
+    "id": "134701",
+    "team": "Leganés",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tm0adr1616443898.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 185770,
+    "fetched": "2026-07-28"
+  },
+  "leicester": {
+    "id": "133626",
+    "team": "Leicester City",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xtxwtu1448813356.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 193810,
+    "fetched": "2026-07-28"
+  },
   "leipzig": {
     "id": "134695",
     "team": "RB Leipzig",
@@ -674,6 +1556,24 @@
     "matched_by": "search 'RB Leipzig'",
     "bytes": 67052,
     "fetched": "2026-07-22"
+  },
+  "lens": {
+    "id": "133822",
+    "team": "Lens",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/3pxoum1598797195.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 76490,
+    "fetched": "2026-07-28"
+  },
+  "levante": {
+    "id": "133732",
+    "team": "Levante",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xwtxsx1473503739.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 119666,
+    "fetched": "2026-07-28"
   },
   "leverkusen": {
     "id": "133666",
@@ -702,6 +1602,15 @@
     "bytes": 30969,
     "fetched": "2026-07-22"
   },
+  "lorient": {
+    "id": "133715",
+    "team": "Lorient",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/sxsttw1473504748.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 80357,
+    "fetched": "2026-07-28"
+  },
   "lyon": {
     "id": "133713",
     "team": "Lyon",
@@ -711,6 +1620,33 @@
     "bytes": 65906,
     "fetched": "2026-07-22"
   },
+  "magdeburg": {
+    "id": "136194",
+    "team": "Magdeburg",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/f2fuxs1532856216.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 44669,
+    "fetched": "2026-07-28"
+  },
+  "mainz": {
+    "id": "133665",
+    "team": "Mainz",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/fhm9v51552134916.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 74730,
+    "fetched": "2026-07-28"
+  },
+  "malaga": {
+    "id": "133736",
+    "team": "Málaga",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/upqyvr1473502952.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 182834,
+    "fetched": "2026-07-28"
+  },
   "mali": {
     "id": "134580",
     "team": "Mali",
@@ -719,6 +1655,15 @@
     "matched_by": "search 'Mali'",
     "bytes": 80432,
     "fetched": "2026-07-22"
+  },
+  "mallorca": {
+    "id": "133733",
+    "team": "Mallorca",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ssptsx1473503730.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 146762,
+    "fetched": "2026-07-28"
   },
   "man-city": {
     "id": "133613",
@@ -738,6 +1683,15 @@
     "bytes": 155795,
     "fetched": "2026-07-22"
   },
+  "mantova": {
+    "id": "133845",
+    "team": "Mantova",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/6mz7tb1648579351.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 86124,
+    "fetched": "2026-07-28"
+  },
   "marseille": {
     "id": "133707",
     "team": "Marseille",
@@ -746,6 +1700,33 @@
     "matched_by": "search 'Marseille'",
     "bytes": 70877,
     "fetched": "2026-07-22"
+  },
+  "metaloglobus": {
+    "id": "138931",
+    "team": "Metaloglobus București",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mygptx1580765032.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 54102,
+    "fetched": "2026-07-28"
+  },
+  "metalul": {
+    "id": "149581",
+    "team": "Metalul Buzău",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/oymx6a1730929748.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 91403,
+    "fetched": "2026-07-28"
+  },
+  "metz": {
+    "id": "133883",
+    "team": "Metz",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/1iuew61688452857.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 20732,
+    "fetched": "2026-07-28"
   },
   "mexico": {
     "id": "134497",
@@ -756,6 +1737,15 @@
     "bytes": 123085,
     "fetched": "2026-07-22"
   },
+  "middlesbrough": {
+    "id": "133628",
+    "team": "Middlesbrough",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/advjg71780068902.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 173966,
+    "fetched": "2026-07-28"
+  },
   "milan": {
     "id": "133667",
     "team": "AC Milan",
@@ -764,6 +1754,33 @@
     "matched_by": "search 'AC Milan'",
     "bytes": 46852,
     "fetched": "2026-07-22"
+  },
+  "millwall": {
+    "id": "133634",
+    "team": "Millwall",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/5p1z5k1537208888.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 76686,
+    "fetched": "2026-07-28"
+  },
+  "mirandes": {
+    "id": "134698",
+    "team": "Mirandés",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xjeaa21625677345.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 64479,
+    "fetched": "2026-07-28"
+  },
+  "modena": {
+    "id": "133700",
+    "team": "Modena",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/93n2wm1656015823.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 71696,
+    "fetched": "2026-07-28"
   },
   "monaco": {
     "id": "133823",
@@ -774,6 +1791,24 @@
     "bytes": 60593,
     "fetched": "2026-07-22"
   },
+  "montpellier": {
+    "id": "133709",
+    "team": "Montpellier",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/8wn9x31750879448.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 150422,
+    "fetched": "2026-07-28"
+  },
+  "monza": {
+    "id": "134270",
+    "team": "Monza",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/bxearg1603170113.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 83290,
+    "fetched": "2026-07-28"
+  },
   "morocco": {
     "id": "136139",
     "team": "Morocco",
@@ -782,6 +1817,33 @@
     "matched_by": "search 'Morocco'",
     "bytes": 133792,
     "fetched": "2026-07-22"
+  },
+  "munster": {
+    "id": "137965",
+    "team": "Preußen Münster",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/nu38ih1579106303.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 117603,
+    "fetched": "2026-07-28"
+  },
+  "nancy": {
+    "id": "133710",
+    "team": "Nancy Lorraine",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ve39pj1547899643.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 110864,
+    "fetched": "2026-07-28"
+  },
+  "nantes": {
+    "id": "133861",
+    "team": "Nantes",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mla9x61678808018.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 37717,
+    "fetched": "2026-07-28"
   },
   "napoli": {
     "id": "133670",
@@ -855,6 +1917,33 @@
     "bytes": 86145,
     "fetched": "2026-07-22"
   },
+  "norwich": {
+    "id": "133608",
+    "team": "Norwich City",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/pabczm1679951464.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 60077,
+    "fetched": "2026-07-28"
+  },
+  "nottm-forest": {
+    "id": "133720",
+    "team": "Nottingham Forest",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/sar2y41781740886.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 37372,
+    "fetched": "2026-07-28"
+  },
+  "nurnberg": {
+    "id": "133659",
+    "team": "Nürnberg",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wtj8rd1659904028.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 69251,
+    "fetched": "2026-07-28"
+  },
   "olympiacos": {
     "id": "133754",
     "team": "Olympiacos",
@@ -872,6 +1961,69 @@
     "matched_by": "search 'Oman'",
     "bytes": 137570,
     "fetched": "2026-07-22"
+  },
+  "osasuna": {
+    "id": "133730",
+    "team": "Osasuna",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rvspvt1473502960.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 82668,
+    "fetched": "2026-07-28"
+  },
+  "otelul": {
+    "id": "135929",
+    "team": "Oțelul Galați",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/cfkqt61770049560.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 150159,
+    "fetched": "2026-07-28"
+  },
+  "oviedo": {
+    "id": "135455",
+    "team": "Real Oviedo",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/yuwqus1447590681.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 41896,
+    "fetched": "2026-07-28"
+  },
+  "oxford": {
+    "id": "134361",
+    "team": "Oxford United",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/hgpm6u1781718489.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 69097,
+    "fetched": "2026-07-28"
+  },
+  "paderborn": {
+    "id": "134551",
+    "team": "Paderborn",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/kddvva1566048058.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 74871,
+    "fetched": "2026-07-28"
+  },
+  "padova": {
+    "id": "135950",
+    "team": "Padova",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/hklo0i1579724992.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 51325,
+    "fetched": "2026-07-28"
+  },
+  "palermo": {
+    "id": "138166",
+    "team": "Palermo",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/zi1tb01579708939.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 57148,
+    "fetched": "2026-07-28"
   },
   "panama": {
     "id": "136141",
@@ -891,6 +2043,33 @@
     "bytes": 83296,
     "fetched": "2026-07-22"
   },
+  "paris-fc": {
+    "id": "135465",
+    "team": "Paris FC",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/yuvtsy1447594254.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 71874,
+    "fetched": "2026-07-28"
+  },
+  "parma": {
+    "id": "135728",
+    "team": "Parma",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/6yiaxs1627406063.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 93966,
+    "fetched": "2026-07-28"
+  },
+  "pau": {
+    "id": "138309",
+    "team": "Pau",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/g1p2l71653308318.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 235411,
+    "fetched": "2026-07-28"
+  },
   "peru": {
     "id": "136162",
     "team": "Peru",
@@ -899,6 +2078,33 @@
     "matched_by": "search 'Peru'",
     "bytes": 29851,
     "fetched": "2026-07-22"
+  },
+  "pescara": {
+    "id": "133685",
+    "team": "Pescara",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/uywyxr1426869739.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 55190,
+    "fetched": "2026-07-28"
+  },
+  "petrolul": {
+    "id": "134398",
+    "team": "Petrolul Ploiești",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mv8kh01656874656.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 110047,
+    "fetched": "2026-07-28"
+  },
+  "pisa": {
+    "id": "133859",
+    "team": "Pisa",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/2eso9w1579708309.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 103958,
+    "fetched": "2026-07-28"
   },
   "png": {
     "id": "140256",
@@ -918,6 +2124,15 @@
     "bytes": 59000,
     "fetched": "2026-07-22"
   },
+  "poli-iasi": {
+    "id": "138194",
+    "team": "Politehnica Iași",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/8m2z1i1719993924.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 66525,
+    "fetched": "2026-07-28"
+  },
   "porto": {
     "id": "134114",
     "team": "Porto",
@@ -927,6 +2142,15 @@
     "bytes": 167943,
     "fetched": "2026-07-22"
   },
+  "portsmouth": {
+    "id": "133629",
+    "team": "Portsmouth",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/j13pfe1601726274.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 221150,
+    "fetched": "2026-07-28"
+  },
   "portugal": {
     "id": "133908",
     "team": "Portugal",
@@ -935,6 +2159,15 @@
     "matched_by": "search 'Portugal'",
     "bytes": 112732,
     "fetched": "2026-07-22"
+  },
+  "preston": {
+    "id": "133809",
+    "team": "Preston North End",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/wqtwvw1448811512.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 159975,
+    "fetched": "2026-07-28"
   },
   "psg": {
     "id": "133714",
@@ -963,6 +2196,24 @@
     "bytes": 253586,
     "fetched": "2026-07-22"
   },
+  "qpr": {
+    "id": "133605",
+    "team": "Queens Park Rangers",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/l4qscx1601721022.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 142662,
+    "fetched": "2026-07-28"
+  },
+  "racing": {
+    "id": "133726",
+    "team": "Racing de Santander",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/97kkiq1536575158.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 111536,
+    "fetched": "2026-07-28"
+  },
   "rangers": {
     "id": "133642",
     "team": "Rangers",
@@ -981,6 +2232,15 @@
     "bytes": 170901,
     "fetched": "2026-07-22"
   },
+  "rayo-vallecano": {
+    "id": "133728",
+    "team": "Rayo Vallecano",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/nzhu941655595465.png",
+    "matched_by": "proposal (Spain La Liga)",
+    "bytes": 72641,
+    "fetched": "2026-07-28"
+  },
   "real-madrid": {
     "id": "133738",
     "team": "Real Madrid",
@@ -998,6 +2258,60 @@
     "matched_by": "search 'Real Sociedad'",
     "bytes": 167971,
     "fetched": "2026-07-22"
+  },
+  "red-star": {
+    "id": "135467",
+    "team": "Red Star",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/so4unb1658758422.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 89185,
+    "fetched": "2026-07-28"
+  },
+  "reggiana": {
+    "id": "137121",
+    "team": "Reggiana",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/dffx6o1600266770.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 99762,
+    "fetched": "2026-07-28"
+  },
+  "reims": {
+    "id": "133934",
+    "team": "Stade de Reims",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xcrw1b1592925946.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 27506,
+    "fetched": "2026-07-28"
+  },
+  "rennes": {
+    "id": "133719",
+    "team": "Rennes",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ypturx1473504818.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 83622,
+    "fetched": "2026-07-28"
+  },
+  "resita": {
+    "id": "138920",
+    "team": "Reșița",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/79r6tq1730929143.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 66778,
+    "fetched": "2026-07-28"
+  },
+  "rodez": {
+    "id": "137652",
+    "team": "Rodez",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/e8rjka1576848094.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 56100,
+    "fetched": "2026-07-28"
   },
   "roma": {
     "id": "133682",
@@ -1026,6 +2340,15 @@
     "bytes": 230290,
     "fetched": "2026-07-22"
   },
+  "saint-etienne": {
+    "id": "133717",
+    "team": "Saint-Étienne",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/m4ej831656423694.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 94482,
+    "fetched": "2026-07-28"
+  },
   "salzburg": {
     "id": "133970",
     "team": "Red Bull Salzburg",
@@ -1044,6 +2367,24 @@
     "bytes": 112283,
     "fetched": "2026-07-22"
   },
+  "sampdoria": {
+    "id": "133683",
+    "team": "Sampdoria",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/pr6co21655592769.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 60412,
+    "fetched": "2026-07-28"
+  },
+  "sassuolo": {
+    "id": "133701",
+    "team": "Sassuolo",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xystvp1448806138.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 55049,
+    "fetched": "2026-07-28"
+  },
   "saudi-arabia": {
     "id": "136137",
     "team": "Saudi Arabia",
@@ -1052,6 +2393,15 @@
     "matched_by": "search 'Saudi Arabia'",
     "bytes": 127255,
     "fetched": "2026-07-22"
+  },
+  "schalke": {
+    "id": "133661",
+    "team": "Schalke 04",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/hnci291621593978.png",
+    "matched_by": "proposal (Germany 2. Bundesliga)",
+    "bytes": 35420,
+    "fetched": "2026-07-28"
   },
   "scotland": {
     "id": "136450",
@@ -1070,6 +2420,15 @@
     "matched_by": "search 'Senegal'",
     "bytes": 189606,
     "fetched": "2026-07-22"
+  },
+  "sepsi": {
+    "id": "138192",
+    "team": "Sepsi OSK",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ggoh1h1638479369.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 107344,
+    "fetched": "2026-07-28"
   },
   "serbia": {
     "id": "136140",
@@ -1097,6 +2456,33 @@
     "matched_by": "search 'Shakhtar Donetsk'",
     "bytes": 30537,
     "fetched": "2026-07-22"
+  },
+  "sheff-united": {
+    "id": "133811",
+    "team": "Sheffield United",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/w7f8pj1672950689.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 105555,
+    "fetched": "2026-07-28"
+  },
+  "sheff-wed": {
+    "id": "133837",
+    "team": "Sheffield Wednesday",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/m3km7p1781284189.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 75412,
+    "fetched": "2026-07-28"
+  },
+  "slobozia": {
+    "id": "140131",
+    "team": "Unirea Slobozia",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/i4kwba1719993896.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 121899,
+    "fetched": "2026-07-28"
   },
   "slovakia": {
     "id": "135983",
@@ -1143,6 +2529,15 @@
     "bytes": 101768,
     "fetched": "2026-07-22"
   },
+  "southampton": {
+    "id": "134778",
+    "team": "Southampton",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ggqtd01621593274.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 74765,
+    "fetched": "2026-07-28"
+  },
   "spain": {
     "id": "133909",
     "team": "Spain",
@@ -1151,6 +2546,15 @@
     "matched_by": "search 'Spain'",
     "bytes": 81103,
     "fetched": "2026-07-22"
+  },
+  "spezia": {
+    "id": "133879",
+    "team": "Spezia",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/3wgebp1749146364.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 52875,
+    "fetched": "2026-07-28"
   },
   "sporting": {
     "id": "135708",
@@ -1161,6 +2565,51 @@
     "bytes": 69181,
     "fetched": "2026-07-22"
   },
+  "sporting-gijon": {
+    "id": "133723",
+    "team": "Sporting de Gijón",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xxrtqx1473503054.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 53765,
+    "fetched": "2026-07-28"
+  },
+  "st-pauli": {
+    "id": "133813",
+    "team": "St Pauli",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/5qupxa1608237013.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 121915,
+    "fetched": "2026-07-28"
+  },
+  "steaua": {
+    "id": "143176",
+    "team": "CSA Steaua Bucureşti",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/mml1fc1730928996.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 75672,
+    "fetched": "2026-07-28"
+  },
+  "stoke": {
+    "id": "133609",
+    "team": "Stoke City",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/lz89v21781718914.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 53722,
+    "fetched": "2026-07-28"
+  },
+  "strasbourg": {
+    "id": "133882",
+    "team": "Strasbourg",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/b8k77w1766625501.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 117777,
+    "fetched": "2026-07-28"
+  },
   "stuttgart": {
     "id": "133660",
     "team": "Stuttgart",
@@ -1169,6 +2618,33 @@
     "matched_by": "search 'Stuttgart'",
     "bytes": 107673,
     "fetched": "2026-07-22"
+  },
+  "sudtirol": {
+    "id": "134654",
+    "team": "Südtirol",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/8fico41579725098.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 156481,
+    "fetched": "2026-07-28"
+  },
+  "sunderland": {
+    "id": "133603",
+    "team": "Sunderland",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tprtus1448813498.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 156428,
+    "fetched": "2026-07-28"
+  },
+  "swansea": {
+    "id": "133614",
+    "team": "Swansea City",
+    "country": "Wales",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/474rco1686920744.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 57787,
+    "fetched": "2026-07-28"
   },
   "sweden": {
     "id": "133916",
@@ -1215,6 +2691,15 @@
     "bytes": 220840,
     "fetched": "2026-07-22"
   },
+  "torino": {
+    "id": "133687",
+    "team": "Torino",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/xxprty1448806802.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 73675,
+    "fetched": "2026-07-28"
+  },
   "tottenham": {
     "id": "133616",
     "team": "Tottenham Hotspur",
@@ -1224,6 +2709,15 @@
     "bytes": 61017,
     "fetched": "2026-07-22"
   },
+  "toulouse": {
+    "id": "133703",
+    "team": "Toulouse",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/17eqox1688449282.png",
+    "matched_by": "proposal (France Ligue 1)",
+    "bytes": 150286,
+    "fetched": "2026-07-28"
+  },
   "trinidad": {
     "id": "140176",
     "team": "Trinidad and Tobago",
@@ -1232,6 +2726,24 @@
     "matched_by": "search 'Trinidad & Tobago'",
     "bytes": 137103,
     "fetched": "2026-07-22"
+  },
+  "troyes": {
+    "id": "134789",
+    "team": "Troyes",
+    "country": "France",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/sl5kzg1766617559.png",
+    "matched_by": "proposal (France Ligue 2)",
+    "bytes": 81422,
+    "fetched": "2026-07-28"
+  },
+  "tunari": {
+    "id": "147630",
+    "team": "Tunari",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ih5a691690278559.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 225867,
+    "fetched": "2026-07-28"
   },
   "tunisia": {
     "id": "136142",
@@ -1269,6 +2781,15 @@
     "bytes": 23483,
     "fetched": "2026-07-22"
   },
+  "udinese": {
+    "id": "133679",
+    "team": "Udinese",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/vwvstr1448806811.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 111930,
+    "fetched": "2026-07-28"
+  },
   "ukraine": {
     "id": "133915",
     "team": "Ukraine",
@@ -1277,6 +2798,15 @@
     "matched_by": "search 'Ukraine'",
     "bytes": 116698,
     "fetched": "2026-07-22"
+  },
+  "union-berlin": {
+    "id": "134690",
+    "team": "Union Berlin",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/q0o5001599679795.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 56104,
+    "fetched": "2026-07-28"
   },
   "uruguay": {
     "id": "134504",
@@ -1296,6 +2826,15 @@
     "bytes": 29431,
     "fetched": "2026-07-22"
   },
+  "uta": {
+    "id": "138924",
+    "team": "UTA Arad",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/m310bo1638479358.png",
+    "matched_by": "proposal (Romania SuperLiga)",
+    "bytes": 26483,
+    "fetched": "2026-07-28"
+  },
   "uzbekistan": {
     "id": "140151",
     "team": "Uzbekistan",
@@ -1314,6 +2853,15 @@
     "bytes": 57537,
     "fetched": "2026-07-22"
   },
+  "valladolid": {
+    "id": "133841",
+    "team": "Real Valladolid",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/bnhu8b1719983736.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 164927,
+    "fetched": "2026-07-28"
+  },
   "vanuatu": {
     "id": "140254",
     "team": "Vanuatu",
@@ -1323,6 +2871,15 @@
     "bytes": 154418,
     "fetched": "2026-07-22"
   },
+  "venezia": {
+    "id": "134234",
+    "team": "Venezia",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/vbiget1781026964.png",
+    "matched_by": "proposal (Italy Serie B)",
+    "bytes": 32108,
+    "fetched": "2026-07-28"
+  },
   "venezuela": {
     "id": "136473",
     "team": "Venezuela",
@@ -1331,6 +2888,15 @@
     "matched_by": "search 'Venezuela'",
     "bytes": 76213,
     "fetched": "2026-07-22"
+  },
+  "verona": {
+    "id": "134784",
+    "team": "Hellas Verona",
+    "country": "Italy",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/p6camf1593457737.png",
+    "matched_by": "proposal (Italy Serie A)",
+    "bytes": 36826,
+    "fetched": "2026-07-28"
   },
   "vietnam": {
     "id": "140161",
@@ -1350,6 +2916,15 @@
     "bytes": 90657,
     "fetched": "2026-07-22"
   },
+  "voluntari": {
+    "id": "138197",
+    "team": "Voluntari",
+    "country": "Romania",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ar8p2o1770089409.png",
+    "matched_by": "proposal (Romania Liga II)",
+    "bytes": 87462,
+    "fetched": "2026-07-28"
+  },
   "wales": {
     "id": "135982",
     "team": "Wales",
@@ -1359,6 +2934,33 @@
     "bytes": 115629,
     "fetched": "2026-07-22"
   },
+  "watford": {
+    "id": "133624",
+    "team": "Watford",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rsuswy1448813519.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 72639,
+    "fetched": "2026-07-28"
+  },
+  "werder-bremen": {
+    "id": "133662",
+    "team": "Werder Bremen",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/tkvqan1716960454.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 63165,
+    "fetched": "2026-07-28"
+  },
+  "west-brom": {
+    "id": "133611",
+    "team": "West Bromwich Albion",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/rsvuxw1448813527.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 126972,
+    "fetched": "2026-07-28"
+  },
   "west-ham": {
     "id": "133636",
     "team": "West Ham United",
@@ -1367,5 +2969,41 @@
     "matched_by": "search 'West Ham United'",
     "bytes": 101269,
     "fetched": "2026-07-22"
+  },
+  "wolfsburg": {
+    "id": "133655",
+    "team": "Wolfsburg",
+    "country": "Germany",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ci9trv1778399557.png",
+    "matched_by": "proposal (Germany Bundesliga)",
+    "bytes": 48763,
+    "fetched": "2026-07-28"
+  },
+  "wolves": {
+    "id": "133599",
+    "team": "Wolverhampton Wanderers",
+    "country": "England",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/u9qr031621593327.png",
+    "matched_by": "proposal (England Premier League)",
+    "bytes": 41663,
+    "fetched": "2026-07-28"
+  },
+  "wrexham": {
+    "id": "134775",
+    "team": "Wrexham",
+    "country": "Wales",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/ezpymt1675092551.png",
+    "matched_by": "proposal (England Championship)",
+    "bytes": 116898,
+    "fetched": "2026-07-28"
+  },
+  "zaragoza": {
+    "id": "133737",
+    "team": "Real Zaragoza",
+    "country": "Spain",
+    "url": "https://r2.thesportsdb.com/images/media/team/badge/sxpwxs1473503702.png",
+    "matched_by": "proposal (Spain Segunda)",
+    "bytes": 224031,
+    "fetched": "2026-07-28"
   }
 }

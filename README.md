@@ -21,7 +21,8 @@ automatically within about a minute. The big `fonts.css` and the libraries stay
 cached in the browser, so day-to-day edits to `app.js` / `styles.css` load fast.
 
 ## Adding teams
-Teams live in `teams.json`, split into `clubs` and `nations`. Each entry is:
+Teams live in `teams.json`, split into `clubs` and `nations` — **242 clubs and 92
+nations** today. Each entry is:
 
 ```json
 "barcelona": {
@@ -51,7 +52,8 @@ result cards both teams show, each crest placed inside its own colour region.
   filename doesn't change when the picture does, so browsers that already have
   the old one keep showing it; `CREST_V` is appended to the URL and forces the
   new artwork through.
-- All 152 teams have a real crest, fetched from [TheSportsDB](https://www.thesportsdb.com/).
+- All 334 teams — 242 clubs and 92 nations — have a real crest, fetched from
+  [TheSportsDB](https://www.thesportsdb.com/) (`crests/` is ~35 MB; one file loads per card).
   Club and national crests are trademarks — they're used here as editorial
   artwork, and how you publish them is your call.
 
@@ -86,6 +88,21 @@ This resolves each club and writes `tools/teams-proposed.json` — name, country
 touches nothing else: merging into `teams.json` and downloading the crests is a
 separate, deliberate step. `--only` re-resolves a few clubs and merges them back
 into the proposal, which is how you clear a MISS without repeating the run.
+
+Adopting a reviewed proposal is two deliberate steps, so the teams.json change
+can be reverted on its own:
+
+```bash
+python3 tools/fetch_crests.py --merge-proposal   # teams.json
+python3 tools/fetch_crests.py --fetch-proposal   # crests/*.png
+```
+
+**Colours below the top flights are mostly missing from the API** and fall back
+to a neutral pair. To list the clubs still carrying a default:
+
+```bash
+python3 -c "import json;d=json.load(open('tools/teams-proposed.json'))['clubs'];print('\n'.join(sorted(v['name'] for v in d.values() if v['_source']['colours_missing'])))"
+```
 
 On iPhone: open the live link in Safari → Share → **Add to Home Screen** to run
 it full-screen like an app.
