@@ -4,7 +4,14 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-27 — **B3 prompt 2 done, so B3 is closed.** The colour inputs, contrast
+_Last updated: 2026-07-27 — **five new items added (B9–B13)** from the author's notes, each
+costed with a prompt to paste. Two are outright defects: Instagram cut the hashtag cap to 5 in
+Dec 2025 and our captions still emit 8 (B9), and the card exports at 1:1 with no pixel headroom,
+which is why text goes soft after Instagram re-compresses it (B10). Also found that team colours
+can be fetched from the same API as the crests, which makes "add many more teams" (B13) a script
+run rather than days of typing. Proposed order now starts **B9 → B10 → B13**._
+
+_Previously: **B3 prompt 2 done, so B3 is closed.** The colour inputs, contrast
 readout and Format moved into the (closed) **Style & colours** section: nothing was removed, but
 a news card now shows **10 controls instead of 17** and the headline sits 231 px closer to the
 top. Also measured and dropped a contrast-warning dot — the app's ink fallback makes a bad
@@ -252,19 +259,27 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
 ## Backlog
 
-Items stay in the author's original order. **Execution order is B3 → B5 → B6 → B2 → B7 →
-B1**, because B3 is the stated NO1 priority and B5 is the biggest single piece of it.
-B4 and B8 aren't work items. One prompt per row; paste the quoted line as the whole prompt.
+Items stay in the author's original order; B9–B13 were added 2026-07-27. **Proposed order is
+B9 → B10 → B13 → B5 → B11 → B12 → B6 → B2 → B1**. B9 and B10 come first because they are
+wrong on *every* post already published — one breaks an Instagram rule, the other costs image
+quality — and both are small. B13 moves up because the crest fetcher built for "Next up"
+already does most of it. B4, B7 and B8 aren't work items. One prompt per row; paste the
+quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B3 | Fewer fields / faster (NO1) | 2 | — |
+| B9 | Cap hashtags at 5 + both teams | 1 | — |
+| B10 | Sharper exported image | 1 | — |
+| B13 | Many more teams (top 5 ×2 + Romania) | 2 | — |
 | B5 | Reporters picker | 1 | — |
+| B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
+| B12 | Colour picker for the second team | 1 | — |
 | B6 | Translation (NO2) | 2 | a decision (below) |
 | B2 | Auto-pull from X | 1 spike | a decision (below) |
-| B7 | Posts vs reels | 0 | — |
 | B1 | Use of the online repo | 1 | — |
-| B8 | Crest overlay | 0 | Next up |
+| B3 | Fewer fields / faster (NO1) | done | — |
+| B7 | Posts vs reels | 0 | — |
+| B8 | Crest overlay | 0 | done with Next up |
 
 ### Shared findings — tested 2026-07-22, don't re-derive
 
@@ -277,6 +292,8 @@ B4 and B8 aren't work items. One prompt per row; paste the quoted line as the wh
 | Instagram as a *destination*? | **Free.** The publishing API does single images, carousels and reels; 100 posts/24 h; needs a professional account linked to a Page. |
 | Carousel cost | A carousel counts as **one** post — so a multi-language carousel is as cheap as a single post. |
 | Instagram media hosting | Media **must sit at a public URL** when publishing. GitHub Pages already gives us one — that's the link between B1 and B7. |
+| Instagram hashtag cap | **5 per post and Reel**, a hard limit since Dec 2025 (was 30). Our captions still emit 8 — see B9. |
+| Can team colours be fetched? | **Yes** — TheSportsDB returns `strColour1/2/3` on the same record as the crest, matching our c1/c2/c3 model. Makes B13 scriptable. |
 | Free translation | DeepL API Free = **500 k chars/month**, Microsoft = 2 M/month. A card is ~200 chars, so ~2,500 cards/month free. LibreTranslate is free but self-hosted and visibly weaker. |
 
 ---
@@ -436,3 +453,92 @@ B4 and B8 aren't work items. One prompt per row; paste the quoted line as the wh
       — _**Done 2026-07-22.** `updateWall()` + `WALLPOS` place each team's crest deep inside its own
       colour region for all 8 seam shapes, with a Subtle/Medium/Bold opacity control. Now running on
       real artwork since "Next up" landed, and verified to survive PNG export._
+
+---
+
+_Added 2026-07-27._
+
+- [ ] Max 5 hashtags for generation as instagram does not allow more. Also need the 2nd team to get the hashtag not the first only in the case of transfers. In the case of the result template we can add them both. **(B9)**
+
+  **You're right, and it's a rule break, not a preference.** Instagram cut the cap from 30 to
+  **5 hashtags per post and Reel** in December 2025. `buildTags()` still ends in
+  `out.slice(0,8)` ([app.js](app.js)), so every caption we generate is over the limit.
+
+  With only 5 slots the *order* becomes the whole design, because whatever is built last gets
+  cut. Current build order is: player → team → other team → league → category → template
+  flavour → `#football` `#soccer`. The evergreen pair at the end is what should go first when
+  the knife comes out.
+
+  On the second team: the code **already** pushes it for both transfer and result
+  (`if(tpl==="move"||tpl==="result") push(other)`), and `other` reads the `club2` picker. So if
+  you're only seeing one team, the cause is more likely that the tag is being pushed past
+  position 5 and truncated, or `club2` is empty on that card — worth confirming against a real
+  transfer card before changing the logic.
+  > Roadmap B9: cap the caption at 5 hashtags and fix the priority order so both teams survive on transfer and result cards, per ROADMAP.md.
+
+- [ ] Quality of pic is not the best, find a way to make it generate clearer, as when posting to instagram, the text is a bit blurry. **(B10)**
+
+  **Found the cause.** The card is a fixed 1080 × 1350 box and all three export paths render it
+  at **1:1** — `html2canvas(card,{scale:1})` and both `htmlToImage.toBlob(...,{pixelRatio:1})`
+  fallbacks ([app.js](app.js)). So the PNG is exactly 1080 × 1350 with no pixel headroom, and
+  Instagram then re-compresses it, which is where serif text goes soft.
+
+  The standard fix is to render at 2× (2160 × 2700) and let Instagram downscale — downsampling
+  a larger image produces much cleaner text than compressing one that is already at target
+  size. All three paths need the same change or the fallback silently undoes it. Watch memory
+  on the phone: 2× is 4× the pixels, and iOS Safari is the tight case, so 2× is the sensible
+  ceiling to try first.
+  > Roadmap B10: export the card at 2x resolution on all three capture paths, per ROADMAP.md, and check it still works on iPhone.
+
+- [ ] Crest position is off, should be identical size and symmetrical (symmetry based on the diagonal, maybe increase size to be half as big as the news solo team logos) **(B11)**
+
+  **Measured, and the numbers say the geometry is already symmetric — so something else is
+  making it look wrong.** In `WALLPOS`, every split gives both crests the *same* size
+  (`d` = 0.54 of card width = 583 px, 0.52 on soft diagonal), and the two positions are exact
+  mirror images through the card centre (x 0.20/0.80, y 0.30/0.70). Your size instinct also
+  already matches: the solo crest is `background-size:112%` = 1210 px, and half of that is
+  605 px against the 583 px used on splits.
+
+  So the likely culprit is **the artwork, not the placement**. Every file is a uniform
+  512 × 512 canvas, but the crest *inside* it isn't: a round badge fills the square, a tall
+  shield leaves side gaps, a wide wordmark leaves top and bottom gaps. At an identical box
+  size those read as very different sizes. If that's it, the fix is to normalise the source
+  images — trim the transparent margin and re-pad each to a consistent square — which is a
+  `tools/` job, not a `WALLPOS` one. Note no image library is installed on this Mac
+  (no PIL, ImageMagick or node), so that script needs one, unlike the crest fetcher.
+
+  **Before this runs, say which split you were looking at and which two teams** — that pins
+  down whether it's the artwork, one specific seam shape, or the seam-edge clipping (on a
+  vertical split each crest does lose ~49 px at the centre line, equally on both sides).
+  > Roadmap B11: fix crest size/symmetry on split cards, per ROADMAP.md — I was looking at <split> with <team A> vs <team B>.
+
+- [ ] Add colors picker for the second team **(B12)**
+
+  Today only the left/active team has editable colours; the right-hand team's colours come
+  straight from `teams.json` with no way to override them on the card. Needs three more inputs
+  plus their entries in `FIELDS` so they save with the draft and with a preset.
+
+  They belong in **Style & colours** next to the existing three, not at the top of the pane —
+  that section was just cleared out in B3, and the same reasoning applies. One caution
+  recorded there: don't give the new inputs a `data-for`, or `secUsed()` will auto-collapse
+  the whole section on templates that don't use them.
+  > Roadmap B12: add second-team colour inputs in Style & colours, saved with the draft, per ROADMAP.md.
+
+- [ ] Add much more teams (cover first two leagues from top 5 + Romania) **(B13)**
+
+  Scope is roughly **230 clubs** (two divisions each from England, Spain, Italy, Germany,
+  France and Romania) against the 60 in `teams.json` today — about 4×.
+
+  **The expensive part turns out to be free.** TheSportsDB returns `strColour1/2/3` on the same
+  record the crest comes from, and for Arsenal they are `#EF0107 / #fbffff / #013373` — the
+  c1/c2/c3 model this app already uses, near-identical to the hand-entered values. So colours
+  *and* crests can both be scripted from one pass, and `tools/fetch_crests.py` already does
+  the team resolution, throttling and override handling. Hand-entering 230 × 3 hex colours was
+  the thing that made this look like days of work; it isn't.
+
+  Expect the same traps the crest run hit: hyphens break the search, short names match the
+  wrong country's club, and the API needs ~2 s between calls. Two prompts — generate and
+  review the data first, commit the crests second — because ~230 new crests is ~29 MB.
+  > Roadmap B13 prompt 1: extend the fetcher to emit team name + colours + crest for the first two divisions of the top 5 leagues and Romania, per ROADMAP.md. Dry run, summary table only.
+
+  > Roadmap B13 prompt 2: merge the reviewed teams into teams.json and fetch their crests, per ROADMAP.md.
