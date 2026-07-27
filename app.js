@@ -787,6 +787,14 @@ $("reset").onclick=()=>{ if(confirm("Reset all fields to defaults?")) restore(DE
    EXPORT — the card is moved off-screen at full size,
    then we try the available engines in turn.
 ========================================================= */
+/* Render above the 1080 x H layout size: Instagram re-compresses whatever we send, and
+   downscaling a bigger image keeps serif text far crisper than compressing one that is
+   already at target size. 2x = 2160 x 2700, 4x the pixels — the ceiling iOS Safari can
+   still hold. Raising this without testing on a phone is how exports start failing. */
+const EXPORT_SCALE=2;
+/* below this a PNG cannot be a real card, only a blank canvas (bytes) */
+const MIN_PNG=8000;
+
 async function capture(){
   const card=$("card"), stage=$("stage"), H=+$("fmt").value;
   const prev={t:card.style.transform,p:stage.style.position,l:stage.style.left,
@@ -801,27 +809,44 @@ async function capture(){
 
   let blob=null, errs=[];
 
-  /* 1. html2canvas — no need to download the fonts */
-  if(window.html2canvas){
-    try{
-      const cv=await html2canvas(card,{width:1080,height:H,scale:1,useCORS:true,
-        allowTaint:true,backgroundColor:null,logging:false,
-        windowWidth:1080,windowHeight:H,scrollX:0,scrollY:0});
-      blob=await new Promise(r=>cv.toBlob(r,"image/png"));
-    }catch(e){ errs.push("html2canvas: "+(e&&e.message||e)); }
+  /* A card is never a near-empty PNG (the smallest real one measured is ~59 KB), so a
+     tiny blob means a blank canvas — how iOS reports running out of memory instead of
+     throwing. Treat it as a failure so the 1x retry below can rescue the export. */
+  const ok=b=>b&&b.size>MIN_PNG;
+
+  /* Every engine renders the same 1080 x H box; the scale is the only knob.
+     All three paths must use it or the fallback silently ships a soft image. */
+  async function engines(scale){
+    let b=null;
+
+    /* 1. html2canvas — no need to download the fonts */
+    if(window.html2canvas){
+      try{
+        const cv=await html2canvas(card,{width:1080,height:H,scale:scale,useCORS:true,
+          allowTaint:true,backgroundColor:null,logging:false,
+          windowWidth:1080,windowHeight:H,scrollX:0,scrollY:0});
+        b=await new Promise(r=>cv.toBlob(r,"image/png"));
+      }catch(e){ errs.push("html2canvas@"+scale+"x: "+(e&&e.message||e)); }
+    }
+
+    /* 2. html-to-image with fonts */
+    if(!ok(b) && window.htmlToImage){
+      try{ b=await htmlToImage.toBlob(card,{width:1080,height:H,pixelRatio:scale}); }
+      catch(e){ errs.push("html-to-image@"+scale+"x: "+(e&&e.message||e)); }
+    }
+
+    /* 3. html-to-image without fonts — loses the font, but produces something */
+    if(!ok(b) && window.htmlToImage){
+      try{ b=await htmlToImage.toBlob(card,{width:1080,height:H,pixelRatio:scale,skipFonts:true}); }
+      catch(e){ errs.push("no fonts@"+scale+"x: "+(e&&e.message||e)); }
+    }
+    return ok(b)?b:null;
   }
 
-  /* 2. html-to-image with fonts */
-  if(!blob && window.htmlToImage){
-    try{ blob=await htmlToImage.toBlob(card,{width:1080,height:H,pixelRatio:1}); }
-    catch(e){ errs.push("html-to-image: "+(e&&e.message||e)); }
-  }
-
-  /* 3. html-to-image without fonts — loses the font, but produces something */
-  if(!blob && window.htmlToImage){
-    try{ blob=await htmlToImage.toBlob(card,{width:1080,height:H,pixelRatio:1,skipFonts:true}); }
-    catch(e){ errs.push("no fonts: "+(e&&e.message||e)); }
-  }
+  blob=await engines(EXPORT_SCALE);
+  /* 2x is 4x the pixels; on an iPhone that can fail or come back blank. Ship 1x rather
+     than nothing — the old behaviour, and still a usable card. */
+  if(!blob && EXPORT_SCALE!==1) blob=await engines(1);
 
   card.style.transform=prev.t; stage.style.position=prev.p; stage.style.left=prev.l;
   stage.style.top=prev.tp; stage.style.width=prev.w; stage.style.height=prev.h;

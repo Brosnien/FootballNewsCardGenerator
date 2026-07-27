@@ -4,12 +4,18 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-27 — **B9 done: captions now emit exactly 5 hashtags**, the Instagram
+_Last updated: 2026-07-27 — **B10 done: the card now exports at 2×** (2160 × 2700 instead of
+1080 × 1350) on all three capture paths, driven by one `EXPORT_SCALE` constant so a fallback
+can't quietly undo it. Costs ~0.3 s. If 2× fails or comes back blank the export retries at 1×,
+so the worst case is today's image. **Still to check: one export on your iPhone** — there's no
+simulator or device here. Next is **B13 → B5 → B11 → B12**._
+
+_Previously: **B9 done: captions now emit exactly 5 hashtags**, the Instagram
 limit, and the build order was turned into a priority order so both teams survive on transfer
 and result cards (the second team sits in slot 2; the generic `#football` `#soccer` pair is what
 gets cut). Verified in the browser on all five templates and on nations. Also **moved the three
 automation items (B2, B6, B1) into their own section at the end of the file** — the manual flow
-comes first. Next is **B10 → B13 → B5 → B11 → B12**._
+comes first._
 
 _Previously: **five new items added (B9–B13)** from the author's notes, each
 costed with a prompt to paste. Two are outright defects: Instagram cut the hashtag cap to 5 in
@@ -269,14 +275,12 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 Items stay in the author's original order, except that the three automation items (**B2, B6,
 B1**) were moved to their own section at the end of the file on 2026-07-27, at the author's
 request — see **Automation — last**. B9–B13 were added 2026-07-27. **Proposed order is now
-B10 → B13 → B5 → B11 → B12**, then the automation three. B10 comes first because it is wrong on
-*every* post already published — the export costs image quality — and it is small. B13 is next
-because the crest fetcher built for "Next up" already does most of it. B4, B7 and B8 aren't
-work items. One prompt per row; paste the quoted line as the whole prompt.
+B13 → B5 → B11 → B12**, then the automation three. B13 comes first because the crest fetcher
+built for "Next up" already does most of it. B4, B7 and B8 aren't work items. One prompt per
+row; paste the quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B10 | Sharper exported image | 1 | — |
 | B13 | Many more teams (top 5 ×2 + Romania) | 2 | — |
 | B5 | Reporters picker | 1 | — |
 | B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
@@ -286,6 +290,7 @@ work items. One prompt per row; paste the quoted line as the whole prompt.
 | B1 | Use of the online repo — _automation_ | 1 | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
 | B9 | Cap hashtags at 5 + both teams | done | — |
+| B10 | Sharper exported image | done | a check on your phone |
 | B7 | Posts vs reels | 0 | — |
 | B8 | Crest overlay | 0 | done with Next up |
 
@@ -463,7 +468,33 @@ _Added 2026-07-27._
   transfer card before changing the logic.
   > Roadmap B9: cap the caption at 5 hashtags and fix the priority order so both teams survive on transfer and result cards, per ROADMAP.md.
 
-- [ ] Quality of pic is not the best, find a way to make it generate clearer, as when posting to instagram, the text is a bit blurry. **(B10)**
+- [x] Quality of pic is not the best, find a way to make it generate clearer, as when posting to instagram, the text is a bit blurry. **(B10)**
+
+  **Done 2026-07-27** ([app.js](app.js), `capture`). `EXPORT_SCALE = 2` now drives all three
+  capture paths from one constant — `html2canvas({scale})` and both `htmlToImage` calls take it,
+  so a fallback can no longer silently ship a 1:1 image. A Portrait card exports at
+  **2160 × 2700** instead of 1080 × 1350, Square at **2160 × 2160**.
+
+  Measured on the same card, same engine: 1080 × 1350 / 33 KB / 1.74 s → 2160 × 2700 / 120 KB /
+  **2.04 s**. Four times the pixels for about **0.3 s** more, because the cost is in laying the
+  card out, not in filling it.
+
+  _Two safety nets, both tested by injecting failures rather than by hoping. If 2× fails on all
+  three engines the whole chain **retries at 1×**, so the worst case is the old output, not a
+  failed export. And a returned blob under 8 KB is treated as a failure — that is how iOS
+  reports a canvas it could not allocate: a blank image instead of an exception. A forced 2×
+  failure fell through to 1× and produced a card; a forced 8 KB "success" was rejected and also
+  fell through to 1×._
+
+  _**The one thing not checked here: a real iPhone.** There is no Xcode/simulator on this Mac
+  and no device, so 2× was verified in a desktop browser only. Please export one card on the
+  phone. If it ever comes back blank or slow, the fallbacks above make it degrade to today's
+  output, and dropping back is a one-word change (`EXPORT_SCALE = 1`)._
+
+  _Environment note for whoever tests next: `html-to-image` (engines 2 and 3) fails on the full
+  card in the headless preview browser **at any scale, including 1×** — pre-existing, not the
+  scale change. `pixelRatio: 2` was confirmed to double output on a standalone node (100 × 50 →
+  200 × 100), and `html2canvas` — the path that actually runs — was verified end-to-end._
 
   **Found the cause.** The card is a fixed 1080 × 1350 box and all three export paths render it
   at **1:1** — `html2canvas(card,{scale:1})` and both `htmlToImage.toBlob(...,{pixelRatio:1})`
