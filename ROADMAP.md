@@ -4,7 +4,14 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-28 — **B13 is closed: the app now carries 242 clubs and 92 nations**,
+_Last updated: 2026-07-28 — **B5 is done: the byline is now one tap.** A **Reporter** picker
+sits above Handle / Outlet / Reliability and fills all three from
+[reporters.json](reporters.json) (**36 reporters**, with a **Profile ↗** link out); it searches
+names, outlets and handles. Verified in the browser down to the phone width, including the
+"file is missing" path. **The tiers in the file are my guess — give them one pass.** Next is
+**B11 → B12**._
+
+_Previously: **B13 is closed: the app now carries 242 clubs and 92 nations**,
 every one with its own real crest (`crests/` 152 → 334 files, 34.6 MB; 0 missing, 0 orphans, no
 two teams sharing an image). You said ship all, so all 182 proposed clubs landed — England 10 →
 44, Spain and Italy 8 → 40, Germany 7 → 36, France 6 → 36, Romania 6 → 31. **The one thing left
@@ -289,16 +296,15 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
 Items stay in the author's original order, minus the three automation items (**B1, B2, B6**),
 dropped on 2026-07-27 at the author's request — see the note under the table. B9–B13 were added
-2026-07-27. **Proposed order is now B5 → B11 → B12.** B5 is next because it removes the last
-repetitive typing on every card; B11 matters more now that 182 new badges are in, many of them
-odd shapes. B4, B7 and B8 aren't work items. One prompt per row; paste the quoted line as the
-whole prompt.
+2026-07-27. **Proposed order is now B11 → B12** (B5 landed 2026-07-28). B11 matters more now
+that 182 new badges are in, many of them odd shapes. B4, B7 and B8 aren't work items. One
+prompt per row; paste the quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B5 | Reporters picker | 1 | — |
 | B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
 | B12 | Colour picker for the second team | 1 | — |
+| B5 | Reporters picker | done | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
 | B9 | Cap hashtags at 5 + both teams | done | — |
 | B10 | Sharper exported image | done | a check on your phone |
@@ -424,13 +430,50 @@ they cost real testing and stay true whatever we build next.
       on disk; re-run the failed subset, not the whole job. Same "Token discipline" list as
       under Next up._
 
-- [ ] A page/another column to open directly the most commons reporters socials? Maybe something that does that and at a press of a button feeds info into the main page? Would prefer in the same page. **(B5)**
+- [x] A page/another column to open directly the most commons reporters socials? Maybe something that does that and at a press of a button feeds info into the main page? Would prefer in the same page. **(B5)**
 
   Same page, no new tab. `reporters.json` — handle, outlet, reliability tier, profile URL —
   behind a picker sitting directly above the Source fields: one tap fills handle + outlet +
   tier, with a small link out to the profile. This is the biggest single win for B3, because
   Source is currently a closed section you must open on every card.
   > Roadmap B5: add reporters.json and a one-tap reporter picker above the Source fields, per ROADMAP.md.
+
+  **Done 2026-07-28.** A **Reporter** row now sits in Text directly above Handle / Outlet /
+  Reliability ([generator-ios.html](generator-ios.html)), and one tap fills all three
+  ([app.js](app.js), `optReporters` / `pickReporter`). Beside it, a **Profile ↗** button opens
+  that reporter's page in a new tab — same page for the typing, the link only when you ask for
+  it. **36 reporters** ship in [reporters.json](reporters.json), covering the leagues the app
+  now carries: the transfer regulars, England, Spain, Italy, Germany, France, and Romania
+  (including GSP / Digi Sport / Fanatik as outlets with no handle).
+
+  It reuses the team pickers' `makeCombo`, so it is a search box, not a 36-line dropdown. One
+  addition to that shared function: an option can carry search-only text (`q`), which is how
+  typing a handle finds a name — `plettig` → Florian Plettenberg, matched but never shown in
+  the row.
+
+  _Measured in the browser, not assumed:_
+
+  | Check | Result |
+  |---|---|
+  | One tap fills three fields | `David Ornstein` → handle `@David_Ornstein`, outlet `The Athletic`, tier `3`; card prints `Source: @David_Ornstein · The Athletic`, dots read **Tier one** |
+  | Tier really moves | `Gazeta Sporturilor` → tier 2, dots read **Reliable** |
+  | Outlet with no handle | handle stays empty, card prints `Source: GSP.ro`, link uses the entry's `url` |
+  | Search by handle | `plettig` returns exactly Florian Plettenberg (the name doesn't contain it) |
+  | Search by outlet | `athletic` returns Ornstein + Sam Lee |
+  | Draft survives a reload | picker comes back showing the name, not a blank box, and the link with it |
+  | Reset / presets | `rep` is in `FIELDS`, so it saves with a card and clears on Reset |
+  | Hand-editing the byline | typing over Handle or Outlet un-picks the reporter and hides the link |
+  | `reporters.json` missing (tested with the file renamed) | app loads, picker reads "— none · type it myself —", the byline still types and prints |
+  | Phone width (375px) | picker 234px + button 101px on one line, no horizontal overflow |
+
+  _The tiers in the file are **my starting guess**, not a judgement you signed off on — they're
+  the one thing worth a pass. Same for a couple of outlets that move around (Romano is filed
+  Sky Sport Italia)._
+
+  _One thing this doesn't fix, and it isn't B5's to fix: on a **Result** card the whole Text
+  section auto-collapses (B3's rule — none of its `data-for` fields apply to a result), so the
+  byline and now the reporter picker start closed there. Every other template opens with them
+  visible. Say the word and Text stops collapsing when the card still uses its byline._
 
 - [ ] Should post on instagram in form of: posts or reels of posts? (are these both?) **(B7)**
       — _They're different things: a feed post is the static image, a reel is video. The API

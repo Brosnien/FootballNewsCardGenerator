@@ -199,6 +199,15 @@
         <label class="f"><span>Category</span><input type="text" id="cat" placeholder="Transfer"></label>
         <label class="f"><span>Date</span><input type="text" id="date"></label>
       </div>
+      <div class="row repRow">
+        <label class="f"><span>Reporter</span>
+          <div class="combo">
+            <input type="text" class="comboInput" id="rep_in" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" placeholder="Search reporter…">
+            <input type="hidden" id="rep">
+            <div class="comboList" id="rep_list" role="listbox"></div>
+          </div></label>
+        <a class="repLink hide" id="repLink" href="#" target="_blank" rel="noopener noreferrer">Profile ↗</a>
+      </div>
       <div class="row">
         <label class="f"><span>Handle</span><input type="text" id="handle" placeholder="@handle"></label>
         <label class="f"><span>Outlet</span><input type="text" id="outlet" placeholder="Outlet"></label>

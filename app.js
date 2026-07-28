@@ -31,7 +31,7 @@ const DB=()=>teamType==="nation"?NATIONS:CLUBS;
 
 const $=id=>document.getElementById(id);
 const FIELDS=["cat","date","cname","c1","c2","c3","head","sub","player",
-  "fee","quote","who","ctx","handle","outlet","tier","plate","crestBg","font","tpl","fmt","align",
+  "fee","quote","who","ctx","handle","outlet","tier","rep","plate","crestBg","font","tpl","fmt","align",
   "split","club2","dual","status","scoreA","scoreB","goalsA","goalsB",
   "oppo","statPos","sRating","sMin","sGoals","sAssists","sShots","sPass","sKey",
   "sDribbles","sTackles","sDuels","gSaves","gConceded","gSavePct","gClean","gClaims","gSweep"];
@@ -255,7 +255,9 @@ function makeCombo(id,getOptions,onSelect){
   const labelFor=v=>{const o=getOptions().find(x=>x.value===v);return o?o.label:"";};
   function draw(){
     const q=input.value.trim().toLowerCase(), all=getOptions();
-    filtered=q?all.filter(o=>o.label.toLowerCase().includes(q)||(o.sub||"").toLowerCase().includes(q)):all;
+    /* `q` on an option is search-only text (a reporter's handle), matched but not shown */
+    filtered=q?all.filter(o=>o.label.toLowerCase().includes(q)||(o.sub||"").toLowerCase().includes(q)
+      ||(o.q||"").toLowerCase().includes(q)):all;
     if(active>=filtered.length)active=filtered.length-1;
     if(active<0)active=0;
     list.innerHTML=filtered.length?filtered.map((o,i)=>
@@ -302,6 +304,51 @@ combos.group2   =makeCombo("group2",   optGroups,g=>{
   const t=teamsInGroup(g).find(([k])=>k!==activeClub)||teamsInGroup(g)[0];
   if(t)combos.club2.set(t[0]); render();});
 combos.club2    =makeCombo("club2",    optTeamsIn("group2"), k=>render());
+
+/* ---------- reporters (reporters.json) ----------
+   Handle + Outlet + Reliability are the three fields typed on every single card,
+   so they get their own picker: one tap fills all three, with a link out to the
+   profile. The list is data — add your own people to reporters.json. A missing or
+   broken file is deliberately not fatal: the picker is simply empty and the three
+   fields stay hand-typed, exactly as before. */
+let REPORTERS=[];
+const REP_NONE="— none · type it myself —";
+/* an outlet cited without a person has no handle, so the name is the fallback key */
+const repVal=r=>r.handle||r.name;
+function optReporters(){
+  return [{value:"",label:REP_NONE}].concat(REPORTERS.map(r=>({
+    value:repVal(r), label:r.name, sub:r.outlet||"",
+    q:(r.handle||"")+" "+(r.outlet||"")})));
+}
+const repOf=v=>REPORTERS.find(r=>repVal(r)===v);
+/* the profile link is derived from the handle unless the entry names a url */
+function repURL(r){
+  if(r.url) return r.url;
+  return /^@[A-Za-z0-9_]+$/.test(r.handle||"") ? "https://x.com/"+r.handle.slice(1) : "";
+}
+function updateRepLink(){
+  const r=repOf($("rep").value), u=r?repURL(r):"", a=$("repLink");
+  a.classList.toggle("hide",!u);
+  if(u){ a.href=u; a.setAttribute("aria-label","Open "+r.name+" — opens in a new tab"); }
+}
+function pickReporter(v){
+  const r=repOf(v);
+  if(r){
+    $("handle").value=r.handle||"";
+    $("outlet").value=r.outlet||"";
+    if(r.tier) $("tier").value=String(r.tier);
+  }
+  updateRepLink(); render(); saveDraft();
+}
+combos.rep=makeCombo("rep",optReporters,pickReporter);
+/* editing the byline by hand un-picks the reporter, so the picker never claims a
+   source the card no longer shows */
+["handle","outlet"].forEach(id=>$(id).addEventListener("input",()=>{
+  const r=repOf($("rep").value); if(!r) return;
+  if($("handle").value!==(r.handle||"")||$("outlet").value!==(r.outlet||"")){
+    combos.rep.set(""); updateRepLink();
+  }
+}));
 
 /* set the four pickers to reflect the current team 1 + team 2.
    a country box is always set before the team box beside it, because the team
@@ -697,6 +744,9 @@ function restore(o){
     combos.group2.set(groupKey(DB()[o.club2]));
     combos.club2.set(o.club2);
   }
+  /* the reporter combo shows a label, so the hidden value alone isn't enough */
+  combos.rep.set(repOf($("rep").value)?$("rep").value:"");
+  updateRepLink();
   ["head","sub","quote","goalsA","goalsB"].forEach(id=>grow($(id)));
   render();
 }
@@ -1062,6 +1112,11 @@ function noteStore(){
   }catch(e){
     alert("Couldn't load teams.json — the team lists will be empty.\n"+(e&&e.message||e));
   }
+  /* the reporter picker only saves typing, so a missing file must not stop the app */
+  try{
+    const rd=await fetch("reporters.json",{cache:"no-cache"}).then(r=>r.json());
+    REPORTERS=(Array.isArray(rd)?rd:rd.reporters||[]).filter(r=>r&&r.name);
+  }catch(e){ REPORTERS=[]; }
   CLUBS=structuredClone(DEFAULT_CLUBS);
   NATIONS=structuredClone(DEFAULT_NATIONS);
 
@@ -1094,6 +1149,7 @@ function noteStore(){
     (DB()[activeClub]?activeClub:Object.keys(DB())[0]);
   updateTypeUI();
   loadClub(activeClub);drawPresets();noteStore();
+  combos.rep.set("");
   const draft=await store.get("draft");
   if(draft && Object.keys(draft).length) restore(draft);
   if(dateAuto) stampToday();            /* the draft must not carry yesterday over */

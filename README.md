@@ -13,6 +13,7 @@ The app is split into cached static files so edits only re-download what changed
 | `styles.css` | App styling | often |
 | `app.js` | App logic | often |
 | `teams.json` | Club + national-team list and colors | whenever you add teams |
+| `reporters.json` | Reporters behind the one-tap Reporter picker | whenever you follow someone new |
 | `fonts.css` | Embedded web fonts (base64) | rarely |
 | `html2canvas.min.js`, `htmltoimage.min.js` | Image-export libraries | never |
 
@@ -40,6 +41,27 @@ The key (`"barcelona"`) just has to be unique. `country`/`continent` groups the
 team in the pickers — reuse an existing group name to slot it in, or invent a
 new one. Add as many as you like; the team pickers in the app are search boxes,
 so a long list stays easy to browse (type a team **or** country name).
+
+## Reporters
+The **Reporter** picker sits in Text, directly above Handle / Outlet /
+Reliability: pick a name and all three fill in one tap, with a **Profile ↗**
+button that opens that reporter's page in a new tab. The list is
+`reporters.json`:
+
+```json
+{"name": "David Ornstein", "handle": "@David_Ornstein", "outlet": "The Athletic", "tier": 3}
+```
+
+`tier` matches the Reliability control — 3 tier one, 2 reliable, 1 unconfirmed —
+and the profile link is built from the handle (`https://x.com/<handle>`). Add
+`"url"` to point somewhere else, and leave `handle` empty for an outlet you cite
+without naming a person (Gazeta Sporturilor is in there that way). The picker
+searches names, outlets **and** handles, so `plettig` finds Florian Plettenberg.
+
+The tiers shipped in the file are a starting guess — they're your editorial call,
+so change them. Typing over Handle or Outlet by hand un-picks the reporter, and
+if `reporters.json` ever fails to load the picker is simply empty; the three
+fields still work as they always did.
 
 ## Team crest backdrop
 The **Style → Crest backdrop** control drops a faint team crest behind the text.
