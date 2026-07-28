@@ -18,7 +18,10 @@ leftovers were examined and neither should be built** — the Result card's byli
 a bug (a result card doesn't print one at all), and normalising the solo crest was tried twice and
 reverted, because equalising it makes Tottenham's cockerel a 4× magnified swoosh. **You confirmed
 a result card should carry no source or reporter**, so that one is settled by decision, not just
-by measurement. **Every item in this file is now closed.**_
+by measurement. **Every item in this file is now closed.** And **B10's last blocker is gone** — a
+card exported on the iPhone came back real and correctly composed, which also confirmed the 5 dots
+and the crest backdrop on the device itself; the only thing still unknown is whether that export
+ran at 2× or fell silently back to 1×, and the PNG's pixel size answers it._
 
 _Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
@@ -363,7 +366,7 @@ items. One prompt per row; paste the quoted line as the whole prompt.
 | B5 | Reporters picker | done | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
 | B9 | Cap hashtags at 5 + both teams | done | — |
-| B10 | Sharper exported image | done | a check on your phone |
+| B10 | Sharper exported image | done | — _(phone export done 2026-07-28)_ |
 | B13 | Many more teams (top 5 ×2 + Romania) | done | — |
 | B7 | Posts vs reels | 0 | — |
 | B8 | Crest overlay | 0 | done with Next up |
@@ -632,6 +635,21 @@ _Added 2026-07-27._
   and no device, so 2× was verified in a desktop browser only. Please export one card on the
   phone. If it ever comes back blank or slow, the fallbacks above make it degrade to today's
   output, and dropping back is a one-word change (`EXPORT_SCALE = 1`)._
+
+  _**Done 2026-07-28 — the phone export works.** An Arsenal news card exported on the iPhone came
+  back a real, correctly composed 4:5 PNG: not blank, not failed. That was the actual risk, since
+  **iOS reports a canvas it could not allocate as a blank image rather than an exception**, which
+  is what the under-8KB check and the 1× retry were built for. Neither had to save it. The same
+  export also confirmed two things from the device that had only ever been checked on desktop:
+  **B15's five reliability dots render**, and **the crest backdrop renders** — that last one being
+  the "crests are not loading at all" report, now confirmed fixed on the phone that saw it._
+
+  _**Still open, and it is one number:** whether that export ran at 2× (2160 × 2700) or fell
+  through to 1× (1080 × 1350). Both produce a correct-looking card — **the fallback is silent by
+  design**, so the picture alone cannot tell them apart. Photos → swipe up / ⓘ shows the pixel
+  size. Author's read on the residual softness: **"may be Instagram's fault"**, which is what B10
+  assumed from the start — Instagram re-encodes every upload, and rendering at 2× so it downsamples
+  rather than re-compresses is the whole mitigation._
 
   _Environment note for whoever tests next: `html-to-image` (engines 2 and 3) fails on the full
   card in the headless preview browser **at any scale, including 1×** — pre-existing, not the
