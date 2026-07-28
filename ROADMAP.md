@@ -16,8 +16,9 @@ a ceiling (Lyon play white behind a red-and-blue badge), so expect right-colours
 few. **13 clubs are worth your eye** and both files say which. Then **B17: the last two parked
 leftovers were examined and neither should be built** — the Result card's byline isn't hidden by
 a bug (a result card doesn't print one at all), and normalising the solo crest was tried twice and
-reverted, because equalising it makes Tottenham's cockerel a 4× magnified swoosh. **One question
-back to you: should a result card print a source at all?**_
+reverted, because equalising it makes Tottenham's cockerel a 4× magnified swoosh. **You confirmed
+a result card should carry no source or reporter**, so that one is settled by decision, not just
+by measurement. **Every item in this file is now closed.**_
 
 _Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
@@ -355,7 +356,7 @@ items. One prompt per row; paste the quoted line as the whole prompt.
 |---|---|---|---|
 | B15 | Reliability range 3 → 5 dots | done | — |
 | B16 | Colour debt — the 131 fallback clubs | done | — |
-| B17 | The last two leftovers — **examined, not built** | — | your call on the result byline |
+| B17 | The last two leftovers — **examined, not built** | — | — |
 | B14 | Ditch the curve splits, replace them | done | — |
 | B11 | Crest size / symmetry on splits | done | — |
 | B12 | Colour picker for the second team | done | — |
@@ -528,7 +529,10 @@ they cost real testing and stay true whatever we build next.
   _One thing this doesn't fix, and it isn't B5's to fix: on a **Result** card the whole Text
   section auto-collapses (B3's rule — none of its `data-for` fields apply to a result), so the
   byline and now the reporter picker start closed there. Every other template opens with them
-  visible. Say the word and Text stops collapsing when the card still uses its byline._
+  visible. ~~Say the word and Text stops collapsing when the card still uses its byline.~~
+  **Closed 2026-07-28 by B17 — leave it as it is.** A result card prints no source, no reporter
+  and no reliability dots, and the author confirmed it should stay that way, so the section is
+  closed because those fields are genuinely unused there._
 
 - [ ] Should post on instagram in form of: posts or reels of posts? (are these both?) **(B7)**
       — _They're different things: a feed post is the static image, a reel is video. The API
@@ -537,7 +541,7 @@ they cost real testing and stay true whatever we build next.
       fast. Nothing to code here — and publishing through the API was part of the automation
       work dropped on 2026-07-27, so today the answer is simply: post the exported PNG by hand._
 
-- [ ] Maybe add overlaying crests/logos as background with a dimmer opacity? Big crests, occupying all of the team's card - Ex: Cannon for Arsenal occupies 50%, Spurs chicken 50%. (Transfers and Matches are the affected templates) **(B8)**
+- [x] Maybe add overlaying crests/logos as background with a dimmer opacity? Big crests, occupying all of the team's card - Ex: Cannon for Arsenal occupies 50%, Spurs chicken 50%. (Transfers and Matches are the affected templates) **(B8)**
       — _**Done 2026-07-22.** `updateWall()` + `WALLPOS` place each team's crest deep inside its own
       colour region for all 8 seam shapes, with a Subtle/Medium/Bold opacity control. Now running on
       real artwork since "Next up" landed, and verified to survive PNG export._
@@ -688,7 +692,9 @@ _Added 2026-07-27._
 
   _Not touched: the single-team crest on news / quote / stats still bleeds off the bottom-right
   corner at its old size. It's one badge with nothing to match, so it has no symmetry problem —
-  say the word if you want it normalised too._
+  ~~say the word if you want it normalised too.~~ **Closed 2026-07-28 by B17: it was tried both
+  sensible ways and both were worse. Leave it alone** — the instinct here was right that it has
+  no problem to fix._
 
   **Measured, and the numbers say the geometry is already symmetric — so something else is
   making it look wrong.** In `WALLPOS`, every split gives both crests the *same* size
@@ -1111,12 +1117,12 @@ file had parked._
   Un-collapsing it would surface three controls that change nothing on the card, which is worse
   than leaving it shut.
 
-  _There **is** a real question hiding underneath, and it's yours, not a bug: **should a result
-  card print a source at all?** A full-time score credited to a reporter is a reasonable thing
-  to want, and the app deliberately doesn't do it. If you want it, that's a design change to
-  the result template — the byline would start showing, and Text would then stop collapsing on
-  its own with no further work, because the fields would finally be used._
-  > Roadmap B17: let the result card print its byline and reliability dots like the other templates.
+  _The question underneath — **should a result card print a source at all?** — was put to the
+  author and **answered 2026-07-28: no.** A result card carries no source and no reporter, by
+  design. So this is settled from both ends: the byline fields do nothing on a result card, and
+  they are **meant** to do nothing. Text collapsing there is correct and stays. **Don't
+  "fix" this** — a future pass that spots the closed section and reopens it would be undoing a
+  decision, not a bug._
 
   **2. "Normalise the single-team crest."** Tried twice, measured both times, **both worse than
   what's there.** Reverted.
