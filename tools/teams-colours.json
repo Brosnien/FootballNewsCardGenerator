@@ -1,0 +1,2390 @@
+{
+  "note": "Colours read off crests/<key>.png by tools/crest_colours.py. Review, edit freely, then --apply. Only the slots listed in 'missing' are changed; '<slot>_was' records the fallback it replaces.",
+  "clubs": {
+    "afumati": {
+      "name": "Afumați",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#003387",
+      "c1_was": "#111111",
+      "c2": "#FFE300",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#003387",
+        "#FFE300",
+        "#FFFFFF"
+      ]
+    },
+    "albacete": {
+      "name": "Albacete",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#000000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#AB1B25",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#AB1B25",
+        "#F9B217"
+      ]
+    },
+    "almeria": {
+      "name": "Almeria",
+      "missing": [
+        3
+      ],
+      "c1": "#EE1119",
+      "c2": "#FFFFFF",
+      "c3": "#FCB42E",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#FCB42E",
+        "#000000",
+        "#EB2824",
+        "#195FAB",
+        "#B76C29"
+      ]
+    },
+    "amiens": {
+      "name": "Amiens",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#040404",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#898989",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#040404",
+        "#898989"
+      ]
+    },
+    "annecy": {
+      "name": "Annecy",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E30613",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#E30613",
+        "#FFFFFF"
+      ]
+    },
+    "arges": {
+      "name": "Argeș",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#550E81",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#550E81",
+        "#D9C9E3"
+      ]
+    },
+    "auxerre": {
+      "name": "Auxerre",
+      "missing": [
+        3
+      ],
+      "c1": "#4087BF",
+      "c2": "#FFFFFF",
+      "c3": "#004EA2",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#004EA2",
+        "#FFFFFF",
+        "#97B7D9"
+      ]
+    },
+    "avellino": {
+      "name": "Avellino",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#157B30",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#157B30",
+        "#000000",
+        "#917847"
+      ]
+    },
+    "bari": {
+      "name": "Bari",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#CE282A",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#101010",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#CE282A",
+        "#FFFFFF",
+        "#101010"
+      ]
+    },
+    "bastia": {
+      "name": "Bastia",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#0053DB",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#0053DB",
+        "#FFFFFF",
+        "#000000"
+      ]
+    },
+    "betis": {
+      "name": "Betis",
+      "missing": [
+        3
+      ],
+      "c1": "#0BB363",
+      "c2": "#FFFFFF",
+      "c3": "#CF8A00",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#008835",
+        "#CF8A00",
+        "#A32035"
+      ]
+    },
+    "bielefeld": {
+      "name": "Bielefeld",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#0D56A5",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#0D56A5",
+        "#000000"
+      ]
+    },
+    "bihor": {
+      "name": "Bihor",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#27377A",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#EB2427",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#27377A",
+        "#FFFFFF",
+        "#EB2427"
+      ]
+    },
+    "birmingham": {
+      "name": "Birmingham",
+      "missing": [
+        3
+      ],
+      "c1": "#0000FF",
+      "c2": "#FFFFFF",
+      "c3": "#1E3D8F",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#1E3D8F"
+      ]
+    },
+    "blackburn": {
+      "name": "Blackburn",
+      "missing": [
+        3
+      ],
+      "c1": "#009EE0",
+      "c2": "#FFFFFF",
+      "c3": "#FFF200",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#00AEEF",
+        "#FFF200",
+        "#000000",
+        "#00A651",
+        "#ED1C24"
+      ]
+    },
+    "bochum": {
+      "name": "Bochum",
+      "missing": [
+        3
+      ],
+      "c1": "#005CA9",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#005CAD",
+        "#FFFFFF"
+      ]
+    },
+    "bologna": {
+      "name": "Bologna",
+      "missing": [
+        3
+      ],
+      "c1": "#A21C26",
+      "c2": "#1A2F48",
+      "c3": "#FEFEFD",
+      "c3_was": "#1A2F48",
+      "palette": [
+        "#132B46",
+        "#FEFEFD",
+        "#A31621"
+      ]
+    },
+    "botosani": {
+      "name": "Botoșani",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#2B2F87",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#E62B2D",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#2B2F87",
+        "#FFFFFF",
+        "#E62B2D"
+      ]
+    },
+    "boulogne": {
+      "name": "Boulogne",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#CC0E18",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#181816",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#181816",
+        "#CC0E18"
+      ]
+    },
+    "bournemouth": {
+      "name": "Bournemouth",
+      "missing": [
+        3
+      ],
+      "c1": "#B50E12",
+      "c2": "#000000",
+      "c3": "#FFFFFF",
+      "c3_was": "#000000",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#BF1015",
+        "#EED5B6"
+      ]
+    },
+    "braunschweig": {
+      "name": "Braunschweig",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#0077C7",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFE800",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#0077C7",
+        "#FFE800",
+        "#FF141F",
+        "#FFBB00"
+      ]
+    },
+    "brighton": {
+      "name": "Brighton",
+      "missing": [
+        3
+      ],
+      "c1": "#0057B8",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#005DAA",
+        "#FFFFFF"
+      ]
+    },
+    "bristol-city": {
+      "name": "Bristol City",
+      "missing": [
+        3
+      ],
+      "c1": "#E21A23",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#E21A23",
+        "#000000"
+      ]
+    },
+    "burgos": {
+      "name": "Burgos",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#000000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFE300",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#FFE300",
+        "#108E2F"
+      ]
+    },
+    "burnley": {
+      "name": "Burnley",
+      "missing": [
+        3
+      ],
+      "c1": "#6C1D45",
+      "c2": "#99D6EA",
+      "c3": "#FFFFFF",
+      "c3_was": "#99D6EA",
+      "palette": [
+        "#5F0041",
+        "#FFFFFF",
+        "#955680"
+      ]
+    },
+    "cadiz": {
+      "name": "Cadiz",
+      "missing": [
+        3
+      ],
+      "c1": "#FDE607",
+      "c2": "#0045A7",
+      "c3": "#000000",
+      "c3_was": "#0045A7",
+      "palette": [
+        "#000000",
+        "#FFF200",
+        "#196BB5",
+        "#FFFFFF",
+        "#D0AC44",
+        "#4B4700"
+      ]
+    },
+    "carrarese": {
+      "name": "Carrarese",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#007AC2",
+      "c1_was": "#111111",
+      "c2": "#FFF200",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#007AC2",
+        "#FFF200"
+      ]
+    },
+    "castellon": {
+      "name": "Castellón",
+      "missing": [
+        2,
+        3
+      ],
+      "c1": "#000005",
+      "c2": "#EDDA22",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#000005",
+        "#EDDA22",
+        "#AE2A32",
+        "#546E93",
+        "#551C22"
+      ]
+    },
+    "catanzaro": {
+      "name": "Catanzaro",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#DA0000",
+      "c1_was": "#111111",
+      "c2": "#EDD94C",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#DA0000",
+        "#EDD94C",
+        "#000000",
+        "#252B47",
+        "#95784C",
+        "#E8DDA3",
+        "#FFFFFF",
+        "#A7A8B4",
+        "#493F2F"
+      ]
+    },
+    "ceahlaul": {
+      "name": "Ceahlăul",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#000000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFCB00",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#FFCB00"
+      ]
+    },
+    "celta-vigo": {
+      "name": "Celta Vigo",
+      "missing": [
+        3
+      ],
+      "c1": "#8AC3EE",
+      "c2": "#E5254E",
+      "c3": "#FFFFFF",
+      "c3_was": "#E5254E",
+      "palette": [
+        "#E3123F",
+        "#80BEED",
+        "#FFFFFF",
+        "#AA890E"
+      ]
+    },
+    "cesena": {
+      "name": "Cesena",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#000000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#888888",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#888888"
+      ]
+    },
+    "ceuta": {
+      "name": "Ceuta",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#FF0000",
+      "c1_was": "#111111",
+      "c2": "#FDFDFD",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FDFDFD",
+        "#000000",
+        "#FF0000",
+        "#FFC600",
+        "#734C00",
+        "#C08E00",
+        "#525252"
+      ]
+    },
+    "charlton": {
+      "name": "Charlton",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E02128",
+      "c1_was": "#111111",
+      "c2": "#252122",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#252122",
+        "#E02128",
+        "#FFFFFF",
+        "#595758",
+        "#A82B29"
+      ]
+    },
+    "chiajna": {
+      "name": "Chiajna",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#009036",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#009036",
+        "#56B579"
+      ]
+    },
+    "chindia": {
+      "name": "Chindia",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#EE2C41",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#0F6FB8",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#EE2C41",
+        "#0F6FB8",
+        "#000000",
+        "#EFA036"
+      ]
+    },
+    "cordoba": {
+      "name": "Cordoba",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#008752",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#F0B310",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#008752",
+        "#F0B310",
+        "#C41230",
+        "#90CBB3"
+      ]
+    },
+    "corvinul": {
+      "name": "Corvinul",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#2484BE",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#000000",
+        "#2484BE"
+      ]
+    },
+    "coventry": {
+      "name": "Coventry",
+      "missing": [
+        3
+      ],
+      "c1": "#77BBFF",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#000000",
+        "#D2A941",
+        "#AFC1CB",
+        "#ED1C24",
+        "#555352",
+        "#009DDB",
+        "#B81C22"
+      ]
+    },
+    "cremonese": {
+      "name": "Cremonese",
+      "missing": [
+        3
+      ],
+      "c1": "#808285",
+      "c2": "#ED1C24",
+      "c3": "#CF9C51",
+      "c3_was": "#ED1C24",
+      "palette": [
+        "#FFFFFF",
+        "#CF9C51",
+        "#ED1C24",
+        "#808285",
+        "#000000",
+        "#0A4A9B"
+      ]
+    },
+    "crystal-palace": {
+      "name": "Crystal Palace",
+      "missing": [
+        3
+      ],
+      "c1": "#1B458F",
+      "c2": "#C4122E",
+      "c3": "#FFFFFF",
+      "c3_was": "#C4122E",
+      "palette": [
+        "#0055A5",
+        "#FFFFFF",
+        "#B7B7B7",
+        "#EE2E24",
+        "#78A5CF"
+      ]
+    },
+    "csikszereda": {
+      "name": "Csíkszereda",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#ED1B24",
+      "c1_was": "#111111",
+      "c2": "#221E1D",
+      "c2_was": "#FFFFFF",
+      "c3": "#B1B2B6",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#221E1D",
+        "#ED1B24",
+        "#B1B2B6",
+        "#FFFFFF"
+      ]
+    },
+    "cultural": {
+      "name": "Cultural",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E4032C",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#CB9804",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#E4032C",
+        "#FFFFFF",
+        "#CB9804"
+      ]
+    },
+    "darmstadt": {
+      "name": "Darmstadt",
+      "missing": [
+        3
+      ],
+      "c1": "#004F9F",
+      "c2": "#FFFFFF",
+      "c3": "#85ABD1",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#004F9F",
+        "#85ABD1"
+      ]
+    },
+    "dej": {
+      "name": "Dej",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#010D85",
+      "c1_was": "#111111",
+      "c2": "#FEFEFE",
+      "c2_was": "#FFFFFF",
+      "c3": "#1465E8",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#010D85",
+        "#FEFEFE",
+        "#1465E8",
+        "#FFAD00",
+        "#F1D888",
+        "#363C8A"
+      ]
+    },
+    "derby": {
+      "name": "Derby",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#231F20",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#231F20"
+      ]
+    },
+    "dresden": {
+      "name": "Dresden",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#9B0011",
+      "c1_was": "#111111",
+      "c2": "#000000",
+      "c2_was": "#FFFFFF",
+      "c3": "#FDC300",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#9B0011",
+        "#000000",
+        "#FDC300",
+        "#FFFFFF"
+      ]
+    },
+    "dunkerque": {
+      "name": "Dunkerque",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#1F2C3E",
+      "c1_was": "#111111",
+      "c2": "#E3C292",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#1F2C3E",
+        "#E3C292",
+        "#FFFFFF",
+        "#8D8FA0"
+      ]
+    },
+    "dusseldorf": {
+      "name": "Düsseldorf",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#ED1C24",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#ED1C24",
+        "#FFFFFF"
+      ]
+    },
+    "eibar": {
+      "name": "Eibar",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#1C2F6D",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#0071B9",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#1C2F6D",
+        "#0071B9",
+        "#E09701",
+        "#AF262C"
+      ]
+    },
+    "elversberg": {
+      "name": "Elversberg",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#000000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#D1BD8A",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#000000",
+        "#D1BD8A"
+      ]
+    },
+    "empoli": {
+      "name": "Empoli",
+      "missing": [
+        3
+      ],
+      "c1": "#00579C",
+      "c2": "#FFFFFF",
+      "c3": "#111D31",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#195FA3",
+        "#F3F3F3",
+        "#111D31",
+        "#8C99AD"
+      ]
+    },
+    "entella": {
+      "name": "Entella",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#9BD3F3",
+      "c1_was": "#111111",
+      "c2": "#FBFBFB",
+      "c2_was": "#FFFFFF",
+      "c3": "#040404",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FBFBFB",
+        "#9BD3F3",
+        "#040404",
+        "#CB9C4C"
+      ]
+    },
+    "farul": {
+      "name": "Farul",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#15539A",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#15539A",
+        "#FFFFFF"
+      ]
+    },
+    "furth": {
+      "name": "Fürth",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#009C3A",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#009C3A",
+        "#FFFFFF"
+      ]
+    },
+    "gloria-buzau": {
+      "name": "Gloria Buzău",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#002695",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#C31320",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#002695",
+        "#FFFFFF",
+        "#C31320",
+        "#233573",
+        "#8B9BCE"
+      ]
+    },
+    "granada": {
+      "name": "Granada",
+      "missing": [
+        3
+      ],
+      "c1": "#FFFFFF",
+      "c2": "#A61B2B",
+      "c3": "#000000",
+      "c3_was": "#A61B2B",
+      "palette": [
+        "#FFFFFF",
+        "#C31632"
+      ]
+    },
+    "grenoble": {
+      "name": "Grenoble",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#005DA3",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#005DA3",
+        "#FFFFFF"
+      ]
+    },
+    "guingamp": {
+      "name": "Guingamp",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E30613",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#E30613",
+        "#000000"
+      ]
+    },
+    "hamburg": {
+      "name": "Hamburg",
+      "missing": [
+        3
+      ],
+      "c1": "#0A3F86",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#0054A6",
+        "#FFFFFF",
+        "#000000"
+      ]
+    },
+    "hannover": {
+      "name": "Hannover",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#000000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#1CAC4E",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#1CAC4E"
+      ]
+    },
+    "hermannstadt": {
+      "name": "Hermannstadt",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#EC222E",
+      "c1_was": "#111111",
+      "c2": "#000000",
+      "c2_was": "#FFFFFF",
+      "c3": "#AA1D23",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#EC222E",
+        "#000000",
+        "#AA1D23",
+        "#FDFDFD",
+        "#957A65"
+      ]
+    },
+    "hoffenheim": {
+      "name": "Hoffenheim",
+      "missing": [
+        3
+      ],
+      "c1": "#1961B5",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#105EAA",
+        "#FFFFFF"
+      ]
+    },
+    "huesca": {
+      "name": "Huesca",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#9F1C33",
+      "c1_was": "#111111",
+      "c2": "#312256",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#312256",
+        "#FFFFFF",
+        "#9F1C33",
+        "#D3CE59",
+        "#000000"
+      ]
+    },
+    "juve-stabia": {
+      "name": "Juve Stabia",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#FFDB00",
+      "c1_was": "#111111",
+      "c2": "#003F7F",
+      "c2_was": "#FFFFFF",
+      "c3": "#345A57",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFDB00",
+        "#003F7F",
+        "#345A57",
+        "#848629",
+        "#FFFFFF"
+      ]
+    },
+    "kaiserslautern": {
+      "name": "Kaiserslautern",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E30511",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#E30511",
+        "#FFFFFF"
+      ]
+    },
+    "karlsruhe": {
+      "name": "Karlsruhe",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#004C94",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#004C94",
+        "#FFFFFF"
+      ]
+    },
+    "laval": {
+      "name": "Laval",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#EC6608",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#EC6608",
+        "#000000"
+      ]
+    },
+    "le-mans": {
+      "name": "Le Mans",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#841419",
+      "c1_was": "#111111",
+      "c2": "#130A15",
+      "c2_was": "#FFFFFF",
+      "c3": "#C78906",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#841419",
+        "#130A15",
+        "#C78906",
+        "#D1041A",
+        "#F1C100",
+        "#FFFFFF"
+      ]
+    },
+    "lecce": {
+      "name": "Lecce",
+      "missing": [
+        3
+      ],
+      "c1": "#FFF200",
+      "c2": "#ED1B23",
+      "c3": "#005B81",
+      "c3_was": "#ED1B23",
+      "palette": [
+        "#005B81",
+        "#DABD94",
+        "#E2001A"
+      ]
+    },
+    "leicester": {
+      "name": "Leicester",
+      "missing": [
+        3
+      ],
+      "c1": "#003090",
+      "c2": "#FFFFFF",
+      "c3": "#FDBE11",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#0053A0",
+        "#FDBE11",
+        "#9CBCDA"
+      ]
+    },
+    "lens": {
+      "name": "Lens",
+      "missing": [
+        3
+      ],
+      "c1": "#FFF200",
+      "c2": "#EC1C24",
+      "c3": "#FFFFFF",
+      "c3_was": "#EC1C24",
+      "palette": [
+        "#FF161F",
+        "#FFF200",
+        "#FFFFFF",
+        "#1F191A"
+      ]
+    },
+    "levante": {
+      "name": "Levante",
+      "missing": [
+        2,
+        3
+      ],
+      "c1": "#C60B46",
+      "c2": "#251A06",
+      "c2_was": "#FFFFFF",
+      "c3": "#0066A4",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#251A06",
+        "#C60B46",
+        "#0066A4",
+        "#FFCF06",
+        "#FFFFFF",
+        "#ACACAC",
+        "#E5B53B"
+      ]
+    },
+    "magdeburg": {
+      "name": "Magdeburg",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#0071BA",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#0071BA"
+      ]
+    },
+    "malaga": {
+      "name": "Malaga",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#1872B5",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#BC9E32",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#1872B5",
+        "#FFFFFF",
+        "#BC9E32",
+        "#88722B",
+        "#AFDDF7",
+        "#E6CA2A",
+        "#473A15",
+        "#000000",
+        "#27446A"
+      ]
+    },
+    "mallorca": {
+      "name": "Mallorca",
+      "missing": [
+        3
+      ],
+      "c1": "#E20613",
+      "c2": "#000000",
+      "c3": "#FFE400",
+      "c3_was": "#000000",
+      "palette": [
+        "#ED1C24",
+        "#FFE400",
+        "#000000",
+        "#009058"
+      ]
+    },
+    "mantova": {
+      "name": "Mantova",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#EE1E24",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#2A2323",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#EE1E24",
+        "#2A2323",
+        "#00AEEF",
+        "#FFBD12"
+      ]
+    },
+    "metaloglobus": {
+      "name": "Metaloglobus",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#BFD031",
+      "c1_was": "#111111",
+      "c2": "#0069AD",
+      "c2_was": "#FFFFFF",
+      "c3": "#2C8191",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#BFD031",
+        "#0069AD",
+        "#2C8191"
+      ]
+    },
+    "metalul": {
+      "name": "Metalul",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#0073B7",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#1B1918",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#0073B7",
+        "#1B1918",
+        "#66ABD4"
+      ]
+    },
+    "metz": {
+      "name": "Metz",
+      "missing": [
+        3
+      ],
+      "c1": "#6E0F12",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#731013",
+        "#FFFFFF"
+      ]
+    },
+    "middlesbrough": {
+      "name": "Middlesbrough",
+      "missing": [
+        3
+      ],
+      "c1": "#FF0000",
+      "c2": "#FFFFFF",
+      "c3": "#C41333",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#C41333",
+        "#DB6D81"
+      ]
+    },
+    "millwall": {
+      "name": "Millwall",
+      "missing": [
+        3
+      ],
+      "c1": "#00194A",
+      "c2": "#FFFFFF",
+      "c3": "#91A4A4",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#00367A",
+        "#FFFFFF",
+        "#91A4A4"
+      ]
+    },
+    "mirandes": {
+      "name": "Mirandes",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#000000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#FD0017",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#FD0017",
+        "#008FDD",
+        "#8B8B8B"
+      ]
+    },
+    "modena": {
+      "name": "Modena",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#FFEB00",
+      "c1_was": "#111111",
+      "c2": "#00004B",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFEB00",
+        "#00004B"
+      ]
+    },
+    "monza": {
+      "name": "Monza",
+      "missing": [
+        3
+      ],
+      "c1": "#EC173A",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#E4022E",
+        "#FFFFFF"
+      ]
+    },
+    "munster": {
+      "name": "Münster",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#1D1D1B",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#616161",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#1D1D1B",
+        "#616161"
+      ]
+    },
+    "nancy": {
+      "name": "Nancy",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E1200F",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#EA5954",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#E1200F",
+        "#EA5954"
+      ]
+    },
+    "nantes": {
+      "name": "Nantes",
+      "missing": [
+        3
+      ],
+      "c1": "#FCD405",
+      "c2": "#1B8F3A",
+      "c3": "#000000",
+      "c3_was": "#1B8F3A",
+      "palette": [
+        "#FFDC00",
+        "#00A558"
+      ]
+    },
+    "nottm-forest": {
+      "name": "Nottm Forest",
+      "missing": [
+        3
+      ],
+      "c1": "#E53233",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#DD0000"
+      ]
+    },
+    "nurnberg": {
+      "name": "Nürnberg",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#AA112C",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#AA112C",
+        "#FFFFFF"
+      ]
+    },
+    "osasuna": {
+      "name": "Osasuna",
+      "missing": [
+        3
+      ],
+      "c1": "#0A346F",
+      "c2": "#D91A21",
+      "c3": "#A9912F",
+      "c3_was": "#D91A21",
+      "palette": [
+        "#A9912F",
+        "#BB141A",
+        "#22376D",
+        "#FFFFFF"
+      ]
+    },
+    "otelul": {
+      "name": "Oțelul",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#144E97",
+      "c1_was": "#111111",
+      "c2": "#FBFBFB",
+      "c2_was": "#FFFFFF",
+      "c3": "#DE2331",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FBFBFB",
+        "#144E97",
+        "#DE2331",
+        "#4F7EB3"
+      ]
+    },
+    "oviedo": {
+      "name": "Oviedo",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#D1AC54",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#254E96",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#D1AC54",
+        "#FFFFFF",
+        "#254E96",
+        "#C92127"
+      ]
+    },
+    "oxford": {
+      "name": "Oxford",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#FEDD00",
+      "c1_was": "#111111",
+      "c2": "#081369",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FEDD00",
+        "#081369"
+      ]
+    },
+    "paderborn": {
+      "name": "Paderborn",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#005CAD",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#171714",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#005CAD",
+        "#171714"
+      ]
+    },
+    "padova": {
+      "name": "Padova",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E30613",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#E30613",
+        "#FFFFFF"
+      ]
+    },
+    "palermo": {
+      "name": "Palermo",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#DFBA3D",
+      "c1_was": "#111111",
+      "c2": "#FAFAFA",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FAFAFA",
+        "#DFBA3D"
+      ]
+    },
+    "paris-fc": {
+      "name": "Paris FC",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#09002F",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#14A7E0",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#09002F",
+        "#FFFFFF",
+        "#14A7E0"
+      ]
+    },
+    "pau": {
+      "name": "Pau",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#1D203F",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#F0CE12",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#1D203F",
+        "#FFFFFF",
+        "#F0CE12"
+      ]
+    },
+    "pescara": {
+      "name": "Pescara",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#014DA2",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#00B3F0",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#014DA2",
+        "#FFFFFF",
+        "#00B3F0"
+      ]
+    },
+    "petrolul": {
+      "name": "Petrolul",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#FFE614",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#211E1E",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFE614",
+        "#FFFFFF",
+        "#211E1E",
+        "#233D97"
+      ]
+    },
+    "pisa": {
+      "name": "Pisa",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#1D2421",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#0072B4",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#1D2421",
+        "#FFFFFF",
+        "#0072B4",
+        "#E1001E"
+      ]
+    },
+    "poli-iasi": {
+      "name": "Poli Iași",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#4C60A1",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#4C60A1",
+        "#FFFFFF"
+      ]
+    },
+    "portsmouth": {
+      "name": "Portsmouth",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#263886",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#7682B3",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#263886",
+        "#FFFFFF",
+        "#7682B3"
+      ]
+    },
+    "qpr": {
+      "name": "QPR",
+      "missing": [
+        3
+      ],
+      "c1": "#1D5BA4",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#1D5BA4"
+      ]
+    },
+    "racing": {
+      "name": "Racing",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#2D9A29",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#000000",
+        "#2D9A29",
+        "#D9B231",
+        "#E33820",
+        "#752009"
+      ]
+    },
+    "rayo-vallecano": {
+      "name": "Rayo Vallecano",
+      "missing": [
+        3
+      ],
+      "c1": "#E53027",
+      "c2": "#FFFFFF",
+      "c3": "#D0AD3E",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#D0AD3E",
+        "#EE3E2F",
+        "#231F20",
+        "#199542"
+      ]
+    },
+    "red-star": {
+      "name": "Red Star",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#177A61",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#AA2328",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#177A61",
+        "#AA2328"
+      ]
+    },
+    "reggiana": {
+      "name": "Reggiana",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#802629",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#DCAC00",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#802629",
+        "#DCAC00",
+        "#000000"
+      ]
+    },
+    "reims": {
+      "name": "Reims",
+      "missing": [
+        3
+      ],
+      "c1": "#EE2223",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#EB0000"
+      ]
+    },
+    "resita": {
+      "name": "Reșița",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#DD0000",
+      "c1_was": "#111111",
+      "c2": "#1C1A1B",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#DD0000",
+        "#1C1A1B"
+      ]
+    },
+    "rodez": {
+      "name": "Rodez",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#C10B25",
+      "c1_was": "#111111",
+      "c2": "#F7B400",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#C10B25",
+        "#F7B400"
+      ]
+    },
+    "saint-etienne": {
+      "name": "Saint-Étienne",
+      "missing": [
+        3
+      ],
+      "c1": "#1D995B",
+      "c2": "#FFFFFF",
+      "c3": "#CDB789",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#1D995B",
+        "#FFFFFF",
+        "#CDB789"
+      ]
+    },
+    "sassuolo": {
+      "name": "Sassuolo",
+      "missing": [
+        3
+      ],
+      "c1": "#00A752",
+      "c2": "#000000",
+      "c3": "#FFFFFF",
+      "c3_was": "#000000",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#0AA853"
+      ]
+    },
+    "schalke": {
+      "name": "Schalke",
+      "missing": [
+        3
+      ],
+      "c1": "#004D9D",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#0D5EA6"
+      ]
+    },
+    "sepsi": {
+      "name": "Sepsi",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#DD0326",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#6B6E70",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#DD0326",
+        "#6B6E70",
+        "#EC7286",
+        "#231F20"
+      ]
+    },
+    "slobozia": {
+      "name": "Slobozia",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#1351A3",
+      "c1_was": "#111111",
+      "c2": "#FFF104",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#1351A3",
+        "#FFF104",
+        "#FFFFFF",
+        "#003ABB"
+      ]
+    },
+    "sporting-gijon": {
+      "name": "Sporting Gijón",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#ED1C24",
+      "c1_was": "#111111",
+      "c2": "#DEB407",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#ED1C24",
+        "#DEB407",
+        "#FFFFFF"
+      ]
+    },
+    "steaua": {
+      "name": "Steaua",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#005DAB",
+      "c1_was": "#111111",
+      "c2": "#EE2E24",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#005DAB",
+        "#EE2E24",
+        "#FFFFFF",
+        "#FFF000"
+      ]
+    },
+    "sudtirol": {
+      "name": "Südtirol",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#BC091B",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#1A171B",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#BC091B",
+        "#1A171B"
+      ]
+    },
+    "swansea": {
+      "name": "Swansea",
+      "missing": [
+        3
+      ],
+      "c1": "#FFFFFF",
+      "c2": "#000000",
+      "c3": "#000000",
+      "c3_was": "#000000",
+      "palette": [
+        "#FFFFFF",
+        "#000000"
+      ]
+    },
+    "tunari": {
+      "name": "Tunari",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#A60002",
+      "c1_was": "#111111",
+      "c2": "#B1AFB2",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#A60002",
+        "#B1AFB2",
+        "#000000",
+        "#4D4B4E",
+        "#FFFFFF",
+        "#70AF40"
+      ]
+    },
+    "uta": {
+      "name": "UTA",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#FF0000",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FF0000",
+        "#FFFFFF"
+      ]
+    },
+    "valladolid": {
+      "name": "Valladolid",
+      "missing": [
+        3
+      ],
+      "c1": "#931B89",
+      "c2": "#FFFFFF",
+      "c3": "#187644",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#187644",
+        "#DA1822",
+        "#FFFFFF",
+        "#FDCF00",
+        "#63257E",
+        "#0A321D",
+        "#867500"
+      ]
+    },
+    "verona": {
+      "name": "Verona",
+      "missing": [
+        3
+      ],
+      "c1": "#FFE74A",
+      "c2": "#005395",
+      "c3": "#000000",
+      "c3_was": "#005395",
+      "palette": [
+        "#FFD100"
+      ]
+    },
+    "voluntari": {
+      "name": "Voluntari",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#083C73",
+      "c1_was": "#111111",
+      "c2": "#FFFFFF",
+      "c2_was": "#FFFFFF",
+      "c3": "#58C8DE",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#083C73",
+        "#58C8DE"
+      ]
+    },
+    "werder-bremen": {
+      "name": "Werder Bremen",
+      "missing": [
+        3
+      ],
+      "c1": "#1D9053",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#00A665",
+        "#FFFFFF"
+      ]
+    },
+    "west-brom": {
+      "name": "West Brom",
+      "missing": [
+        3
+      ],
+      "c1": "#122F67",
+      "c2": "#FFFFFF",
+      "c3": "#795B3C",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#1F366B",
+        "#795B3C",
+        "#13A866",
+        "#7684A4"
+      ]
+    },
+    "wolfsburg": {
+      "name": "Wolfsburg",
+      "missing": [
+        3
+      ],
+      "c1": "#09633D",
+      "c2": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#FFFFFF",
+        "#09633D"
+      ]
+    },
+    "wrexham": {
+      "name": "Wrexham",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#007A4E",
+      "c1_was": "#111111",
+      "c2": "#000000",
+      "c2_was": "#FFFFFF",
+      "c3": "#FFFFFF",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#007A4E",
+        "#E73029",
+        "#FECC00"
+      ]
+    },
+    "zaragoza": {
+      "name": "Zaragoza",
+      "missing": [
+        1,
+        2,
+        3
+      ],
+      "c1": "#E00D1D",
+      "c1_was": "#111111",
+      "c2": "#FFD805",
+      "c2_was": "#FFFFFF",
+      "c3": "#000000",
+      "c3_was": "#FFFFFF",
+      "palette": [
+        "#E00D1D",
+        "#FFD805",
+        "#000000",
+        "#074594",
+        "#A0842C"
+      ]
+    }
+  }
+}

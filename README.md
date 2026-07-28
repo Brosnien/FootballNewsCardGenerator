@@ -147,16 +147,36 @@ python3 tools/fetch_crests.py --fetch-proposal   # crests/*.png
 ```
 
 **Colours below the top flights are mostly missing from the API** and fall back
-to a neutral pair. To list the clubs still carrying a default:
+to a neutral pair. To list the clubs the API couldn't colour:
 
 ```bash
 python3 -c "import json;d=json.load(open('tools/teams-proposed.json'))['clubs'];print('\n'.join(sorted(v['name'] for v in d.values() if v['_source']['colours_missing'])))"
 ```
 
-The real fix is to type the club's colours into `teams.json`, but you don't have
-to do it before posting: **Style & colours** has a set of colour inputs per side
-of the card — left/single team and right-hand team — so either club's colours can
-be corrected on the card and saved with the draft.
+### Colours from the crest
+
+Those 131 clubs have had their colours read off their own badge, which is already
+on disk — no API, no network. `tools/crest_colours.py` decodes the PNG with stdlib
+zlib, clusters the badge into flat colours and writes `c1/c2/c3`:
+
+```bash
+python3 tools/crest_colours.py --check      # score it against clubs we already trust
+python3 tools/crest_colours.py --propose    # -> tools/teams-colours.json, review it
+python3 tools/crest_colours.py --apply      # merge that into teams.json
+```
+
+**What it is and isn't good at, measured against 111 clubs whose colours we
+already trust:** the club's main colour is somewhere in the extracted palette
+**86%** of the time, but the badge only says which colour is the *primary* one
+about **54%** of the time — Lyon play in white with a red-and-blue badge. So
+expect the right colours in the wrong order on some clubs. `tools/teams-colours.json`
+records each club's full badge palette next to the choice, so disagreeing is a
+one-line edit; `--only <key>` redoes a single club.
+
+You can also fix a club without touching `teams.json` at all: **Style & colours**
+has a set of colour inputs per side of the card — left/single team and right-hand
+team — so either club's colours can be corrected on the card and saved with the
+draft.
 
 On iPhone: open the live link in Safari → Share → **Add to Home Screen** to run
 it full-screen like an app.

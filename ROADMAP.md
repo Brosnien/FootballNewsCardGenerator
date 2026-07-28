@@ -4,12 +4,16 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-28 — **B15: reliability is a 5-dot scale now**, closing the half of the
-NO1 PRIORITY item that was never delivered ("increase rating range (3 dots -> 4/5 dots)"). The two
-new rungs — **Very reliable** and **Speculation** — split the old top and bottom rather than being
-added on the end, so a saved card keeps the **word** it had, not the number; `reporters.json` was
-carried across the same way, which means nobody sits on the new rungs until you do the editorial
-pass. Next: **B16**, the colour debt._
+_Last updated: 2026-07-28 — **B15 and B16**, the two leftovers you picked once the backlog table
+ran empty. **B15: reliability is a 5-dot scale**, closing the half of the NO1 PRIORITY item never
+delivered ("increase rating range (3 dots -> 4/5 dots)"); the new rungs **Very reliable** and
+**Speculation** split the old top and bottom, so a saved card keeps the **word** it had, not the
+number. **B16: no club renders on the generic black-on-white any more** — the 131 clubs the API
+couldn't colour got their colours **read off their own badge**, which was already on disk, in 42
+seconds and with no network. Measured against 111 clubs we already trust: it finds the right
+colours **86%** of the time but only picks the right **primary** one **54%** of the time, which is
+a ceiling (Lyon play white behind a red-and-blue badge), so expect right-colours-wrong-order on a
+few. **13 clubs are worth your eye** and both files say which._
 
 _Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
@@ -346,7 +350,7 @@ items. One prompt per row; paste the quoted line as the whole prompt.
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
 | B15 | Reliability range 3 → 5 dots | done | — |
-| B16 | Colour debt — the 131 fallback clubs | 1 | — |
+| B16 | Colour debt — the 131 fallback clubs | done | — |
 | B14 | Ditch the curve splits, replace them | done | — |
 | B11 | Crest size / symmetry on splits | done | — |
 | B12 | Colour picker for the second team | done | — |
@@ -1022,5 +1026,67 @@ file had parked._
   already records under B10, not something B15 caused — rasterising the `.tier` subtree alone with
   the same engine at the same 2× scale works, which is where the dot measurement above comes from._
 
-- [ ] Fix the colour debt — 131 of the new clubs carry at least one fallback colour **(B16)**
-      — _in progress; see the working notes when it lands._
+- [x] Fix the colour debt — 131 of the new clubs carry at least one fallback colour **(B16)**
+
+  **Done 2026-07-28. Nothing in `teams.json` renders on the generic pair any more** — 131 clubs
+  fixed, 231 colour slots, **0 left on `#111111`/`#FFFFFF`** (85 of them had all three).
+
+  **The colours came off the clubs' own badges, not from a second API.** `crests/` has been
+  complete since B13 and a badge is drawn in the club's colours, so the data was already on
+  disk: no network, no rate limit, no 15-minute run — the whole thing is **42 seconds**.
+  [tools/crest_colours.py](tools/crest_colours.py) decodes the PNG with stdlib `zlib` (the
+  five scanline filters are in the file; there is still no PIL or ImageMagick on this Mac),
+  clusters the badge into flat colours, and writes `c1/c2/c3`.
+
+  **This is measured against clubs we already trust, not asserted.** `--check` runs the
+  extractor over the 111 clubs whose colours were hand-entered or answered in full by the API,
+  and scores it against them:
+
+  | | |
+  |---|---|
+  | the club's **c1 is somewhere in the extracted palette** | **86.5%** (c2 94.6%, c3 73.9%) |
+  | all three of a club's known colours found | 64% of clubs |
+  | the badge picks the **right colour as c1** | **54.1%** |
+
+  **So the honest result is: it finds the right colours and is only about half right about
+  which one is primary.** That is a ceiling, not a knob left untuned — six different rules for
+  picking c1 were scored in the same pass and they all land between 39% and 54% (`--lead`
+  switches them; `ink` won). The failures say why: **Lyon play in white and their badge is red
+  and blue**, Spezia play white behind a black badge. No amount of reading badge pixels
+  recovers a shirt colour the badge doesn't contain.
+
+  It is still clearly worth shipping, because the thing it replaces is **85 clubs sharing one
+  identical black-on-white**. On a spot check of 19 recognisable clubs, ~15 are right —
+  Burnley claret, Lens yellow, Metz maroon, Modena yellow, Schalke blue, Portsmouth and
+  Millwall navy, Argeș violet, Avellino green, Bastia blue, Auxerre blue. Wrexham (green, they
+  play red) and Oviedo (gold, they play blue) are the kind it gets wrong — and in **both cases
+  the right colour is in the badge palette**, just not chosen.
+
+  _Three things it does that stop it making the card worse:_
+
+  | | |
+  |---|---|
+  | **A slot the API answered is never overwritten** — checked: 0 of them changed. Only the fallbacks move |
+  | **The three colours must be visibly different** (dE ≥ 25 across the *final* trio, kept colours included). Filling only the empty slots and hoping is what first left Levante with c1 and c2 the same red, and gave Castellón a seam colour identical to its background — measured after: **min dE(c1,c2) 29.1, min dE(c1,c3) 25.4, none under 25** |
+  | Distance, **not** contrast ratio — Sepsi's grey on red is 1.01:1 by luminance and completely obvious to the eye. Only Derby and Swansea end up with c2 = c3, and both are genuinely two-colour clubs |
+
+  _Also fixed on the way: the first version reported the 5-bit bucket centre as the colour,
+  which put Chelsea's blue **40 dE** out — a visibly different blue. It reports the most common
+  **exact** pixel in the cluster now, because badge art is flat colour._
+
+  _Checked in the browser on the merged data: `teams.json` still holds 242 clubs / 92 nations,
+  every hex well-formed, every record the same shape. Eight previously-generic clubs render in
+  their own colours at 3.73–11.89:1 contrast, and five split pairs come through with both
+  crests in their own blocks. **One pair trips the app's own split-contrast warning** — Derby
+  (black) against Swansea (white), at 1.29:1 — which is two clubs that genuinely clash, and
+  the warning firing is the app telling the truth. Before B16 that card was two identical
+  black bands. `teams.json` is fetched `{cache:"no-cache"}`, so nothing needs a version bump._
+
+  **What's left for you, and it's small.** Of the 85 clubs where the badge chose c1, **13 came
+  out a neutral** and 9 of those have a saturated colour sitting in their own palette:
+  Albacete, Burgos, Ceahlăul, Dunkerque, Elversberg, Hannover, Mirandes, Pau, Pisa. (Amiens,
+  Cesena, Derby and Münster are the other four, and their badges really are monochrome.)
+  `tools/teams-colours.json` lists every club's full badge palette beside the choice made, so
+  disagreeing is a one-line edit — or fix it on the card with B12's colour inputs and never
+  touch the file.
+  > Roadmap B16: swap c1 for one of the alternatives listed in tools/teams-colours.json for <club>, <club>.

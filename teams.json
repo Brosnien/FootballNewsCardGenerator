@@ -95,7 +95,7 @@
       "name": "Birmingham",
       "c1": "#0000FF",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#1E3D8F",
       "plate": "none",
       "crest": ""
     },
@@ -104,7 +104,7 @@
       "name": "Blackburn",
       "c1": "#009EE0",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#FFF200",
       "plate": "none",
       "crest": ""
     },
@@ -113,7 +113,7 @@
       "name": "Bournemouth",
       "c1": "#B50E12",
       "c2": "#000000",
-      "c3": "#000000",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     },
@@ -131,7 +131,7 @@
       "name": "Brighton",
       "c1": "#0057B8",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -140,7 +140,7 @@
       "name": "Bristol City",
       "c1": "#E21A23",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -149,15 +149,15 @@
       "name": "Burnley",
       "c1": "#6C1D45",
       "c2": "#99D6EA",
-      "c3": "#99D6EA",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     },
     "charlton": {
       "country": "England",
       "name": "Charlton",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#E02128",
+      "c2": "#252122",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -167,7 +167,7 @@
       "name": "Coventry",
       "c1": "#77BBFF",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -176,14 +176,14 @@
       "name": "Crystal Palace",
       "c1": "#1B458F",
       "c2": "#C4122E",
-      "c3": "#C4122E",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     },
     "derby": {
       "country": "England",
       "name": "Derby",
-      "c1": "#111111",
+      "c1": "#231F20",
       "c2": "#FFFFFF",
       "c3": "#FFFFFF",
       "plate": "none",
@@ -230,7 +230,7 @@
       "name": "Leicester",
       "c1": "#003090",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#FDBE11",
       "plate": "none",
       "crest": ""
     },
@@ -239,7 +239,7 @@
       "name": "Middlesbrough",
       "c1": "#FF0000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#C41333",
       "plate": "none",
       "crest": ""
     },
@@ -248,7 +248,7 @@
       "name": "Millwall",
       "c1": "#00194A",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#91A4A4",
       "plate": "none",
       "crest": ""
     },
@@ -266,25 +266,25 @@
       "name": "Nottm Forest",
       "c1": "#E53233",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "oxford": {
       "country": "England",
       "name": "Oxford",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#FEDD00",
+      "c2": "#081369",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "portsmouth": {
       "country": "England",
       "name": "Portsmouth",
-      "c1": "#111111",
+      "c1": "#263886",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#7682B3",
       "plate": "none",
       "crest": ""
     },
@@ -302,7 +302,7 @@
       "name": "QPR",
       "c1": "#1D5BA4",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -374,7 +374,7 @@
       "name": "West Brom",
       "c1": "#122F67",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#795B3C",
       "plate": "none",
       "crest": ""
     },
@@ -390,8 +390,8 @@
     "wrexham": {
       "country": "England",
       "name": "Wrexham",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#007A4E",
+      "c2": "#000000",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -480,9 +480,9 @@
     "albacete": {
       "country": "Spain",
       "name": "Albacete",
-      "c1": "#111111",
+      "c1": "#000000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#AB1B25",
       "plate": "none",
       "crest": ""
     },
@@ -491,7 +491,7 @@
       "name": "Almeria",
       "c1": "#EE1119",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#FCB42E",
       "plate": "none",
       "crest": ""
     },
@@ -509,16 +509,16 @@
       "name": "Betis",
       "c1": "#0BB363",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#CF8A00",
       "plate": "none",
       "crest": ""
     },
     "burgos": {
       "country": "Spain",
       "name": "Burgos",
-      "c1": "#111111",
+      "c1": "#000000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#FFE300",
       "plate": "none",
       "crest": ""
     },
@@ -527,7 +527,7 @@
       "name": "Cadiz",
       "c1": "#FDE607",
       "c2": "#0045A7",
-      "c3": "#0045A7",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -535,7 +535,7 @@
       "country": "Spain",
       "name": "Castellón",
       "c1": "#000005",
-      "c2": "#FFFFFF",
+      "c2": "#EDDA22",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -545,43 +545,43 @@
       "name": "Celta Vigo",
       "c1": "#8AC3EE",
       "c2": "#E5254E",
-      "c3": "#E5254E",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     },
     "ceuta": {
       "country": "Spain",
       "name": "Ceuta",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#FF0000",
+      "c2": "#FDFDFD",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "cordoba": {
       "country": "Spain",
       "name": "Cordoba",
-      "c1": "#111111",
+      "c1": "#008752",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#F0B310",
       "plate": "none",
       "crest": ""
     },
     "cultural": {
       "country": "Spain",
       "name": "Cultural",
-      "c1": "#111111",
+      "c1": "#E4032C",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#CB9804",
       "plate": "none",
       "crest": ""
     },
     "eibar": {
       "country": "Spain",
       "name": "Eibar",
-      "c1": "#111111",
+      "c1": "#1C2F6D",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#0071B9",
       "plate": "none",
       "crest": ""
     },
@@ -626,15 +626,15 @@
       "name": "Granada",
       "c1": "#FFFFFF",
       "c2": "#A61B2B",
-      "c3": "#A61B2B",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "huesca": {
       "country": "Spain",
       "name": "Huesca",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#9F1C33",
+      "c2": "#312256",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -661,17 +661,17 @@
       "country": "Spain",
       "name": "Levante",
       "c1": "#C60B46",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c2": "#251A06",
+      "c3": "#0066A4",
       "plate": "none",
       "crest": ""
     },
     "malaga": {
       "country": "Spain",
       "name": "Malaga",
-      "c1": "#111111",
+      "c1": "#1872B5",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#BC9E32",
       "plate": "none",
       "crest": ""
     },
@@ -680,16 +680,16 @@
       "name": "Mallorca",
       "c1": "#E20613",
       "c2": "#000000",
-      "c3": "#000000",
+      "c3": "#FFE400",
       "plate": "none",
       "crest": ""
     },
     "mirandes": {
       "country": "Spain",
       "name": "Mirandes",
-      "c1": "#111111",
+      "c1": "#000000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#FD0017",
       "plate": "none",
       "crest": ""
     },
@@ -698,25 +698,25 @@
       "name": "Osasuna",
       "c1": "#0A346F",
       "c2": "#D91A21",
-      "c3": "#D91A21",
+      "c3": "#A9912F",
       "plate": "none",
       "crest": ""
     },
     "oviedo": {
       "country": "Spain",
       "name": "Oviedo",
-      "c1": "#111111",
+      "c1": "#D1AC54",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#254E96",
       "plate": "none",
       "crest": ""
     },
     "racing": {
       "country": "Spain",
       "name": "Racing",
-      "c1": "#111111",
+      "c1": "#2D9A29",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -725,15 +725,15 @@
       "name": "Rayo Vallecano",
       "c1": "#E53027",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#D0AD3E",
       "plate": "none",
       "crest": ""
     },
     "sporting-gijon": {
       "country": "Spain",
       "name": "Sporting Gijón",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#ED1C24",
+      "c2": "#DEB407",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -743,16 +743,16 @@
       "name": "Valladolid",
       "c1": "#931B89",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#187644",
       "plate": "none",
       "crest": ""
     },
     "zaragoza": {
       "country": "Spain",
       "name": "Zaragoza",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#E00D1D",
+      "c2": "#FFD805",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -831,18 +831,18 @@
     "avellino": {
       "country": "Italy",
       "name": "Avellino",
-      "c1": "#111111",
+      "c1": "#157B30",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "bari": {
       "country": "Italy",
       "name": "Bari",
-      "c1": "#111111",
+      "c1": "#CE282A",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#101010",
       "plate": "none",
       "crest": ""
     },
@@ -851,7 +851,7 @@
       "name": "Bologna",
       "c1": "#A21C26",
       "c2": "#1A2F48",
-      "c3": "#1A2F48",
+      "c3": "#FEFEFD",
       "plate": "none",
       "crest": ""
     },
@@ -867,8 +867,8 @@
     "carrarese": {
       "country": "Italy",
       "name": "Carrarese",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#007AC2",
+      "c2": "#FFF200",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -876,18 +876,18 @@
     "catanzaro": {
       "country": "Italy",
       "name": "Catanzaro",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#DA0000",
+      "c2": "#EDD94C",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "cesena": {
       "country": "Italy",
       "name": "Cesena",
-      "c1": "#111111",
+      "c1": "#000000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#888888",
       "plate": "none",
       "crest": ""
     },
@@ -905,7 +905,7 @@
       "name": "Cremonese",
       "c1": "#808285",
       "c2": "#ED1C24",
-      "c3": "#ED1C24",
+      "c3": "#CF9C51",
       "plate": "none",
       "crest": ""
     },
@@ -914,16 +914,16 @@
       "name": "Empoli",
       "c1": "#00579C",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#111D31",
       "plate": "none",
       "crest": ""
     },
     "entella": {
       "country": "Italy",
       "name": "Entella",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#9BD3F3",
+      "c2": "#FBFBFB",
+      "c3": "#040404",
       "plate": "none",
       "crest": ""
     },
@@ -948,9 +948,9 @@
     "juve-stabia": {
       "country": "Italy",
       "name": "Juve Stabia",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#FFDB00",
+      "c2": "#003F7F",
+      "c3": "#345A57",
       "plate": "none",
       "crest": ""
     },
@@ -959,25 +959,25 @@
       "name": "Lecce",
       "c1": "#FFF200",
       "c2": "#ED1B23",
-      "c3": "#ED1B23",
+      "c3": "#005B81",
       "plate": "none",
       "crest": ""
     },
     "mantova": {
       "country": "Italy",
       "name": "Mantova",
-      "c1": "#111111",
+      "c1": "#EE1E24",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#2A2323",
       "plate": "none",
       "crest": ""
     },
     "modena": {
       "country": "Italy",
       "name": "Modena",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#FFEB00",
+      "c2": "#00004B",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -986,25 +986,25 @@
       "name": "Monza",
       "c1": "#EC173A",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "padova": {
       "country": "Italy",
       "name": "Padova",
-      "c1": "#111111",
+      "c1": "#E30613",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "palermo": {
       "country": "Italy",
       "name": "Palermo",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#DFBA3D",
+      "c2": "#FAFAFA",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1020,27 +1020,27 @@
     "pescara": {
       "country": "Italy",
       "name": "Pescara",
-      "c1": "#111111",
+      "c1": "#014DA2",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#00B3F0",
       "plate": "none",
       "crest": ""
     },
     "pisa": {
       "country": "Italy",
       "name": "Pisa",
-      "c1": "#111111",
+      "c1": "#1D2421",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#0072B4",
       "plate": "none",
       "crest": ""
     },
     "reggiana": {
       "country": "Italy",
       "name": "Reggiana",
-      "c1": "#111111",
+      "c1": "#802629",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#DCAC00",
       "plate": "none",
       "crest": ""
     },
@@ -1058,7 +1058,7 @@
       "name": "Sassuolo",
       "c1": "#00A752",
       "c2": "#000000",
-      "c3": "#000000",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     },
@@ -1074,9 +1074,9 @@
     "sudtirol": {
       "country": "Italy",
       "name": "Südtirol",
-      "c1": "#111111",
+      "c1": "#BC091B",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#1A171B",
       "plate": "none",
       "crest": ""
     },
@@ -1112,7 +1112,7 @@
       "name": "Verona",
       "c1": "#FFE74A",
       "c2": "#005395",
-      "c3": "#005395",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1191,9 +1191,9 @@
     "bielefeld": {
       "country": "Germany",
       "name": "Bielefeld",
-      "c1": "#111111",
+      "c1": "#0D56A5",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1202,16 +1202,16 @@
       "name": "Bochum",
       "c1": "#005CA9",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "braunschweig": {
       "country": "Germany",
       "name": "Braunschweig",
-      "c1": "#111111",
+      "c1": "#0077C7",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#FFE800",
       "plate": "none",
       "crest": ""
     },
@@ -1220,34 +1220,34 @@
       "name": "Darmstadt",
       "c1": "#004F9F",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#85ABD1",
       "plate": "none",
       "crest": ""
     },
     "dresden": {
       "country": "Germany",
       "name": "Dresden",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#9B0011",
+      "c2": "#000000",
+      "c3": "#FDC300",
       "plate": "none",
       "crest": ""
     },
     "dusseldorf": {
       "country": "Germany",
       "name": "Düsseldorf",
-      "c1": "#111111",
+      "c1": "#ED1C24",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "elversberg": {
       "country": "Germany",
       "name": "Elversberg",
-      "c1": "#111111",
+      "c1": "#000000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#D1BD8A",
       "plate": "none",
       "crest": ""
     },
@@ -1263,9 +1263,9 @@
     "furth": {
       "country": "Germany",
       "name": "Fürth",
-      "c1": "#111111",
+      "c1": "#009C3A",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1274,16 +1274,16 @@
       "name": "Hamburg",
       "c1": "#0A3F86",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "hannover": {
       "country": "Germany",
       "name": "Hannover",
-      "c1": "#111111",
+      "c1": "#000000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#1CAC4E",
       "plate": "none",
       "crest": ""
     },
@@ -1310,25 +1310,25 @@
       "name": "Hoffenheim",
       "c1": "#1961B5",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "kaiserslautern": {
       "country": "Germany",
       "name": "Kaiserslautern",
-      "c1": "#111111",
+      "c1": "#E30511",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "karlsruhe": {
       "country": "Germany",
       "name": "Karlsruhe",
-      "c1": "#111111",
+      "c1": "#004C94",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1353,9 +1353,9 @@
     "magdeburg": {
       "country": "Germany",
       "name": "Magdeburg",
-      "c1": "#111111",
+      "c1": "#0071BA",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1371,27 +1371,27 @@
     "munster": {
       "country": "Germany",
       "name": "Münster",
-      "c1": "#111111",
+      "c1": "#1D1D1B",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#616161",
       "plate": "none",
       "crest": ""
     },
     "nurnberg": {
       "country": "Germany",
       "name": "Nürnberg",
-      "c1": "#111111",
+      "c1": "#AA112C",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "paderborn": {
       "country": "Germany",
       "name": "Paderborn",
-      "c1": "#111111",
+      "c1": "#005CAD",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#171714",
       "plate": "none",
       "crest": ""
     },
@@ -1400,7 +1400,7 @@
       "name": "Schalke",
       "c1": "#004D9D",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1427,7 +1427,7 @@
       "name": "Werder Bremen",
       "c1": "#1D9053",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1436,7 +1436,7 @@
       "name": "Wolfsburg",
       "c1": "#09633D",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1497,9 +1497,9 @@
     "amiens": {
       "country": "France",
       "name": "Amiens",
-      "c1": "#111111",
+      "c1": "#040404",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#898989",
       "plate": "none",
       "crest": ""
     },
@@ -1515,9 +1515,9 @@
     "annecy": {
       "country": "France",
       "name": "Annecy",
-      "c1": "#111111",
+      "c1": "#E30613",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1526,25 +1526,25 @@
       "name": "Auxerre",
       "c1": "#4087BF",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#004EA2",
       "plate": "none",
       "crest": ""
     },
     "bastia": {
       "country": "France",
       "name": "Bastia",
-      "c1": "#111111",
+      "c1": "#0053DB",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "boulogne": {
       "country": "France",
       "name": "Boulogne",
-      "c1": "#111111",
+      "c1": "#CC0E18",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#181816",
       "plate": "none",
       "crest": ""
     },
@@ -1569,8 +1569,8 @@
     "dunkerque": {
       "country": "France",
       "name": "Dunkerque",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#1F2C3E",
+      "c2": "#E3C292",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -1578,27 +1578,27 @@
     "grenoble": {
       "country": "France",
       "name": "Grenoble",
-      "c1": "#111111",
+      "c1": "#005DA3",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "guingamp": {
       "country": "France",
       "name": "Guingamp",
-      "c1": "#111111",
+      "c1": "#E30613",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "laval": {
       "country": "France",
       "name": "Laval",
-      "c1": "#111111",
+      "c1": "#EC6608",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1614,9 +1614,9 @@
     "le-mans": {
       "country": "France",
       "name": "Le Mans",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#841419",
+      "c2": "#130A15",
+      "c3": "#C78906",
       "plate": "none",
       "crest": ""
     },
@@ -1625,7 +1625,7 @@
       "name": "Lens",
       "c1": "#FFF200",
       "c2": "#EC1C24",
-      "c3": "#EC1C24",
+      "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
     },
@@ -1643,7 +1643,7 @@
       "name": "Metz",
       "c1": "#6E0F12",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1659,9 +1659,9 @@
     "nancy": {
       "country": "France",
       "name": "Nancy",
-      "c1": "#111111",
+      "c1": "#E1200F",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#EA5954",
       "plate": "none",
       "crest": ""
     },
@@ -1670,34 +1670,34 @@
       "name": "Nantes",
       "c1": "#FCD405",
       "c2": "#1B8F3A",
-      "c3": "#1B8F3A",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "paris-fc": {
       "country": "France",
       "name": "Paris FC",
-      "c1": "#111111",
+      "c1": "#09002F",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#14A7E0",
       "plate": "none",
       "crest": ""
     },
     "pau": {
       "country": "France",
       "name": "Pau",
-      "c1": "#111111",
+      "c1": "#1D203F",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#F0CE12",
       "plate": "none",
       "crest": ""
     },
     "red-star": {
       "country": "France",
       "name": "Red Star",
-      "c1": "#111111",
+      "c1": "#177A61",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#AA2328",
       "plate": "none",
       "crest": ""
     },
@@ -1706,7 +1706,7 @@
       "name": "Reims",
       "c1": "#EE2223",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1722,8 +1722,8 @@
     "rodez": {
       "country": "France",
       "name": "Rodez",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#C10B25",
+      "c2": "#F7B400",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -1733,7 +1733,7 @@
       "name": "Saint-Étienne",
       "c1": "#1D995B",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#CDB789",
       "plate": "none",
       "crest": ""
     },
@@ -1956,8 +1956,8 @@
     "afumati": {
       "country": "Romania",
       "name": "Afumați",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#003387",
+      "c2": "#FFE300",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -1965,161 +1965,161 @@
     "arges": {
       "country": "Romania",
       "name": "Argeș",
-      "c1": "#111111",
+      "c1": "#550E81",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "bihor": {
       "country": "Romania",
       "name": "Bihor",
-      "c1": "#111111",
+      "c1": "#27377A",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#EB2427",
       "plate": "none",
       "crest": ""
     },
     "botosani": {
       "country": "Romania",
       "name": "Botoșani",
-      "c1": "#111111",
+      "c1": "#2B2F87",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#E62B2D",
       "plate": "none",
       "crest": ""
     },
     "ceahlaul": {
       "country": "Romania",
       "name": "Ceahlăul",
-      "c1": "#111111",
+      "c1": "#000000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#FFCB00",
       "plate": "none",
       "crest": ""
     },
     "chiajna": {
       "country": "Romania",
       "name": "Chiajna",
-      "c1": "#111111",
+      "c1": "#009036",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "chindia": {
       "country": "Romania",
       "name": "Chindia",
-      "c1": "#111111",
+      "c1": "#EE2C41",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#0F6FB8",
       "plate": "none",
       "crest": ""
     },
     "corvinul": {
       "country": "Romania",
       "name": "Corvinul",
-      "c1": "#111111",
+      "c1": "#2484BE",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "csikszereda": {
       "country": "Romania",
       "name": "Csíkszereda",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#ED1B24",
+      "c2": "#221E1D",
+      "c3": "#B1B2B6",
       "plate": "none",
       "crest": ""
     },
     "dej": {
       "country": "Romania",
       "name": "Dej",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#010D85",
+      "c2": "#FEFEFE",
+      "c3": "#1465E8",
       "plate": "none",
       "crest": ""
     },
     "farul": {
       "country": "Romania",
       "name": "Farul",
-      "c1": "#111111",
+      "c1": "#15539A",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "gloria-buzau": {
       "country": "Romania",
       "name": "Gloria Buzău",
-      "c1": "#111111",
+      "c1": "#002695",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#C31320",
       "plate": "none",
       "crest": ""
     },
     "hermannstadt": {
       "country": "Romania",
       "name": "Hermannstadt",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#EC222E",
+      "c2": "#000000",
+      "c3": "#AA1D23",
       "plate": "none",
       "crest": ""
     },
     "metaloglobus": {
       "country": "Romania",
       "name": "Metaloglobus",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#BFD031",
+      "c2": "#0069AD",
+      "c3": "#2C8191",
       "plate": "none",
       "crest": ""
     },
     "metalul": {
       "country": "Romania",
       "name": "Metalul",
-      "c1": "#111111",
+      "c1": "#0073B7",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#1B1918",
       "plate": "none",
       "crest": ""
     },
     "otelul": {
       "country": "Romania",
       "name": "Oțelul",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#144E97",
+      "c2": "#FBFBFB",
+      "c3": "#DE2331",
       "plate": "none",
       "crest": ""
     },
     "petrolul": {
       "country": "Romania",
       "name": "Petrolul",
-      "c1": "#111111",
+      "c1": "#FFE614",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#211E1E",
       "plate": "none",
       "crest": ""
     },
     "poli-iasi": {
       "country": "Romania",
       "name": "Poli Iași",
-      "c1": "#111111",
+      "c1": "#4C60A1",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "resita": {
       "country": "Romania",
       "name": "Reșița",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#DD0000",
+      "c2": "#1C1A1B",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -2127,17 +2127,17 @@
     "sepsi": {
       "country": "Romania",
       "name": "Sepsi",
-      "c1": "#111111",
+      "c1": "#DD0326",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#6B6E70",
       "plate": "none",
       "crest": ""
     },
     "slobozia": {
       "country": "Romania",
       "name": "Slobozia",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#1351A3",
+      "c2": "#FFF104",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -2145,8 +2145,8 @@
     "steaua": {
       "country": "Romania",
       "name": "Steaua",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
+      "c1": "#005DAB",
+      "c2": "#EE2E24",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -2154,27 +2154,27 @@
     "tunari": {
       "country": "Romania",
       "name": "Tunari",
-      "c1": "#111111",
-      "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c1": "#A60002",
+      "c2": "#B1AFB2",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "uta": {
       "country": "Romania",
       "name": "UTA",
-      "c1": "#111111",
+      "c1": "#FF0000",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
     "voluntari": {
       "country": "Romania",
       "name": "Voluntari",
-      "c1": "#111111",
+      "c1": "#083C73",
       "c2": "#FFFFFF",
-      "c3": "#FFFFFF",
+      "c3": "#58C8DE",
       "plate": "none",
       "crest": ""
     }
