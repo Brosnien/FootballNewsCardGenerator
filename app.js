@@ -30,7 +30,7 @@ let lastKey={club:"arsenal",nation:"romania"};
 const DB=()=>teamType==="nation"?NATIONS:CLUBS;
 
 const $=id=>document.getElementById(id);
-const FIELDS=["cat","date","cname","c1","c2","c3","head","sub","player",
+const FIELDS=["cat","date","cname","c1","c2","c3","d1","d2","d3","head","sub","player",
   "fee","quote","who","ctx","handle","outlet","tier","rep","plate","crestBg","font","tpl","fmt","align",
   "split","club2","dual","status","scoreA","scoreB","goalsA","goalsB",
   "oppo","statPos","sRating","sMin","sGoals","sAssists","sShots","sPass","sKey",
@@ -60,6 +60,24 @@ const STATUS={
   medicale:  {style:"line",   arrow:"→", tier:3},
   oficial:   {style:"solid",  arrow:"→", tier:3}
 };
+
+/* Each side of the card has three colour inputs: a text box holding the hex and
+   the native colour picker beside it. TRIO_A is the left/single team, TRIO_B the
+   right-hand one (transfer / result only). */
+const HEX=/^#[0-9a-f]{6}$/i;
+const TRIO_A=[["c1","c1p"],["c2","c2p"],["c3","c3p"]];
+const TRIO_B=[["d1","d1p"],["d2","d2p"],["d3","d3p"]];
+const trioOf=c=>[c.c1||"#FFFFFF",c.c2||"#000000",c.c3||"#000000"];
+const readTrio=trio=>trio.map(([tx])=>$(tx).value);
+function setTrio(trio,vals){
+  trio.forEach(([tx,pk],i)=>{
+    const v=vals[i]||"";
+    $(tx).value=v;
+    if(HEX.test(v))$(pk).value=v;
+  });
+}
+/* a half-typed hex must not take the card's background down with it */
+const hexOr=(v,fb)=>HEX.test((v||"").trim())?v.trim():fb;
 
 function lum(hex){
   if(!/^#[0-9a-f]{6}$/i.test(hex))return 0;
@@ -302,8 +320,8 @@ combos.groupPick=makeCombo("groupPick",optGroups,g=>{const t=teamsInGroup(g)[0];
 combos.clubPick =makeCombo("clubPick", optTeamsIn("groupPick"), k=>loadClub(k));
 combos.group2   =makeCombo("group2",   optGroups,g=>{
   const t=teamsInGroup(g).find(([k])=>k!==activeClub)||teamsInGroup(g)[0];
-  if(t)combos.club2.set(t[0]); render();});
-combos.club2    =makeCombo("club2",    optTeamsIn("group2"), k=>render());
+  if(t){combos.club2.set(t[0]);loadClub2(t[0]);} else render();});
+combos.club2    =makeCombo("club2",    optTeamsIn("group2"), k=>loadClub2(k));
 
 /* ---------- reporters (reporters.json) ----------
    Handle + Outlet + Reliability are the three fields typed on every single card,
@@ -359,7 +377,8 @@ function drawPickers(){
   combos.groupPick.set(g1);
   combos.clubPick.set(DB()[activeClub]?activeClub:(teamsInGroup(g1)[0]?.[0]||""));
 
-  let k2=$("club2").value;
+  const prev2=$("club2").value;
+  let k2=prev2;
   if(!DB()[k2]||k2===activeClub){
     const other=Object.entries(DB()).find(([k,c])=>k!==activeClub&&groupKey(c)!==g1)
               ||Object.entries(DB()).find(([k])=>k!==activeClub);
@@ -367,6 +386,10 @@ function drawPickers(){
   }
   combos.group2.set(groupKey(DB()[k2]||a));
   combos.club2.set(k2);
+  /* if we had to move the right-side team (team type switched, or it collided
+     with the left one), its colour inputs follow it — otherwise the card would
+     paint the new club in the old one's colours. */
+  if(k2!==prev2&&DB()[k2])setTrio(TRIO_B,trioOf(DB()[k2]));
 }
 
 const val=id=>$(id).value;
@@ -491,7 +514,13 @@ function render(){
   const splitModeEff = isResult ? "vert" : splitMode;   /* Rezultat: mereu vertical */
   const split = isResult || (tpl==="move" && splitMode!=="none");
   const dual = !isResult && $("dual").value==="2";
-  const B = DB()[$("club2").value] || DB()[activeClub];
+  /* the right team keeps its name from teams.json but takes its colours from the
+     d1/d2/d3 inputs, which the picker fills in and you may then override */
+  const B0 = DB()[$("club2").value] || DB()[activeClub];
+  const d=trioOf(B0);
+  const B = {name:B0.name,
+             c1:hexOr($("d1").value,d[0]), c2:hexOr($("d2").value,d[1]),
+             c3:hexOr($("d3").value,d[2])};
   const A = {c1:c1,c2:c2,c3:c3};
 
   const r=document.documentElement.style;
@@ -660,19 +689,22 @@ let _raf=0;
 function scheduleRender(){ if(_raf) return; _raf=requestAnimationFrame(()=>{_raf=0;render();}); }
 FIELDS.forEach(id=>{const el=$(id);if(!el)return;
   el.addEventListener("input",scheduleRender);el.addEventListener("change",render);});
-[["c1","c1p"],["c2","c2p"],["c3","c3p"]].forEach(([tx,pk])=>{
+[...TRIO_A,...TRIO_B].forEach(([tx,pk])=>{
   $(pk).addEventListener("input",e=>{$(tx).value=e.target.value.toUpperCase();render();});
   $(tx).addEventListener("input",e=>{
-    if(/^#[0-9a-f]{6}$/i.test(e.target.value))$(pk).value=e.target.value;});
+    if(HEX.test(e.target.value))$(pk).value=e.target.value;});
 });
-/* swap the two teams in one tap */
+/* swap the two teams in one tap. The colours travel with their team, so a
+   colour you fixed by hand isn't lost (or handed to the other club) on a swap. */
 $("swapClubs").addEventListener("click",()=>{
   const right=$("club2").value, left=activeClub;
   if(!DB()[right]||right===left) return;
+  const wasA=readTrio(TRIO_A), wasB=readTrio(TRIO_B);
   loadClub(right);
   combos.group2.set(groupKey(DB()[left]));
   combos.club2.set(left);
-  render();
+  setTrio(TRIO_A,wasB);setTrio(TRIO_B,wasA);
+  render();saveDraft();
 });
 
 /* picking a stage fills in the category and reliability — you can change them after */
@@ -688,9 +720,18 @@ let DELETED={club:[],nation:[]};
 function loadClub(k){
   if(!DB()[k])return;
   activeClub=k; lastKey[teamType]=k; const c=DB()[k];
-  $("cname").value=c.name;$("c1").value=c.c1;$("c2").value=c.c2;$("c3").value=c.c3;
-  $("c1p").value=c.c1;$("c2p").value=c.c2;$("c3p").value=c.c3;$("plate").value=c.plate;
+  $("cname").value=c.name;
+  setTrio(TRIO_A,[c.c1,c.c2,c.c3]);
+  $("plate").value=c.plate;
   drawPickers();render();
+}
+/* The right-hand team's colours are editable too (B12), so they live in inputs
+   instead of being read straight from teams.json on every render. Picking a
+   right-side team refills them — the same contract as loadClub() on the left. */
+function loadClub2(k){
+  if(!DB()[k])return;
+  setTrio(TRIO_B,trioOf(DB()[k]));
+  render();saveDraft();
 }
 
 /* Clubs / Nationals toggle — Transfer is club-only (nations don't sign players) */
@@ -733,17 +774,23 @@ function snapshot(){const o={};FIELDS.forEach(id=>{const el=$(id);if(el)o[id]=el
 function restore(o){
   if(o._type==="club"||o._type==="nation")teamType=o._type;
   if(o._dateAuto===false) dateAuto=false;
-  /* club2 is derived from the group+team pair, so we set it after drawPickers */
-  FIELDS.forEach(id=>{const el=$(id);if(!el||id==="club2")return;if(o[id]!==undefined)el.value=o[id];});
+  /* club2 is set here too, not just through its combo below: drawPickers refills
+     the right-side colours whenever it has to move that team, and it must see the
+     saved team to know it didn't. The combo call below adds the visible label. */
+  FIELDS.forEach(id=>{const el=$(id);if(!el)return;if(o[id]!==undefined)el.value=o[id];});
   activeClub=(o._club&&DB()[o._club])?o._club:
     (DB()[lastKey[teamType]]?lastKey[teamType]:Object.keys(DB())[0]);
   lastKey[teamType]=activeClub;
-  [["c1","c1p"],["c2","c2p"],["c3","c3p"]].forEach(([tx,pk])=>{$(pk).value=$(tx).value;});
+  [...TRIO_A,...TRIO_B].forEach(([tx,pk])=>{if(HEX.test($(tx).value))$(pk).value=$(tx).value;});
   updateTypeUI();drawPickers();
   if(o.club2&&DB()[o.club2]){
     combos.group2.set(groupKey(DB()[o.club2]));
     combos.club2.set(o.club2);
   }
+  /* a draft or preset saved before B12 has no right-side colours — take them from
+     its right-side team, or the card would come back with the placeholder pair */
+  if(o.d1===undefined&&DB()[$("club2").value])
+    setTrio(TRIO_B,trioOf(DB()[$("club2").value]));
   /* the reporter combo shows a label, so the hidden value alone isn't enough */
   combos.rep.set(repOf($("rep").value)?$("rep").value:"");
   updateRepLink();

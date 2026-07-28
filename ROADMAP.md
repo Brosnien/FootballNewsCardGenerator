@@ -4,7 +4,16 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-28 — **B5 is done: the byline is now one tap.** A **Reporter** picker
+_Last updated: 2026-07-28 — **B12 is done: the right-hand team has its own colour inputs.**
+**Style & colours** now carries two labelled rows, left/single team and right team; the right
+team keeps its name from [teams.json](teams.json) but takes its colours from the new `d1/d2/d3`
+fields, which fill in when you pick it and travel with it through a swap. They save with the
+draft and with a preset, and the override is in the exported PNG (sampled, not assumed).
+**This is the quick way round B13's colour debt** — fix a club on the card instead of editing
+`teams.json` first. Next, and last on the list, is **B11**, which needs one thing from you: the
+split and the two teams you were looking at._
+
+_Previously: **B5 is done: the byline is now one tap.** A **Reporter** picker
 sits above Handle / Outlet / Reliability and fills all three from
 [reporters.json](reporters.json) (**36 reporters**, with a **Profile ↗** link out); it searches
 names, outlets and handles. Verified in the browser down to the phone width, including the
@@ -296,14 +305,14 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
 Items stay in the author's original order, minus the three automation items (**B1, B2, B6**),
 dropped on 2026-07-27 at the author's request — see the note under the table. B9–B13 were added
-2026-07-27. **Proposed order is now B11 → B12** (B5 landed 2026-07-28). B11 matters more now
+2026-07-27. **The only work item left is B11** (B12 landed 2026-07-28), and it matters more now
 that 182 new badges are in, many of them odd shapes. B4, B7 and B8 aren't work items. One
 prompt per row; paste the quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
 | B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
-| B12 | Colour picker for the second team | 1 | — |
+| B12 | Colour picker for the second team | done | — |
 | B5 | Reporters picker | done | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
 | B9 | Cap hashtags at 5 + both teams | done | — |
@@ -593,7 +602,7 @@ _Added 2026-07-27._
   vertical split each crest does lose ~49 px at the centre line, equally on both sides).
   > Roadmap B11: fix crest size/symmetry on split cards, per ROADMAP.md — I was looking at <split> with <team A> vs <team B>.
 
-- [ ] Add colors picker for the second team **(B12)**
+- [x] Add colors picker for the second team **(B12)**
 
   Today only the left/active team has editable colours; the right-hand team's colours come
   straight from `teams.json` with no way to override them on the card. Needs three more inputs
@@ -604,6 +613,55 @@ _Added 2026-07-27._
   recorded there: don't give the new inputs a `data-for`, or `secUsed()` will auto-collapse
   the whole section on templates that don't use them.
   > Roadmap B12: add second-team colour inputs in Style & colours, saved with the draft, per ROADMAP.md.
+
+  **Done 2026-07-28.** **Style & colours** now holds two labelled colour rows —
+  `Team — left / single` (the existing `c1/c2/c3`) and `Team — right (transfer / result)`
+  (new `d1/d2/d3`) — each a hex box plus the native picker
+  ([generator-ios.html](generator-ios.html), [styles.css](styles.css) `.rowlab`). No
+  `data-for` on them, per the caution above. `d1/d2/d3` are in `FIELDS`, so they save with
+  the draft and with a preset and clear on Reset.
+
+  **This is also the way to work around B13's colour debt** — the 131 new clubs carrying a
+  fallback colour can be fixed on the card, on whichever side they're on, without editing
+  `teams.json` first. That's now in the README next to the list-the-debt one-liner.
+
+  How it hangs together ([app.js](app.js)): the right team used to be read straight out of
+  `teams.json` on every render (`DB()[club2]`). It now keeps its **name** from there but takes
+  its **colours from the inputs**, which `loadClub2()` fills in whenever you pick a right-side
+  team — the same contract `loadClub()` has always had on the left. Three shared helpers
+  (`TRIO_A`/`TRIO_B`, `setTrio`, `readTrio`) replace the three hand-repeated
+  `[["c1","c1p"],…]` lists, so both sides stay wired the same way.
+
+  _The four places the two sides can drift apart, each handled and each tested:_
+
+  | Case | Behaviour |
+  |---|---|
+  | Pick a right-side team | `loadClub2()` refills the three inputs from `teams.json` — picking Palermo after a green override gives Palermo's own trio back |
+  | **Swap teams** | the colours travel **with their team**, so a colour you fixed by hand isn't lost or handed to the other club: Sunderland's hand-set `#F5A9C4` moved to the left with it |
+  | The right-side team moves on its own (team type switched, or it collided with the left team) | `drawPickers()` refills the trio only when it had to move that team — Clubs → Nationals lands on Brazil **and** Brazil's colours, not the club's |
+  | A draft or preset saved **before** B12 | has no `d1/d2/d3`, so `restore()` takes them from the saved right-side team. A pre-B12 Sunderland → Pisa draft came back with Pisa's real `#111111/#FFFFFF/#FFFFFF`, not the placeholder pair |
+
+  _Measured in the browser, on the local server:_
+
+  | Check | Result |
+  |---|---|
+  | Override reaches the card | typing `#00A650` into the right Background turns the right band green live; bands readout follows (`#FF0000 · #000000 · #00A650`) |
+  | Both halves of a 50/50 split | with Colors per half on, `d1` paints the outer band and `d3` the one by the seam — green outside, Madrid gold inside |
+  | **Export carries it** | capturing the card and sampling it: left `#FF0000` / `#FFFFFF`, right `#FEBE10` / **`#00A650`** — the hand-typed colour is in the PNG |
+  | Half-typed hex | `#F5A` leaves the card on the team's own colour instead of killing the gradient (`hexOr`) |
+  | Draft survives a reload | all three come back, native pickers included |
+  | Preset round-trip | saved with `d1/d2/d3`, restored over a changed card |
+  | Reset | drops the overrides and refills from the right-side team, not the HTML placeholder |
+  | Phone width (375px) | two 3-across rows, fields 109px each, no horizontal overflow |
+
+  _Two small side effects worth knowing. **Reset now also resets the right-side team** (it was
+  previously the one field Reset skipped) — it lands on a sensible default and its colours come
+  with it. And **picking a right-side team now saves the draft**, which it didn't before, so
+  that choice survives a reload on its own._
+
+  _Not changed: the right team's crest still comes from `teams.json` by key
+  (`updateWall`), and `--bg2`/`--trim2`/`--nameB`/`scoreInk` all read the overridden
+  colours because they were already fed from one `B` object._
 
 - [x] Add much more teams (cover first two leagues from top 5 + Romania) **(B13)**
 

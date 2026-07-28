@@ -126,5 +126,10 @@ to a neutral pair. To list the clubs still carrying a default:
 python3 -c "import json;d=json.load(open('tools/teams-proposed.json'))['clubs'];print('\n'.join(sorted(v['name'] for v in d.values() if v['_source']['colours_missing'])))"
 ```
 
+The real fix is to type the club's colours into `teams.json`, but you don't have
+to do it before posting: **Style & colours** has a set of colour inputs per side
+of the card — left/single team and right-hand team — so either club's colours can
+be corrected on the card and saved with the draft.
+
 On iPhone: open the live link in Safari → Share → **Add to Home Screen** to run
 it full-screen like an app.
