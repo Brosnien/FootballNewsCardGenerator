@@ -13,6 +13,13 @@ draft and with a preset, and the override is in the exported PNG (sampled, not a
 `teams.json` first. Next, and last on the list, is **B11**, which needs one thing from you: the
 split and the two teams you were looking at._
 
+_Also **measured B11 rather than guessing at it** (findings under the item): the crests are all
+perfectly centred in their files, so the placement is already symmetric — what differs is how
+much of the file each badge fills, and every crest is drawn into the same 583 px box. Tottenham
+shows 240 px wide where Man City shows 583, so one crest is **2.4× the other on the same card**.
+The fix is to scale each crest by its own content; the catch is that it makes 223 of 242
+**smaller**, so the direction is your call._
+
 _Previously: **B5 is done: the byline is now one tap.** A **Reporter** picker
 sits above Handle / Outlet / Reliability and fills all three from
 [reporters.json](reporters.json) (**36 reporters**, with a **Profile ↗** link out); it searches
@@ -311,7 +318,7 @@ prompt per row; paste the quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B11 | Crest size / symmetry on splits | 1 | a look from you (below) |
+| B11 | Crest size / symmetry on splits | 1 | measured — which way to fix it is your call (below) |
 | B12 | Colour picker for the second team | done | — |
 | B5 | Reporters picker | done | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
@@ -601,6 +608,60 @@ _Added 2026-07-27._
   down whether it's the artwork, one specific seam shape, or the seam-edge clipping (on a
   vertical split each crest does lose ~49 px at the centre line, equally on both sides).
   > Roadmap B11: fix crest size/symmetry on split cards, per ROADMAP.md — I was looking at <split> with <team A> vs <team B>.
+
+  ### Measured 2026-07-28 — the artwork theory is confirmed, with one correction
+
+  All 242 club crests and all 92 nation crests were measured in the browser (canvas gives the
+  tight box of non-transparent pixels; no image library needed — that idea can be dropped).
+  **Position symmetry is not the problem and never was: 0 of 334 crests is off-centre in its
+  own file** by more than 2%, and `WALLPOS` mirrors exactly. What varies is **how much of the
+  file the badge fills**, and the card draws every crest into the same 583 px box:
+
+  | | fills the box | median | worst |
+  |---|---|---|---|
+  | height | 208 of 242 fill it | 1.00 | 0.375 (Union Berlin, a wide banner) |
+  | width | 90 of 242 | 0.875 | 0.412 (Tottenham) |
+
+  So the visible crest ranges from **240 × 583 px (Tottenham) to 583 × 583 px (Man City)** —
+  same box, 2.4× the area. Every badge is trimmed to fill its long axis, which is why one
+  looks big and round and the next looks like a thin tall bird.
+
+  **What that does to real pairs** (visible width, and the area ratio between the two):
+
+  | Card | widths | one crest is |
+  |---|---|---|
+  | Man City vs Tottenham | 583 vs 240 | **2.43×** the other |
+  | Arsenal vs Tottenham | 496 vs 240 | 2.06× |
+  | Man City vs Liverpool | 583 vs 321 | 1.82× |
+  | Barcelona vs Real Madrid | 576 vs 423 | 1.36× |
+  | Sunderland vs Pisa | 583 vs 459 | 1.06× |
+
+  The 12 narrowest, i.e. the ones that look shrunken next to anything round: Union Berlin,
+  **Tottenham**, Granada, Oviedo, **Liverpool**, Nottm Forest, Celta Vigo, Cordoba, Monaco,
+  Las Palmas, Sporting Gijón, Zaragoza. **Nations are much tighter** (median 0.90, worst
+  Belgium 0.72), so this is a club problem, and worst on transfer cards.
+
+  **The fix, and its one real trade-off.** Scale each crest's box by its own content, so what
+  the eye sees is the same size on both sides: `scale = target / √(w·h)`, measured once per
+  crest when the app already probes the file in `put()` (a 160 × 160 canvas read, ~4k pixels —
+  no new files, and it keeps working for crests added later). At `target = 0.80`:
+
+  | | now | after |
+  |---|---|---|
+  | Man City | 583 × 583 | 466 × 466 (0.80×) |
+  | Arsenal | 496 × 583 | 430 × 506 (0.87×) |
+  | Palermo | 583 × 510 | 499 × 436 (0.86×) |
+  | Tottenham | 240 × 583 | 299 × 727 (1.25×) |
+  | Liverpool | 321 × 583 | 346 × 629 (1.08×) |
+
+  The trade-off: **223 of 242 get smaller**, which is the opposite of "maybe increase size".
+  Growing the narrow ones instead means letting them run **taller** than the 583 box whose
+  seam clearance was measured in the earlier crest work — fine on a vertical seam (only width
+  reaches the seam) but it needs re-checking on the diagonals and curves, and those crests are
+  anchored low so a taller one crops differently at the card's bottom edge. **Which way to go
+  is your call**, and it is the same question as "which split and which two teams" — on a
+  vertical split with Arsenal vs Tottenham the honest fix is equalise-and-shrink; if it was a
+  diagonal, the placement has to move too.
 
 - [x] Add colors picker for the second team **(B12)**
 
