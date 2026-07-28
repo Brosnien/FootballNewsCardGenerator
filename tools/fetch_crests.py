@@ -629,6 +629,11 @@ def main():
         for key, team in data[group].items():
             if only and key not in only:
                 continue
+            # a placeholder team like "Free agent" has no badge to find. Without
+            # this the search would either burn a request on a MISS or, worse,
+            # silently match some real club of that name and write its crest in.
+            if team.get("noCrest"):
+                continue
             todo.append((key, team, is_nation))
 
     unknown = only - {k for k, _, _ in todo}

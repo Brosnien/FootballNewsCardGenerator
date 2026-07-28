@@ -2177,6 +2177,16 @@
       "c3": "#58C8DE",
       "plate": "none",
       "crest": ""
+    },
+    "free-agent": {
+      "country": "Free agent",
+      "name": "Free agent",
+      "c1": "#5C5C5C",
+      "c2": "#FFFFFF",
+      "c3": "#8C8C8C",
+      "plate": "none",
+      "crest": "",
+      "noCrest": true
     }
   },
   "nations": {

@@ -22,8 +22,8 @@ automatically within about a minute. The big `fonts.css` and the libraries stay
 cached in the browser, so day-to-day edits to `app.js` / `styles.css` load fast.
 
 ## Adding teams
-Teams live in `teams.json`, split into `clubs` and `nations` — **242 clubs and 92
-nations** today. Each entry is:
+Teams live in `teams.json`, split into `clubs` and `nations` — **243 clubs and 92
+nations** today (242 real clubs plus **Free agent**, below). Each entry is:
 
 ```json
 "barcelona": {
@@ -41,6 +41,20 @@ The key (`"barcelona"`) just has to be unique. `country`/`continent` groups the
 team in the pickers — reuse an existing group name to slot it in, or invent a
 new one. Add as many as you like; the team pickers in the app are search boxes,
 so a long list stays easy to browse (type a team **or** country name).
+
+### Free agent
+For a player who isn't tied to a club, pick **Free agent** — it sits at the top
+of the Country box and holds one entry of the same name. It's an ordinary team
+record, so it works on **either side** of a transfer: `Free agent → Arsenal` for
+signing someone unattached, `Arsenal → Free agent` for a release or an expiring
+contract. Its colours are a deliberately neutral grey, chosen by measuring the
+seam contrast against all 242 real clubs (it clashes on 14% of pairings, against
+46% for two random real clubs).
+
+It carries `"noCrest": true`, which is the one thing that flag does: the app
+draws no crest for it, and `tools/fetch_crests.py` skips it instead of searching
+TheSportsDB for a club called "Free agent". Use the same flag for any other
+placeholder you add.
 
 ## Reporters
 The **Reporter** picker sits in Text, directly above Handle / Outlet /

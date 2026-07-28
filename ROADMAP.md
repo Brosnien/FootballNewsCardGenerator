@@ -27,7 +27,11 @@ the 13 clubs with a neutral colour **4 were actually wrong** — Mirandés and C
 colour sitting in the wrong slot, while **Hannover and Münster needed a hand-typed hex because
 their badges carry no red and no green**. The same check caught **two older bugs the API shipped**:
 Leganés and Como each had two identical colours, which left a Leganés split card with no seam.
-**Every item in this file is now closed, with nothing left waiting on you.**_
+Then **B19, your own idea: the app has a Free agent**, usable on either side of a transfer —
+built as a pseudo-club so it inherits the pickers, Swap, drafts and captions with no new mode,
+and its grey was **measured** against all 242 clubs rather than picked (it trips the seam warning
+on 14% of pairings against 46% for two real clubs). **Every item in this file is now closed, with
+nothing left waiting on you.**_
 
 _Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
@@ -367,6 +371,7 @@ items. One prompt per row; paste the quoted line as the whole prompt.
 | B16 | Colour debt — the 131 fallback clubs | done | — |
 | B17 | The last two leftovers — **examined, not built** | — | — |
 | B18 | Reporter tiers re-rated + the 13 neutral clubs | done | — |
+| B19 | Free agent, for players with no club | done | — |
 | B14 | Ditch the curve splits, replace them | done | — |
 | B11 | Crest size / symmetry on splits | done | — |
 | B12 | Colour picker for the second team | done | — |
@@ -1225,3 +1230,53 @@ file had parked._
 
   _Verified: **0 of 242 clubs** now have a background that clashes with its own text or seam
   (was 2), every hex well-formed, and all six corrected clubs render at 4.05–13.79:1._
+
+---
+
+_Added 2026-07-28, your own idea rather than something parked in this file._
+
+- [x] The app needs the idea of a **free agent**, for players not tied to a club **(B19)**
+
+  **Done 2026-07-28.** Pick **Free agent** at the top of the Country box and it behaves like any
+  other team, so it works on **either side** of a transfer: `Free agent → Arsenal` for signing
+  someone unattached, `Arsenal → Free agent` for a release or an expiring contract.
+
+  **It's a pseudo-club in [teams.json](teams.json), not a new mode.** That was the whole design
+  decision: as an ordinary team record it inherits the pickers, Swap teams, the draft, presets,
+  the split colours and the caption **for free**, with no branching in `render()`. Only three
+  places needed real code, and each is a case where "no club" genuinely differs from a club:
+
+  | | |
+  |---|---|
+  | **No crest, ever** | a new `noCrest` flag. Without it `put()` would spend `CREST_TRIES` requests discovering a 404 on every card |
+  | **Never auto-picked** | `drawPickers()` chooses a right-hand team for you when the old one collides or the team type flips. Landing on "Free agent" by itself would read as a bug, so it's excluded — it's only ever a deliberate choice |
+  | **Belongs to no league** | so `buildTags()` takes the league hashtag from whichever side has one. Otherwise a free-agent move silently lost `#premierleague` |
+
+  **Its colours were measured, not picked.** A free agent has no kit, and unlike a real club it
+  gets paired with *all* 242 others, so a bad neutral would trip the split-contrast warning
+  constantly. Sweeping the greys against every club, both sides, 484 pairings:
+
+  | palette | trips the seam warning |
+  |---|---|
+  | first guess, slate `#2E3440` | 35.7% |
+  | **shipped: `#5C5C5C` / white / `#8C8C8C`** | **14.3%** |
+  | _baseline: two random real clubs_ | _46.0%_ |
+
+  _So the free agent clashes **less than a third as often as two real clubs do**. Granada and
+  Lens both failed on the first palette and pass on this one._
+
+  _One deliberate exception, recorded so it isn't "fixed" later: its seam sits **dE 19** from its
+  background, under the **25** B16 enforces on every real club. That threshold exists to catch
+  colours that are *the same*, not as a perceptual floor — 19 is plainly visible across two large
+  flat bands, and holding out for 25 forces the seam to near-black, which costs 9 points of clash
+  rate for no visible gain._
+
+  _A latent bug fell out of this: **`tools/fetch_crests.py` would have gone looking for a badge
+  for "Free agent"** on its next run — at best a wasted request and a spurious MISS, at worst a
+  silent match on some real club of that name writing its crest in. It skips `noCrest` teams now._
+
+  _Checked in the browser: both directions render with the crest correctly absent on the
+  free-agent side and present on the club side; **Swap teams carries the colours and the crest**;
+  the draft round-trips; the caption reads `Free agent ➡️ Arsenal` with
+  `#freeagent #arsenal #jordanhenderson #premierleague #transfers` — five tags, and the league one
+  survives only because of the fallback above. **Zero requests** for `crests/free-agent.png`._

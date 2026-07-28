@@ -289,11 +289,16 @@ document.addEventListener("focusout",e=>{
 });
 
 /* group order: by country (clubs) or by continent (nationals) */
+/* "Free agent" is a country the way "Saved" is one: a group with one entry, so a
+   player with no club picks like any other team instead of needing its own UI.
+   First in the list because it's reached by name, not by browsing. */
 const GROUP_ORDER={
-  club:["England","Spain","Italy","Germany","France","Portugal","Netherlands",
+  club:["Free agent","England","Spain","Italy","Germany","France","Portugal","Netherlands",
         "Scotland","Turkey","Rest of Europe","Romania","Saved"],
   nation:["Europe","South America","North America","Africa","Asia","Oceania","Saved"]
 };
+/* the pseudo-club standing in for "no club" — see teams.json */
+const FREE_AGENT="free-agent";
 const groupKey=c=>(c&&(c.country||c.continent))||"Saved";
 function groupsOf(){
   const seen=new Set();
@@ -429,8 +434,11 @@ function drawPickers(){
   const prev2=$("club2").value;
   let k2=prev2;
   if(!DB()[k2]||k2===activeClub){
-    const other=Object.entries(DB()).find(([k,c])=>k!==activeClub&&groupKey(c)!==g1)
-              ||Object.entries(DB()).find(([k])=>k!==activeClub);
+    /* the free agent is never chosen for you — it's a deliberate pick on one side,
+       and landing on it by default would read as a bug */
+    const ok=k=>k!==activeClub&&k!==FREE_AGENT;
+    const other=Object.entries(DB()).find(([k,c])=>ok(k)&&groupKey(c)!==g1)
+              ||Object.entries(DB()).find(([k])=>ok(k));
     k2=other?other[0]:activeClub;
   }
   combos.group2.set(groupKey(DB()[k2]||a));
@@ -557,6 +565,9 @@ function updateWall(tpl){
      synchronous path (no fragile async closures) */
   const put=(el,key,g)=>{
     if(!op||!key||crestSeen[key]==="no"){ hide(el); return; }
+    /* the free agent has no badge and never will, so say so rather than letting
+       the probe below spend CREST_TRIES requests discovering a 404 */
+    if(DB()[key]?.noCrest){ hide(el); return; }
     if(crestSeen[key]==="ok"){
       el.style.backgroundImage="url('"+crestURL(key)+"')";
       if(g){
@@ -1130,7 +1141,10 @@ function buildTags(tpl,team,other){
   if(tpl==="stats"||tpl==="move") push($("player").value);   /* player name */
   if(tpl==="news") push($("cat").value);                     /* category */
   if(teamType==="nation") push("internationalfootball");     /* league / int'l */
-  else push(LEAGUES[groupKey(DB()[activeClub])]);
+  /* the free agent belongs to no league, so on a move take the league from
+     whichever side actually has one — otherwise the card loses that tag entirely */
+  else push(LEAGUES[groupKey(DB()[activeClub])]
+         || LEAGUES[groupKey(DB()[$("club2").value])]);
   (TPL_TAGS[tpl]||[]).forEach(x=>push(x));                   /* template flavour */
   push("football","soccer");                                 /* evergreen, cut first */
   return out.slice(0,MAX_TAGS).join(" ");
