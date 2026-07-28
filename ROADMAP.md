@@ -4,7 +4,16 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-28 — **B11 and B14 are done, and with them the backlog is empty.** The
+_Last updated: 2026-07-28 — **the crests on your phone weren't broken: the Crest backdrop control
+ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
+shields; every team has its real badge now, so **it ships on at Medium** and a device that used the
+app under the old default gets its draft bumped once. Ruled out first: the live files are
+byte-identical to what was tested, every crest serves 200, and the canvas measurement B11 added
+degrades safely when blocked. It did surface a real bug — **Reset kept your current team's crest
+while snapping the name and colours back to Arsenal** — now fixed, along with a returning session
+showing the draft's old date until you touched something._
+
+_Previously the same day: **B11 and B14 are done, and with them the backlog is empty.** The
 **curves are gone**, replaced by **Chevron ▶ / ◀** and **Vertical 60/40 / 40/60**, and the crests
 were rebuilt: you were right that the left one was being cut, but it wasn't the side — the crest
 box was 583px wide and a crest layer is only 540px, so any badge that fills its file lost up to
@@ -513,6 +522,26 @@ they cost real testing and stay true whatever we build next.
       — _**Done 2026-07-22.** `updateWall()` + `WALLPOS` place each team's crest deep inside its own
       colour region for all 8 seam shapes, with a Subtle/Medium/Bold opacity control. Now running on
       real artwork since "Next up" landed, and verified to survive PNG export._
+
+  _**2026-07-28 — "crests are not loading at all" on the phone: they weren't loading because the
+  control ships Off.** Not a bug, a stale default: it was written when `crests/` held placeholder
+  shields, and once all 334 were real badges the same default read as broken. **It now ships on at
+  Medium**, and a device that used the app under the old default gets its saved draft bumped once
+  (`CREST_DEFAULT_KEY`) — otherwise the phone keeps restoring Off and looks broken after the fix.
+  Turning it Off by hand still sticks; tested both ways._
+
+  _Two things ruled out first, so this is diagnosis rather than a guess: the live site is
+  **byte-identical** to what was tested here (app.js/html/css hashes), every crest PNG serves
+  200 `image/png`, and forcing `getImageData` to throw — the one genuinely browser-dependent step
+  B11 added — still renders both crests, because it falls back to treating the badge as filling
+  its file. There was no iOS rendering problem to find._
+
+  _**And one real bug it surfaced: Reset restored the default name and colours but left you on
+  whatever team you were on**, so a reset card read "Arsenal" in Arsenal red with Man City's crest
+  on it. Invisible while the backdrop was off. `DEFAULT_TEXT` now carries the team as well, and
+  Reset stamps today's date instead of blanking it. Also fixed at the same spot: the boot sequence
+  changed the date (and now the backdrop) **after** the restore had already drawn the card, so a
+  returning session showed the draft's old date until you touched something._
 
 ---
 

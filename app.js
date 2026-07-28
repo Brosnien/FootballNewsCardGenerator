@@ -468,6 +468,8 @@ const crestURL=key=>"crests/"+key+".png?v="+CREST_V;
 const CREST_TARGET=0.46;  /* the pair's visible size, as a fraction of card width */
 const CREST_GAP=24;       /* px of clear colour to leave between a crest and the seam */
 const CREST_TALL=0.65;    /* a foot-anchored crest may not be taller than this x H */
+/* store flag, set once on the first run of a build where the backdrop ships on */
+const CREST_DEFAULT_KEY="crestOnByDefault";
 const crestBox={};        /* key -> {w,h}: the artwork's share of its square file */
 const boxOf=key=>crestBox[key]||{w:1,h:1};
 let _bcv=null;
@@ -972,8 +974,20 @@ $("impJson").onchange=e=>{
   rd.readAsText(f);
 };
 
-const DEFAULT_TEXT=(()=>{const o={};FIELDS.forEach(id=>{const el=$(id);if(el)o[id]=el.value;});return o;})();
-$("reset").onclick=()=>{ if(confirm("Reset all fields to defaults?")) restore(DEFAULT_TEXT); };
+/* The team goes in too. Reset used to restore the default name and colours while
+   leaving you on whatever team you were on, so the card came back reading Arsenal
+   in Arsenal red with the other club's crest on it — invisible while the crest
+   backdrop shipped Off, obvious now that it ships on. At this point in the file
+   activeClub/teamType are still the page's own defaults, which is what the field
+   values captured here belong to. */
+const DEFAULT_TEXT=(()=>{const o={};FIELDS.forEach(id=>{const el=$(id);if(el)o[id]=el.value;});
+  o._club=activeClub; o._type=teamType; return o;})();
+$("reset").onclick=()=>{
+  if(!confirm("Reset all fields to defaults?")) return;
+  restore(DEFAULT_TEXT);
+  dateAuto=true; stampToday();   /* a reset card carries today, not a blank date */
+  render(); saveDraft();
+};
 
 /* =========================================================
    EXPORT — the card is moved off-screen at full size,
@@ -1294,7 +1308,18 @@ function noteStore(){
   combos.rep.set("");
   const draft=await store.get("draft");
   if(draft && Object.keys(draft).length) restore(draft);
+  /* Crest backdrop shipped Off, from when crests/ held placeholder shields. All
+     334 teams carry their real badge now, so it ships on — and a draft saved
+     under the old default has to be bumped once, or a device that has used the
+     app before keeps restoring Off and the crests look broken rather than off. */
+  if(!(await store.get(CREST_DEFAULT_KEY))){
+    await store.set(CREST_DEFAULT_KEY,1);
+    if($("crestBg").value==="0"){ $("crestBg").value=DEFAULT_TEXT.crestBg; saveDraft(); }
+  }
   if(dateAuto) stampToday();            /* the draft must not carry yesterday over */
+  /* both of those changed a field after restore() had already drawn the card —
+     without this the card keeps the draft's date until you touch something */
+  render();
   ["head","sub","quote","goalsA","goalsB"].forEach(id=>grow($(id)));
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{fit();autofit();});
 })();

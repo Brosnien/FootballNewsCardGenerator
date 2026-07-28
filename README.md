@@ -64,9 +64,15 @@ if `reporters.json` ever fails to load the picker is simply empty; the three
 fields still work as they always did.
 
 ## Team crest backdrop
-The **Style → Crest backdrop** control drops a faint team crest behind the text.
-It's **off by default**; Subtle / Medium / Bold set the opacity. On transfer and
-result cards both teams show, each crest placed inside its own colour region.
+The **Style & colours → Crest backdrop** control drops a faint team crest behind
+the text. It ships on at **Medium**; Off / Subtle / Medium / Bold set the opacity.
+On transfer and result cards both teams show, each crest placed inside its own
+colour region.
+
+It shipped *off* until 2026-07-28, from when `crests/` held placeholder shields —
+which read as "the crests are broken" once they were real. A device that used the
+app under the old default has its saved draft bumped once (`crestOnByDefault` in
+the store); turning it Off by hand after that sticks.
 
 - Crests load on demand from `crests/<team-key>.png` (e.g. `crests/arsenal.png`,
   matching the key in `teams.json`). A team with no file simply shows nothing.
