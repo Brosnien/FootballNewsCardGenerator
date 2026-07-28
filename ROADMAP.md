@@ -4,7 +4,14 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-28 — **the crests on your phone weren't broken: the Crest backdrop control
+_Last updated: 2026-07-28 — **B15: reliability is a 5-dot scale now**, closing the half of the
+NO1 PRIORITY item that was never delivered ("increase rating range (3 dots -> 4/5 dots)"). The two
+new rungs — **Very reliable** and **Speculation** — split the old top and bottom rather than being
+added on the end, so a saved card keeps the **word** it had, not the number; `reporters.json` was
+carried across the same way, which means nobody sits on the new rungs until you do the editorial
+pass. Next: **B16**, the colour debt._
+
+_Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
 shields; every team has its real badge now, so **it ships on at Medium** and a device that used the
 app under the old default gets its draft bumped once. Ruled out first: the live files are
@@ -127,7 +134,8 @@ whole session._
 - [x] Think about the compacting the 2nd team category (transfer/match) to be near the first.
       — _second team folded into the main team area (commit `b8ded7c`)._
 - [x] Increase font SIZE significantly for the reliability part (dots), also increase rating range (3 dots -> 4/5 dots). MAKE THE REPORTER'S NAME AND PUBLICATION MORE VISIBLE. NO1 PRIORITY
-      — _dots and source are much bigger and moved to the top-left. **Leftover:** the range is still 3 tiers, not 4/5 (`#tier`, `L.tiers`). Say the word and it becomes its own backlog item._
+      — _dots and source are much bigger and moved to the top-left. **Leftover closed 2026-07-28
+      as B15: the range is 5 rungs now**, not 3 — see the B15 entry at the end of the file._
 - [x] Not sure if possible but automatically add the description in instagram? (Or have the text altered in the export page so we can just press copy and paste.)
       — _the export sheet builds a caption + hashtags from the card's fields (`buildCaption`, `buildTags`) with a one-tap Copy._
 - [x] More graphical templates for separation (at the moment, vertical and diagonal are pretty neat but the menu needs some diversity)
@@ -331,12 +339,14 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
 
 Items stay in the author's original order, minus the three automation items (**B1, B2, B6**),
 dropped on 2026-07-27 at the author's request — see the note under the table. B9–B13 were added
-2026-07-27; B14 was added 2026-07-28. **Every work item is now done** — B11, B12 and B14 all
-landed on 2026-07-28. B4, B7 and B8 aren't work items. One prompt per row; paste the quoted line
-as the whole prompt.
+2026-07-27; B14 was added 2026-07-28. B15 and B16 were added 2026-07-28, when the table ran empty
+and you picked the next two out of the leftovers parked in this file. B4, B7 and B8 aren't work
+items. One prompt per row; paste the quoted line as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
+| B15 | Reliability range 3 → 5 dots | done | — |
+| B16 | Colour debt — the 131 fallback clubs | 1 | — |
 | B14 | Ditch the curve splits, replace them | done | — |
 | B11 | Crest size / symmetry on splits | done | — |
 | B12 | Colour picker for the second team | done | — |
@@ -951,3 +961,66 @@ _Added 2026-07-28._
 
   _A card saved on one of the dropped curves comes back on **Diagonal (strong)** — tested by
   restoring a snapshot with `split:"curved"`, since otherwise the select would come back blank._
+
+---
+
+_Added 2026-07-28, when the backlog table ran empty and you picked two of the leftovers this
+file had parked._
+
+- [x] Increase the rating range (3 dots -> 4/5 dots) — the leftover from the NO1 PRIORITY
+      reliability item **(B15)**
+
+  **Done 2026-07-28.** Reliability runs **1–5** now, five dots on the card, up from three. It
+  was the one piece of an item you wrote that had never actually been delivered — the dots got
+  bigger back then, the range didn't move.
+
+  | value | label | was |
+  |---|---|---|
+  | 5 | Tier one | 3 |
+  | 4 | **Very reliable** | new |
+  | 3 | Reliable | 2 |
+  | 2 | Unconfirmed | 1 |
+  | 1 | **Speculation** | new |
+
+  **The two new rungs split the old top and bottom rather than being bolted on the end**, so no
+  card is silently re-rated: everything that read "Reliable" still reads "Reliable". `TIER_UP`
+  ([app.js](app.js)) carries a saved card across, once, keyed on a `_tier5` marker written by
+  `snapshot()` — which covers **presets as well as the draft**, since both go through
+  `snapshot()`/`restore()`. `TIER_MAX` drives the dot count and `L.tiers` the words, so the only
+  thing left to keep in step by hand is the `<option>` list.
+
+  _The new bottom rung is called **Speculation**, not "Rumour", because `L.st.zvon` already
+  prints "Rumour" as a transfer **stage** — two different things on the same card should not
+  share a word._
+
+  _Measured in the browser, not assumed:_
+
+  | Check | Result |
+  |---|---|
+  | All five rungs | 5 dots every time, filled count 1→5, labels Speculation / Unconfirmed / Reliable / Very reliable / Tier one |
+  | Does it still fit the card? | dots 70px → **122px**, tier row 445px; topline is 904px and the widest case (longest label + longest team name, `Trinidad & Tobago`) leaves **246px spare**. No wrap on any template |
+  | Old draft (tier 3, no marker) | comes back **5 / "Tier one"** — the same word, not the same number |
+  | Old presets 3 / 2 / 1 | → 5 / 3 / 2, words unchanged |
+  | Re-picking one preset 3× | stays on 3 / "Reliable" — the migration writes back into the stored object, so without the marker it would have stepped 1→2→3 |
+  | Reporter picker | Romano → 5 Tier one, Ben Jacobs → 3 Reliable, Konur → 2 Unconfirmed |
+  | Transfer stage picker | Rumour/Interest → 2, Talks/Agreed → 3, Medical/Official → 5 |
+  | Reset | lands on 5 / Tier one, the HTML default |
+  | In the exported raster (2×) | at tier 4: four solid 36px dots then **one hollow ring** — two 3px borders around a 12px gap. Five dots reach the PNG |
+
+  _[reporters.json](reporters.json) was carried across the same way — a mechanical remap of the
+  36 entries (3→5, 2→3, 1→2), so the words each reporter carried are unchanged. **That means
+  nobody currently sits on 4 or 1.** Deliberate: re-rating 36 reporters into five rungs is the
+  editorial pass this file has been asking you for since B5, and it isn't mine to make. The new
+  rungs are there when you do it._
+
+  _One thing left the same on purpose: the **transfer stages** map onto 2/3/5 only, so Medical
+  and Official still share a rung. There is room to separate them now — say the word if picking
+  a stage should carry a finer reliability than it used to._
+
+  _The export could not be checked end-to-end here: `capture()` on the full card **hangs** in the
+  headless preview browser (it never resolves, no error). That is the pre-existing limit this file
+  already records under B10, not something B15 caused — rasterising the `.tier` subtree alone with
+  the same engine at the same 2× scale works, which is where the dot measurement above comes from._
+
+- [ ] Fix the colour debt — 131 of the new clubs carry at least one fallback colour **(B16)**
+      — _in progress; see the working notes when it lands._

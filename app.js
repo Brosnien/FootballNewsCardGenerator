@@ -45,20 +45,35 @@ const STAT_FIELDS={
     ["gSavePct","Save %"],["gClean","Clean sheet"],["gClaims","Claims"],["gSweep","Clearances"]]
 };
 
+/* Reliability runs 1..TIER_MAX, highest = most reliable, and the card draws one dot
+   per rung. It was 1..3; the extra two rungs split the old top and bottom, where a
+   transfer feed actually needs the room. The words are the old ones — anything that
+   was "Reliable" still reads "Reliable" — so a saved card keeps its meaning through
+   TIER_UP below. Change the ladder here and the select, the dots and the labels all
+   follow; only the HTML <option> list has to be kept in step by hand. */
+const TIER_MAX=5;
+/* old 1..3 value -> the new value carrying the same word. Applied once per saved
+   card in restore(); "Speculation" and "Very reliable" are new, so nothing maps
+   onto them and no card is silently re-rated. */
+const TIER_UP={1:2,2:3,3:5};
+
 /* fixed on-card labels */
 const L={from:"From", to:"To", src:"Source:",
-  tiers:{3:"Tier one",2:"Reliable",1:"Unconfirmed"},
+  tiers:{5:"Tier one",4:"Very reliable",3:"Reliable",2:"Unconfirmed",1:"Speculation"},
   st:{zvon:"Rumour",interes:"Interest",negocieri:"Talks",acord:"Agreed",
       medicale:"Medical",oficial:"Official"}};
 
-/* transfer stages — from rumour to signature */
+/* transfer stages — from rumour to signature. The tiers are the old three carried
+   across TIER_UP, not a re-rating: picking a stage still fills in the same word it
+   always did. Medical/Official both land on 5 — there is room to separate them now
+   if the stages should carry a finer reliability than they used to. */
 const STATUS={
-  zvon:      {style:"dashed", arrow:"⇢", tier:1},
-  interes:   {style:"dashed", arrow:"⇢", tier:1},
-  negocieri: {style:"line",   arrow:"→", tier:2},
-  acord:     {style:"line",   arrow:"→", tier:2},
-  medicale:  {style:"line",   arrow:"→", tier:3},
-  oficial:   {style:"solid",  arrow:"→", tier:3}
+  zvon:      {style:"dashed", arrow:"⇢", tier:2},
+  interes:   {style:"dashed", arrow:"⇢", tier:2},
+  negocieri: {style:"line",   arrow:"→", tier:3},
+  acord:     {style:"line",   arrow:"→", tier:3},
+  medicale:  {style:"line",   arrow:"→", tier:5},
+  oficial:   {style:"solid",  arrow:"→", tier:5}
 };
 
 /* Each side of the card has three colour inputs: a text box holding the hex and
@@ -742,8 +757,9 @@ function render(){
   $("bSrc").classList.toggle("hide",!srcParts.length||isResult);
 
   const t=+$("tier").value;
-  $("vDots").innerHTML=[1,2,3].map(i=>'<i class="'+(i<=t?"on":"")+'"></i>').join("");
-  $("vLab").textContent=L.tiers[t];
+  $("vDots").innerHTML=Array.from({length:TIER_MAX},(_,i)=>
+    '<i class="'+(i<t?"on":"")+'"></i>').join("");
+  $("vLab").textContent=L.tiers[t]||"";
 
   const crest=DB()[activeClub]?.crest;
   $("vCrest").classList.toggle("hide",!crest);
@@ -864,10 +880,19 @@ function stampToday(){
   $("date").value=z(d.getDate())+"."+z(d.getMonth()+1)+"."+d.getFullYear();
 }
 function snapshot(){const o={};FIELDS.forEach(id=>{const el=$(id);if(el)o[id]=el.value;});
-  o._club=activeClub;o._type=teamType;o._dateAuto=dateAuto;return o;}
+  o._club=activeClub;o._type=teamType;o._dateAuto=dateAuto;o._tier5=1;return o;}
 function restore(o){
   if(o._type==="club"||o._type==="nation")teamType=o._type;
   if(o._dateAuto===false) dateAuto=false;
+  /* a draft or preset saved on the old 1..3 reliability scale: carry it to the rung
+     with the same word, or a "Tier one" card would come back reading "Reliable".
+     The marker makes this idempotent, and it covers presets as well as the draft
+     because both go through snapshot()/restore(). */
+  if(!o._tier5){
+    if(TIER_UP[o.tier]!==undefined) o.tier=String(TIER_UP[o.tier]);
+    o._tier5=1;   /* restore() writes back into the stored preset, so without this
+                     re-picking the same preset would step 1 -> 2 -> 3 each time */
+  }
   /* club2 is set here too, not just through its combo below: drawPickers refills
      the right-side colours whenever it has to move that team, and it must see the
      saved team to know it didn't. The combo call below adds the visible label. */
@@ -981,7 +1006,7 @@ $("impJson").onchange=e=>{
    activeClub/teamType are still the page's own defaults, which is what the field
    values captured here belong to. */
 const DEFAULT_TEXT=(()=>{const o={};FIELDS.forEach(id=>{const el=$(id);if(el)o[id]=el.value;});
-  o._club=activeClub; o._type=teamType; return o;})();
+  o._club=activeClub; o._type=teamType; o._tier5=1; return o;})();
 $("reset").onclick=()=>{
   if(!confirm("Reset all fields to defaults?")) return;
   restore(DEFAULT_TEXT);

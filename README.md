@@ -49,11 +49,13 @@ button that opens that reporter's page in a new tab. The list is
 `reporters.json`:
 
 ```json
-{"name": "David Ornstein", "handle": "@David_Ornstein", "outlet": "The Athletic", "tier": 3}
+{"name": "David Ornstein", "handle": "@David_Ornstein", "outlet": "The Athletic", "tier": 5}
 ```
 
-`tier` matches the Reliability control — 3 tier one, 2 reliable, 1 unconfirmed —
-and the profile link is built from the handle (`https://x.com/<handle>`). Add
+`tier` matches the Reliability control — 5 tier one, 4 very reliable, 3 reliable,
+2 unconfirmed, 1 speculation — and the profile link is built from the handle
+(`https://x.com/<handle>`). The scale used to run 1–3; a card saved on the old one
+is carried to the rung with the same word by `TIER_UP` in `app.js`. Add
 `"url"` to point somewhere else, and leave `handle` empty for an outlet you cite
 without naming a person (Gazeta Sporturilor is in there that way). The picker
 searches names, outlets **and** handles, so `plettig` finds Florian Plettenberg.
