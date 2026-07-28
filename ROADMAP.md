@@ -18,10 +18,11 @@ leftovers were examined and neither should be built** — the Result card's byli
 a bug (a result card doesn't print one at all), and normalising the solo crest was tried twice and
 reverted, because equalising it makes Tottenham's cockerel a 4× magnified swoosh. **You confirmed
 a result card should carry no source or reporter**, so that one is settled by decision, not just
-by measurement. **Every item in this file is now closed.** And **B10's last blocker is gone** — a
-card exported on the iPhone came back real and correctly composed, which also confirmed the 5 dots
-and the crest backdrop on the device itself; the only thing still unknown is whether that export
-ran at 2× or fell silently back to 1×, and the PNG's pixel size answers it._
+by measurement. And **B10 is closed outright**: the iPhone exported at **2160 × 2700**, so 2× is
+confirmed on the device, the silent 1× fallback never fired, and the same card proved the 5 dots
+and the crest backdrop render on the phone. Any softness left in the feed is Instagram's re-encode,
+which is what B10 assumed from the start. **Every item in this file is now closed, with nothing
+left waiting on you.**_
 
 _Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
@@ -366,7 +367,7 @@ items. One prompt per row; paste the quoted line as the whole prompt.
 | B5 | Reporters picker | done | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
 | B9 | Cap hashtags at 5 + both teams | done | — |
-| B10 | Sharper exported image | done | — _(phone export done 2026-07-28)_ |
+| B10 | Sharper exported image | done | — _(2× confirmed on iPhone 2026-07-28)_ |
 | B13 | Many more teams (top 5 ×2 + Romania) | done | — |
 | B7 | Posts vs reels | 0 | — |
 | B8 | Crest overlay | 0 | done with Next up |
@@ -644,12 +645,17 @@ _Added 2026-07-27._
   **B15's five reliability dots render**, and **the crest backdrop renders** — that last one being
   the "crests are not loading at all" report, now confirmed fixed on the phone that saw it._
 
-  _**Still open, and it is one number:** whether that export ran at 2× (2160 × 2700) or fell
-  through to 1× (1080 × 1350). Both produce a correct-looking card — **the fallback is silent by
-  design**, so the picture alone cannot tell them apart. Photos → swipe up / ⓘ shows the pixel
-  size. Author's read on the residual softness: **"may be Instagram's fault"**, which is what B10
-  assumed from the start — Instagram re-encodes every upload, and rendering at 2× so it downsamples
-  rather than re-compresses is the whole mitigation._
+  _**Confirmed: the phone exported at 2160 × 2700**, so iOS Safari really is rendering at 2× and
+  the retry never fired. **B10 is closed outright** — the desktop measurement and the device now
+  agree, and there is nothing left to verify._
+
+  _**So the residual softness is Instagram's re-encode, and that is the end of what we can do
+  about it from here.** The card leaves us at 4× the pixels Instagram displays; it downsamples,
+  which is the sharpest path available. `EXPORT_SCALE` is already at the ceiling worth trying —
+  **going to 3× is not the next lever**, it is 9× the pixels of the original and the first thing
+  iOS refuses to allocate, which would trip the silent 1× fallback and make things quietly worse.
+  If text still reads soft in the feed, the remaining causes are on Instagram's side (it re-encodes
+  hardest on upload over cellular, and a Story/Reel crop resamples again), not in this repo._
 
   _Environment note for whoever tests next: `html-to-image` (engines 2 and 3) fails on the full
   card in the headless preview browser **at any scale, including 1×** — pre-existing, not the
