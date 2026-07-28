@@ -653,7 +653,7 @@
       "name": "Leganes",
       "c1": "#F0F0F0",
       "c2": "#0B1F6F",
-      "c3": "#F0F0F0",
+      "c3": "#0B1F6F",
       "plate": "none",
       "crest": ""
     },
@@ -687,9 +687,9 @@
     "mirandes": {
       "country": "Spain",
       "name": "Mirandes",
-      "c1": "#000000",
+      "c1": "#FD0017",
       "c2": "#FFFFFF",
-      "c3": "#FD0017",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -895,7 +895,7 @@
       "country": "Italy",
       "name": "Como",
       "c1": "#114169",
-      "c2": "#114169",
+      "c2": "#FFFFFF",
       "c3": "#FFFFFF",
       "plate": "none",
       "crest": ""
@@ -1281,9 +1281,9 @@
     "hannover": {
       "country": "Germany",
       "name": "Hannover",
-      "c1": "#000000",
+      "c1": "#E30613",
       "c2": "#FFFFFF",
-      "c3": "#1CAC4E",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },
@@ -1371,9 +1371,9 @@
     "munster": {
       "country": "Germany",
       "name": "Münster",
-      "c1": "#1D1D1B",
+      "c1": "#00794C",
       "c2": "#FFFFFF",
-      "c3": "#616161",
+      "c3": "#1D1D1B",
       "plate": "none",
       "crest": ""
     },
@@ -1992,9 +1992,9 @@
     "ceahlaul": {
       "country": "Romania",
       "name": "Ceahlăul",
-      "c1": "#000000",
+      "c1": "#FFCB00",
       "c2": "#FFFFFF",
-      "c3": "#FFCB00",
+      "c3": "#000000",
       "plate": "none",
       "crest": ""
     },

@@ -60,8 +60,12 @@ is carried to the rung with the same word by `TIER_UP` in `app.js`. Add
 without naming a person (Gazeta Sporturilor is in there that way). The picker
 searches names, outlets **and** handles, so `plettig` finds Florian Plettenberg.
 
-The tiers shipped in the file are a starting guess — they're your editorial call,
-so change them. Typing over Handle or Outlet by hand un-picks the reporter, and
+A tier in the file is a **default for that reporter, not a verdict** — the
+Reliability control still moves per card, so drop a good name to 2 or 1 for a
+thin story. The 36 sit at 8 / 15 / 11 / 2 across rungs 5–2; **rung 1 is
+deliberately empty**, because nobody on a hand-picked list is pure speculation —
+it's there for when *a story* is, not a person. They're your editorial call, so
+change them. Typing over Handle or Outlet by hand un-picks the reporter, and
 if `reporters.json` ever fails to load the picker is simply empty; the three
 fields still work as they always did.
 

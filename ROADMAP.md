@@ -21,8 +21,13 @@ a result card should carry no source or reporter**, so that one is settled by de
 by measurement. And **B10 is closed outright**: the iPhone exported at **2160 × 2700**, so 2× is
 confirmed on the device, the silent 1× fallback never fired, and the same card proved the 5 dots
 and the crest backdrop render on the phone. Any softness left in the feed is Instagram's re-encode,
-which is what B10 assumed from the start. **Every item in this file is now closed, with nothing
-left waiting on you.**_
+which is what B10 assumed from the start. Then **B18 took the two optional threads**: the 36
+reporters are **re-rated across all five rungs** (8/15/11/2, rung 1 left empty on purpose), and of
+the 13 clubs with a neutral colour **4 were actually wrong** — Mirandés and Ceahlăul had the right
+colour sitting in the wrong slot, while **Hannover and Münster needed a hand-typed hex because
+their badges carry no red and no green**. The same check caught **two older bugs the API shipped**:
+Leganés and Como each had two identical colours, which left a Leganés split card with no seam.
+**Every item in this file is now closed, with nothing left waiting on you.**_
 
 _Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
@@ -361,6 +366,7 @@ items. One prompt per row; paste the quoted line as the whole prompt.
 | B15 | Reliability range 3 → 5 dots | done | — |
 | B16 | Colour debt — the 131 fallback clubs | done | — |
 | B17 | The last two leftovers — **examined, not built** | — | — |
+| B18 | Reporter tiers re-rated + the 13 neutral clubs | done | — |
 | B14 | Ditch the curve splits, replace them | done | — |
 | B11 | Crest size / symmetry on splits | done | — |
 | B12 | Colour picker for the second team | done | — |
@@ -1171,3 +1177,51 @@ file had parked._
   _So the solo crest keeps `background-size:112%` at `122% 114%`. The percentage anchor that
   B11 removed from the pair is fine here, because the box size never changes — it was only
   fragile when the size varied._
+
+- [x] The two optional threads left after B15/B16 — **both done** **(B18)**
+
+  **1. The reporter tiers are re-rated across all five rungs.** B15 remapped the 36 entries
+  mechanically, so nobody sat on the two new rungs. They now sit **8 / 15 / 11 / 2** across
+  rungs 5–2 (was 14 / 20 / 2 on the old three), so the picker actually uses the range it grew.
+
+  | rung | who moved |
+  |---|---|
+  | **5 Tier one** | the eight whose word is effectively the confirmation — Romano, Ornstein, Di Marzio, Plettenberg, Joyce, Stone, Sam Lee, Tanzi |
+  | **4 Very reliable** | fifteen who are strong but sometimes early rather than wrong — Moretto, Falk, Ducker, Reddy, Hawkins, Percy, Hope, Steinberg, Barzaghi, Agresti, Hau, Aouna, Roșu, Lowe, Jacobs |
+  | **3 Reliable** | eleven with a mixed hit rate on scoops, plus the two Romanian outlets |
+  | **2 Unconfirmed** | Konur and Fanatik — high volume, low precision |
+
+  _**Rung 1 is deliberately left empty.** Nobody on a hand-picked list is "speculation"; the
+  rung is for when a **story** is thin, not a person, and the Reliability control still moves
+  per card. The file's own note says this now, so the empty rung doesn't read as an oversight._
+
+  _These are **defaults from public reputation, not judgements you signed off**, and they are
+  the one thing in this repo that is pure opinion — override freely, that's what the control
+  is for._
+
+  **2. The 13 neutral club colours: 4 were wrong, 9 were right.** Going through them against
+  the clubs' actual kits, the mechanical "has a saturated colour spare" flag was much wider
+  than the real error list — **Amiens, Cesena, Elversberg, Derby and Burgos are genuinely
+  black-and-white clubs**, and Pisa (nerazzurri), Pau, Albacete and Dunkerque were right too.
+  A neutral `c1` is not evidence of a mistake.
+
+  | Club | was | now | why |
+  |---|---|---|---|
+  | Mirandés | black | **#FD0017** | red-and-black stripes — the red was already in the badge, just sitting in `c3`. Swapped |
+  | Ceahlăul | black | **#FFCB00** | yellow-and-black — same, the yellow was in `c3`. Swapped |
+  | Hannover 96 | black | **#E30613** | they play **red**, and their crest is green-and-white with no red in it at all |
+  | Preußen Münster | black | **#00794C** | they play **green**, and their crest is monochrome |
+
+  _The last two are the case B16 predicted and could not solve: **a badge that doesn't contain
+  the club's kit colour**, the same failure as Lyon playing in white behind a red-and-blue
+  badge. Those two hexes are **hand-entered and approximate** — the colour is certain, the exact
+  shade is worth a glance if you post about either club._
+
+  **And two older ones fell out of the same check.** `leganes` had `c1` and `c3` **identical**,
+  so a Leganés split card had no visible seam at all, and `como` had `c1` and `c2` identical.
+  Both came straight from the API with all three slots answered, which is exactly why B16's
+  separation pass skipped them — it only ever touched the fallbacks. Fixed the same way
+  (Leganés' seam takes their blue, Como's text takes their white).
+
+  _Verified: **0 of 242 clubs** now have a background that clashes with its own text or seam
+  (was 2), every hex well-formed, and all six corrected clubs render at 4.05–13.79:1._
