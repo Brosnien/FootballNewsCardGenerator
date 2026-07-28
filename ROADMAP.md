@@ -13,7 +13,11 @@ couldn't colour got their colours **read off their own badge**, which was alread
 seconds and with no network. Measured against 111 clubs we already trust: it finds the right
 colours **86%** of the time but only picks the right **primary** one **54%** of the time, which is
 a ceiling (Lyon play white behind a red-and-blue badge), so expect right-colours-wrong-order on a
-few. **13 clubs are worth your eye** and both files say which._
+few. **13 clubs are worth your eye** and both files say which. Then **B17: the last two parked
+leftovers were examined and neither should be built** — the Result card's byline isn't hidden by
+a bug (a result card doesn't print one at all), and normalising the solo crest was tried twice and
+reverted, because equalising it makes Tottenham's cockerel a 4× magnified swoosh. **One question
+back to you: should a result card print a source at all?**_
 
 _Previously the same day: **the crests on your phone weren't broken: the Crest backdrop control
 ships Off, so nothing was drawing them.** That default dates from when `crests/` held placeholder
@@ -351,6 +355,7 @@ items. One prompt per row; paste the quoted line as the whole prompt.
 |---|---|---|---|
 | B15 | Reliability range 3 → 5 dots | done | — |
 | B16 | Colour debt — the 131 fallback clubs | done | — |
+| B17 | The last two leftovers — **examined, not built** | — | your call on the result byline |
 | B14 | Ditch the curve splits, replace them | done | — |
 | B11 | Crest size / symmetry on splits | done | — |
 | B12 | Colour picker for the second team | done | — |
@@ -1090,3 +1095,49 @@ file had parked._
   disagreeing is a one-line edit — or fix it on the card with B12's colour inputs and never
   touch the file.
   > Roadmap B16: swap c1 for one of the alternatives listed in tools/teams-colours.json for <club>, <club>.
+
+- [x] The other two parked leftovers — **both examined, both closed with no code change** **(B17)**
+
+  These are the two remaining items this file had parked with "say the word". Both were looked
+  at properly and **neither should be built**. Recording why, so they don't get picked up again.
+
+  **1. "Text auto-collapses on a Result card, hiding the byline and the reporter picker."**
+  The note under B5 offered to stop Text collapsing "when the card still uses its byline".
+  **A result card doesn't use it.** [app.js](app.js) hides three things on result and always
+  has: the byline (`bSrc`), the reliability dots (`.tier`) and the category slug (`bSlug`).
+  Checked in the browser with a byline filled in — Ornstein/The Athletic prints on news,
+  transfer, quote and stats, and **prints on nothing on a result card**. So the section is
+  closed because the fields genuinely do nothing there, and B3's rule is behaving correctly.
+  Un-collapsing it would surface three controls that change nothing on the card, which is worse
+  than leaving it shut.
+
+  _There **is** a real question hiding underneath, and it's yours, not a bug: **should a result
+  card print a source at all?** A full-time score credited to a reporter is a reasonable thing
+  to want, and the app deliberately doesn't do it. If you want it, that's a design change to
+  the result template — the byline would start showing, and Text would then stop collapsing on
+  its own with no further work, because the fields would finally be used._
+  > Roadmap B17: let the result card print its byline and reliability dots like the other templates.
+
+  **2. "Normalise the single-team crest."** Tried twice, measured both times, **both worse than
+  what's there.** Reverted.
+
+  The premise looked solid: on a solo card the visible badge varies **2.7× in area** across the
+  roster (Dortmund fills 1209×1209, Union Berlin's wide banner only 1207×442), which is the
+  same complaint B11 fixed for pairs.
+
+  | Attempt | Result |
+  |---|---|
+  | Match the **artwork's** size, as B11 does for the pair | On-card spread got **worse**, 2.62× → 2.82×, and on Square **236 of 242 crests shrank** (median coverage 87% → 72%). Matching artwork area then letting the card crop it doesn't match what you see |
+  | Match the **card coverage** — bisect the box size so every badge covers 80% of the card | The numbers were excellent: spread **2.62× → 1.27×** on Portrait, **2.34× → 1.02×** on Square, 241 of 242 exactly on target, Union Berlin 33% → 63%. **And it looked bad.** Tottenham's cockerel came out magnified **4.1×** with its head cropped off the top — an abstract swoosh, not a badge |
+
+  **Why the premise was wrong.** Every crest file is already trimmed so the artwork fills its
+  long axis — B11 measured 208 of 242 filling their height. So under the existing fixed box
+  **every badge already shows at the same long-axis size** (~1207px), and the 2.7× area spread
+  is nothing but the badges' aspect ratios, which is intrinsic to the artwork and correct. A
+  tall shield *is* narrower than a round badge. Equalising area can only be done by magnifying
+  the narrow ones until they crop, which trades a difference nobody notices for a badge you
+  can't recognise.
+
+  _So the solo crest keeps `background-size:112%` at `122% 114%`. The percentage anchor that
+  B11 removed from the pair is fine here, because the box size never changes — it was only
+  fragile when the size varied._
