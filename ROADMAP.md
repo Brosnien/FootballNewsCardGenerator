@@ -4,21 +4,24 @@ Living plan file. Every prompt that changes this repo updates this file in the s
 tick items, add newly agreed ones, refresh the date line below. The wording of the items is
 the author's own — notes in _italics_ are added by Claude.
 
-_Last updated: 2026-07-28 — **B12 is done: the right-hand team has its own colour inputs.**
-**Style & colours** now carries two labelled rows, left/single team and right team; the right
+_Last updated: 2026-07-28 — **B11 and B14 are done, and with them the backlog is empty.** The
+**curves are gone**, replaced by **Chevron ▶ / ◀** and **Vertical 60/40 / 40/60**, and the crests
+were rebuilt: you were right that the left one was being cut, but it wasn't the side — the crest
+box was 583px wide and a crest layer is only 540px, so any badge that fills its file lost up to
+**76px** while a narrow one lost nothing. **Size comes from the badge now, not from a fixed box**,
+and both crests on a card are scaled to the same visible size. Measured: 8 shapes × 6 pairs ×
+both formats = **96 cases, 0 clipped, 0 spilled in the exported PNG, both crests the same size
+every time** — including the soft diagonal's old 2% spill, now zero. The four shapes you kept
+render byte-identically. **One trade-off: a round badge is ~15% smaller than it was**
+(`CREST_TARGET` is the one number to raise if you want them bigger)._
+
+_Previously the same day: **B12 — the right-hand team has its own colour inputs.**
+**Style & colours** carries two labelled rows, left/single team and right team; the right
 team keeps its name from [teams.json](teams.json) but takes its colours from the new `d1/d2/d3`
 fields, which fill in when you pick it and travel with it through a swap. They save with the
 draft and with a preset, and the override is in the exported PNG (sampled, not assumed).
 **This is the quick way round B13's colour debt** — fix a club on the card instead of editing
-`teams.json` first. Next, and last on the list, is **B11**, which needs one thing from you: the
-split and the two teams you were looking at._
-
-_Also **measured B11 rather than guessing at it** (findings under the item): the crests are all
-perfectly centred in their files, so the placement is already symmetric — what differs is how
-much of the file each badge fills, and every crest is drawn into the same 583 px box. Tottenham
-shows 240 px wide where Man City shows 583, so one crest is **2.4× the other on the same card**.
-The fix is to scale each crest by its own content; the catch is that it makes 223 of 242
-**smaller**, so the direction is your call._
+`teams.json` first._
 
 _Previously: **B5 is done: the byline is now one tap.** A **Reporter** picker
 sits above Handle / Outlet / Reliability and fills all three from
@@ -269,6 +272,10 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
   ([app.js](app.js), `WALLPOS` + `put`). Vertical and Diagonal-soft were left alone and still
   render within 0.4px of before.
 
+  _Superseded 2026-07-28 (B11 + B14): the three curves are gone, and `WALLPOS` with them —
+  giving every crest the same 583px box was the thing that cut the wide badges, because a crest
+  layer is only 540px wide. Size is measured off each badge now._
+
 - [x] In the nation tab I can only see Romania's crest. Check for the other nations.
 
   **Not a missing-crest bug — a caching one.** Checked all 92 nations against the live site:
@@ -306,19 +313,23 @@ vertical** — the control is `data-for="move"` and [app.js:376](app.js:376) har
   2% of its crest pixels across the seam onto the other team's colour. It predates this change
   and isn't on your list, so I left it rather than alter a shape you're happy with.
 
+  _**Closed 2026-07-28 by B11**, which replaced the tuned crest table with geometry computed from
+  the seam: Diagonal (soft) now measures **0 spilled pixels**, and the shape itself is untouched._
+
 ---
 
 ## Backlog
 
 Items stay in the author's original order, minus the three automation items (**B1, B2, B6**),
 dropped on 2026-07-27 at the author's request — see the note under the table. B9–B13 were added
-2026-07-27. **The only work item left is B11** (B12 landed 2026-07-28), and it matters more now
-that 182 new badges are in, many of them odd shapes. B4, B7 and B8 aren't work items. One
-prompt per row; paste the quoted line as the whole prompt.
+2026-07-27; B14 was added 2026-07-28. **Every work item is now done** — B11, B12 and B14 all
+landed on 2026-07-28. B4, B7 and B8 aren't work items. One prompt per row; paste the quoted line
+as the whole prompt.
 
 | # | Item | Prompts | Blocked on |
 |---|---|---|---|
-| B11 | Crest size / symmetry on splits | 1 | measured — which way to fix it is your call (below) |
+| B14 | Ditch the curve splits, replace them | done | — |
+| B11 | Crest size / symmetry on splits | done | — |
 | B12 | Colour picker for the second team | done | — |
 | B5 | Reporters picker | done | — |
 | B3 | Fewer fields / faster (NO1) | done | — |
@@ -587,7 +598,49 @@ _Added 2026-07-27._
   ceiling to try first.
   > Roadmap B10: export the card at 2x resolution on all three capture paths, per ROADMAP.md, and check it still works on iPhone.
 
-- [ ] Crest position is off, should be identical size and symmetrical (symmetry based on the diagonal, maybe increase size to be half as big as the news solo team logos) **(B11)**
+- [x] Crest position is off, should be identical size and symmetrical (symmetry based on the diagonal, maybe increase size to be half as big as the news solo team logos) **(B11)**
+
+  **Done 2026-07-28, together with "ditch the curves".** You said the left crest was being cut
+  on Diagonal strong and reverse while the right one looked fine. It wasn't the side — it was
+  the badge: **the crest box was 583px wide but a crest layer is only 540px** (half the card),
+  so a box that wide never fitted. A badge that fills its file (Man City) lost up to **76px**
+  off the card's edge; a narrow one (Milan) lost nothing, because its transparent margin
+  absorbed the overhang. On an Arsenal → Tottenham card that reads exactly as "left cut, right
+  fine". The same one-box-for-everyone was why a round badge looked up to 2.4× a tall shield.
+
+  **So size now comes from the badge, not the box** ([app.js](app.js), `measureCrest` /
+  `crestRoom` / `crestPlan`). Each file is measured once as it loads — how much of its square
+  the artwork actually fills — and both crests on a card are then scaled to the **same visible
+  size**, matching the geometric mean of the visible artwork, which is what "identical size" can
+  mean when one badge is a circle and the other a tall shield. Whichever side has less room sets
+  that size for both, so the pair always matches. The crest is centred in the room its own
+  colour block has rather than at a hand-set x, which is where the symmetry now comes from.
+
+  **The tuned `WALLPOS` table is gone.** Placement is computed from the seam: `SPLITS` describes
+  each shape as an angle plus where the seam sits along it, `seamAt()` turns that into the seam's
+  x at any y, and the crest is fitted inside it. Adding a shape is a row in a table now.
+
+  | Checked | Result |
+  |---|---|
+  | 8 shapes × 6 team pairs × both formats = **96 cases** | **0 clipped** at the card or layer edge, 0 running off the top, and the two crests the **same visible size in every single case** |
+  | Seam clearance | **exactly 24px minimum** across all 96 — it's a constant now (`CREST_GAP`), not an outcome |
+  | Exported PNG, all 8 shapes, single and dual colours | **0 spilled pixels** on every one, from 20k–39k crest pixels per card |
+  | Diagonal (soft) | that includes the **~2% spill this file recorded as open** — it is 0 now |
+  | Bottom bleed | unchanged at 138px, so the crests sit exactly as low as they did |
+  | Four kept shapes | gradient CSS **byte-identical** to before, single and dual — the shapes you're happy with did not move |
+
+  _Sizes: a pair now lands at 497px of visible crest on the vertical and the strong/reverse
+  diagonals (against 583 for a round badge and 240 for Tottenham before), 397–497 on the soft
+  diagonal, 276–481 on the chevrons — the shape's own room decides, and both sides always match._
+
+  _One honest trade-off: **a round badge is now ~15% smaller** than it was (497 against 583) —
+  that's the price of it not being cut and of matching whatever is beside it. `CREST_TARGET` in
+  [app.js](app.js) is the one number to raise if you want them bigger, and the geometry will
+  clamp it back wherever there isn't room._
+
+  _Not touched: the single-team crest on news / quote / stats still bleeds off the bottom-right
+  corner at its old size. It's one badge with nothing to match, so it has no symmetry problem —
+  say the word if you want it normalised too._
 
   **Measured, and the numbers say the geometry is already symmetric — so something else is
   making it look wrong.** In `WALLPOS`, every split gives both crests the *same* size
@@ -662,6 +715,10 @@ _Added 2026-07-27._
   is your call**, and it is the same question as "which split and which two teams" — on a
   vertical split with Arsenal vs Tottenham the honest fix is equalise-and-shrink; if it was a
   diagonal, the placement has to move too.
+
+  _Answered the same day: the cut mattered more than the size, and the fix did **both** — see the
+  Done note under the item. The narrow ones grow upward from a fixed bottom edge, so nothing crops
+  worse than it did; a round badge gives up ~15%._
 
 - [x] Add colors picker for the second team **(B12)**
 
@@ -830,3 +887,38 @@ _Added 2026-07-27._
   the one-liner that prints it. Worth doing a few at a time, for the clubs you actually post
   about — Palermo's badge is also a wide wordmark rather than a round crest, which is the
   artwork issue **B11** is about._
+
+---
+
+_Added 2026-07-28._
+
+- [x] Curve Splits are bad, lets ditch them. Maybe lets find other splits to replace the curve
+      ones? **(B14)**
+
+  **Done 2026-07-28.** The three curved seams are out of the Split control, and out of the code
+  with them — no more `CURVES`, no radial-gradient branch in `buildSplit` (`git show 7a52ce9:app.js`
+  still has them). They were also the shapes the crests sat worst on, and a curve can't be reasoned
+  about the way a straight seam can: **B11's placement geometry only works because every seam is now
+  a straight line** whose x you can solve for at any y.
+
+  **Four replacements, the two kinds you picked**, both built from straight seams so they export:
+
+  | New | What it is |
+  |---|---|
+  | **Chevron ▶** | two half-height bands with opposite angles, so the seam runs in to the middle and back out — the left block points right into the other team |
+  | **Chevron ◀** | the mirror of it |
+  | **Vertical 60/40** | the straight vertical seam moved off centre, so the "from" team gets the bigger block |
+  | **Vertical 40/60** | the mirror |
+
+  The chevrons are the only shape here that needed proving rather than reasoning, because they are
+  **two background layers instead of one** and `html2canvas` has to render both. It does: exported
+  and sampled row by row, the seam sits at **0.372 → 0.507 → 0.646 → 0.506 → 0.372** of the card's
+  width down the PNG — a real chevron, symmetric about the middle to within a pixel.
+
+  A shape is now a row in `SPLITS` ([app.js](app.js)) — an angle, where along it the seam falls,
+  and optionally which slice of the card the band covers. Both the gradient **and** the crest
+  placement are derived from that, so the next shape is numbers, not tuning. The four shapes you
+  kept come out **byte-identical** to before, in single and dual colour modes.
+
+  _A card saved on one of the dropped curves comes back on **Diagonal (strong)** — tested by
+  restoring a snapshot with `split:"curved"`, since otherwise the select would come back blank._

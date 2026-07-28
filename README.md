@@ -78,6 +78,25 @@ result cards both teams show, each crest placed inside its own colour region.
   [TheSportsDB](https://www.thesportsdb.com/) (`crests/` is ~35 MB; one file loads per card).
   Club and national crests are trademarks — they're used here as editorial
   artwork, and how you publish them is your call.
+- **Size comes from the badge, not from a fixed box.** Every file is a square, but
+  the badge inside it isn't: a round crest fills it, a tall shield leaves side
+  gaps, a wordmark leaves gaps above and below. So each file is measured once when
+  it loads (`measureCrest`) and the two crests on a card are scaled to the same
+  visible size — whichever side has less room sets it for both, which is why a
+  pair always matches and neither is ever clipped. Nothing to configure.
+
+## Split shapes
+The **Split** control on a transfer card is a table in [app.js](app.js), `SPLITS`.
+A shape is its seam: an angle, where along that angle the seam falls (`s`, 0.5
+being through the middle), and optionally a slice of the card the band covers —
+two half-height bands with opposite angles give the chevrons. Everything else is
+derived from those numbers, including where each crest goes and how big it can be,
+so **adding a shape is a row in that table**, not a round of tuning by eye.
+
+Seams are straight on purpose. The three curved ones (radial gradients) were
+dropped on 2026-07-28 — they were the shapes the crests sat worst on, and a curve
+can't be reasoned about the way a straight seam can. A card saved on one comes
+back on Diagonal (strong).
 
 ### Adding a crest for a new team
 Add the team to `teams.json`, then run:

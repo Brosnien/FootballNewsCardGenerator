@@ -111,21 +111,60 @@ function scoreInk(c1,c2,c3){
   return {fig,echo};
 }
 
-const ANGLES={vert:"90deg",diag:"100deg",diag2:"125deg",diagr:"62deg"};
-/* curved seams: a big off-canvas circle whose arc crosses the card. cx is the
-   circle centre's x on the 1080-wide card; the seam always meets the vertical
-   middle at x=540 and bows toward (convex) or away from (concave) that centre. */
-const CURVES={
-  curve: {cx:-1400},   /* soft bow to the right  */
-  curved:{cx:-620},    /* deep bow to the right  */
-  curver:{cx:2480},    /* bow the other way (reverse) */
+/* ---------- the split shapes ----------
+   Every seam is straight. A shape is one band across the whole card, or two
+   half-height bands for the chevrons, and a band is just an angle plus where its
+   seam sits along that angle (s, where 0.5 is through the card's middle).
+   Everything else is derived from those numbers — the CSS gradient AND how big a
+   crest can be on each side without touching the seam — so a new shape is a few
+   numbers here instead of a round of eyeballing.
+
+   The curved seams were dropped on 2026-07-28: they were the shapes the crests
+   sat worst on, and a radial seam can't be reasoned about the way this can.
+   `git show 7a52ce9:app.js` still has them.
+
+   a / b are the crest anchors, one per side. y is the crest's BOTTOM edge when
+   mode is "foot" (past the card's edge on purpose — the crest bleeds off the
+   bottom, and anchoring the foot means a tall badge grows upward instead of
+   being cropped harder), or its centre when mode is "mid". x is not listed: the
+   crest is centred in whatever room its own colour block has, which is what
+   makes the pair symmetric on a symmetric shape.
+   sub caps the width of the bottom-left text so it doesn't run into the seam. */
+const SPLITS={
+  vert:  {bands:[{deg:90, s:0.5}],  mode:"foot", a:{y:1.102}, b:{y:1.102}, sub:420},
+  diag:  {bands:[{deg:100,s:0.5}],  mode:"foot", a:{y:1.102}, b:{y:1.102}, sub:330},
+  diag2: {bands:[{deg:125,s:0.5}],  mode:"mid",  a:{y:0.30},  b:{y:0.70},  sub:290},
+  diagr: {bands:[{deg:62, s:0.5}],  mode:"mid",  a:{y:0.70},  b:{y:0.30},  sub:700},
+  /* the seam moved off centre: one team gets the bigger block */
+  voff:  {bands:[{deg:90, s:0.60}], mode:"foot", a:{y:1.102}, b:{y:1.102}, sub:520},
+  voffr: {bands:[{deg:90, s:0.40}], mode:"foot", a:{y:1.102}, b:{y:1.102}, sub:320},
+  /* two half-height bands whose seams meet in the middle: a > or < shape */
+  chevr: {bands:[{deg:65, s:0.5,y0:0,y1:0.5},{deg:115,s:0.5,y0:0.5,y1:1}],
+          mode:"mid", a:{y:0.50}, b:{y:0.24}, sub:330},
+  chevl: {bands:[{deg:115,s:0.5,y0:0,y1:0.5},{deg:65, s:0.5,y0:0.5,y1:1}],
+          mode:"mid", a:{y:0.24}, b:{y:0.50}, sub:330},
 };
+const shapeOf=mode=>SPLITS[mode]||SPLITS.vert;
+/* x of the seam at a given y, in card px. A band's gradient puts its seam where
+   the projection on the gradient axis is s of the way along it, which is this
+   line: x = centre + (offset + (y - band centre)·cos) / sin. */
+function seamAt(sh,W,H){
+  const segs=sh.bands.map(b=>{
+    const y0=(b.y0||0)*H, y1=(b.y1===undefined?1:b.y1)*H;
+    const th=b.deg*Math.PI/180, si=Math.sin(th), co=Math.cos(th);
+    const L=Math.abs(W*si)+Math.abs((y1-y0)*co), off=(b.s-0.5)*L;
+    return {y0,y1,at:y=>W/2+(off+(y-(y0+y1)/2)*co)/si};
+  });
+  return y=>(segs.find(s=>y>=s.y0&&y<=s.y1)||segs[segs.length-1]).at(y);
+}
 
 /* builds the split background; also returns the bands so we know the contrast.
    Bands + their edge positions on a 0..1 axis (0 = left team's outer edge,
-   1 = right team's outer edge) are the same whatever the seam shape — only the
-   geometry (a straight linear-gradient vs. a curved radial-gradient) changes. */
+   1 = right team's outer edge) are the same whatever the seam shape — the shape
+   only decides the angle, where along that angle the seam falls, and (chevrons)
+   which slice of the card the band covers. */
 function buildSplit(mode,A,B,dual,H){
+  const sh=shapeOf(mode), W=1080;
   const w=0.005; /* half seam width, as a fraction of the axis */
   let cols,pos,seam;
   if(dual){
@@ -143,22 +182,17 @@ function buildSplit(mode,A,B,dual,H){
     cols=[A.c1,seam,B.c1];
     pos =[0, 0.5-w, 0.5+w, 1];
   }
-  let css;
-  if(CURVES[mode]){
-    const cx=CURVES[mode].cx, cy=(H||1350)/2, mid=540, span=1080;
-    const R=Math.abs(mid-cx), rightCentre=cx>mid;
-    const rad=f=>Math.max(0,R+(rightCentre?-1:1)*(f-0.5)*span);
-    let segs=cols.map((c,i)=>({c,a:rad(pos[i]),b:rad(pos[i+1])}));
-    /* radial-gradient stops must increase; a right-hand centre reverses them */
-    if(segs.length && segs[0].a>segs[0].b) segs=segs.reverse().map(s=>({c:s.c,a:s.b,b:s.a}));
-    const stops=segs.map(s=>s.c+" "+s.a.toFixed(1)+"px "+s.b.toFixed(1)+"px");
-    css="radial-gradient(circle at "+cx+"px "+cy.toFixed(1)+"px,"+stops.join(",")+")";
-  }else{
-    const ang=ANGLES[mode]||"100deg";
-    const stops=cols.map((c,i)=>c+" "+(pos[i]*100)+"% "+(pos[i+1]*100)+"%");
-    css="linear-gradient("+ang+","+stops.join(",")+")";
-  }
-  return {css:css, bands:cols.slice()};
+  const layers=sh.bands.map(b=>{
+    /* the bands were written for a seam at half way; s stretches each side of
+       them to put it wherever the shape wants it */
+    const at=t=>t<=0.5 ? t/0.5*b.s : b.s+(t-0.5)/0.5*(1-b.s);
+    const stops=cols.map((c,i)=>c+" "+(at(pos[i])*100).toFixed(2)+"% "+(at(pos[i+1])*100).toFixed(2)+"%");
+    const grad="linear-gradient("+b.deg+"deg,"+stops.join(",")+")";
+    if(sh.bands.length===1) return grad;
+    const y0=(b.y0||0)*(H||1350), y1=(b.y1===undefined?1:b.y1)*(H||1350);
+    return grad+" 0px "+y0.toFixed(1)+"px/"+W+"px "+(y1-y0).toFixed(1)+"px no-repeat";
+  });
+  return {css:layers.join(","), bands:cols.slice()};
 }
 
 const RANGE={
@@ -412,32 +446,89 @@ const CREST_TRIES=3;  /* attempts before a crest is treated as genuinely absent 
    crests. The query string gives the new artwork a new URL. */
 const CREST_V="2026-07-28";
 const crestURL=key=>"crests/"+key+".png?v="+CREST_V;
-/* where each crest sits per split shape. masks and clip-path don't survive
-   html2canvas export, so instead of clipping the crest to the seam we place it
-   deep inside its own team's colour region — a strong diagonal makes team 1 a
-   top-left triangle, a curve pins each team to a side — so it never reaches
-   (and never crosses) the seam.
+/* ---------- how big each crest is, and where it goes ----------
+   masks and clip-path don't survive html2canvas export, so instead of clipping a
+   crest to the seam we place it deep inside its own team's colour region. This
+   was a table of tuned {x,y,d} per shape until 2026-07-28 (`git show
+   7a52ce9:app.js`); it is computed from the seam and the artwork now.
 
-   {x,y} is the crest's centre and d its diameter, as fractions of the card
-   (x and d of the 1080 width, y of the height). Fractions, not the CSS
-   background-position percentages this used to hold: each layer is only half
-   the card wide, so once the crest is about as wide as its layer the percentage
-   form divides by nearly zero and a small size change throws the crest across
-   the card. Pixels are computed from these below, which is stable and let the
-   diagonal/curve crests grow by roughly half.
+   What the tuned table got wrong: it gave every crest the same 583px box. But a
+   crest layer is only 540px wide (half the card), so a box that wide can never
+   fit — a badge whose artwork fills its file lost up to 76px off the card's edge,
+   while a narrow one padded with transparency lost nothing. Same box, so a round
+   badge also *looked* up to 2.4x the size of a tall shield beside it.
 
-   Every value clears the seam with >=20px to spare at both card formats; x is
-   also kept >=d/2 from the x=540 layer edge, because on a diagonal or curve
-   that edge is NOT the seam and a cut there reads as a mistake. */
-const WALLPOS={
-  vert:  {a:{x:0.275,y:0.886,d:0.54}, b:{x:0.725,y:0.886,d:0.54}},
-  diag:  {a:{x:0.263,y:0.885,d:0.52}, b:{x:0.737,y:0.885,d:0.52}},
-  diag2: {a:{x:0.20, y:0.30, d:0.54}, b:{x:0.80, y:0.70, d:0.54}},
-  diagr: {a:{x:0.20, y:0.70, d:0.54}, b:{x:0.80, y:0.30, d:0.54}},
-  curve: {a:{x:0.20, y:0.65, d:0.54}, b:{x:0.80, y:0.65, d:0.54}},
-  curved:{a:{x:0.20, y:0.62, d:0.54}, b:{x:0.80, y:0.62, d:0.54}},
-  curver:{a:{x:0.20, y:0.65, d:0.54}, b:{x:0.80, y:0.65, d:0.54}},
-};
+   Size now comes from the badge, not the box. Each file is measured once
+   (crestBox: how much of its square the artwork fills — and all 334 are exactly
+   centred in their file, so the artwork's centre is still the box's centre), then
+   both crests on a card are scaled to the SAME visible size, matching the
+   geometric mean of the visible artwork — which is what "identical size" can mean
+   when one badge is a circle and the other a tall shield. Whichever side has less
+   room sets that size for both, so the pair always matches. */
+const CREST_TARGET=0.46;  /* the pair's visible size, as a fraction of card width */
+const CREST_GAP=24;       /* px of clear colour to leave between a crest and the seam */
+const CREST_TALL=0.65;    /* a foot-anchored crest may not be taller than this x H */
+const crestBox={};        /* key -> {w,h}: the artwork's share of its square file */
+const boxOf=key=>crestBox[key]||{w:1,h:1};
+let _bcv=null;
+/* the artwork's own bounding box inside the file, as fractions. Cheap: the file
+   is drawn once into a 160px square and scanned for alpha, ~26k pixels. */
+function measureCrest(img){
+  try{
+    const N=160;
+    if(!_bcv){ _bcv=document.createElement("canvas"); _bcv.width=_bcv.height=N; }
+    const cx=_bcv.getContext("2d",{willReadFrequently:true});
+    cx.clearRect(0,0,N,N); cx.drawImage(img,0,0,N,N);
+    const a=cx.getImageData(0,0,N,N).data;
+    let x0=N,y0=N,x1=-1,y1=-1;
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++)
+      if(a[(y*N+x)*4+3]>16){ if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y; }
+    if(x1<0) return {w:1,h:1};
+    return {w:(x1-x0+1)/N, h:(y1-y0+1)/N};
+  }catch(e){ return {w:1,h:1}; }   /* an odd file just keeps the whole box */
+}
+/* the room one side has: the crest is centred between the card's outer edge and
+   the seam (or the layer's edge, whichever comes first), measured across the
+   whole height the crest could occupy — the seam is slanted, so the tightest
+   point along that height is the one that counts. */
+function crestRoom(sh,anch,isB,bx,W,H,chHint){
+  const sx=seamAt(sh,W,H), foot=sh.mode==="foot", y=anch.y*H;
+  const tall=foot?Math.min(CREST_TALL*H,y):2*Math.min(y,H-y);
+  const ch=Math.min(chHint||tall,tall);
+  const lo=foot?y-ch:y-ch/2, hi=foot?y:y+ch/2;
+  let seam=null;
+  for(let i=0;i<9;i++){
+    const v=sx(Math.max(0,Math.min(H,lo+(hi-lo)*i/8)));
+    seam=seam===null?v:(isB?Math.max(seam,v):Math.min(seam,v));
+  }
+  const x0=isB?Math.max(W/2,seam+CREST_GAP):0;
+  const x1=isB?W:Math.min(W/2,seam-CREST_GAP);
+  const hw=Math.max(40,(x1-x0)/2), g=Math.sqrt(bx.w*bx.h);
+  /* the widest box this side could hold, and so the visible size it can show */
+  return {cx:(x0+x1)/2, g, box:Math.min(2*hw/bx.w,tall/bx.h)};
+}
+/* both crests, in card px: {boxW,left,top} per side, plus the size they share.
+   How tall a crest is decides how much of the slanted seam it has to clear, and
+   how much room it has decides how tall it may be — so this settles the two by
+   starting from the size we'd like and only ever taking less. Going the other way
+   (measuring the seam over a generous height, then growing into the room that
+   found) can grow a crest into a tighter part of the seam than it was measured
+   against, which is how the chevrons first came out with 5px of clearance. */
+function crestPlan(mode,H,keyA,keyB){
+  const sh=shapeOf(mode), W=1080, bA=boxOf(keyA), bB=boxOf(keyB);
+  let T=CREST_TARGET*W, A, B;
+  for(let i=0;i<3;i++){
+    A=crestRoom(sh,sh.a,false,bA,W,H,T*Math.sqrt(bA.h/bA.w));
+    B=crestRoom(sh,sh.b,true, bB,W,H,T*Math.sqrt(bB.h/bB.w));
+    T=Math.min(T, A.box*A.g, B.box*B.g);
+  }
+  const lay=(s,bx,anch,isB)=>{
+    const boxW=T/s.g, y=anch.y*H;
+    return {boxW, left:s.cx-boxW/2-(isB?W/2:0),
+            top:(sh.mode==="foot"?y-boxW*bx.h/2:y)-boxW/2};
+  };
+  return {a:lay(A,bA,sh.a,false), b:lay(B,bB,sh.b,true), size:T};
+}
 function updateWall(tpl){
   const wall=$("vWall"), wa=$("vWallA"), wb=$("vWallB");
   const op=parseFloat($("crestBg").value)||0;
@@ -454,16 +545,17 @@ function updateWall(tpl){
       if(g){
         /* the card is a fixed 1080 x H box (the preview only transform-scales
            it), so laying the crest out in card pixels is exact */
-        const W=1080, H=+$("fmt").value||1350, d=g.d*W, left=(el===wb?W/2:0);
-        el.style.backgroundSize=d.toFixed(1)+"px auto";
-        el.style.backgroundPosition=(g.x*W-left-d/2).toFixed(1)+"px "+
-                                    (g.y*H-d/2).toFixed(1)+"px";
+        el.style.backgroundSize=g.boxW.toFixed(1)+"px auto";
+        el.style.backgroundPosition=g.left.toFixed(1)+"px "+g.top.toFixed(1)+"px";
       }
       el.style.setProperty("--wallOp",op); el.classList.remove("hide"); return;
     }
     hide(el);                                    /* until the file is confirmed */
     const img=new Image();
-    img.onload =()=>{ crestSeen[key]="ok"; updateWall($("tpl").value); };
+    /* measured on the probe, before anything is laid out, so the very first
+       render of a crest already knows how much of its file the badge fills */
+    img.onload =()=>{ crestSeen[key]="ok"; crestBox[key]=measureCrest(img);
+                      updateWall($("tpl").value); };
     /* a failed probe used to mark the team "no" for the rest of the session, so
        one dropped request — a burst of them is normal on a phone, and replacing
        all 152 crests at once guarantees a burst — meant that crest never came
@@ -478,8 +570,10 @@ function updateWall(tpl){
   if(single){ hide(wa); hide(wb); put(wall,activeClub); }
   else if(two){
     hide(wall);
-    const pp=WALLPOS[tpl==="result"?"vert":$("split").value]||WALLPOS.vert;
-    put(wa,activeClub,pp.a); put(wb,$("club2").value,pp.b);
+    const k2=$("club2").value;
+    const pp=crestPlan(tpl==="result"?"vert":$("split").value,+$("fmt").value||1350,
+                       activeClub,k2);
+    put(wa,activeClub,pp.a); put(wb,k2,pp.b);
   }
   else{ [wall,wa,wb].forEach(hide); }
 }
@@ -550,12 +644,10 @@ function render(){
   r.setProperty("--H",H+"px");
 
   const card=$("card");
-  /* how much room is left in the left half, next to the bottom text. On
-     diagonals/curves the seam moves toward the left edge near the card's base,
-     so the ceiling is smaller the further it bows in. */
-  const SAFE={vert:"420px",diag:"330px",diag2:"290px",diagr:"700px",
-              curve:"390px",curved:"300px",curver:"620px"};
-  r.setProperty("--subMax", split ? (SAFE[splitModeEff]||"330px") : "34ch");
+  /* how much room is left in the left half, next to the bottom text. On a
+     diagonal the seam moves toward the left edge near the card's base, so the
+     ceiling is smaller the further it leans in (SPLITS[…].sub). */
+  r.setProperty("--subMax", split ? (shapeOf(splitModeEff).sub||330)+"px" : "34ch");
 
   let sp=null;
   if(split){
@@ -781,6 +873,9 @@ function restore(o){
   activeClub=(o._club&&DB()[o._club])?o._club:
     (DB()[lastKey[teamType]]?lastKey[teamType]:Object.keys(DB())[0]);
   lastKey[teamType]=activeClub;
+  /* a card saved on one of the dropped curve seams: the select would come back
+     showing nothing at all, so put it on the nearest shape we still have */
+  if($("split").value!=="none"&&!SPLITS[$("split").value]) $("split").value="diag2";
   [...TRIO_A,...TRIO_B].forEach(([tx,pk])=>{if(HEX.test($(tx).value))$(pk).value=$(tx).value;});
   updateTypeUI();drawPickers();
   if(o.club2&&DB()[o.club2]){
